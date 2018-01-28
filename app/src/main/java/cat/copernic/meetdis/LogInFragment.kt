@@ -16,6 +16,7 @@ import android.text.method.PasswordTransformationMethod
 
 import android.R.attr.visible
 import android.app.AlertDialog
+import android.content.ContentValues.TAG
 import android.util.Log
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -35,7 +36,7 @@ class LogInFragment : Fragment() {
     private lateinit var drawerLayout: DrawerLayout
 
     private val db = FirebaseFirestore.getInstance()
-    private val auth = FirebaseAuth.getInstance()
+
 
 
     override fun onCreateView(
@@ -68,33 +69,45 @@ class LogInFragment : Fragment() {
 
                 if (letra.isLetter() && numeros.isDigitsOnly() && letra.isUpperCase()) {
 
+
                     if (contra.length() == 4) {
+
                         val dni: String = textNom1.text.toString();
-                        val contrasenya: String = textContrasenya.text.toString() + "prodis"
+                        val contrasenya: String = contra.text.toString() + "prodis"
 
 
                         db.collection("users")
                             .get()
                             .addOnSuccessListener { result ->
+
                                 for (document in result) {
+
                                     if (document.id == dni
                                     ) {
                                         FirebaseAuth.getInstance()
                                             .signInWithEmailAndPassword(
-                                                document.get("dni").toString(),
+                                                document.data["dni"].toString(),
                                                 contrasenya
+
                                             ).addOnCompleteListener() {
                                                 if (it.isSuccessful) {
                                                     view.findNavController()
                                                         .navigate(
                                                             LogInFragmentDirections.actionLogInFragmentToIniciFragment(
-                                                                dni)
+                                                                dni
+                                                            )
+
                                                         )
-                                                } else {
-                                                   // showAlert()
                                                 }
+//                                                } else {
+//                                                   showAlert()
+//                                                }
                                             }
 
+
+                                    }
+                                    else {
+                                        showAlert()
                                     }
                                 }
                             }

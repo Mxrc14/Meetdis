@@ -13,6 +13,7 @@ import android.R
 import android.widget.Button
 import android.widget.CompoundButton
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_registre_familiar.*
 import kotlinx.android.synthetic.main.fragment_registre_monitor.*
@@ -71,6 +72,9 @@ class RegistreUsuari : Fragment() {
                 dni = dni.lowercase()
                 view.findNavController()
                     .navigate(RegistreUsuariDirections.actionLogInFragmentToIniciFragment(dni))
+
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(dni + "@prodis.cat",
+                    args.contrasenya)
 
                 db.collection("users").document(args.dni).set(
                     hashMapOf(
