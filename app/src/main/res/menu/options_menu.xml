@@ -10,6 +10,7 @@
         android:id="@+id/validacioUsuarisFragment"
         android:title="@string/validacioUsuari" />
 
+
     <item
         android:id="@+id/contacteFragment"
         android:title="@string/contacte" />
