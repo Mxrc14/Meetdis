@@ -4,10 +4,24 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/bordes.xml" value="0.19907407407407407" />
+        <entry key="app/src/main/res/drawable/custom_lock.xml" value="0.2994791666666667" />
+        <entry key="app/src/main/res/drawable/ic_buscar.xml" value="0.165625" />
+        <entry key="app/src/main/res/drawable/ic_inci.xml" value="0.165625" />
+        <entry key="app/src/main/res/drawable/ic_inici.xml" value="0.165625" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.19907407407407407" />
+        <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.2994791666666667" />
+        <entry key="app/src/main/res/drawable/ic_notificacio.xml" value="0.2994791666666667" />
+        <entry key="app/src/main/res/drawable/ic_perfil.xml" value="0.2994791666666667" />
+        <entry key="app/src/main/res/drawable/ic_xat.xml" value="0.2994791666666667" />
         <entry key="app/src/main/res/font/pt_sans_caption.xml" value="0.19907407407407407" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.15208333333333332" />
-        <entry key="app/src/main/res/layout/inici.xml" value="0.12083333333333333" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/buscar.xml" value="0.29010416666666666" />
+        <entry key="app/src/main/res/layout/inici.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/log_in.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/notificacio.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/perfil.xml" value="0.29010416666666666" />
+        <entry key="app/src/main/res/layout/xat.xml" value="0.29010416666666666" />
+        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.29010416666666666" />
       </map>
     </option>
   </component>

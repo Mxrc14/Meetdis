@@ -3,11 +3,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/mainActivity">
+    app:startDestination="@id/Log_InFragment">
 
-    <activity
-        android:id="@+id/mainActivity"
+
+    <fragment
+        android:id="@+id/Log_InFragment"
+        android:name="cat.copernic.meetdis.Inici"
+        android:label="fragment_title"
+        tools:layout="@layout/log_in"/>
+
+    <fragment
+        android:id="@+id/iniciFragment"
+        android:name="cat.copernic.meetdis.Inici"
+        android:label="fragment_title"
+        tools:layout="@layout/inici"/>
+
+
+    <fragment
+        android:id="@+id/mainActivityFragment"
         android:name="cat.copernic.meetdis.MainActivity"
         android:label="activity_main"
-        tools:layout="@layout/activity_main" />
+        tools:layout="@layout/activity_main" >
+        <action
+            android:id="@+id/action_mainActivityFragment_to_iniciFragment"
+            app:destination="@id/iniciFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/buscarFragment"
+        android:name="cat.copernic.meetdis.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/buscar" />
+
+    <fragment
+        android:id="@+id/notificacioFragment"
+        android:name="cat.copernic.meetdis.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/notificacio" />
+
+    <fragment
+        android:id="@+id/xatFragment"
+        android:name="cat.copernic.meetdis.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/xat" />
+
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="cat.copernic.meetdis.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/perfil" />
 </navigation>
