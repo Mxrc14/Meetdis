@@ -3,26 +3,31 @@
     <group android:checkableBehavior="single">
     <item
         android:id="@+id/navigation_inici"
-        android:icon="@drawable/ic_inci"
-        android:title="@string/inici" />
+        android:icon="@drawable/ic_inici"
+        android:title="@string/inici"
+        />
 
     <item
         android:id="@+id/navigation_buscar"
         android:icon="@drawable/ic_buscar"
-        android:title="@string/buscar" />
+        android:title="@string/buscar"
+        />
     <item
         android:id="@+id/navigation_notificacicio"
         android:icon="@drawable/ic_notificacio"
-        android:title="@string/notificacio" />
+        android:title="@string/notificacio"
+        />
 
     <item
         android:id="@+id/navigation_xat"
         android:icon="@drawable/ic_xat"
-        android:title="@string/xat" />
+        android:title="@string/xat"
+        />
 
     <item
         android:id="@+id/navigation_perfil"
         android:icon="@drawable/ic_perfil"
-        android:title="@string/perfil" />
+        android:title="@string/perfil"
+        />
     </group>
 </menu>

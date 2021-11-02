@@ -3,53 +3,54 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/Log_InFragment">
+    app:startDestination="@id/logInFragment">
 
 
     <fragment
-        android:id="@+id/Log_InFragment"
-        android:name="cat.copernic.meetdis.Inici"
-        android:label="fragment_title"
-        tools:layout="@layout/log_in"/>
+        android:id="@+id/logInFragment"
+        android:name="cat.copernic.meetdis.LogInFragment"
+        android:label="Log In"
+        tools:layout="@layout/fragment_log_in" >
+        <action
+            android:id="@+id/action_logInFragment_to_iniciFragment"
+            app:destination="@id/iniciFragment" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/iniciFragment"
         android:name="cat.copernic.meetdis.Inici"
         android:label="fragment_title"
-        tools:layout="@layout/inici"/>
+        tools:layout="@layout/fragment_inici"/>
 
 
     <fragment
         android:id="@+id/mainActivityFragment"
         android:name="cat.copernic.meetdis.MainActivity"
         android:label="activity_main"
-        tools:layout="@layout/activity_main" >
-        <action
-            android:id="@+id/action_mainActivityFragment_to_iniciFragment"
-            app:destination="@id/iniciFragment" />
-    </fragment>
+        tools:layout="@layout/activity_main" />
 
     <fragment
         android:id="@+id/buscarFragment"
-        android:name="cat.copernic.meetdis.MainActivity"
+        android:name="cat.copernic.meetdis.Buscar"
         android:label="activity_main"
-        tools:layout="@layout/buscar" />
+        tools:layout="@layout/fragment_buscar" />
 
     <fragment
         android:id="@+id/notificacioFragment"
-        android:name="cat.copernic.meetdis.MainActivity"
+        android:name="cat.copernic.meetdis.Notificacio"
         android:label="activity_main"
-        tools:layout="@layout/notificacio" />
+        tools:layout="@layout/fragment_notificacio" />
 
     <fragment
         android:id="@+id/xatFragment"
-        android:name="cat.copernic.meetdis.MainActivity"
+        android:name="cat.copernic.meetdis.Xats"
         android:label="activity_main"
-        tools:layout="@layout/xat" />
+        tools:layout="@layout/fragment_xats" />
 
     <fragment
         android:id="@+id/perfilFragment"
-        android:name="cat.copernic.meetdis.MainActivity"
+        android:name="cat.copernic.meetdis.PerfilUsuari"
         android:label="activity_main"
-        tools:layout="@layout/perfil" />
+        tools:layout="@layout/fragment_perfil_usuari" />
 </navigation>
