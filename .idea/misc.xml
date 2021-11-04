@@ -3,25 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/bordes.xml" value="0.19907407407407407" />
-        <entry key="app/src/main/res/drawable/custom_lock.xml" value="0.2994791666666667" />
-        <entry key="app/src/main/res/drawable/ic_buscar.xml" value="0.165625" />
-        <entry key="app/src/main/res/drawable/ic_inci.xml" value="0.165625" />
-        <entry key="app/src/main/res/drawable/ic_inici.xml" value="0.165625" />
-        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.19907407407407407" />
-        <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.2994791666666667" />
-        <entry key="app/src/main/res/drawable/ic_notificacio.xml" value="0.2994791666666667" />
-        <entry key="app/src/main/res/drawable/ic_perfil.xml" value="0.2994791666666667" />
-        <entry key="app/src/main/res/drawable/ic_xat.xml" value="0.2994791666666667" />
-        <entry key="app/src/main/res/font/pt_sans_caption.xml" value="0.19907407407407407" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/buscar.xml" value="0.29010416666666666" />
-        <entry key="app/src/main/res/layout/inici.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/log_in.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/notificacio.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/perfil.xml" value="0.29010416666666666" />
-        <entry key="app/src/main/res/layout/xat.xml" value="0.29010416666666666" />
-        <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.29010416666666666" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/drawable/splashscreen.xml" value="0.1" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/activity_main.xml" value="0.152" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_buscar.xml" value="0.10866261398176291" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_crear_oferta.xml" value="0.10866261398176291" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_inici.xml" value="0.10866261398176291" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_log_in.xml" value="0.10866261398176291" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_notificacio.xml" value="0.10866261398176291" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_oblida_contrasenya.xml" value="0.10866261398176291" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_oferta.xml" value="0.10866261398176291" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_perfil_familiar.xml" value="0.10866261398176291" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_perfil_monitor.xml" value="0.10866261398176291" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_perfil_usuari.xml" value="0.10866261398176291" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_validacio_usuaris.xml" value="0.10866261398176291" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_xat.xml" value="0.10866261398176291" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_xats.xml" value="0.4" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/log_in.xml" value="0.2513586956521739" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/splashscreen.xml" value="0.10866261398176291" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/menu/bottom_menu.xml" value="0.264" />
       </map>
     </option>
   </component>

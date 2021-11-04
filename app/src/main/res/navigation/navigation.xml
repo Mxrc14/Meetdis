@@ -3,53 +3,199 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/Log_InFragment">
-
+    app:startDestination="@id/logInFragment">
 
     <fragment
-        android:id="@+id/Log_InFragment"
-        android:name="cat.copernic.meetdis.Inici"
+        android:id="@+id/logInFragment"
+        android:name="cat.copernic.meetdis.LogInFragment"
+        android:label="Log In"
+        tools:layout="@layout/fragment_log_in" >
+        <action
+            android:id="@+id/action_logInFragment_to_iniciFragment"
+            app:destination="@id/iniciFragment" />
+        <action
+            android:id="@+id/action_logInFragment_to_oblidatContrasenyaFragment"
+            app:destination="@id/oblidatContrasenyaFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/oblidatContrasenyaFragment"
+        android:name="cat.copernic.meetdis.OblidaContrasenya"
         android:label="fragment_title"
-        tools:layout="@layout/log_in"/>
+        tools:layout="@layout/fragment_oblida_contrasenya">
+        <action
+            android:id="@+id/action_oblidatContrasenyaFragment_to_logInFragment"
+            app:destination="@id/logInFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/iniciFragment"
         android:name="cat.copernic.meetdis.Inici"
         android:label="fragment_title"
-        tools:layout="@layout/inici"/>
+        tools:layout="@layout/fragment_inici">
+        <action
+            android:id="@+id/action_iniciFragment_to_crearOfertaFragment"
+            app:destination="@id/crearOfertaFragment" />
+        <action
+            android:id="@+id/action_iniciFragment_to_ofertaFragment"
+            app:destination="@id/ofertaFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/crearOfertaFragment"
+        android:name="cat.copernic.meetdis.CrearOferta"
+        android:label="fragment_title"
+        tools:layout="@layout/fragment_crear_oferta">
+        <action
+            android:id="@+id/action_crearOfertaFragment_to_iniciFragment"
+            app:destination="@id/iniciFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ofertaFragment"
+        android:name="cat.copernic.meetdis.Oferta"
+        android:label="fragment_title"
+        tools:layout="@layout/fragment_oferta">
+        <action
+            android:id="@+id/action_ofertaFragmentFragment_to_iniciFragment"
+            app:destination="@id/iniciFragment" />
+        <action
+            android:id="@+id/action_ofertaFragmentFragment_to_membresFragment"
+            app:destination="@id/membresFragment" />
+    </fragment>
 
 
     <fragment
         android:id="@+id/mainActivityFragment"
         android:name="cat.copernic.meetdis.MainActivity"
         android:label="activity_main"
-        tools:layout="@layout/activity_main" >
+        tools:layout="@layout/activity_main" />
+
+    <fragment
+        android:id="@+id/buscarFragment"
+        android:name="cat.copernic.meetdis.Buscar"
+        android:label="activity_main"
+        tools:layout="@layout/fragment_buscar" />
+
+    <fragment
+        android:id="@+id/notificacioFragment"
+        android:name="cat.copernic.meetdis.Notificacio"
+        android:label="activity_main"
+        tools:layout="@layout/fragment_notificacio" />
+
+    <fragment
+        android:id="@+id/xatsFragment"
+        android:name="cat.copernic.meetdis.Xats"
+        android:label="activity_main"
+        tools:layout="@layout/fragment_xats" >
         <action
-            android:id="@+id/action_mainActivityFragment_to_iniciFragment"
+            android:id="@+id/action_xatsFragment_to_xatFragment"
+            app:destination="@id/xatFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/xatFragment"
+        android:name="cat.copernic.meetdis.Xat"
+        android:label="activity_main"
+        tools:layout="@layout/fragment_xat" >
+        <action
+            android:id="@+id/action_xatFragment_to_membresFragment"
+            app:destination="@id/membresFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/membresFragment"
+        android:name="cat.copernic.meetdis.Membres"
+        android:label="activity_main"
+        tools:layout="@layout/fragment_membres" />
+
+
+    <fragment
+        android:id="@+id/perfilUsuariFragment"
+        android:name="cat.copernic.meetdis.PerfilUsuari"
+        android:label="activity_main"
+        tools:layout="@layout/fragment_perfil_usuari" />
+
+    <fragment
+        android:id="@+id/perfilMonitorFragment"
+        android:name="cat.copernic.meetdis.PerfilMonitor"
+        android:label="activity_main"
+        tools:layout="@layout/fragment_perfil_monitor" />
+
+    <fragment
+        android:id="@+id/perfilFamiliarFragment"
+        android:name="cat.copernic.meetdis.PerfilFamiliar"
+        android:label="activity_main"
+        tools:layout="@layout/fragment_perfil_familiar" />
+
+    <fragment
+        android:id="@+id/registreFragment"
+        android:name="cat.copernic.meetdis.Registre"
+        android:label="activity_main"
+        tools:layout="@layout/fragment_registre" >
+    <action
+        android:id="@+id/action_registreFragment_to_registreUsuariFragment"
+        app:destination="@id/registreUsuariFragment" />
+        <action
+            android:id="@+id/action_registreFragment_to_registreMonitorFragment"
+            app:destination="@id/registreMonitorFragment" />
+        <action
+            android:id="@+id/action_registreFragment_to_registreFamiliarFragment"
+            app:destination="@id/registreFamiliarFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/registreUsuariFragment"
+        android:name="cat.copernic.meetdis.RegistreUsuari"
+        android:label="activity_main"
+        tools:layout="@layout/fragment_registre_usuari">
+    <action
+        android:id="@+id/action_logInFragment_to_iniciFragment"
+        app:destination="@id/iniciFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/registreMonitorFragment"
+        android:name="cat.copernic.meetdis.RegistreMonitor"
+        android:label="activity_main"
+        tools:layout="@layout/fragment_registre_monitor" >
+        <action
+            android:id="@+id/action_logInFragment_to_iniciFragment"
             app:destination="@id/iniciFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/buscarFragment"
-        android:name="cat.copernic.meetdis.MainActivity"
+        android:id="@+id/registreFamiliarFragment"
+        android:name="cat.copernic.meetdis.RegistreFamiliar"
         android:label="activity_main"
-        tools:layout="@layout/buscar" />
+        tools:layout="@layout/fragment_registre_familiar" >
+        <action
+            android:id="@+id/action_logInFragment_to_iniciFragment"
+            app:destination="@id/iniciFragment" />
+    </fragment>
 
     <fragment
-        android:id="@+id/notificacioFragment"
-        android:name="cat.copernic.meetdis.MainActivity"
+        android:id="@+id/personalitzacioFragment"
+        android:name="cat.copernic.meetdis.Personalitzacio"
         android:label="activity_main"
-        tools:layout="@layout/notificacio" />
+        tools:layout="@layout/fragment_personalitzacio" />
 
     <fragment
-        android:id="@+id/xatFragment"
-        android:name="cat.copernic.meetdis.MainActivity"
+        android:id="@+id/aboutFragment"
+        android:name="cat.copernic.meetdis.About"
         android:label="activity_main"
-        tools:layout="@layout/xat" />
+        tools:layout="@layout/fragment_about" />
 
     <fragment
-        android:id="@+id/perfilFragment"
-        android:name="cat.copernic.meetdis.MainActivity"
+        android:id="@+id/contacteFragment"
+        android:name="cat.copernic.meetdis.Contacte"
         android:label="activity_main"
-        tools:layout="@layout/perfil" />
+        tools:layout="@layout/fragment_contacte" />
+    <fragment
+        android:id="@+id/validacioUsuarisFragment"
+        android:name="cat.copernic.meetdis.ValidacioUsuaris"
+        android:label="activity_main"
+        tools:layout="@layout/fragment_validacio_usuaris" />
+
 </navigation>
