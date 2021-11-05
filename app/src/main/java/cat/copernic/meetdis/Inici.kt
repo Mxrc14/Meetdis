@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import cat.copernic.meetdis.databinding.FragmentIniciBinding
-import cat.copernic.meetdis.databinding.FragmentLogInBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 // TODO: Rename parameter arguments, choose names that match
