@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
 
         drawerLayout = binding.drawerLayout
 
+
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
