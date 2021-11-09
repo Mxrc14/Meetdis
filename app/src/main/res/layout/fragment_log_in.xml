@@ -58,7 +58,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/textNom1"
             android:layout_width="209dp"
             android:layout_height="45dp"
             android:layout_marginTop="45dp"

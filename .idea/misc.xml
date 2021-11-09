@@ -3,18 +3,28 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/drawable/custom_email.xml" value="0.1" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/drawable/custom_input.xml" value="0.1" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/drawable/custom_lock.xml" value="0.1" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/drawable/email.xml" value="0.1" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/drawable/ic_buscar.xml" value="0.1" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/drawable/ic_inci.xml" value="0.1" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/drawable/splashscreen.xml" value="0.1" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/activity_main.xml" value="0.152" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_buscar.xml" value="0.10866261398176291" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_crear_oferta.xml" value="0.10866261398176291" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_inici.xml" value="0.10866261398176291" />
-        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_log_in.xml" value="0.10866261398176291" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_log_in.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_notificacio.xml" value="0.10866261398176291" />
-        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_oblida_contrasenya.xml" value="0.10866261398176291" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_oblida_contrasenya.xml" value="0.4" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_oferta.xml" value="0.10866261398176291" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_perfil_familiar.xml" value="0.10866261398176291" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_perfil_monitor.xml" value="0.10866261398176291" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_perfil_usuari.xml" value="0.10866261398176291" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_registre.xml" value="0.2033514492753623" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_registre_familiar.xml" value="0.19791666666666666" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_registre_monitor.xml" value="0.264" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_registre_usuari.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_validacio_usuaris.xml" value="0.10866261398176291" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_xat.xml" value="0.10866261398176291" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_xats.xml" value="0.4" />
