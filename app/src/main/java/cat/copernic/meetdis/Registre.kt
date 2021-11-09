@@ -1,6 +1,7 @@
 package cat.copernic.meetdis
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.DataBindingUtil.setContentView
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import cat.copernic.meetdis.databinding.ActivityMainBinding
 import cat.copernic.meetdis.databinding.FragmentIniciBinding
@@ -71,6 +73,17 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener {
         R.layout.fragment_registre,container,false)
 
 
+
+        /*binding.bRegistre.setOnClickListener { view: View ->
+
+            Log.i("login Fragment", "Estem al listener boto registre")
+            view.findNavController()
+                .navigate(LogInFragmentDirections.actionLogInFragmentToRegistreFragment())
+
+
+
+        }
+*/
 
             return binding.root
     }

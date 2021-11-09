@@ -14,6 +14,7 @@
         <entry key="app/src/main/res/drawable/ic_notificacio.xml" value="0.2994791666666667" />
         <entry key="app/src/main/res/drawable/ic_perfil.xml" value="0.2994791666666667" />
         <entry key="app/src/main/res/drawable/ic_xat.xml" value="0.2994791666666667" />
+        <entry key="app/src/main/res/drawable/spinner.xml" value="0.17083333333333334" />
         <entry key="app/src/main/res/font/pt_sans_caption.xml" value="0.19907407407407407" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/buscar.xml" value="0.29010416666666666" />
@@ -32,7 +33,7 @@
         <entry key="app/src/main/res/layout/fragment_perfil_monitor.xml" value="0.36041666666666666" />
         <entry key="app/src/main/res/layout/fragment_perfil_usuari.xml" value="0.20104166666666667" />
         <entry key="app/src/main/res/layout/fragment_personalitzacio.xml" value="0.36041666666666666" />
-        <entry key="app/src/main/res/layout/fragment_registre.xml" value="0.20208333333333334" />
+        <entry key="app/src/main/res/layout/fragment_registre.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_registre_familiar.xml" value="0.36041666666666666" />
         <entry key="app/src/main/res/layout/fragment_registre_monitor.xml" value="0.36041666666666666" />
         <entry key="app/src/main/res/layout/fragment_registre_usuari.xml" value="0.36041666666666666" />
