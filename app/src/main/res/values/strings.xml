@@ -4,7 +4,6 @@
     <string name="entrar">ENTRAR</string>
     <string name="password">Contrasenya</string>
     <string name="repeatPassword">Repeteix la Contrasenya</string>
-    <string name="tipusUsuari">Tipus d´Usuari:</string>
     <string name="dni">DNI</string>
     <string name="inici">Inici</string>
     <string name="buscar">Buscar</string>
@@ -23,7 +22,8 @@
     <string name="acceptarCondicions">Acceptar els termes i condicions</string>
     <string name="correu">Correu Electronic</string>
     <string name="dniProdis">DNI Usuari Prodis</string>
-    <string-array name="tipus_Usuaris">
+
+    <string-array name="tipus_Uusaris">
         <item>Usuari</item>
         <item>Monitor</item>
         <item>Familiar</item>
@@ -37,6 +37,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="registre">REGISTRE</string>
+    <string name="seleccioUsuari">Selecciona el tipus d\'Usuari:</string>
 </resources>
 
 
