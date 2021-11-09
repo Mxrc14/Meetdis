@@ -83,6 +83,7 @@
             android:layout_width="220dp"
             android:layout_height="56dp"
             android:layout_marginTop="304dp"
+            android:entries="@array/tipus_Usuaris"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
@@ -101,6 +102,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textUsuari"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="264dp"
+            android:text="TextView"
+            app:layout_constraintTop_toBottomOf="@+id/meetdis"
+            tools:layout_editor_absoluteX="176dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
