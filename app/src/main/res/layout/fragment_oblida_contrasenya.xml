@@ -12,20 +12,19 @@
 
         <ImageView
             android:id="@+id/meetdis"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="374dp"
+            android:layout_height="233dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/meetdis" />
+            app:srcCompat="@drawable/meetdis"
+            tools:layout_editor_absoluteY="-31dp" />
 
         <EditText
             android:id="@+id/textDNI"
-            android:layout_width="209dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="45dp"
+            android:layout_width="294dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_email"
             android:drawablePadding="5dp"
@@ -36,41 +35,44 @@
             android:paddingEnd="5dp"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.521"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/meetdis" />
 
         <EditText
             android:id="@+id/textTitol"
-            android:layout_width="209dp"
-            android:layout_height="45dp"
-            android:layout_marginTop="125dp"
+            android:layout_width="294dp"
+            android:layout_height="60dp"
+            android:paddingStart="30dp"
+            android:layout_marginTop="96dp"
             android:background="@drawable/custom_input"
             android:drawablePadding="5dp"
             android:ems="10"
             android:hint="@string/titol"
             android:inputType="textPersonName"
-            android:paddingStart="5dp"
+
             android:paddingEnd="5dp"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.529"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/meetdis" />
 
         <EditText
-            android:id="@+id/textRepeteixContrasenya"
-            android:layout_width="238dp"
-            android:layout_height="190dp"
-            android:layout_marginTop="208dp"
+            android:id="@+id/descripcio"
+            android:layout_width="293dp"
+            android:layout_height="251dp"
+            android:layout_marginTop="168dp"
             android:background="@drawable/custom_input"
-            android:drawablePadding="5dp"
-            android:ems="10"
+
             android:hint="@string/descripcio"
-            android:inputType="textPersonName"
-            android:paddingStart="85dp"
-            android:paddingEnd="5dp"
+            android:paddingTop="10dp"
+
+
+            android:textAlignment="center"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.519"
+            app:layout_constraintHorizontal_bias="0.525"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/meetdis" />
 
@@ -78,7 +80,7 @@
             android:id="@+id/b_enviar"
             android:layout_width="132dp"
             android:layout_height="59dp"
-            android:layout_marginBottom="140dp"
+            android:layout_marginBottom="36dp"
             android:background="@drawable/bordes"
             android:fontFamily="@font/pt_sans_caption"
             android:text="@string/enviar"
@@ -90,3 +92,5 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
+
+
