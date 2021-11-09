@@ -1,14 +1,22 @@
 package cat.copernic.meetdis
 
+import android.R.attr
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import cat.copernic.meetdis.databinding.FragmentLogInBinding
+import android.text.method.HideReturnsTransformationMethod
+
+import android.R.attr.password
+
+import android.text.method.PasswordTransformationMethod
+
+import android.R.attr.visible
+import android.util.Log
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,6 +32,8 @@ class LogInFragment : Fragment() {
 
     private lateinit var drawerLayout: DrawerLayout
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,15 +45,46 @@ class LogInFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentLogInBinding>(inflater,
+        val binding = DataBindingUtil.inflate<cat.copernic.meetdis.databinding.FragmentLogInBinding>(inflater,
             R.layout.fragment_log_in,container,false)
 
+        binding.bRegistre.setOnClickListener { view: View ->
+
+           Log.i("login Fragment", "Estem al listener boto registre")
+            view.findNavController()
+                .navigate(LogInFragmentDirections.actionLogInFragmentToRegistreFragment())
+
+
+
+        }
 
         binding.bEntra.setOnClickListener { view: View ->
+            Log.i("login Fragment", "Estem al listener boto entra")
             view.findNavController()
                 .navigate(LogInFragmentDirections.actionLogInFragmentToIniciFragment())
+
+
         }
+
+        binding.oblidar.setOnClickListener { view: View ->
+            Log.i("login Fragment", "Estem al listener boto oblidar")
+            view.findNavController()
+                .navigate(LogInFragmentDirections.actionLogInFragmentToOblidatContrasenyaFragment())
+        }
+
+        var esVisible = false
+
+
+
+
+        //setHasOptionsMenu(true)
+
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.options_menu,menu)
     }
 
 

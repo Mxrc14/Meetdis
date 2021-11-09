@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
+import cat.copernic.meetdis.databinding.FragmentLogInBinding
+import cat.copernic.meetdis.databinding.FragmentOblidaContrasenyaBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,8 +37,19 @@ class OblidaContrasenya : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_oblida_contrasenya, container, false)
+
+
+        val binding = DataBindingUtil.inflate<FragmentOblidaContrasenyaBinding>(inflater,
+            R.layout.fragment_oblida_contrasenya,container,false)
+
+
+        binding.bEnviar.setOnClickListener { view: View ->
+            view.findNavController()
+                .navigate(OblidaContrasenyaDirections.actionOblidatContrasenyaFragmentToLogInFragment())
+
+
+        }
+        return binding.root
     }
 
     companion object {
