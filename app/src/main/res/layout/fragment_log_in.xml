@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <EditText
             android:id="@+id/editTextTextPersonName2"
             android:layout_width="209dp"
@@ -26,7 +27,7 @@
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+            app:layout_constraintTop_toBottomOf="@+id/textNom1" />
 
         <TextView
             android:id="@+id/oblidar"
@@ -41,12 +42,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
-
         <Button
             android:id="@+id/b_entra"
             android:layout_width="132dp"
             android:layout_height="59dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/bordes"
             android:fontFamily="@font/pt_sans_caption"
             android:text="@string/entrar"
@@ -59,12 +59,13 @@
             android:id="@+id/b_registre"
             android:layout_width="132dp"
             android:layout_height="59dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/bordes"
             android:fontFamily="@font/pt_sans_caption"
             android:text="@string/registre"
             android:textColor="#ffffff"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/b_entra" />
 
@@ -90,10 +91,10 @@
             android:layout_width="503dp"
             android:layout_height="234dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.381"
+            app:layout_constraintHorizontal_bias="0.293"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/meetdis"
-            tools:layout_editor_absoluteY="0dp" />
+            tools:layout_editor_absoluteY="74dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

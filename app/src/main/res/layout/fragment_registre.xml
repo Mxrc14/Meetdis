@@ -12,12 +12,13 @@
 
         <ImageView
             android:id="@+id/meetdis"
-            android:layout_width="417dp"
-            android:layout_height="272dp"
+            android:layout_width="340dp"
+            android:layout_height="221dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.647"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/meetdis"
-            tools:layout_editor_absoluteY="3dp" />
+            tools:layout_editor_absoluteY="7dp" />
 
         <EditText
             android:id="@+id/textDNI"
