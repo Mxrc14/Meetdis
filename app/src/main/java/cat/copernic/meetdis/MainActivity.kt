@@ -4,6 +4,7 @@ package cat.copernic.meetdis
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -28,15 +29,19 @@ class MainActivity : AppCompatActivity() {
         @Suppress("UNUSED_VARIABLE")
 
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-
+        //setHasOptionsMenu(true)
         drawerLayout = binding.drawerLayout
     }
 
 
-    /*override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.options_menu, menu)
         return onCreateOptionsMenu(menu)
-    }*/
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return super.onOptionsItemSelected(item)
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = this.findNavController(R.id.mainActivityFragment)

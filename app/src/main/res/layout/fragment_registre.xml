@@ -12,22 +12,18 @@
 
         <ImageView
             android:id="@+id/meetdis"
-            android:layout_width="200dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="266dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            android:layout_width="417dp"
+            android:layout_height="272dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/meetdis" />
+            app:srcCompat="@drawable/meetdis"
+            tools:layout_editor_absoluteY="3dp" />
 
         <EditText
             android:id="@+id/textDNI"
             android:layout_width="209dp"
             android:layout_height="45dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="7dp"
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_email"
             android:drawablePadding="5dp"
@@ -38,7 +34,6 @@
             android:paddingEnd="5dp"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.47"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/meetdis" />
 
@@ -46,7 +41,7 @@
             android:id="@+id/textContrasenya"
             android:layout_width="209dp"
             android:layout_height="45dp"
-            android:layout_marginTop="116dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_lock"
             android:drawablePadding="5dp"
@@ -57,15 +52,14 @@
             android:paddingEnd="5dp"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.47"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meetdis" />
+            app:layout_constraintTop_toBottomOf="@+id/textDNI" />
 
         <EditText
             android:id="@+id/textRepeteixContrasenya"
             android:layout_width="209dp"
             android:layout_height="45dp"
-            android:layout_marginTop="180dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_lock"
             android:drawablePadding="5dp"
@@ -76,52 +70,45 @@
             android:paddingEnd="5dp"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.47"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meetdis" />
+            app:layout_constraintTop_toBottomOf="@+id/textContrasenya" />
 
         <Spinner
             android:id="@+id/spinnerUsuaris"
             android:layout_width="220dp"
             android:layout_height="56dp"
-            android:layout_marginTop="304dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/spinner"
-            android:entries="@array/tipus_Uusaris"
             android:fontFamily="@font/pt_sans_caption"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:theme="@style/ThemeOverlay.AppCompat.Dark"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meetdis" />
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <Button
             android:id="@+id/b_continuar"
             android:layout_width="132dp"
             android:layout_height="59dp"
-            android:layout_marginBottom="140dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/bordes"
             android:fontFamily="@font/pt_sans_caption"
             android:text="@string/continuar"
             android:textColor="#ffffff"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerUsuaris" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="76dp"
-            android:layout_marginEnd="76dp"
-            android:layout_marginBottom="330dp"
+            android:layout_marginTop="16dp"
             android:text="@string/seleccioUsuari"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/meetdis"
-            app:layout_constraintStart_toStartOf="@+id/spinnerUsuaris"
-            app:layout_constraintTop_toBottomOf="@+id/meetdis" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textRepeteixContrasenya" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

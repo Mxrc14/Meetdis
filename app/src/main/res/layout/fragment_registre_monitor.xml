@@ -12,11 +12,10 @@
 
         <ImageView
             android:id="@+id/meetdis"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
+            android:layout_width="303dp"
+            android:layout_height="138dp"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/meetdis" />
@@ -25,16 +24,18 @@
             android:id="@+id/imageCamara"
             android:layout_width="166dp"
             android:layout_height="156dp"
+            android:layout_marginTop="16dp"
             android:src="@android:drawable/ic_menu_camera"
-            tools:layout_editor_absoluteX="122dp"
-            tools:layout_editor_absoluteY="116dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/meetdis"
             tools:ignore="MissingConstraints" />
 
         <EditText
             android:id="@+id/textNom"
             android:layout_width="209dp"
             android:layout_height="45dp"
-            android:layout_marginTop="180dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_email"
             android:drawablePadding="5dp"
@@ -46,13 +47,13 @@
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meetdis" />
+            app:layout_constraintTop_toBottomOf="@+id/imageCamara" />
 
         <EditText
             android:id="@+id/textCognom"
             android:layout_width="209dp"
             android:layout_height="45dp"
-            android:layout_marginTop="248dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_email"
             android:drawablePadding="5dp"
@@ -64,13 +65,13 @@
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meetdis" />
+            app:layout_constraintTop_toBottomOf="@+id/textNom" />
 
         <EditText
             android:id="@+id/textCorreu"
             android:layout_width="209dp"
             android:layout_height="45dp"
-            android:layout_marginTop="312dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/custom_input"
             android:drawableStart="@android:drawable/sym_action_email"
             android:drawablePadding="5dp"
@@ -82,44 +83,43 @@
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meetdis" />
+            app:layout_constraintTop_toBottomOf="@+id/textCognom" />
 
         <CheckBox
             android:id="@+id/checkBoxTerminis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="368dp"
+            android:layout_marginTop="16dp"
             android:text="@string/acceptarCondicions"
-            app:layout_constraintTop_toBottomOf="@+id/meetdis"
-            tools:layout_editor_absoluteX="87dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textCorreu"
             tools:ignore="MissingConstraints" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="416dp"
+            android:layout_marginTop="16dp"
             android:text="Termes i condicions"
             android:textColor="@color/teal_700"
-            app:layout_constraintTop_toBottomOf="@+id/meetdis"
-            tools:layout_editor_absoluteX="145dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxTerminis"
             tools:ignore="MissingConstraints" />
 
         <Button
             android:id="@+id/b_entra"
             android:layout_width="132dp"
             android:layout_height="59dp"
-            android:layout_marginBottom="88dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/bordes"
             android:fontFamily="@font/pt_sans_caption"
             android:text="@string/finalitzar"
             android:textColor="#ffffff"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.519"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meetdis"
-            app:layout_constraintVertical_bias="0.965" />
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
