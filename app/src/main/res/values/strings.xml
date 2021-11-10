@@ -23,11 +23,13 @@
     <string name="correu">Correu Electronic</string>
     <string name="dniProdis">DNI Usuari Prodis</string>
 
-    <string-array name="tipus_Uusaris">
+    <string-array name="tipus_Usuaris">
         <item>Usuari</item>
         <item>Monitor</item>
         <item>Familiar</item>
     </string-array>
+
+
     <string name="nomICognoms">Nom i Cognoms</string>
     <string name="titol">Titol</string>
     <string name="descripcio">Descripció</string>

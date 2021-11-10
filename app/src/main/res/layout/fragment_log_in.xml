@@ -14,8 +14,7 @@
             android:id="@+id/editTextTextPersonName2"
             android:layout_width="209dp"
             android:layout_height="45dp"
-            android:layout_marginTop="125dp"
-            android:layout_marginBottom="19dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_lock"
             android:drawablePadding="5dp"
@@ -25,62 +24,54 @@
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/oblidar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meetdis"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
         <TextView
             android:id="@+id/oblidar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="189dp"
-            android:layout_marginBottom="62dp"
+            android:layout_marginTop="16dp"
             android:text="@string/oblidar"
             android:textAllCaps="false"
             android:textColor="#616161"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/b_entra"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/meetdis" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+
 
         <Button
             android:id="@+id/b_entra"
             android:layout_width="132dp"
             android:layout_height="59dp"
-            android:layout_marginBottom="140dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/bordes"
             android:fontFamily="@font/pt_sans_caption"
             android:text="@string/entrar"
             android:textColor="#ffffff"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent" />
-
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/oblidar" />
 
         <Button
             android:id="@+id/b_registre"
             android:layout_width="132dp"
             android:layout_height="59dp"
-            android:layout_marginBottom="64dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/bordes"
             android:fontFamily="@font/pt_sans_caption"
             android:text="@string/registre"
             android:textColor="#ffffff"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/b_entra" />
 
         <EditText
             android:id="@+id/editTextTextPersonName"
             android:layout_width="209dp"
             android:layout_height="45dp"
-            android:layout_marginTop="45dp"
-            android:layout_marginBottom="35dp"
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_email"
             android:drawablePadding="5dp"
@@ -90,7 +81,6 @@
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
             android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/meetdis" />
@@ -99,13 +89,11 @@
             android:id="@+id/meetdis"
             android:layout_width="503dp"
             android:layout_height="234dp"
-            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.217"
+            app:layout_constraintHorizontal_bias="0.381"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/meetdis" />
-
+            app:srcCompat="@drawable/meetdis"
+            tools:layout_editor_absoluteY="0dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

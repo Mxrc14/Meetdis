@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Switch
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.DataBindingUtil.setContentView
 import androidx.navigation.findNavController
@@ -17,6 +18,7 @@ import cat.copernic.meetdis.databinding.ActivityMainBinding
 import cat.copernic.meetdis.databinding.FragmentIniciBinding
 import cat.copernic.meetdis.databinding.FragmentRegistreBinding
 import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.fragment_registre.*
 import kotlinx.android.synthetic.main.fragment_registre.view.*
 import java.util.*
 
@@ -34,34 +36,15 @@ private const val ARG_PARAM2 = "param2"
  */
 class Registre : Fragment(), AdapterView.OnItemSelectedListener {
     // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
     private var spinner: Spinner? = null
-    private lateinit var mBinding: ActivityMainBinding
     private lateinit var llistat: ArrayAdapter<String>
+    private var opcion: String? = null
 
 
 
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        mBinding = ActivityMainBinding.inflate(layoutInflater)
-
-        //setContentView(R.layout.fragment_registre, )
-
-        //llistat = ArrayAdapter<String>( this,
-          //  android.R.layout.simple_spinner_dropdown_item)
-
-        //llistat.addAll(Arrays.asList("Selecciona","Mexico", "Españita", "Perú", "Argentina"))
-
-
-        //mBinding.drawerLayout.spinnerUsuaris.onItemSelectedListener = this
-        //mBinding.drawerLayout.spinnerUsuaris.adapter = llistat
-
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -73,23 +56,55 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener {
         R.layout.fragment_registre,container,false)
 
 
-
-        /*binding.bRegistre.setOnClickListener { view: View ->
-
-            Log.i("login Fragment", "Estem al listener boto registre")
-            view.findNavController()
-                .navigate(LogInFragmentDirections.actionLogInFragmentToRegistreFragment())
+        spinner = binding.spinnerUsuaris
 
 
+
+        ArrayAdapter.createFromResource(requireContext(), R.array.tipus_Usuaris,
+            android.R.layout.simple_spinner_dropdown_item).also{
+          //  adapter.setDropDownView.Resource(android.R.layout.simple_spinner_dropdown_item)
+          //  spinnerUsuaris.adapter = adapter
+        }
+
+
+        spinner!!.onItemSelectedListener = this
+
+
+
+
+
+
+
+        binding.bContinuar.setOnClickListener { view: View ->
+
+            Log.i("login Fragment", "Estem al listener boto Continuar: $opcion")
+
+
+
+
+            when(opcion){
+
+                "Usuari" -> view.findNavController()
+                    .navigate(RegistreDirections.actionRegistreFragmentToRegistreUsuariFragment())
+
+                "Monitor" -> view.findNavController()
+                    .navigate(RegistreDirections.actionRegistreFragmentToRegistreMonitorFragment())
+
+                else -> view.findNavController()
+                    .navigate(RegistreDirections.actionRegistreFragmentToRegistreFamiliarFragment())
+            }
 
         }
-*/
 
             return binding.root
     }
 
-    override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-        TODO("Not yet implemented")
+
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        opcion = llistat.getItem(position).toString()
+
+
     }
 
 
