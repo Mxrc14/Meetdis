@@ -1,10 +1,13 @@
 package cat.copernic.meetdis
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,24 +20,27 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class RegistreUsuari : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_registre_usuari, container, false)
+
+
+        val binding = DataBindingUtil.inflate<cat.copernic.meetdis.databinding.FragmentRegistreUsuariBinding>(inflater,
+            R.layout.fragment_registre_usuari,container,false)
+
+        binding.bFinalitzar.setOnClickListener { view: View ->
+
+            Log.i("Registre Usuari", "Estem al listener boto Finalitzar")
+            view.findNavController()
+                .navigate(RegistreUsuariDirections.actionLogInFragmentToIniciFragment())
+
+        }
+
+        return binding.root
+
     }
 
     companion object {

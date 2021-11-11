@@ -107,7 +107,7 @@
             tools:ignore="MissingConstraints" />
 
         <Button
-            android:id="@+id/b_entra"
+            android:id="@+id/b_finalitzar"
             android:layout_width="132dp"
             android:layout_height="59dp"
             android:layout_marginTop="16dp"
