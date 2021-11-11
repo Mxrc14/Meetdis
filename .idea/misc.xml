@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.25925925925925924" />
+        <entry key="../../Android/Sdk/platforms/android-31/data/res/layout/simple_spinner_dropdown_item.xml" value="0.2188034188034188" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/activity_main.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_log_in.xml" value="0.25" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_oblida_contrasenya.xml" value="0.25052083333333336" />
@@ -53,6 +54,8 @@
         <entry key="app/src/main/res/layout/notificacio.xml" value="0.1" />
         <entry key="app/src/main/res/layout/perfil.xml" value="0.29010416666666666" />
         <entry key="app/src/main/res/layout/perfil_usuari.xml" value="0.20104166666666667" />
+        <entry key="app/src/main/res/layout/spinner_dropdown_item.xml" value="0.2188034188034188" />
+        <entry key="app/src/main/res/layout/spinner_item.xml" value="0.2188034188034188" />
         <entry key="app/src/main/res/layout/xat.xml" value="0.29010416666666666" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.29010416666666666" />
         <entry key="app/src/main/res/menu/options_menu.xml" value="0.26256410256410256" />

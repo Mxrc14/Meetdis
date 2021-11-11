@@ -49,10 +49,11 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
 
         ArrayAdapter.createFromResource(requireContext(), R.array.tipus_Usuaris,
 
-          android.R.layout.simple_spinner_dropdown_item).also{ adapter->
-            
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            R.layout.spinner_item).also{ adapter->
+            //R.layout.spinner_item
+            adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
             binding.spinnerUsuaris.adapter = adapter
+//TODO documentar-lo en la memoria
 
         }
 
