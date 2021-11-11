@@ -21,6 +21,8 @@ import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_registre.*
 import kotlinx.android.synthetic.main.fragment_registre.view.*
 import java.util.*
+import android.R
+import android.app.Fragment
 
 
 private lateinit var mBinding: ActivityMainBinding
@@ -43,7 +45,9 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener {
 
 
 
-
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        opcion = llistat.getItem(position).toString()
+    }
 
 
     override fun onCreateView(
@@ -51,36 +55,37 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener {
         savedInstanceState: Bundle?
     ): View? {
 
-
         val binding = DataBindingUtil.inflate<FragmentRegistreBinding>(inflater,
         R.layout.fragment_registre,container,false)
 
 
+       // var adapter: ArrayAdapter<String> = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, spinnerUsuaris)
+        
+
         spinner = binding.spinnerUsuaris
+        
+        
+        
+        
+
+       
 
 
+        //ArrayAdapter.createFromResource(requireContext(), R.array.tipus_Usuaris,
 
-        ArrayAdapter.createFromResource(requireContext(), R.array.tipus_Usuaris,
-            android.R.layout.simple_spinner_dropdown_item).also{
-          //  adapter.setDropDownView.Resource(android.R.layout.simple_spinner_dropdown_item)
-          //  spinnerUsuaris.adapter = adapter
-        }
+          //  android.R.layout.simple_spinner_dropdown_item).also{
+            
+            //adapter.setDropDownView.Resource(android.R.layout.simple_spinner_dropdown_item)
+        //}
 
 
         spinner!!.onItemSelectedListener = this
 
 
 
-
-
-
-
         binding.bContinuar.setOnClickListener { view: View ->
 
             Log.i("login Fragment", "Estem al listener boto Continuar: $opcion")
-
-
-
 
             when(opcion){
 
@@ -101,11 +106,7 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener {
 
 
 
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        opcion = llistat.getItem(position).toString()
 
-
-    }
 
 
     // override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
