@@ -58,9 +58,6 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
         }
 
 
-
-
-
         binding.bContinuar.setOnClickListener { view: View ->
 
             Log.i("Registre", "Estem al listener boto Continuar: $opcion")
@@ -81,18 +78,6 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
          binding.spinnerUsuaris.onItemSelectedListener = this
             return binding.root
     }
-
-
-
-
-
-
-    // override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-     //   var countrySelected = llistat.getItem(position)
-     //   mBinding.tvSelected.text = countrySelected
-
-   // }
-
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         opcion = parent?.getItemAtPosition(position).toString()

@@ -2,30 +2,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
     <item
-        android:id="@+id/navigation_inici"
+        android:id="@+id/iniciFragment"
         android:icon="@drawable/ic_inici"
         android:title="@string/inici"
         />
 
     <item
-        android:id="@+id/navigation_buscar"
+        android:id="@+id/buscarFragment"
         android:icon="@drawable/ic_buscar"
         android:title="@string/buscar"
         />
     <item
-        android:id="@+id/navigation_notificacicio"
+        android:id="@+id/notificacioFragment"
         android:icon="@drawable/ic_notificacio"
         android:title="@string/notificacio"
         />
 
     <item
-        android:id="@+id/navigation_xat"
+        android:id="@+id/xatsFragment"
         android:icon="@drawable/ic_xat"
         android:title="@string/xat"
         />
 
     <item
-        android:id="@+id/navigation_perfil"
+        android:id="@+id/perfilUsuariFragment"
         android:icon="@drawable/ic_perfil"
         android:title="@string/perfil"
         />
