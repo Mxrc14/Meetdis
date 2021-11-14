@@ -13,7 +13,11 @@ import android.R
 import android.widget.Button
 import android.widget.CompoundButton
 import android.widget.Toast
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_registre_monitor.*
 import kotlinx.android.synthetic.main.fragment_registre_usuari.*
+import kotlinx.android.synthetic.main.fragment_registre_usuari.textCognom
+import kotlinx.android.synthetic.main.fragment_registre_usuari.textNom
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -28,6 +32,8 @@ private const val ARG_PARAM2 = "param2"
  */
 class RegistreUsuari : Fragment() {
 
+    private val db = FirebaseFirestore.getInstance()
+
     var myCheck: CheckBox? = null
     var finalitza: Button? = null
 
@@ -41,6 +47,8 @@ class RegistreUsuari : Fragment() {
 
         val binding = DataBindingUtil.inflate<cat.copernic.meetdis.databinding.FragmentRegistreUsuariBinding>(inflater,
             cat.copernic.meetdis.R.layout.fragment_registre_usuari,container,false)
+
+        val args = RegistreUsuariArgs.fromBundle(requireArguments())
 
 
 
@@ -61,6 +69,16 @@ class RegistreUsuari : Fragment() {
             Log.i("Registre Usuari", "Estem al listener boto Finalitzar")
             view.findNavController()
                 .navigate(RegistreUsuariDirections.actionLogInFragmentToIniciFragment())
+
+            db.collection("users").document(args.dni).set(
+                hashMapOf(
+                    "dni" to args.dni,
+                    "contrasenya" to args.contrasenya,
+                    "tipus d´usuari" to args.tipus,
+                    "nom" to textNom.text.toString(),
+                    "cognoms" to textCognom.text.toString()
+                )
+            )
 
         }
         return binding.root

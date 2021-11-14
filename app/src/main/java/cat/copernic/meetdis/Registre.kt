@@ -8,12 +8,17 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import cat.copernic.meetdis.databinding.ActivityMainBinding
 import cat.copernic.meetdis.databinding.FragmentRegistreBinding
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_registre.*
 
 
@@ -29,10 +34,13 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class Registre : Fragment(), AdapterView.OnItemSelectedListener{
-    // TODO: Rename and change types of parameters
+
+
+
 
     private var spinner: Spinner? = null
     private var opcion: String? = null
+
 
 
 
@@ -60,24 +68,56 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
 
         binding.bContinuar.setOnClickListener { view: View ->
 
-            Log.i("Registre", "Estem al listener boto Continuar: $opcion")
+            if (textContrasenya.text.toString() == textRepeteixContrasenya.text.toString()) {
+                Log.i("Registre", "Estem al listener boto Continuar: $opcion")
+                val dni : String = textDNI.text.toString();
+                val contrasenya: String = textContrasenya.text.toString()+"prodis";
+                val tipus : String = opcion.toString();
 
-            when(opcion){
 
-                "Usuari" -> view.findNavController()
-                    .navigate(RegistreDirections.actionRegistreFragmentToRegistreUsuariFragment())
 
-                "Monitor" -> view.findNavController()
-                    .navigate(RegistreDirections.actionRegistreFragmentToRegistreMonitorFragment())
+                when (opcion) {
 
-                else -> view.findNavController()
-                    .navigate(RegistreDirections.actionRegistreFragmentToRegistreFamiliarFragment())
+                    "Usuari" -> view.findNavController()
+                        .navigate(RegistreDirections.actionRegistreFragmentToRegistreUsuariFragment(dni, contrasenya, tipus))
+
+                    "Monitor" -> view.findNavController()
+                        .navigate(RegistreDirections.actionRegistreFragmentToRegistreMonitorFragment(dni, contrasenya, tipus))
+
+                    else -> view.findNavController()
+                        .navigate(RegistreDirections.actionRegistreFragmentToRegistreFamiliarFragment(dni, contrasenya, tipus))
+                }
+
+
+
+                //Log.i("Registre", "dni:$dni textdni:${textDNI.text.toString()}")
+
+
             }
-
+            else{
+                 val toast = Toast.makeText(requireContext(), "Has introduit contrasenyas diferents", Toast.LENGTH_LONG)
+                toast.show()
+            }
         }
+
+
+
+
          binding.spinnerUsuaris.onItemSelectedListener = this
             return binding.root
     }
+
+
+
+
+
+
+    // override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+     //   var countrySelected = llistat.getItem(position)
+     //   mBinding.tvSelected.text = countrySelected
+
+   // }
+
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         opcion = parent?.getItemAtPosition(position).toString()
