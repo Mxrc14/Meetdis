@@ -29,7 +29,6 @@
             android:id="@+id/textNom"
             android:layout_width="209dp"
             android:layout_height="45dp"
-            android:layout_marginTop="16dp"
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_email"
             android:drawablePadding="5dp"
@@ -67,14 +66,13 @@
             android:layout_height="138dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/meetdis"
-            tools:layout_editor_absoluteY="44dp" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/meetdis" />
 
         <ImageView
             android:id="@+id/imageCamara"
             android:layout_width="166dp"
             android:layout_height="156dp"
-            android:layout_marginTop="16dp"
             android:src="@android:drawable/ic_menu_camera"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
