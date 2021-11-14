@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'
 }
 
 
@@ -75,9 +76,17 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation "com.google.android.material:material:1.4.0"
+    //noinspection GradleCompatible
     implementation "com.android.support:design:26.1.0"
 
+    //FIREBASE
+    implementation platform('com.google.firebase:firebase-bom:29.0.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    //AUTHENTICATION
+    implementation 'com.google.firebase:firebase-auth:19.3.0'
 
+    //FIRESTORE
+    implementation 'com.google.firebase:firebase-firestore:24.0.0'
 
 
     //noinspection GradleCompatible
