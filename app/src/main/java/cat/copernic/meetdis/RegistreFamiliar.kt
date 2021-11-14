@@ -28,6 +28,17 @@ class RegistreFamiliar : Fragment() {
         val binding = DataBindingUtil.inflate<cat.copernic.meetdis.databinding.FragmentRegistreFamiliarBinding>(inflater,
             R.layout.fragment_registre_familiar,container,false)
 
+
+        val myCheck = binding.checkBoxTerminis
+        val finalitza = binding.bFinalitzar
+
+
+        myCheck.setOnCheckedChangeListener { buttonView, isChecked ->
+            finalitza.isEnabled = myCheck.isChecked
+        }
+
+
+
         binding.bFinalitzar.setOnClickListener { view: View ->
 
             Log.i("Registre Familiar", "Estem al listener boto Finalitzar")
@@ -35,27 +46,9 @@ class RegistreFamiliar : Fragment() {
                 .navigate(RegistreFamiliarDirections.actionLogInFragmentToIniciFragment())
 
         }
-        // Inflate the layout for this fragment
+
         return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RegistreFamiliar.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RegistreFamiliar().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
+
 }

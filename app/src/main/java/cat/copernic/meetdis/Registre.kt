@@ -53,7 +53,7 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
             //R.layout.spinner_item
             adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
             binding.spinnerUsuaris.adapter = adapter
-//TODO documentar-lo en la memoria
+            //TODO documentar-lo en la memoria
 
         }
 

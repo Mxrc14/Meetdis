@@ -117,7 +117,8 @@
             android:textColor="#ffffff"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:enabled="false" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
