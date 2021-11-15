@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/b_entra"
+            android:id="@+id/b_finalitzar"
             android:layout_width="132dp"
             android:layout_height="59dp"
             android:layout_marginTop="16dp"
@@ -21,7 +21,9 @@
             android:textColor="#ffffff"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:enabled="false"
+            />
 
         <EditText
             android:id="@+id/textNom"
@@ -89,14 +91,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textCognom"
-            tools:ignore="MissingConstraints" />
+            android:checked="false"
+            tools:ignore="MissingConstraints"
+            />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Termes i condicions"
+            android:text="@string/termes_i_condicions"
             android:textColor="@color/teal_700"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

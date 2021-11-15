@@ -2,25 +2,19 @@ package cat.copernic.meetdis
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import android.widget.Switch
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.DataBindingUtil.setContentView
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import cat.copernic.meetdis.databinding.ActivityMainBinding
-import cat.copernic.meetdis.databinding.FragmentIniciBinding
 import cat.copernic.meetdis.databinding.FragmentRegistreBinding
-import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_registre.*
-import kotlinx.android.synthetic.main.fragment_registre.view.*
-import java.util.*
 
 
 private lateinit var mBinding: ActivityMainBinding
@@ -34,42 +28,34 @@ private const val ARG_PARAM2 = "param2"
  * Use the [Registre.newInstance] factory method to
  * create an instance of this fragment.
  */
-class Registre : Fragment(), AdapterView.OnItemSelectedListener {
+class Registre : Fragment(), AdapterView.OnItemSelectedListener{
     // TODO: Rename and change types of parameters
 
     private var spinner: Spinner? = null
-    private lateinit var llistat: ArrayAdapter<String>
     private var opcion: String? = null
 
 
 
-
-
-
-    override fun onCreateView(
+     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
 
         val binding = DataBindingUtil.inflate<FragmentRegistreBinding>(inflater,
         R.layout.fragment_registre,container,false)
 
 
-        spinner = binding.spinnerUsuaris
-
-
+       //val adapter: ArrayAdapter<String> = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, R.array.tipus_Usuaris)
 
         ArrayAdapter.createFromResource(requireContext(), R.array.tipus_Usuaris,
-            android.R.layout.simple_spinner_dropdown_item).also{
-          //  adapter.setDropDownView.Resource(android.R.layout.simple_spinner_dropdown_item)
-          //  spinnerUsuaris.adapter = adapter
+
+            R.layout.spinner_item).also{ adapter->
+            //R.layout.spinner_item
+            adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
+            binding.spinnerUsuaris.adapter = adapter
+            //TODO documentar-lo en la memoria
+
         }
-
-
-        spinner!!.onItemSelectedListener = this
-
-
 
 
 
@@ -77,10 +63,7 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener {
 
         binding.bContinuar.setOnClickListener { view: View ->
 
-            Log.i("login Fragment", "Estem al listener boto Continuar: $opcion")
-
-
-
+            Log.i("Registre", "Estem al listener boto Continuar: $opcion")
 
             when(opcion){
 
@@ -95,17 +78,13 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener {
             }
 
         }
-
+         binding.spinnerUsuaris.onItemSelectedListener = this
             return binding.root
     }
 
 
 
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-        opcion = llistat.getItem(position).toString()
 
-
-    }
 
 
     // override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -114,29 +93,14 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener {
 
    // }
 
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        opcion = parent?.getItemAtPosition(position).toString()
+        Log.i("Registre", "Opció: $opcion")
+    }
+
     override fun onNothingSelected(p0: AdapterView<*>?) {
         TODO("Not yet implemented")
     }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Registre.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Registre().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
-
 
 }

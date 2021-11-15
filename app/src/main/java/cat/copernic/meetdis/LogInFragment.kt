@@ -16,6 +16,9 @@ import android.text.method.PasswordTransformationMethod
 
 import android.R.attr.visible
 import android.util.Log
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import kotlinx.android.synthetic.main.fragment_registre.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -33,18 +36,13 @@ class LogInFragment : Fragment() {
     private lateinit var drawerLayout: DrawerLayout
 
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-    }
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
+
         val binding = DataBindingUtil.inflate<cat.copernic.meetdis.databinding.FragmentLogInBinding>(inflater,
             R.layout.fragment_log_in,container,false)
 
