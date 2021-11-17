@@ -157,6 +157,15 @@
     <action
         android:id="@+id/action_logInFragment_to_iniciFragment"
         app:destination="@id/iniciFragment" />
+        <argument
+            android:name="dni"
+            app:argType="string" />
+        <argument
+            android:name="contrasenya"
+            app:argType="string" />
+        <argument
+            android:name="tipus"
+            app:argType="string" />
     </fragment>
 
     <fragment
@@ -167,6 +176,15 @@
         <action
             android:id="@+id/action_logInFragment_to_iniciFragment"
             app:destination="@id/iniciFragment" />
+        <argument
+            android:name="dni"
+            app:argType="string" />
+        <argument
+            android:name="contrasenya"
+            app:argType="string" />
+        <argument
+            android:name="tipus"
+            app:argType="string" />
     </fragment>
 
     <fragment
@@ -177,6 +195,15 @@
         <action
             android:id="@+id/action_logInFragment_to_iniciFragment"
             app:destination="@id/iniciFragment" />
+        <argument
+            android:name="dni"
+            app:argType="string" />
+        <argument
+            android:name="contrasenya"
+            app:argType="string" />
+        <argument
+            android:name="tipus"
+            app:argType="string" />
     </fragment>
 
     <fragment

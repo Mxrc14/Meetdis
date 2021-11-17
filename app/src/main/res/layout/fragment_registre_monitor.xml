@@ -74,13 +74,14 @@
             android:drawablePadding="5dp"
             android:ems="10"
             android:hint="@string/correu"
-            android:inputType="textPersonName"
+
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textCognom" />
+            app:layout_constraintTop_toBottomOf="@+id/textCognom"
+            android:inputType="textEmailAddress"/>
 
         <CheckBox
             android:id="@+id/checkBoxTerminis"
@@ -118,6 +119,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
             android:enabled="false" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
