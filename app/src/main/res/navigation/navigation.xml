@@ -161,10 +161,10 @@
             android:name="dni"
             app:argType="string" />
         <argument
-            android:name="contrasenya"
+            android:name="tipus"
             app:argType="string" />
         <argument
-            android:name="tipus"
+            android:name="contrasenya"
             app:argType="string" />
     </fragment>
 
@@ -180,10 +180,10 @@
             android:name="dni"
             app:argType="string" />
         <argument
-            android:name="contrasenya"
+            android:name="tipus"
             app:argType="string" />
         <argument
-            android:name="tipus"
+            android:name="contrasenya"
             app:argType="string" />
     </fragment>
 
@@ -199,10 +199,10 @@
             android:name="dni"
             app:argType="string" />
         <argument
-            android:name="contrasenya"
+            android:name="tipus"
             app:argType="string" />
         <argument
-            android:name="tipus"
+            android:name="contrasenya"
             app:argType="string" />
     </fragment>
 
