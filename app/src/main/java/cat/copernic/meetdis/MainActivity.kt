@@ -13,11 +13,8 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.*
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import cat.copernic.meetdis.R
 import cat.copernic.meetdis.databinding.ActivityMainBinding
 import com.google.android.material.appbar.MaterialToolbar
@@ -26,6 +23,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class MainActivity : AppCompatActivity() {
     var visibleBottom: Boolean = false
     var visibleOptions: Boolean = false
+
+    private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +42,9 @@ class MainActivity : AppCompatActivity() {
         //navView= binding.bottomMenu
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.myNavHostFragment) as NavHostFragment
-        val navController = navHostFragment.navController
+
+        navController = navHostFragment.navController
+
         NavigationUI.setupWithNavController(binding.bottomMenu,navController)
 
 
@@ -48,23 +52,41 @@ class MainActivity : AppCompatActivity() {
 
 
 
-       /* val appBarConfiguration = AppBarConfiguration(
+        appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_inici, R.id.navigation_buscar, R.id.navigation_notificacicio,
-                R.id.navigation_xat, R.id.navigation_perfil
+                R.id.iniciFragment, R.id.buscarFragment, R.id.notificacioFragment,
+                R.id.xatsFragment, R.id.perfilUsuariFragment
             )
         )
 
-        */
+
+
+        //val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
+        //bottomNavigationView.setupWithNavController(navController)
+
+
         //navView.setupWithNavController(navController)
         // navView.setupActionBarWithNavController(navController, appBarConfiguration)
 
 
 
 
+        //setupActionBarWithNavController(navController, appBarConfiguration)
+
 
     }
 
+
+
+//    fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        super.onCreateOptionsMenu(menu)
+//        inflater.inflate(R.menu.options_menu,menu)
+//    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item,navController)
+                ||super.onOptionsItemSelected(item)
+    }
 
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -73,10 +95,24 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return super.onOptionsItemSelected(item)
-    }
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when (item.itemId){
+//
+//            R.id.personalitzacioFragment -> LogInFragmentDirections.actionLogInFragmentToRegistreFragment()
+//            R.id.aboutFragment -> LogInFragmentDirections.actionLogInFragmentToRegistreFragment()
+//            R.id.validacioUsuarisFragment -> LogInFragmentDirections.actionLogInFragmentToRegistreFragment()
+//            R.id.->
+//        }
 
+
+//
+//        return super.onOptionsItemSelected(item)
+//    }
+
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp(appBarConfiguration)
+    }
 
 
 
