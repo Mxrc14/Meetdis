@@ -67,8 +67,7 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
 
         binding.bContinuar.setOnClickListener { view: View ->
 
-
-
+            //TODO Falta comprobar si el DNI ja esta registrat d´aquesta manera no li permetra continuar amb el registre
 
             if (textDNI.text.isNotEmpty() && textContrasenya.text.isNotEmpty() && textRepeteixContrasenya.text.isNotEmpty()) {
 
