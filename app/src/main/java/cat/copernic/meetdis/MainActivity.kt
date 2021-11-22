@@ -41,15 +41,14 @@ class MainActivity : AppCompatActivity() {
         //val menu_options: MaterialToolbar = binding.optionsMenu
         //navView= binding.bottomMenu
 
+
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.myNavHostFragment) as NavHostFragment
 
         navController = navHostFragment.navController
 
         NavigationUI.setupWithNavController(binding.bottomMenu,navController)
 
-
-
-
+        setVisible(false)
 
 
         appBarConfiguration = AppBarConfiguration(
@@ -60,6 +59,8 @@ class MainActivity : AppCompatActivity() {
         )
 
 
+        appBarConfiguration.isVisible(flase)
+        navController.isVisible(flase)
 
         //val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
         //bottomNavigationView.setupWithNavController(navController)
