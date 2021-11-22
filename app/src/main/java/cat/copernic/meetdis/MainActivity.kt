@@ -31,25 +31,17 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       Thread.sleep(3000)
+        Thread.sleep(3000)
         setTheme(R.style.AppTheme)
         @Suppress("UNUSED_VARIABLE")
 
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-        //(true)
-
-        //val menu_options: MaterialToolbar = binding.optionsMenu
-        //navView= binding.bottomMenu
-
-
+        
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.myNavHostFragment) as NavHostFragment
 
         navController = navHostFragment.navController
 
         NavigationUI.setupWithNavController(binding.bottomMenu,navController)
-
-        setVisible(false)
-
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
@@ -57,32 +49,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.xatsFragment, R.id.perfilUsuariFragment
             )
         )
-
-
-        appBarConfiguration.isVisible(flase)
-        navController.isVisible(flase)
-
-        //val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
-        //bottomNavigationView.setupWithNavController(navController)
-
-
-        //navView.setupWithNavController(navController)
-        // navView.setupActionBarWithNavController(navController, appBarConfiguration)
-
-
-
-
-        //setupActionBarWithNavController(navController, appBarConfiguration)
-
-
     }
 
-
-
-//    fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-//        super.onCreateOptionsMenu(menu)
-//        inflater.inflate(R.menu.options_menu,menu)
-//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(item,navController)
@@ -95,21 +63,6 @@ class MainActivity : AppCompatActivity() {
         inflater.inflate(R.menu.options_menu, menu)
         return true
     }
-
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when (item.itemId){
-//
-//            R.id.personalitzacioFragment -> LogInFragmentDirections.actionLogInFragmentToRegistreFragment()
-//            R.id.aboutFragment -> LogInFragmentDirections.actionLogInFragmentToRegistreFragment()
-//            R.id.validacioUsuarisFragment -> LogInFragmentDirections.actionLogInFragmentToRegistreFragment()
-//            R.id.->
-//        }
-
-
-//
-//        return super.onOptionsItemSelected(item)
-//    }
-
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration)
