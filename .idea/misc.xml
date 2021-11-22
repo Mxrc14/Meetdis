@@ -5,13 +5,17 @@
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.25925925925925924" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/activity_main.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_crear_oferta.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_inici.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_log_in.xml" value="0.25" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_notificacio.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_oblida_contrasenya.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_perfil_monitor.xml" value="0.190625" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_registre.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_registre_familiar.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_registre_monitor.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/fragment_registre_usuari.xml" value="0.190625" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/item_row.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/layout/spinner_dropdown_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/menu/options_menu.xml" value="0.25052083333333336" />
         <entry key="app/src/main/res/drawable/bordes.xml" value="0.19907407407407407" />

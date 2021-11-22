@@ -14,7 +14,9 @@ import android.widget.Button
 import android.widget.CompoundButton
 import android.widget.Toast
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_registre_familiar.*
 import kotlinx.android.synthetic.main.fragment_registre_monitor.*
+import kotlinx.android.synthetic.main.fragment_registre_monitor.textCorreu
 import kotlinx.android.synthetic.main.fragment_registre_usuari.*
 import kotlinx.android.synthetic.main.fragment_registre_usuari.textCognom
 import kotlinx.android.synthetic.main.fragment_registre_usuari.textNom
@@ -66,20 +68,26 @@ class RegistreUsuari : Fragment() {
 
         binding.bFinalitzar.setOnClickListener { view: View ->
 
-            Log.i("Registre Usuari", "Estem al listener boto Finalitzar")
-            view.findNavController()
-                .navigate(RegistreUsuariDirections.actionLogInFragmentToIniciFragment())
 
-            db.collection("users").document(args.dni).set(
-                hashMapOf(
-                    "dni" to args.dni,
-                    "contrasenya" to args.contrasenya,
-                    "tipus d´usuari" to args.tipus,
-                    "nom" to textNom.text.toString(),
-                    "cognoms" to textCognom.text.toString()
+            if (textNom.text.isNotEmpty() && textCognom.text.isNotEmpty()) {
+
+                view.findNavController()
+                    .navigate(RegistreUsuariDirections.actionLogInFragmentToIniciFragment())
+
+                db.collection("users").document(args.dni).set(
+                    hashMapOf(
+                        "dni" to args.dni,
+                        "contrasenya" to args.contrasenya,
+                        "tipus d´usuari" to args.tipus,
+                        "nom" to textNom.text.toString(),
+                        "cognoms" to textCognom.text.toString()
+                    )
                 )
-            )
 
+            } else {
+                val toast = Toast.makeText(requireContext(), "Algun camp esta buit", Toast.LENGTH_LONG)
+                toast.show()
+            }
         }
         return binding.root
 

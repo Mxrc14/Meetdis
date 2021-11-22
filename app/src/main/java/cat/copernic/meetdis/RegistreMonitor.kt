@@ -18,7 +18,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_registre.*
+import kotlinx.android.synthetic.main.fragment_registre_familiar.*
 import kotlinx.android.synthetic.main.fragment_registre_monitor.*
+import kotlinx.android.synthetic.main.fragment_registre_monitor.textCognom
+import kotlinx.android.synthetic.main.fragment_registre_monitor.textCorreu
+import kotlinx.android.synthetic.main.fragment_registre_monitor.textNom
+import kotlinx.android.synthetic.main.fragment_registre_usuari.*
 
 class RegistreMonitor : Fragment() {
 
@@ -50,23 +55,27 @@ class RegistreMonitor : Fragment() {
 
         binding.bFinalitzar.setOnClickListener { view: View ->
 
-            Log.i("Registre Monitor", "Estem al listener boto Finalitzar")
-            view.findNavController()
-                .navigate(RegistreMonitorDirections.actionLogInFragmentToIniciFragment())
+            if (textCorreu.text.isNotEmpty() && textNom.text.isNotEmpty() && textCognom.text.isNotEmpty()) {
 
-            db.collection("users").document(args.dni).set(
-                hashMapOf(
-                    "dni" to args.dni,
-                    "contrasenya" to args.contrasenya,
-                    "tipus d´usuari" to args.tipus,
-                    "nom" to textNom.text.toString(),
-                    "cognoms" to textCognom.text.toString(),
-                    "correu" to textCorreu.text.toString()
+                view.findNavController()
+                    .navigate(RegistreMonitorDirections.actionLogInFragmentToIniciFragment())
+
+                db.collection("users").document(args.dni).set(
+                    hashMapOf(
+                        "dni" to args.dni,
+                        "contrasenya" to args.contrasenya,
+                        "tipus d´usuari" to args.tipus,
+                        "nom" to textNom.text.toString(),
+                        "cognoms" to textCognom.text.toString(),
+                        "correu" to textCorreu.text.toString()
+                    )
                 )
-            )
 
+            } else {
+                val toast = Toast.makeText(requireContext(), "Algun camp esta buit", Toast.LENGTH_LONG)
+                toast.show()
+            }
         }
-
         //RECOGER INFO DE OTRO FRAGMENT
         //MENU
 
