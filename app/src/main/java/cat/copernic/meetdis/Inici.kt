@@ -33,15 +33,14 @@ class Inici : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentIniciBinding>(inflater,
             R.layout.fragment_inici,container,false)
 
+ binding.crearButton.setOnClickListener {view: View ->
 
+     view.findNavController()
+         .navigate(IniciDirections.actionIniciFragmentToCrearOfertaFragment())
 
-
-
-
-
+ }
         return binding.root
     }
-
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

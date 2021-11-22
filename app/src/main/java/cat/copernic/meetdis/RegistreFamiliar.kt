@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.text.isDigitsOnly
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_registre.*
 import kotlinx.android.synthetic.main.fragment_registre_familiar.*
 import kotlinx.android.synthetic.main.fragment_registre_usuari.*
 import kotlinx.android.synthetic.main.fragment_registre_usuari.textCognom
@@ -50,23 +53,39 @@ class RegistreFamiliar : Fragment() {
 
         binding.bFinalitzar.setOnClickListener { view: View ->
 
-            Log.i("Registre Familiar", "Estem al listener boto Finalitzar")
-            view.findNavController()
-                .navigate(RegistreFamiliarDirections.actionLogInFragmentToIniciFragment())
+            if (textCorreu.text.isNotEmpty() && textNom.text.isNotEmpty() && textCognom.text.isNotEmpty()) {
 
-            db.collection("users").document(args.dni).set(
-                hashMapOf(
-                    "dni" to args.dni,
-                    "contrasenya" to args.contrasenya,
-                    "tipus d´usuari" to args.tipus,
-                    "nom" to textNom.text.toString(),
-                    "cognoms" to textCognom.text.toString(),
-                    "dniUsuariProdis" to textCorreu.text.toString()
-                )
-            )
+                var letra: Char = textCorreu.text.toString()
+                    .substring(textCorreu.length() - 1, textCorreu.length()).get(0)
 
+                var numeros: String =
+                    textCorreu.text.toString().substring(0, textCorreu.length() - 1)
+
+                if (letra.isLetter() && numeros.isDigitsOnly() && letra.isUpperCase()) {
+
+
+                    view.findNavController()
+                        .navigate(RegistreFamiliarDirections.actionLogInFragmentToIniciFragment())
+
+                    db.collection("users").document(args.dni).set(
+                        hashMapOf(
+                            "dni" to args.dni,
+                            "contrasenya" to args.contrasenya,
+                            "tipus d´usuari" to args.tipus,
+                            "nom" to textNom.text.toString(),
+                            "cognoms" to textCognom.text.toString(),
+                            "dniUsuariProdis" to textCorreu.text.toString()
+                        )
+                    )
+                } else {
+                    val toast = Toast.makeText(requireContext(), "DNI no valid", Toast.LENGTH_LONG)
+                    toast.show()
+                }
+            } else {
+                val toast = Toast.makeText(requireContext(), "Algun camp esta buit", Toast.LENGTH_LONG)
+                toast.show()
+            }
         }
-
         return binding.root
     }
 

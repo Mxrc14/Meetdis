@@ -36,14 +36,8 @@ private const val ARG_PARAM2 = "param2"
  */
 class Registre : Fragment(), AdapterView.OnItemSelectedListener{
 
-
-
-
     private var spinner: Spinner? = null
     private var opcion: String? = null
-
-
-
 
      override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -94,8 +88,8 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
                                     .navigate(
                                         RegistreDirections.actionRegistreFragmentToRegistreUsuariFragment(
                                             dni,
-                                            contrasenya,
-                                            tipus
+                                            tipus,
+                                            contrasenya
                                         )
                                     )
 
@@ -103,8 +97,8 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
                                     .navigate(
                                         RegistreDirections.actionRegistreFragmentToRegistreMonitorFragment(
                                             dni,
-                                            contrasenya,
-                                            tipus
+                                            tipus,
+                                            contrasenya
                                         )
                                     )
 
@@ -112,8 +106,8 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
                                     .navigate(
                                         RegistreDirections.actionRegistreFragmentToRegistreFamiliarFragment(
                                             dni,
-                                            contrasenya,
-                                            tipus
+                                            tipus,
+                                            contrasenya
                                         )
                                     )
                             }

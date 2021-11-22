@@ -29,11 +29,21 @@
         <item>Familiar</item>
     </string-array>
 
+    <string-array name="tipus_Events">
+        <item>Esports</item>
+        <item>Musica</item>
+        <item>VideoJocs</item>
+        <item>Art</item>
+        <item>Pelis</item>
+        <item>Llibres</item>
+    </string-array>
+
 
     <string name="nomICognoms">Nom i Cognoms</string>
     <string name="titol">Titol</string>
     <string name="descripcio">Descripció</string>
     <string name="enviar">ENVIAR</string>
+    <string name="crear">CREAR</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
