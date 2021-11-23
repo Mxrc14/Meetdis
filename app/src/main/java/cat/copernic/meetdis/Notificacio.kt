@@ -28,6 +28,9 @@ class Notificacio : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private var layoutManager: RecyclerView.LayoutManager? = null
+    private var adapter: RecyclerView.Adapter<RecyclerAdapter.>? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -53,6 +56,17 @@ class Notificacio : Fragment() {
 
     }
 
+    override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(itemView, savedInstanceState)
+        recycler_view.apply {
+            // set a LinearLayoutManager to handle Android
+            // RecyclerView behavior
+            layoutManager = LinearLayoutManager(activity)
+            // set the custom adapter to the RecyclerView
+            adapter = RecyclerAdapter()
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
     }
@@ -73,6 +87,8 @@ class Notificacio : Fragment() {
         return NavigationUI.onNavDestinationSelected(item,findNavController())
                 ||super.onOptionsItemSelected(item)
     }
+
+
 
     companion object {
         /**

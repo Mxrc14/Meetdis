@@ -15,10 +15,14 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
+import cat.copernic.meetdis.CrearOferta.Companion.newInstance
+import cat.copernic.meetdis.OblidaContrasenya.Companion.newInstance
 import cat.copernic.meetdis.R
 import cat.copernic.meetdis.databinding.ActivityMainBinding
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity() {
     var visibleBottom: Boolean = false
@@ -59,8 +63,8 @@ class MainActivity : AppCompatActivity() {
         )
 
 
-        appBarConfiguration.isVisible(flase)
-        navController.isVisible(flase)
+//        appBarConfiguration.isVisible(flase)
+//        navController.isVisible(flase)
 
         //val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
         //bottomNavigationView.setupWithNavController(navController)
@@ -111,9 +115,16 @@ class MainActivity : AppCompatActivity() {
 //    }
 
 
+
+
+
+
+
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration)
     }
+
+
 
 
 

@@ -39,6 +39,7 @@ class Inici : Fragment() {
          .navigate(IniciDirections.actionIniciFragmentToCrearOfertaFragment())
 
  }
+
         return binding.root
     }
 

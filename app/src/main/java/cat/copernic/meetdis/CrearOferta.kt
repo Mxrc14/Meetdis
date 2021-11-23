@@ -17,7 +17,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import cat.copernic.meetdis.databinding.FragmentCrearOfertaBinding
 import cat.copernic.meetdis.databinding.FragmentRegistreBinding
-import com.bumptech.glide.manager.SupportRequestManagerFragment
 import com.google.android.gms.dynamic.SupportFragmentWrapper
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_crear_oferta.*
@@ -70,7 +69,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
 
 
-//        textData.setOnClickListener{ showDatePickerDialog()}
+        textData.setOnClickListener{ showDatePickerDialog()}
 
         binding.bCrear.setOnClickListener { view: View ->
 
@@ -99,16 +98,14 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
 
     }
-//    private fun showDatePickerDialog() {
-//        val datePicker = DatePickerFragment{day, month, year -> onDateSelected(day, month, year)}
-//
-//       datePicker.show(parentFragmentManager, "Date Picker")
-//
-//    }
-//
-//    fun onDateSelected(day:Int, month: Int, year:Int){
-//        textData.setText("$day/$month/$year")
-//    }
+    private fun showDatePickerDialog() {
+        val datePicker = DatePickerFragment{day, month, year -> onDateSelected(day, month, year)}
+
+    }
+
+    fun onDateSelected(day:Int, month: Int, year:Int){
+        textData.setText("$day/$month/$year")
+    }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         opcion = parent?.getItemAtPosition(position).toString()
