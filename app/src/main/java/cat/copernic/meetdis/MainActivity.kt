@@ -49,6 +49,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.xatsFragment, R.id.perfilUsuariFragment
             )
         )
+
+
+
 //        val manager = supportFragmentManager
 //        manager.beginTransaction().show(findViewById(R.id.crearOfertaFragment))
      }
