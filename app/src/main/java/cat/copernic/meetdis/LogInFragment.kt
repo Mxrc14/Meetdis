@@ -36,7 +36,7 @@ class LogInFragment : Fragment() {
     private lateinit var drawerLayout: DrawerLayout
 
     private val db = FirebaseFirestore.getInstance()
-    private val auth = FirebaseAuth.getInstance()
+
 
 
     override fun onCreateView(
