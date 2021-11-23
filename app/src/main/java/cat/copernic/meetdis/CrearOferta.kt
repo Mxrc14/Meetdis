@@ -65,13 +65,15 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
 
         val args = CrearOfertaArgs.fromBundle(requireArguments())
-//        textData.setOnClickListener{ showDatePickerDialog()}
+
+
 
         binding.bCrear.setOnClickListener { view: View ->
 
             if (textTitol.text.isNotEmpty() && descripcio.text.isNotEmpty()) {
 
                 val dni: String = args.dni;
+
 
                 view.findNavController()
                     .navigate(CrearOfertaDirections.actionCrearOfertaFragmentToIniciFragment(dni))
@@ -81,7 +83,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
                         "dni" to args.dni,
                         "titol" to textTitol.text.toString(),
                         "descripcio" to descripcio.text.toString(),
-//                        "data" to textData.text.toString(),
+                         "data" to textData.text.toString(),
                         "tipus" to opcion.toString()
                     )
                 )
@@ -92,21 +94,27 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
         }
 
+      binding.textData.setOnClickListener{ showDatePickerDialog()}
+
+
         binding.spinnerEvents.onItemSelectedListener = this
         return binding.root
 
 
     }
-//    private fun showDatePickerDialog() {
-//        val datePicker = DatePickerFragment{day, month, year -> onDateSelected(day, month, year)}
-//
-//       datePicker.show(, "Date Picker")
-//
-//    }
-//
-//    fun onDateSelected(day:Int, month: Int, year:Int){
-//        textData.setText("$day/$month/$year")
-//    }
+
+    private fun showDatePickerDialog() {
+        val datePicker = DatePickerFragment{day, month, year -> onDateSelected(day, month, year)}
+
+        activity?.let { datePicker.show(it.supportFragmentManager, "Date Picker") }
+
+
+
+    }
+
+    fun onDateSelected(day:Int, month: Int, year:Int){
+        textData.setText("$day/$month/$year")
+    }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         opcion = parent?.getItemAtPosition(position).toString()
