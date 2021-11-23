@@ -16,6 +16,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.media.AudioAttributesCompat.fromBundle
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_registre.*
 import kotlinx.android.synthetic.main.fragment_registre_familiar.*
@@ -60,6 +61,9 @@ class RegistreMonitor : Fragment() {
                 dni = dni.lowercase()
                 view.findNavController()
                     .navigate(RegistreMonitorDirections.actionLogInFragmentToIniciFragment(dni))
+
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(dni + "@prodis.cat",
+                    args.contrasenya)
 
                 db.collection("users").document(args.dni).set(
                     hashMapOf(
