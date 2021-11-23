@@ -62,14 +62,16 @@ class RegistreFamiliar : Fragment() {
                     textCorreu.text.toString().substring(0, textCorreu.length() - 1)
 
                 if (letra.isLetter() && numeros.isDigitsOnly() && letra.isUpperCase()) {
+                    var dni: String = args.dni;
+                    dni = dni.lowercase()
 
 
                     view.findNavController()
-                        .navigate(RegistreFamiliarDirections.actionLogInFragmentToIniciFragment())
+                        .navigate(RegistreFamiliarDirections.actionLogInFragmentToIniciFragment(dni))
 
                     db.collection("users").document(args.dni).set(
                         hashMapOf(
-                            "dni" to args.dni,
+                            "dni" to dni + "@prodis.cat",
                             "contrasenya" to args.contrasenya,
                             "tipus d´usuari" to args.tipus,
                             "nom" to textNom.text.toString(),

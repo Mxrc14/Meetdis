@@ -15,14 +15,10 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.*
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
-import cat.copernic.meetdis.CrearOferta.Companion.newInstance
-import cat.copernic.meetdis.OblidaContrasenya.Companion.newInstance
 import cat.copernic.meetdis.R
 import cat.copernic.meetdis.databinding.ActivityMainBinding
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity() {
     var visibleBottom: Boolean = false
@@ -35,16 +31,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       Thread.sleep(3000)
+        Thread.sleep(3000)
         setTheme(R.style.AppTheme)
         @Suppress("UNUSED_VARIABLE")
 
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-        //(true)
-
-        //val menu_options: MaterialToolbar = binding.optionsMenu
-        //navView= binding.bottomMenu
-
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.myNavHostFragment) as NavHostFragment
 
@@ -52,41 +43,20 @@ class MainActivity : AppCompatActivity() {
 
         NavigationUI.setupWithNavController(binding.bottomMenu,navController)
 
-        setVisible(false)
-
-
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.iniciFragment, R.id.buscarFragment, R.id.notificacioFragment,
                 R.id.xatsFragment, R.id.perfilUsuariFragment
             )
         )
-
-
-//        appBarConfiguration.isVisible(flase)
-//        navController.isVisible(flase)
-
-        //val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
-        //bottomNavigationView.setupWithNavController(navController)
-
-
-        //navView.setupWithNavController(navController)
-        // navView.setupActionBarWithNavController(navController, appBarConfiguration)
+//        val manager = supportFragmentManager
+//        manager.beginTransaction().show(findViewById(R.id.crearOfertaFragment))
+     }
 
 
 
 
-        //setupActionBarWithNavController(navController, appBarConfiguration)
 
-
-    }
-
-
-
-//    fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-//        super.onCreateOptionsMenu(menu)
-//        inflater.inflate(R.menu.options_menu,menu)
-//    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(item,navController)
@@ -100,31 +70,9 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when (item.itemId){
-//
-//            R.id.personalitzacioFragment -> LogInFragmentDirections.actionLogInFragmentToRegistreFragment()
-//            R.id.aboutFragment -> LogInFragmentDirections.actionLogInFragmentToRegistreFragment()
-//            R.id.validacioUsuarisFragment -> LogInFragmentDirections.actionLogInFragmentToRegistreFragment()
-//            R.id.->
-//        }
-
-
-//
-//        return super.onOptionsItemSelected(item)
-//    }
-
-
-
-
-
-
-
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration)
     }
-
-
 
 
 

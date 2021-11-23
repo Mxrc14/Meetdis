@@ -32,11 +32,12 @@ class Inici : Fragment() {
 
         val binding = DataBindingUtil.inflate<FragmentIniciBinding>(inflater,
             R.layout.fragment_inici,container,false)
+        val args = IniciArgs.fromBundle(requireArguments())
 
  binding.crearButton.setOnClickListener {view: View ->
-
+     val dni: String = args.dni;
      view.findNavController()
-         .navigate(IniciDirections.actionIniciFragmentToCrearOfertaFragment())
+         .navigate(IniciDirections.actionIniciFragmentToCrearOfertaFragment(dni))
 
  }
 
