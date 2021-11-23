@@ -94,13 +94,14 @@ class LogInFragment : Fragment() {
                                                     view.findNavController()
                                                         .navigate(
                                                             LogInFragmentDirections.actionLogInFragmentToIniciFragment(
-                                                                dni)
+                                                                dni
+                                                            )
 
                                                         )
-
-                                                } else {
-                                                    showAlert()
                                                 }
+//                                                } else {
+//                                                   showAlert()
+//                                                }
                                             }
 
 

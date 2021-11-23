@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.core.text.isDigitsOnly
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_registre.*
 import kotlinx.android.synthetic.main.fragment_registre_familiar.*
@@ -68,6 +69,9 @@ class RegistreFamiliar : Fragment() {
 
                     view.findNavController()
                         .navigate(RegistreFamiliarDirections.actionLogInFragmentToIniciFragment(dni))
+
+                    FirebaseAuth.getInstance().createUserWithEmailAndPassword(dni + "@prodis.cat",
+                    args.contrasenya)
 
                     db.collection("users").document(args.dni).set(
                         hashMapOf(
