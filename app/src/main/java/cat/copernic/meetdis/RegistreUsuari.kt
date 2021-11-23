@@ -63,20 +63,18 @@ class RegistreUsuari : Fragment() {
         }
 
 
-
-
-
         binding.bFinalitzar.setOnClickListener { view: View ->
 
 
             if (textNom.text.isNotEmpty() && textCognom.text.isNotEmpty()) {
-
+                var dni: String = args.dni;
+                dni = dni.lowercase()
                 view.findNavController()
-                    .navigate(RegistreUsuariDirections.actionLogInFragmentToIniciFragment())
+                    .navigate(RegistreUsuariDirections.actionLogInFragmentToIniciFragment(dni))
 
                 db.collection("users").document(args.dni).set(
                     hashMapOf(
-                        "dni" to args.dni,
+                        "dni" to dni + "@prodis.cat",
                         "contrasenya" to args.contrasenya,
                         "tipus d´usuari" to args.tipus,
                         "nom" to textNom.text.toString(),

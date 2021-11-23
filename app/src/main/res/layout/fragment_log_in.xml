@@ -13,7 +13,7 @@
 
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/contra"
             android:layout_width="209dp"
             android:layout_height="45dp"
             android:layout_marginTop="16dp"
@@ -26,6 +26,7 @@
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
             android:textSize="12sp"
+            android:maxLength="4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textNom1" />
@@ -41,13 +42,13 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+            app:layout_constraintTop_toBottomOf="@+id/contra" />
 
         <Button
             android:id="@+id/b_entra"
             android:layout_width="132dp"
             android:layout_height="59dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/bordes"
             android:fontFamily="@font/pt_sans_caption"
             android:text="@string/entrar"
@@ -60,13 +61,12 @@
             android:id="@+id/b_registre"
             android:layout_width="132dp"
             android:layout_height="59dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/bordes"
             android:fontFamily="@font/pt_sans_caption"
             android:text="@string/registre"
             android:textColor="#ffffff"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/b_entra" />
 
@@ -74,12 +74,14 @@
             android:id="@+id/textNom1"
             android:layout_width="209dp"
             android:layout_height="45dp"
+            android:layout_marginTop="40dp"
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_email"
             android:drawablePadding="5dp"
             android:ems="10"
             android:hint="@string/dni"
             android:inputType="textPersonName"
+            android:maxLength="9"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
             android:textSize="12sp"
@@ -89,13 +91,11 @@
 
         <ImageView
             android:id="@+id/meetdis"
-            android:layout_width="503dp"
-            android:layout_height="234dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.293"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="414dp"
+            android:layout_height="171dp"
             app:srcCompat="@drawable/meetdis"
-            tools:layout_editor_absoluteY="74dp" />
+            tools:layout_editor_absoluteX="-2dp"
+            tools:layout_editor_absoluteY="16dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

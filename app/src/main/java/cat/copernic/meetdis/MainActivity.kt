@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         @Suppress("UNUSED_VARIABLE")
 
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
-        
+
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.myNavHostFragment) as NavHostFragment
 
         navController = navHostFragment.navController
@@ -49,7 +49,13 @@ class MainActivity : AppCompatActivity() {
                 R.id.xatsFragment, R.id.perfilUsuariFragment
             )
         )
-    }
+//        val manager = supportFragmentManager
+//        manager.beginTransaction().show(findViewById(R.id.crearOfertaFragment))
+     }
+
+
+
+
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_iniciFragment_to_ofertaFragment"
             app:destination="@id/ofertaFragment" />
+        <argument
+            android:name="dni"
+            app:argType="string" />
     </fragment>
 
     <fragment
@@ -54,6 +57,7 @@
         <action
             android:id="@+id/action_crearOfertaFragment_to_iniciFragment"
             app:destination="@id/iniciFragment" />
+        <argument android:name="dni" />
     </fragment>
 
     <fragment

@@ -56,13 +56,14 @@ class RegistreMonitor : Fragment() {
         binding.bFinalitzar.setOnClickListener { view: View ->
 
             if (textCorreu.text.isNotEmpty() && textNom.text.isNotEmpty() && textCognom.text.isNotEmpty()) {
-
+                var dni: String = args.dni;
+                dni = dni.lowercase()
                 view.findNavController()
-                    .navigate(RegistreMonitorDirections.actionLogInFragmentToIniciFragment())
+                    .navigate(RegistreMonitorDirections.actionLogInFragmentToIniciFragment(dni))
 
                 db.collection("users").document(args.dni).set(
                     hashMapOf(
-                        "dni" to args.dni,
+                        "dni" to dni + "@prodis.cat",
                         "contrasenya" to args.contrasenya,
                         "tipus d´usuari" to args.tipus,
                         "nom" to textNom.text.toString(),
@@ -76,8 +77,6 @@ class RegistreMonitor : Fragment() {
                 toast.show()
             }
         }
-        //RECOGER INFO DE OTRO FRAGMENT
-        //MENU
 
         return binding.root
     }
