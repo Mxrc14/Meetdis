@@ -46,11 +46,6 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
     private var spinner: Spinner? = null
     private var opcion: String? = null
 
-//    private val myContext: FragmentManager = getFra
-
-
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -69,18 +64,21 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
         }
 
 
-
+        val args = CrearOfertaArgs.fromBundle(requireArguments())
 //        textData.setOnClickListener{ showDatePickerDialog()}
 
         binding.bCrear.setOnClickListener { view: View ->
 
             if (textTitol.text.isNotEmpty() && descripcio.text.isNotEmpty()) {
 
+                val dni: String = args.dni;
+
                 view.findNavController()
-                    .navigate(CrearOfertaDirections.actionCrearOfertaFragmentToIniciFragment())
+                    .navigate(CrearOfertaDirections.actionCrearOfertaFragmentToIniciFragment(dni))
 
                 db.collection("events").document(textTitol.text.toString()).set(
                     hashMapOf(
+                        "dni" to args.dni,
                         "titol" to textTitol.text.toString(),
                         "descripcio" to descripcio.text.toString(),
 //                        "data" to textData.text.toString(),
@@ -102,7 +100,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 //    private fun showDatePickerDialog() {
 //        val datePicker = DatePickerFragment{day, month, year -> onDateSelected(day, month, year)}
 //
-//       datePicker.show(parentFragmentManager, "Date Picker")
+//       datePicker.show(, "Date Picker")
 //
 //    }
 //

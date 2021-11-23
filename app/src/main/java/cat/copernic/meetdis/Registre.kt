@@ -77,7 +77,7 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
                         if (textContrasenya.length() == 4 && textRepeteixContrasenya.length() == 4) {
 
 
-                            val dni: String = textDNI.text.toString();
+                            val dni: String = textDNI.text.toString()
                             val contrasenya: String = textContrasenya.text.toString() + "prodis"
                             val tipus: String = opcion.toString();
 
