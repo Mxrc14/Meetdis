@@ -61,13 +61,13 @@ class Notificacio : Fragment() {
 
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
-        recycler_view.apply {
+        //recycler_view.apply {
             // set a LinearLayoutManager to handle Android
             // RecyclerView behavior
             layoutManager = LinearLayoutManager(activity)
             // set the custom adapter to the RecyclerView
             //adapter = RecyclerAdapter()
-        }
+  //      }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
