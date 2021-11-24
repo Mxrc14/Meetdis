@@ -5,7 +5,6 @@
     android:id="@+id/navigation"
     app:startDestination="@id/logInFragment">
 
-
     <fragment
         android:id="@+id/logInFragment"
         android:name="cat.copernic.meetdis.LogInFragment"
@@ -84,11 +83,7 @@
         android:id="@+id/buscarFragment"
         android:name="cat.copernic.meetdis.Buscar"
         android:label="activity_main"
-        tools:layout="@layout/fragment_buscar" >
-        <action
-            android:id="@+id/action_buscarFragment_to_registreFragment"
-            app:destination="@id/registreFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_buscar" />
 
     <fragment
         android:id="@+id/notificacioFragment"
