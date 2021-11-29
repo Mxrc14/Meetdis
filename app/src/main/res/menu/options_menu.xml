@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-
+    <group android:visible="true">
     <item
         android:id="@+id/personalitzacioFragment"
         android:title="@string/personalitzacio" />
@@ -22,5 +23,7 @@
     <item
         android:id="@+id/logInFragment"
         android:title="@string/tancarSessio" />
+
+    </group>
 
 </menu>

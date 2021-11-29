@@ -18,7 +18,7 @@ android {
 
     defaultConfig {
         applicationId "cat.copernic.meetdis"
-        minSdk 19
+        minSdk 21
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -55,6 +55,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
     implementation 'com.google.android.gms:play-services-maps:18.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.3.0-alpha01'
+    implementation 'androidx.cardview:cardview:1.0.0'
     kapt 'com.android.databinding:compiler:3.1.4'
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -105,6 +107,11 @@ dependencies {
 
     //DATE PICKER
     implementation 'androidx.fragment:fragment:1.4.0@aar'
+
+
+    implementation 'com.github.dhaval2404:colorpicker:2.0'
+
+
 
 
 }

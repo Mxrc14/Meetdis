@@ -39,6 +39,12 @@
     </string-array>
 
 
+    <string-array name="idiomas">
+        <item>Catala</item>
+        <item>Castella</item>
+    </string-array>
+
+
     <string name="nomICognoms">Nom i Cognoms</string>
     <string name="titol">Titol</string>
     <string name="descripcio">Descripció</string>
@@ -52,6 +58,8 @@
     <string name="seleccioUsuari">Selecciona el tipus d\'Usuari:</string>
     <string name="termes_i_condicions">Termes i condicions</string>
     <string name="colorSorpresa">COLOR SORPRESA</string>
+    <string name="color_fons">COLOR FONS</string>
+    <string name="color_lleteres">COLOR LLETERES</string>
 </resources>
 
 

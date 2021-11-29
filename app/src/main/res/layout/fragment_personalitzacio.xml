@@ -16,14 +16,16 @@
             android:id="@+id/colorFons"
             android:layout_width="209dp"
             android:layout_height="48dp"
-            android:layout_marginTop="164dp"
-            android:background="@drawable/custom_input"
-            android:drawableStart="@drawable/custom_lock"
-            android:drawablePadding="5dp"
+            android:layout_marginTop="184dp"
+            android:background="@drawable/bordes_meetdis"
+            android:clickable="false"
+            android:cursorVisible="false"
 
+            android:drawablePadding="5dp"
             android:ems="10"
-            android:hint="@string/repeatPassword"
-            android:inputType="numberPassword"
+
+            android:focusable="false"
+            android:hint="@string/color_fons"
             android:maxLength="4"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
@@ -36,14 +38,16 @@
             android:id="@+id/colorLletres"
             android:layout_width="209dp"
             android:layout_height="48dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/custom_input"
-            android:drawableStart="@drawable/custom_lock"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/bordes_meetdis"
+            android:clickable="false"
+
+            android:cursorVisible="false"
             android:drawablePadding="5dp"
 
             android:ems="10"
-            android:hint="@string/repeatPassword"
-            android:inputType="numberPassword"
+            android:focusable="false"
+            android:hint="@string/color_lleteres"
             android:maxLength="4"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
@@ -54,31 +58,33 @@
 
         <Button
             android:id="@+id/btnColorSorpresa"
-            android:layout_width="132dp"
-            android:layout_height="59dp"
-            android:layout_marginTop="40dp"
+            android:layout_width="193dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="36dp"
             android:background="@drawable/bordes"
+            android:drawableStart="@mipmap/ic_dau"
             android:fontFamily="@font/pt_sans_caption"
+            android:paddingEnd="10dp"
             android:text="@string/colorSorpresa"
             android:textColor="#ffffff"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/colorLletres"
             tools:ignore="DuplicateClickableBoundsCheck" />
+
 
         <Spinner
             android:id="@+id/spinnerIdioma"
             android:layout_width="220dp"
             android:layout_height="56dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/spinner"
             android:fontFamily="@font/pt_sans_caption"
             android:gravity="center"
             android:spinnerMode="dropdown"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:theme="@style/ThemeOverlay.AppCompat.Light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
@@ -86,18 +92,44 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
-            android:id="@+id/btnCondirmarPersonalitzacio"
-            android:layout_width="132dp"
-            android:layout_height="59dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/bordes"
+            android:id="@+id/btnConfirmarPersonalitzacio"
+            android:layout_width="108dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="104dp"
+            android:background="@drawable/bordes_meetdis"
             android:drawableStart="@drawable/ic_check"
             android:fontFamily="@font/pt_sans_caption"
-            android:textColor="#ffffff"
+            android:paddingStart="45dp"
+
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerIdioma" />
+            app:layout_constraintTop_toBottomOf="@+id/spinnerIdioma"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/bColor2"
+            android:layout_width="32dp"
+            android:layout_height="27dp"
+            app:layout_constraintBottom_toBottomOf="@+id/colorLletres"
+            app:layout_constraintEnd_toEndOf="@+id/colorLletres"
+            app:layout_constraintHorizontal_bias="0.932"
+            app:layout_constraintStart_toStartOf="@+id/colorLletres"
+            app:layout_constraintTop_toTopOf="@+id/colorLletres"
+            app:layout_constraintVertical_bias="0.523" />
+
+        <Button
+            android:id="@+id/bColor1"
+            android:layout_width="32dp"
+            android:layout_height="27dp"
+            app:layout_constraintBottom_toBottomOf="@+id/colorFons"
+            app:layout_constraintEnd_toEndOf="@+id/colorFons"
+            app:layout_constraintHorizontal_bias="0.932"
+            app:layout_constraintStart_toStartOf="@+id/colorFons"
+            app:layout_constraintTop_toTopOf="@+id/colorFons"
+            app:layout_constraintVertical_bias="0.428"
+            tools:ignore="SpeakableTextPresentCheck" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
