@@ -99,9 +99,9 @@ class LogInFragment : Fragment() {
 
                                                         )
                                                 }
-//                                                } else {
-//                                                   showAlert()
-//                                                }
+                                                else {
+
+                                                }
                                             }
 
 
