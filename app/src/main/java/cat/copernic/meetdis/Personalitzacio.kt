@@ -1,10 +1,20 @@
 package cat.copernic.meetdis
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.ui.navigateUp
+import cat.copernic.meetdis.databinding.FragmentPersonalitzacioBinding
+import cat.copernic.meetdis.databinding.FragmentRegistreBinding
+import com.github.dhaval2404.colorpicker.MaterialColorPickerDialog
+import com.github.dhaval2404.colorpicker.model.ColorShape
+import com.github.dhaval2404.colorpicker.model.ColorSwatch
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,40 +30,86 @@ class Personalitzacio : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var opcion: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_personalitzacio, container, false)
+
+
+        val binding = DataBindingUtil.inflate<FragmentPersonalitzacioBinding>(
+            inflater,
+            R.layout.fragment_personalitzacio, container, false
+        )
+
+        ArrayAdapter.createFromResource(
+            requireContext(), R.array.idiomas,
+
+            R.layout.spinner_item
+        ).also { adapter ->
+
+            adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
+            binding.spinnerIdioma.adapter = adapter
+
+
+        }
+
+        binding.bColor1.setOnClickListener { view: View ->
+
+            MaterialColorPickerDialog
+                .Builder(requireContext())        			// Pass Activity Instance
+                .setColors(							// Pass Predefined Hex Color
+                    arrayListOf(
+                        "#f6e58d", "#ffbe76", "#ff7979", "#badc58", "#dff9fb",
+                        "#7ed6df", "#e056fd", "#686de0", "#30336b", "#95afc0"
+                    )
+                )
+                .setColorListener { color, colorHex ->
+                    binding.bColor1.setBackgroundColor(color)
+                }
+                .show()
+        }
+
+
+        binding.bColor2.setOnClickListener { view: View ->
+
+            MaterialColorPickerDialog
+                .Builder(requireContext())        			// Pass Activity Instance
+                .setColors(							// Pass Predefined Hex Color
+                    arrayListOf(
+                        "#f6e58d", "#ffbe76", "#ff7979", "#badc58", "#dff9fb",
+                        "#7ed6df", "#e056fd", "#686de0", "#30336b", "#95afc0"
+                    )
+                )
+                .setColorListener { color, colorHex ->
+                    binding.bColor2.setBackgroundColor(color)
+                }
+                .show()
+
+        }
+
+        binding.btnColorSorpresa.setOnClickListener { view: View ->
+
+
+
+
+        }
+
+
+
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Personalitzacio.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Personalitzacio().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            opcion = parent?.getItemAtPosition(position).toString()
+            Log.i("Registre", "Opció: $opcion")
+        }
+
+        fun onNothingSelected(p0: AdapterView<*>?) {
+            TODO("Not yet implemented")
+        }
+
     }
-}

@@ -138,11 +138,6 @@ class LogInFragment : Fragment() {
                 .navigate(LogInFragmentDirections.actionLogInFragmentToOblidatContrasenyaFragment())
         }
 
-        var esVisible = false
-
-
-
-
         //setHasOptionsMenu(true)
 
         return binding.root
