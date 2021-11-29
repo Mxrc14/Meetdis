@@ -9,6 +9,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.os.bundleOf
 import androidx.core.text.isDigitsOnly
@@ -18,6 +19,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import cat.copernic.meetdis.databinding.ActivityMainBinding
 import cat.copernic.meetdis.databinding.FragmentRegistreBinding
+import com.github.dhaval2404.colorpicker.util.setVisibility
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_registre.*
@@ -150,6 +153,22 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
         TODO("Not yet implemented")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+        val navBar: BottomNavigationView = activity!!.findViewById(R.id.bottomMenu)
+        navBar.setVisibility(visible = false)
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+        val navBar: BottomNavigationView = activity!!.findViewById(R.id.bottomMenu)
+        navBar.setVisibility(visible = true)
+
     }
 
 }
