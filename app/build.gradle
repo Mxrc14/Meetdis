@@ -55,6 +55,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
     implementation 'com.google.android.gms:play-services-maps:18.0.0'
+    implementation 'androidx.room:room-common:2.2.6'
     kapt 'com.android.databinding:compiler:3.1.4'
 
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -84,10 +85,11 @@ dependencies {
     //FIREBASE
     implementation platform('com.google.firebase:firebase-bom:29.0.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
-//AUTHENTICATION
+
+    //AUTHENTICATION
     implementation 'com.google.firebase:firebase-auth:21.0.1'
 
-//FIRESTORE
+    //FIRESTORE
     implementation 'com.google.firebase:firebase-firestore:24.0.0'
 
     //RECICLE VIEW
@@ -102,6 +104,10 @@ dependencies {
 
     //DATE PICKER
     implementation 'androidx.fragment:fragment:1.4.0@aar'
+
+    //IMAGE PICKER
+    implementation "androidx.activity:activity-ktx:1.4.0"
+    implementation "androidx.fragment:fragment-ktx:1.4.0"
 
 
 }

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.autofill.AutofillValue
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -26,6 +27,7 @@ import kotlinx.android.synthetic.main.fragment_registre_familiar.*
 import kotlinx.android.synthetic.main.fragment_registre_usuari.*
 import kotlinx.android.synthetic.main.fragment_registre_usuari.textCognom
 import kotlinx.android.synthetic.main.fragment_registre_usuari.textNom
+import kotlinx.coroutines.DEBUG_PROPERTY_VALUE_AUTO
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -53,8 +55,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
         // Inflate the layout for this fragment
         val binding = DataBindingUtil.inflate<FragmentCrearOfertaBinding>(inflater,
             R.layout.fragment_crear_oferta,container,false)
-        ArrayAdapter.createFromResource(requireContext(), R.array.tipus_Events
-            ,
+        ArrayAdapter.createFromResource(requireContext(), R.array.tipus_Events,
 
             R.layout.spinner_item).also { adapter ->
 
@@ -78,7 +79,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
                 view.findNavController()
                     .navigate(CrearOfertaDirections.actionCrearOfertaFragmentToIniciFragment(dni))
 
-                db.collection("events").document(textTitol.text.toString()).set(
+                db.collection("ofertes").document(textTitol.text.toString()).set(
                     hashMapOf(
                         "dni" to args.dni,
                         "titol" to textTitol.text.toString(),
@@ -87,6 +88,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
                         "tipus" to opcion.toString()
                     )
                 )
+
             }else{
                 val toast = Toast.makeText(requireContext(), "Algun camp esta buit", Toast.LENGTH_LONG)
                 toast.show()
