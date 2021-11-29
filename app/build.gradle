@@ -88,6 +88,7 @@ dependencies {
 
 
 
+
     //FIREBASE
     implementation platform('com.google.firebase:firebase-bom:29.0.0')
     implementation 'com.google.firebase:firebase-analytics-ktx'
@@ -115,7 +116,8 @@ dependencies {
 
 
 
-
+    //COLOR PICKER
+    implementation 'com.github.dhaval2404:colorpicker:2.0'
 }
 kapt {
     generateStubs = true
