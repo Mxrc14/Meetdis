@@ -109,7 +109,6 @@ class RegistreUsuari : Fragment() {
                         "nom" to textNom.text.toString(),
                         "imatge" to getTmpFileUri(),
                         "cognoms" to textCognom.text.toString()
-
                     )
                 )
 

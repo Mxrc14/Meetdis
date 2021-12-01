@@ -72,7 +72,7 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
 
                 var numeros: String = textDNI.text.toString().substring(0, textDNI.length() - 1)
 
-                if (letra.isLetter() && numeros.isDigitsOnly() && letra.isUpperCase()) {
+                if (letra.isLetter() && numeros.isDigitsOnly() && letra.isUpperCase() && textDNI.text.length == 9) {
 
 
                     if (textContrasenya.text.toString() == textRepeteixContrasenya.text.toString()) {

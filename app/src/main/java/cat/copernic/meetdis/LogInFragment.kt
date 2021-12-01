@@ -119,8 +119,7 @@ class LogInFragment : Fragment() {
                         )
                         toast.show()
                     }
-                }
-                else {
+                }else {
                     val toast = Toast.makeText(requireContext(), "DNI no valid", Toast.LENGTH_LONG)
                     toast.show()
                 }

@@ -52,7 +52,7 @@
         <entry key="app/src/main/res/layout/fragment_perfil_familiar.xml" value="0.36041666666666666" />
         <entry key="app/src/main/res/layout/fragment_perfil_monitor.xml" value="0.36041666666666666" />
         <entry key="app/src/main/res/layout/fragment_perfil_usuari.xml" value="0.20104166666666667" />
-        <entry key="app/src/main/res/layout/fragment_personalitzacio.xml" value="0.32653061224489793" />
+        <entry key="app/src/main/res/layout/fragment_personalitzacio.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_registre.xml" value="0.3082901554404145" />
         <entry key="app/src/main/res/layout/fragment_registre_familiar.xml" value="0.36041666666666666" />
         <entry key="app/src/main/res/layout/fragment_registre_monitor.xml" value="0.36041666666666666" />
@@ -61,7 +61,7 @@
         <entry key="app/src/main/res/layout/fragment_xat.xml" value="0.26666666666666666" />
         <entry key="app/src/main/res/layout/fragment_xats.xml" value="0.1" />
         <entry key="app/src/main/res/layout/inici.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/item_row.xml" value="0.2188034188034188" />
+        <entry key="app/src/main/res/layout/item_row.xml" value="0.1" />
         <entry key="app/src/main/res/layout/log_in.xml" value="0.1" />
         <entry key="app/src/main/res/layout/login_fragment2_fragment.xml" value="0.3453125" />
         <entry key="app/src/main/res/layout/notificacio.xml" value="0.1" />
