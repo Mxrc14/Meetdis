@@ -1,5 +1,8 @@
 package cat.copernic.meetdis
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,6 +14,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.NonNull
 import androidx.appcompat.view.SupportActionModeWrapper
 import androidx.databinding.DataBindingUtil
@@ -18,6 +22,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import cat.copernic.meetdis.databinding.FragmentCrearOfertaBinding
 import cat.copernic.meetdis.databinding.FragmentRegistreBinding
+import cat.copernic.meetdis.databinding.FragmentRegistreUsuariBinding
 import com.bumptech.glide.manager.SupportRequestManagerFragment
 import com.google.android.gms.dynamic.SupportFragmentWrapper
 import com.google.firebase.firestore.FirebaseFirestore
@@ -28,6 +33,7 @@ import kotlinx.android.synthetic.main.fragment_registre_usuari.*
 import kotlinx.android.synthetic.main.fragment_registre_usuari.textCognom
 import kotlinx.android.synthetic.main.fragment_registre_usuari.textNom
 import kotlinx.coroutines.DEBUG_PROPERTY_VALUE_AUTO
+import java.util.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -42,6 +48,8 @@ private const val ARG_PARAM2 = "param2"
  */
 class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
     private val db = FirebaseFirestore.getInstance()
+
+    lateinit var binding: FragmentCrearOfertaBinding
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -53,7 +61,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val binding = DataBindingUtil.inflate<FragmentCrearOfertaBinding>(inflater,
+        binding = DataBindingUtil.inflate<FragmentCrearOfertaBinding>(inflater,
             R.layout.fragment_crear_oferta,container,false)
         ArrayAdapter.createFromResource(requireContext(), R.array.tipus_Events,
 
@@ -66,6 +74,13 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
 
         val args = CrearOfertaArgs.fromBundle(requireArguments())
+
+        binding.mapView.setOnClickListener() {
+
+         cridarMapa()
+
+        }
+
 
 
 
@@ -111,8 +126,17 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
         activity?.let { datePicker.show(it.supportFragmentManager, "Date Picker") }
 
 
-
     }
+
+    fun cridarMapa(){
+
+        val gmmIntentUri =
+            Uri.parse("geo:0,0?q=1600 Amphitheatre Parkway, Mountain+View, California")
+        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+        mapIntent.setPackage("com.google.android.apps.maps")
+        startActivity(mapIntent)
+    }
+
 
     fun onDateSelected(day:Int, month: Int, year:Int){
         textData.setText("$day/$month/$year")
