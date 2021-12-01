@@ -149,6 +149,8 @@ class LogInFragment : Fragment() {
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
+
+    
     
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
