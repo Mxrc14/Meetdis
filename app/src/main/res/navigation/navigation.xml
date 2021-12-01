@@ -46,6 +46,9 @@
         <argument
             android:name="dni"
             app:argType="string" />
+        <action
+            android:id="@+id/action_iniciFragment_to_buscarFragment"
+            app:destination="@id/buscarFragment" />
     </fragment>
 
     <fragment
@@ -83,7 +86,14 @@
         android:id="@+id/buscarFragment"
         android:name="cat.copernic.meetdis.Buscar"
         android:label="activity_main"
-        tools:layout="@layout/fragment_buscar" />
+        tools:layout="@layout/fragment_buscar" >
+        <argument
+            android:name="dni"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_buscarFragment_to_iniciFragment"
+            app:destination="@id/iniciFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/notificacioFragment"

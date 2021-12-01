@@ -20,7 +20,7 @@ import cat.copernic.meetdis.databinding.ActivityMainBinding
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity()  {
     var visibleBottom: Boolean = false
     var visibleOptions: Boolean = false
 
@@ -43,18 +43,19 @@ class MainActivity : AppCompatActivity() {
 
         NavigationUI.setupWithNavController(binding.bottomMenu,navController)
 
+        val args = Bundle()
+
+        binding.bottomMenu.setupWithNavController(navController)
+
+
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.iniciFragment, R.id.buscarFragment, R.id.notificacioFragment,
                 R.id.xatsFragment, R.id.perfilUsuariFragment
             )
         )
-//        val manager = supportFragmentManager
-//        manager.beginTransaction().show(findViewById(R.id.crearOfertaFragment))
+
      }
-
-
-
 
 
 
