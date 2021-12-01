@@ -155,4 +155,6 @@ class LogInFragment : Fragment() {
         inflater.inflate(R.menu.options_menu,menu)
     }
 
+    
+
 }
