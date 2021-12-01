@@ -32,11 +32,9 @@ import kotlinx.android.synthetic.main.fragment_registre.*
 class LogInFragment : Fragment() {
 
 
-
     private lateinit var drawerLayout: DrawerLayout
 
     private val db = FirebaseFirestore.getInstance()
-
 
 
     override fun onCreateView(
@@ -45,16 +43,16 @@ class LogInFragment : Fragment() {
     ): View? {
 
 
-
-        val binding = DataBindingUtil.inflate<FragmentLogInBinding>(inflater,
-            R.layout.fragment_log_in,container,false)
+        val binding = DataBindingUtil.inflate<FragmentLogInBinding>(
+            inflater,
+            R.layout.fragment_log_in, container, false
+        )
 
         binding.bRegistre.setOnClickListener { view: View ->
 
-           Log.i("login Fragment", "Estem al listener boto registre")
+            Log.i("login Fragment", "Estem al listener boto registre")
             view.findNavController()
                 .navigate(LogInFragmentDirections.actionLogInFragmentToRegistreFragment())
-
 
 
         }
@@ -63,7 +61,9 @@ class LogInFragment : Fragment() {
 
             if (textNom1.text.isNotEmpty() && contra.text.isNotEmpty()) {
 
-                var letra: Char = textNom1.text.toString().substring(textNom1.length() - 1, textNom1.length()).get(0)
+                var letra: Char =
+                    textNom1.text.toString().substring(textNom1.length() - 1, textNom1.length())
+                        .get(0)
 
                 var numeros: String = textNom1.text.toString().substring(0, textNom1.length() - 1)
 
@@ -75,61 +75,54 @@ class LogInFragment : Fragment() {
                         val dni: String = textNom1.text.toString();
                         val contrasenya: String = contra.text.toString() + "prodis"
 
-
-                        db.collection("users")
+                        Log.d("LogInFragment", "dni:$dni")
+                        db.collection("users").document(dni)
                             .get()
                             .addOnSuccessListener { result ->
 
-                                for (document in result) {
+                                if (result.exists()) {
+                                    FirebaseAuth.getInstance()
+                                        .signInWithEmailAndPassword(
+                                            result.data?.get("dni") as String, //correu electronic
+                                            contrasenya
 
-                                    if (document.id == dni
-                                    ) {
-                                        FirebaseAuth.getInstance()
-                                            .signInWithEmailAndPassword(
-                                                document.data["dni"].toString(),
-                                                contrasenya
-
-                                            ).addOnCompleteListener() {
-                                                if (it.isSuccessful) {
-                                                    view.findNavController()
-                                                        .navigate(
-                                                            LogInFragmentDirections.actionLogInFragmentToIniciFragment(
-                                                                dni
-                                                            )
-
+                                        ).addOnCompleteListener() {
+                                            if (it.isSuccessful) {
+                                                view.findNavController()
+                                                    .navigate(
+                                                        LogInFragmentDirections.actionLogInFragmentToIniciFragment(
+                                                            dni
                                                         )
-                                                }
-                                                else {
 
-                                                }
+                                                    )
                                             }
+                                        }
 
-
-                                    }
-                                    else {
-                                        showAlert()
-                                    }
+                                } else {
+                                    showAlert()
                                 }
                             }
-                    }else {
+
+
+                    } else {
                         val toast = Toast.makeText(
                             requireContext(),
-                            "La contrasenya te que constar de 4 numeros.",
+                            resources.getText(R.string.error_4digits),
                             Toast.LENGTH_LONG
                         )
                         toast.show()
                     }
-                }else {
+                } else {
                     val toast = Toast.makeText(requireContext(), "DNI no valid", Toast.LENGTH_LONG)
                     toast.show()
                 }
-            }
-            else {
-                val toast = Toast.makeText(requireContext(), "Algun camp esta buit", Toast.LENGTH_LONG)
+            } else {
+                val toast =
+                    Toast.makeText(requireContext(), "Algun camp esta buit", Toast.LENGTH_LONG)
                 toast.show()
             }
-        }
 
+        }
 
         binding.oblidar.setOnClickListener { view: View ->
             Log.i("login Fragment", "Estem al listener boto oblidar")
@@ -137,27 +130,32 @@ class LogInFragment : Fragment() {
                 .navigate(LogInFragmentDirections.actionLogInFragmentToOblidatContrasenyaFragment())
         }
 
-        //setHasOptionsMenu(true)
+        var esVisible = false
+
 
         return binding.root
     }
-    private fun showAlert(){
-     val builder = AlertDialog.Builder(requireContext())
+
+    private fun showAlert() {
+
+        val builder = AlertDialog.Builder(requireContext())
         builder.setTitle("Error")
         builder.setMessage("Se ha produit un error al autenticar l´usuari")
         builder.setPositiveButton("Acceptar", null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
+
+
     }
 
-    
-    
+
+
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.options_menu,menu)
+        inflater.inflate(R.menu.options_menu, menu)
     }
 
-    
+
 
 }
