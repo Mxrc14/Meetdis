@@ -61,6 +61,7 @@ class Inici : Fragment() {
                 }
 
 
+
                 binding.crearButton.setOnClickListener { view: View ->
                     val dni: String = args.dni;
                     view.findNavController()

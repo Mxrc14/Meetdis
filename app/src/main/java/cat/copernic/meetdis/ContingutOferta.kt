@@ -23,4 +23,5 @@ class ContingutOferta() : Fragment() {
     }
 
 
+
 }
