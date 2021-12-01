@@ -22,5 +22,4 @@ class ContingutOferta() : Fragment() {
         return inflater.inflate(R.layout.fragment_oferta, container, false)
     }
 
-
 }
