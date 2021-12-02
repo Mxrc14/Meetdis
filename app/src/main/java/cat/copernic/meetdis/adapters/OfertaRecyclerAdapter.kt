@@ -37,6 +37,7 @@ class OfertaRecyclerAdapter : RecyclerView.Adapter<OfertaRecyclerAdapter.ViewHol
                 binding.txtTitol.text = this.titolOferta
                 binding.txtDesc.text = this.descripcioOferta
                 /*
+                PER MES ENDAVANT
                  //Monstrar la imatge des de Storage de Firebase
                  val storageRef = FirebaseStorage.getInstance().reference
                  val imageRef = storageRef.child("rv/${this.animalName}")

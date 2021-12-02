@@ -15,12 +15,15 @@ import android.content.Intent
 import android.net.Uri
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
 import cat.copernic.meetdis.databinding.ActivityMainBinding
 import cat.copernic.meetdis.databinding.FragmentContacteBinding
 import cat.copernic.meetdis.databinding.FragmentRegistreUsuariBinding
+import com.github.dhaval2404.colorpicker.util.setVisibility
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -167,6 +170,22 @@ class RegistreUsuari : Fragment() {
         }
 
         return activity?.let { FileProvider.getUriForFile(it.applicationContext, "cat.copernic.meetdis.provider", tmpFile) }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+        val navBar: BottomNavigationView = activity!!.findViewById(cat.copernic.meetdis.R.id.bottomMenu)
+        navBar.setVisibility(visible = false)
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+        val navBar: BottomNavigationView = activity!!.findViewById(cat.copernic.meetdis.R.id.bottomMenu)
+        navBar.setVisibility(visible = true)
+
     }
 
 }
