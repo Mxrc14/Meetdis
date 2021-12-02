@@ -38,12 +38,10 @@
         <item>Llibres</item>
     </string-array>
 
-
     <string-array name="idiomas">
         <item>Catala</item>
         <item>Castella</item>
     </string-array>
-
 
     <string name="nomICognoms">Nom i Cognoms</string>
     <string name="titol">Titol</string>
@@ -60,6 +58,9 @@
     <string name="colorSorpresa">COLOR SORPRESA</string>
     <string name="color_fons">COLOR FONS</string>
     <string name="color_lleteres">COLOR LLETERES</string>
+
+
+    <string name="error_4digits">La contrasenya ha de ser de 4 números.</string>
 </resources>
 
 
