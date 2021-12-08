@@ -18,9 +18,7 @@ import android.R.attr.visible
 import android.app.AlertDialog
 import android.content.ContentValues.TAG
 import android.util.Log
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.isDigitsOnly
 import com.github.dhaval2404.colorpicker.util.setVisibility
@@ -30,6 +28,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_log_in.*
 import kotlinx.android.synthetic.main.fragment_registre.*
+import kotlinx.coroutines.*
 
 
 class LogInFragment : Fragment() {
@@ -60,7 +59,17 @@ class LogInFragment : Fragment() {
 
         }
 
+        var tasca1: Job? = null
+
+
         binding.bEntra.setOnClickListener { view: View ->
+
+            tasca1 = crearCorrutina(
+                5, //Temps de durada de la corrutina 1
+                binding.bEntra, //Botó per activar la corrutina 1
+                binding.progressBarUn, //Progrés de la corrutina 1
+            )
+
 
             if (textNom1.text.isNotEmpty() && contra.text.isNotEmpty()) {
 
@@ -90,6 +99,8 @@ class LogInFragment : Fragment() {
                                             contrasenya
 
                                         ).addOnCompleteListener() {
+
+
                                             if (it.isSuccessful) {
                                                 view.findNavController()
                                                     .navigate(
@@ -132,10 +143,6 @@ class LogInFragment : Fragment() {
             view.findNavController()
                 .navigate(LogInFragmentDirections.actionLogInFragmentToOblidatContrasenyaFragment())
         }
-
-        var esVisible = false
-
-
         return binding.root
     }
 
@@ -152,6 +159,42 @@ class LogInFragment : Fragment() {
     }
 
 
+
+
+
+
+
+    private fun crearCorrutina(durada: Int, inici: Button,progres: ProgressBar) = GlobalScope.launch(
+
+        Dispatchers.Main) {
+
+        progres.setVisibility(true)
+        progres.progress = 0 //Situem el ProgressBar a l'inici del procés
+
+        /* Tasca principal:
+         * Trasalladem l'execucció de la corrutina a un procés diferent mitjançant el mètode withContext. En aquest cas a un procés d'entrada i sortida que bloquejarà
+         * el procés principla fins que rebi una resposta, fent que la nostra funció sigui segura i habiliti l'IU segons sigui necessari.
+         * En el nostre cas activarem el progressBar fins arribar al final.
+         */
+        withContext(Dispatchers.IO) {
+            var comptador = 0
+            //Inciem el progrés de la barra de progrés
+            while (comptador < durada) {
+                //Retardem el progrés de la barra
+                if(suspensio((durada * 50).toLong())) {
+                    comptador++
+                    progres.progress = (comptador * 50) / durada
+                }
+            }
+        }
+        progres.progress = 0 //Situem el ProgressBar a l'inici del procés
+        progres.setVisibility(false)
+    }
+
+    suspend fun suspensio(duracio: Long): Boolean {
+        delay(duracio)
+        return true
+    }
 
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -9,12 +9,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import cat.copernic.meetdis.adapters.MembreRecyclerAdapter
 import cat.copernic.meetdis.databinding.FragmentMembresBinding
-import cat.copernic.meetdis.databinding.FragmentXatsBinding
 import cat.copernic.meetdis.models.Membre
 import com.google.firebase.firestore.FirebaseFirestore
 
 
-class Xats : Fragment() {
+class Membres : Fragment() {
 
     private val myAdapter: MembreRecyclerAdapter = MembreRecyclerAdapter()
 
@@ -48,11 +47,10 @@ class Xats : Fragment() {
                 membres.clear()
                 for (document in documents) {
                     membres.add(
-                        Membre(
+                        Membre(document.get("nom").toString(),
                             document.get("cognoms").toString(),
-                            document.get("contrasenya").toString(),
                             document.get("dni").toString(),
-                            document.get("nom").toString(),
+                            document.get("contrasenya").toString(),
                             document.get("tipus d'usuari").toString()
                         )
                     )
