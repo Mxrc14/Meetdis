@@ -1,14 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Oferta">
+    tools:context="cat.copernic.meetdis.LogInFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/meetdis"
+            android:layout_width="212dp"
+            android:layout_height="47dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/meetdis" />
+
+        <ImageView
+            android:id="@+id/imageCamara"
+            android:layout_width="166dp"
+            android:layout_height="156dp"
+            android:src="@android:drawable/ic_menu_camera"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/meetdis"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/icMembres"
+            android:layout_width="55dp"
+            android:layout_height="66dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="76dp"
+            android:src="@drawable/ic_members"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/mapView"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerEvents" />
+
+        <TextView
+            android:id="@+id/textTitol"
+            android:layout_width="294dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bordes_meetdis"
+            android:drawablePadding="5dp"
+
+            android:ems="10"
+            android:hint="@string/titol"
+            android:inputType="textPersonName"
+            android:paddingStart="30dp"
+            android:paddingEnd="5dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageCamara" />
+
+        <TextView
+            android:id="@+id/descripcio"
+            android:layout_width="265dp"
+            android:layout_height="108dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bordes_meetdis"
+
+
+            android:hint="@string/descripcio"
+            android:paddingTop="10dp"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitol" />
+
+        <Spinner
+            android:id="@+id/spinnerEvents"
+            android:layout_width="148dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/spinner"
+            android:fontFamily="@font/pt_sans_caption"
+            android:gravity="center"
+            android:spinnerMode="dropdown"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:theme="@style/ThemeOverlay.AppCompat.Light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.878"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descripcio" />
+
+        <TextView
+            android:id="@+id/textData"
+            android:layout_width="161dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="16dp"
+            android:clickable="false"
+            android:ems="10"
+            android:background="@drawable/bordes_meetdis"
+            android:focusable="false"
+            android:hint="Selecciona la data"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.136"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descripcio" />
+
+
+        <Button
+            android:id="@+id/mapView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="56dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textData" />
+
+        <Button
+            android:id="@+id/bInscriu_me"
+            android:layout_width="132dp"
+            android:layout_height="59dp"
+            android:layout_marginTop="44dp"
+            android:background="@drawable/bordes"
+            android:fontFamily="@font/pt_sans_caption"
+            android:text="@string/inscriu_me"
+            android:textColor="#ffffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mapView" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

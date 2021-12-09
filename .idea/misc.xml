@@ -49,7 +49,7 @@
         <entry key="app/src/main/res/layout/fragment_membres.xml" value="0.36041666666666666" />
         <entry key="app/src/main/res/layout/fragment_notificacio.xml" value="0.20104166666666667" />
         <entry key="app/src/main/res/layout/fragment_oblida_contrasenya.xml" value="0.36041666666666666" />
-        <entry key="app/src/main/res/layout/fragment_oferta.xml" value="0.36041666666666666" />
+        <entry key="app/src/main/res/layout/fragment_oferta.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_perfil_familiar.xml" value="0.36041666666666666" />
         <entry key="app/src/main/res/layout/fragment_perfil_monitor.xml" value="0.36041666666666666" />
         <entry key="app/src/main/res/layout/fragment_perfil_usuari.xml" value="0.20104166666666667" />
