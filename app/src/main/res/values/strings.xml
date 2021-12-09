@@ -61,6 +61,14 @@
 
 
     <string name="error_4digits">La contrasenya ha de ser de 4 números.</string>
+    <string name="data">Selecciona la data</string>
+
+
+    <string name="aboutApp">Aquesta Aplicació mobil es una ajuda per l´empresa Prodis per facilitar-lis
+    una eina amb la que els seus usuaris puguin millorar i organitzar la seva vida , d´aquesta manera podrien quedar i socialitzar
+    amb companys que no saben que tenen.</string>
+    <string name="propietaris">Aquesta App esta desarrollada per Marc Hernandez i Adrià Tomás.</string>
+    <string name="versio">Versió:</string>
 </resources>
 
 

@@ -126,6 +126,13 @@ dependencies {
     //COLOR PICKER
     implementation 'com.github.dhaval2404:colorpicker:2.0'
 
+    //STORAGE
+    implementation 'com.google.firebase:firebase-storage:20.0.0'
+    implementation 'com.firebaseui:firebase-ui-storage:4.3.2'
+
+
+
+
 
 
 

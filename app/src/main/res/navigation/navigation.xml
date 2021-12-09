@@ -88,6 +88,9 @@
         <action
             android:id="@+id/action_buscarFragment_to_registreFragment"
             app:destination="@id/registreFragment" />
+        <argument
+            android:name="dni"
+            app:argType="string" />
     </fragment>
 
     <fragment

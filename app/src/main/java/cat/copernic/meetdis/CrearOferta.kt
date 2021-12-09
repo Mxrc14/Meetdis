@@ -94,6 +94,8 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
                 view.findNavController()
                     .navigate(CrearOfertaDirections.actionCrearOfertaFragmentToIniciFragment(dni))
 
+            //   val nom = db.collection("ofertes").document().hashCode()
+
                 db.collection("ofertes").document(textTitol.text.toString()).set(
                     hashMapOf(
                         "dni" to args.dni,

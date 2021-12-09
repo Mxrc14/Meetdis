@@ -1,35 +1,35 @@
 package cat.copernic.meetdis
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import android.R
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.lifecycleScope
-import cat.copernic.meetdis.databinding.ActivityMainBinding
-import cat.copernic.meetdis.databinding.FragmentContacteBinding
 import cat.copernic.meetdis.databinding.FragmentRegistreUsuariBinding
-import com.google.android.material.button.MaterialButton
+import com.github.dhaval2404.colorpicker.util.setVisibility
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_registre_familiar.*
 import kotlinx.android.synthetic.main.fragment_registre_monitor.*
-import kotlinx.android.synthetic.main.fragment_registre_monitor.textCorreu
 import kotlinx.android.synthetic.main.fragment_registre_usuari.*
 import kotlinx.android.synthetic.main.fragment_registre_usuari.textCognom
 import kotlinx.android.synthetic.main.fragment_registre_usuari.textNom
+import java.io.ByteArrayOutputStream
 import java.io.File
 
 
@@ -47,6 +47,7 @@ private const val ARG_PARAM2 = "param2"
 class RegistreUsuari : Fragment() {
 
     private val db = FirebaseFirestore.getInstance()
+    private val storageRef = FirebaseStorage.getInstance().getReference()
 
     lateinit var binding: FragmentRegistreUsuariBinding
 
@@ -107,7 +108,6 @@ class RegistreUsuari : Fragment() {
                         "contrasenya" to args.contrasenya,
                         "tipus d´usuari" to args.tipus,
                         "nom" to textNom.text.toString(),
-                        "imatge" to getTmpFileUri(),
                         "cognoms" to textCognom.text.toString()
                     )
                 )
@@ -126,6 +126,7 @@ class RegistreUsuari : Fragment() {
             val data = result.data?.data
             //setImageUri només funciona per rutes locals, no a internet
             binding?.imageCamara?.setImageURI(data)
+           // pujarImatge(binding?.imageCamara?.setImageURI(data))
         }
     }
 
@@ -167,6 +168,43 @@ class RegistreUsuari : Fragment() {
         }
 
         return activity?.let { FileProvider.getUriForFile(it.applicationContext, "cat.copernic.meetdis.provider", tmpFile) }
+    }
+    fun pujarImatge(view: Unit?){
+        // pujar imatge al Cloud Storage de Firebase
+        // https://firebase.google.com/docs/storage/android/upload-files?hl=es
+
+        // Creem una referència amb el path i el nom de la imatge per pujar la imatge
+        val pathReference = storageRef.child("images/star.jpg")
+        val bitmap = (binding.imageCamara.drawable as BitmapDrawable).bitmap // agafem la imatge del imageView
+        val baos = ByteArrayOutputStream() // declarem i inicialitzem un outputstream
+
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos) // convertim el bitmap en outputstream
+        val data = baos.toByteArray() //convertim el outputstream en array de bytes.
+
+//        val uploadTask = pathReference.putBytes(data)
+//        uploadTask.addOnFailureListener {
+//            Snackbar.make(view, R.string.Error_pujar_foto, Snackbar.LENGTH_LONG).show()
+//            it.printStackTrace()
+//
+//        }.addOnSuccessListener {
+//            Snackbar.make(view, R.string.Exit_pujar_foto, Snackbar.LENGTH_LONG).show()
+//        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
+        val navBar: BottomNavigationView = activity!!.findViewById(cat.copernic.meetdis.R.id.bottomMenu)
+        navBar.setVisibility(visible = false)
+
+    }
+
+    override fun onStop() {
+        super.onStop()
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+        val navBar: BottomNavigationView = activity!!.findViewById(cat.copernic.meetdis.R.id.bottomMenu)
+        navBar.setVisibility(visible = true)
+
     }
 
 }
