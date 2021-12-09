@@ -5,28 +5,27 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 
 import androidx.recyclerview.widget.RecyclerView
-
-import cat.copernic.meetdis.models.Oferta
-import cat.copernic.meetdis.databinding.ItemOfertaListBinding
+import cat.copernic.meetdis.databinding.ItemMembreListBinding
+import cat.copernic.meetdis.models.Membre
 import kotlin.collections.ArrayList
 
 
-class OfertaRecyclerAdapter : RecyclerView.Adapter<OfertaRecyclerAdapter.ViewHolder>() {
+class MembreRecyclerAdapter : RecyclerView.Adapter<MembreRecyclerAdapter.ViewHolder>() {
 
-    var ofertes: ArrayList<Oferta> = ArrayList()
+    var membres: ArrayList<Membre> = ArrayList()
     lateinit var context: Context
 
-    fun OfertaRecyclerAdapter(ofertasList: ArrayList<Oferta>, contxt: Context) {
-        this.ofertes = ofertasList
+    fun OfertaRecyclerAdapter(membresList: ArrayList<Membre>, contxt: Context) {
+        this.membres = membresList
         this.context = contxt
     }
 
     //és l'encarregat de retornar el ViewHolder ja configurat
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-
         return ViewHolder(
-            ItemOfertaListBinding.inflate(layoutInflater, parent, false)
+            ItemMembreListBinding.inflate(layoutInflater, parent, false)
         )
     }
 
@@ -34,9 +33,11 @@ class OfertaRecyclerAdapter : RecyclerView.Adapter<OfertaRecyclerAdapter.ViewHol
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         with(holder) {
-            with(ofertes[position]) {
-                binding.txtTitol.text = this.titolOferta
-                binding.txtDesc.text = this.descripcioOferta
+            with(membres[position]) {
+                binding.txtNom.text = this.nomMembre
+
+
+
 
 
 
@@ -52,19 +53,19 @@ class OfertaRecyclerAdapter : RecyclerView.Adapter<OfertaRecyclerAdapter.ViewHol
                  } */
             }
         }
+        val item = membres[position]
 
-        val item = ofertes[position]
         holder.bind(item)
     }
 
 
     override fun getItemCount(): Int {
-        return ofertes.size
+        return membres.size
     }
 
 
-    class ViewHolder(val binding: ItemOfertaListBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Oferta) {
+    class ViewHolder(val binding: ItemMembreListBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: Membre) {
 
         }
     }
