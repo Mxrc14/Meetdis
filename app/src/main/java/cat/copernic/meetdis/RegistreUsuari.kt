@@ -21,6 +21,7 @@ import androidx.lifecycle.lifecycleScope
 import cat.copernic.meetdis.databinding.FragmentRegistreUsuariBinding
 import com.github.dhaval2404.colorpicker.util.setVisibility
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -79,6 +80,8 @@ class RegistreUsuari : Fragment() {
         binding.imageCamara.setOnClickListener {
             escollirCamaraGaleria()
 
+
+
         }
 
         myCheck = binding.checkBoxTerminis
@@ -116,7 +119,10 @@ class RegistreUsuari : Fragment() {
                 val toast = Toast.makeText(requireContext(), "Algun camp esta buit", Toast.LENGTH_LONG)
                 toast.show()
             }
+            pujarImatge(view)
+
         }
+
         return binding.root
 
     }
@@ -126,7 +132,7 @@ class RegistreUsuari : Fragment() {
             val data = result.data?.data
             //setImageUri només funciona per rutes locals, no a internet
             binding?.imageCamara?.setImageURI(data)
-           // pujarImatge(binding?.imageCamara?.setImageURI(data))
+
         }
     }
 
@@ -169,26 +175,27 @@ class RegistreUsuari : Fragment() {
 
         return activity?.let { FileProvider.getUriForFile(it.applicationContext, "cat.copernic.meetdis.provider", tmpFile) }
     }
-    fun pujarImatge(view: Unit?){
+    fun pujarImatge(root: View){
         // pujar imatge al Cloud Storage de Firebase
         // https://firebase.google.com/docs/storage/android/upload-files?hl=es
-
+        val args = RegistreUsuariArgs.fromBundle(requireArguments())
         // Creem una referència amb el path i el nom de la imatge per pujar la imatge
-        val pathReference = storageRef.child("images/star.jpg")
+        val pathReference = storageRef.child("users/"+ args.dni)
         val bitmap = (binding.imageCamara.drawable as BitmapDrawable).bitmap // agafem la imatge del imageView
         val baos = ByteArrayOutputStream() // declarem i inicialitzem un outputstream
 
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos) // convertim el bitmap en outputstream
         val data = baos.toByteArray() //convertim el outputstream en array de bytes.
 
-//        val uploadTask = pathReference.putBytes(data)
-//        uploadTask.addOnFailureListener {
-//            Snackbar.make(view, R.string.Error_pujar_foto, Snackbar.LENGTH_LONG).show()
-//            it.printStackTrace()
-//
-//        }.addOnSuccessListener {
-//            Snackbar.make(view, R.string.Exit_pujar_foto, Snackbar.LENGTH_LONG).show()
-//        }
+        val uploadTask = pathReference.putBytes(data)
+        uploadTask.addOnFailureListener {
+            Toast.makeText(activity, resources.getText(R.string.Error_pujar_foto), Toast.LENGTH_LONG).show()
+
+
+        }.addOnSuccessListener {
+            Toast.makeText(activity, resources.getText(R.string.Exit_pujar_foto), Toast.LENGTH_LONG).show()
+
+        }
     }
 
     override fun onResume() {

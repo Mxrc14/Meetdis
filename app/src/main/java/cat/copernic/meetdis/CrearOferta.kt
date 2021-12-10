@@ -96,7 +96,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
             //   val nom = db.collection("ofertes").document().hashCode()
 
-                db.collection("ofertes").document(textTitol.text.toString()).set(
+                db.collection("ofertes").document().set(
                     hashMapOf(
                         "dni" to args.dni,
                         "titol" to textTitol.text.toString(),
