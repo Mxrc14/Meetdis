@@ -40,8 +40,7 @@ class Inici : Fragment() {
 
         binding.rvOfertes.layoutManager = LinearLayoutManager(requireContext())
 
-        context?.let { myAdapter.OfertaRecyclerAdapter(ofertes, it) }
-        binding.rvOfertes.adapter = myAdapter
+
 
 
         db.collection("ofertes")
@@ -59,18 +58,20 @@ class Inici : Fragment() {
                         )
                     )
                 }
+                context?.let { myAdapter.OfertaRecyclerAdapter(ofertes, it) }
+                binding.rvOfertes.adapter = myAdapter
 
-
-
-                binding.crearButton.setOnClickListener { view: View ->
-                    val dni: String = args.dni;
-                    view.findNavController()
-                        .navigate(IniciDirections.actionIniciFragmentToCrearOfertaFragment(dni))
-
-                }
-                      }
-                return binding.root
             }
+
+        binding.crearButton.setOnClickListener { view: View ->
+            val dni: String = args.dni;
+            view.findNavController()
+                .navigate(IniciDirections.actionIniciFragmentToCrearOfertaFragment(dni))
+
+        }
+
+        return binding.root
+    }
 
 
 }
