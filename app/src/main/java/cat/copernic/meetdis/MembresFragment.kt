@@ -37,8 +37,7 @@ class Membres : Fragment() {
 
         binding.rvMembres.layoutManager = LinearLayoutManager(requireContext())
 
-        context?.let { myAdapter.OfertaRecyclerAdapter(membres, it) }
-        binding.rvMembres.adapter = myAdapter
+
 
 
         db.collection("users")
@@ -55,6 +54,9 @@ class Membres : Fragment() {
                         )
                     )
                 }
+                context?.let { myAdapter.MembreRecyclerAdapter(membres, it) }
+                binding.rvMembres.adapter = myAdapter
+
             }
         return binding.root
     }

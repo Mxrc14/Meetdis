@@ -71,9 +71,9 @@
     <string name="versio">Versió:</string>
     <string name="membres">Membres</string>
 
-    <string name="inscriu_me">INSCRIU-ME</string>
-    <string name="Error_pujar_foto">Error al pujar la foto</string>
-    <string name="Exit_pujar_foto">La foto s´ha pujat correctament</string>
+    <string name="inscriu_me">INSCRIURE´M</string>
+    <string name="selecciona_la_data">Selecciona la data</string>
+    <string name="localitzacio">Localització</string>
 
 
 </resources>
