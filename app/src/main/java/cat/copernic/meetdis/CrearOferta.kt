@@ -112,7 +112,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
             if (textTitol.text.isNotEmpty() && descripcio.text.isNotEmpty()) {
 
-                val dni: String = args.dni;
+                val dni: String = args.dni.uppercase();
 
 
                 view.findNavController()
@@ -121,7 +121,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
                 db.collection("ofertes").document().set(
                     hashMapOf(
-                        "dni" to args.dni,
+                        "dni" to args.dni.uppercase(),
                         "titol" to textTitol.text.toString(),
                         "descripcio" to descripcio.text.toString(),
                         "data" to textData.text.toString(),
@@ -199,7 +199,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
         // https://firebase.google.com/docs/storage/android/upload-files?hl=es
         val args = CrearOfertaArgs.fromBundle(requireArguments())
         // Creem una referència amb el path i el nom de la imatge per pujar la imatge
-        val pathReference = storageRef.child("ofertes/"+ args.dni)
+        val pathReference = storageRef.child("ofertes/"+ args.dni.uppercase())
         val bitmap = (binding.imageCamara.drawable as BitmapDrawable).bitmap // agafem la imatge del imageView
         val baos = ByteArrayOutputStream() // declarem i inicialitzem un outputstream
 
@@ -228,7 +228,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
     fun cridarMapa(){
 
         val gmmIntentUri =
-            Uri.parse("geo:0,0?q=1600 Amphitheatre Parkway, Mountain+View, California")
+            Uri.parse("geo:41.210103794078506,1.6732920326085583")
         val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
         mapIntent.setPackage("com.google.android.apps.maps")
         startActivity(mapIntent)

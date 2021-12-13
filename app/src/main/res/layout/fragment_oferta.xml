@@ -102,7 +102,7 @@
             android:ems="10"
             android:background="@drawable/bordes_meetdis"
             android:focusable="false"
-            android:hint="@string/selecciona_la_data"
+            android:hint="@string/data"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.136"
             app:layout_constraintStart_toStartOf="parent"
