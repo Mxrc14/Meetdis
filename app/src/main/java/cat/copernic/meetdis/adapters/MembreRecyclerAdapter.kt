@@ -15,7 +15,7 @@ class MembreRecyclerAdapter : RecyclerView.Adapter<MembreRecyclerAdapter.ViewHol
     var membres: ArrayList<Membre> = ArrayList()
     lateinit var context: Context
 
-    fun OfertaRecyclerAdapter(membresList: ArrayList<Membre>, contxt: Context) {
+    fun MembreRecyclerAdapter(membresList: ArrayList<Membre>, contxt: Context) {
         this.membres = membresList
         this.context = contxt
     }
@@ -35,9 +35,6 @@ class MembreRecyclerAdapter : RecyclerView.Adapter<MembreRecyclerAdapter.ViewHol
         with(holder) {
             with(membres[position]) {
                 binding.txtNom.text = this.nomMembre
-
-
-
 
 
 

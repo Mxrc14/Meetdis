@@ -16,7 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class Inici : Fragment() {
 
 
-    private val myAdapter: OfertaRecyclerAdapter = OfertaRecyclerAdapter()
+    private var myAdapter: OfertaRecyclerAdapter = OfertaRecyclerAdapter()
 
     private val db = FirebaseFirestore.getInstance()
 
