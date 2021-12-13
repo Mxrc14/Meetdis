@@ -121,7 +121,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
                 db.collection("ofertes").document().set(
                     hashMapOf(
-                        "dni" to args.dni,
+                        "dnia" to args.dni,
                         "titol" to textTitol.text.toString(),
                         "descripcio" to descripcio.text.toString(),
                         "data" to textData.text.toString(),
