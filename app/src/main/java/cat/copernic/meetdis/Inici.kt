@@ -16,7 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class Inici : Fragment() {
 
 
-    private val myAdapter: OfertaRecyclerAdapter = OfertaRecyclerAdapter()
+    private var myAdapter: OfertaRecyclerAdapter = OfertaRecyclerAdapter()
 
     private val db = FirebaseFirestore.getInstance()
 
@@ -40,6 +40,9 @@ class Inici : Fragment() {
 
         binding.rvOfertes.layoutManager = LinearLayoutManager(requireContext())
 
+
+
+
         db.collection("ofertes")
             .get()
             .addOnSuccessListener { documents ->
@@ -60,15 +63,15 @@ class Inici : Fragment() {
 
             }
 
-                binding.crearButton.setOnClickListener { view: View ->
-                    val dni: String = args.dni;
-                    view.findNavController()
-                        .navigate(IniciDirections.actionIniciFragmentToCrearOfertaFragment(dni))
+        binding.crearButton.setOnClickListener { view: View ->
+            val dni: String = args.dni;
+            view.findNavController()
+                .navigate(IniciDirections.actionIniciFragmentToCrearOfertaFragment(dni))
 
-                }
+        }
 
-                return binding.root
-            }
+        return binding.root
+    }
 
 
 }

@@ -176,7 +176,7 @@ class RegistreMonitor : Fragment() {
     fun pujarImatge(root: View){
         // pujar imatge al Cloud Storage de Firebase
         // https://firebase.google.com/docs/storage/android/upload-files?hl=es
-        val args = RegistreUsuariArgs.fromBundle(requireArguments())
+        val args = RegistreMonitorArgs.fromBundle(requireArguments())
         // Creem una referència amb el path i el nom de la imatge per pujar la imatge
         val pathReference = storageRef.child("users/"+ args.dni)
         val bitmap = (binding.imageCamara.drawable as BitmapDrawable).bitmap // agafem la imatge del imageView
