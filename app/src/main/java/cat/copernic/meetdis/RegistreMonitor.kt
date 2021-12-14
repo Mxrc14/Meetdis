@@ -104,12 +104,13 @@ class RegistreMonitor : Fragment() {
 
                     db.collection("users").document(args.dni).set(
                         hashMapOf(
-                            "dni" to dni + "@prodis.cat",
+                            "correu" to dni + "@prodis.cat",
                             "contrasenya" to args.contrasenya,
                             "tipus d´usuari" to args.tipus,
                             "nom" to textNom.text.toString(),
                             "cognoms" to textCognom.text.toString(),
-                            "correu" to textCorreu.text.toString()
+                            "correuMonitor" to textCorreu.text.toString(),
+                            "dni" to dni.uppercase()
                         )
                     )
 

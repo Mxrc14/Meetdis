@@ -1,19 +1,26 @@
 package cat.copernic.meetdis.adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.meetdis.databinding.ItemMembreListBinding
 import cat.copernic.meetdis.models.Membre
+import com.google.firebase.storage.FirebaseStorage
 import kotlin.collections.ArrayList
+import coil.api.load
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class MembreRecyclerAdapter : RecyclerView.Adapter<MembreRecyclerAdapter.ViewHolder>() {
 
     var membres: ArrayList<Membre> = ArrayList()
     lateinit var context: Context
+    lateinit var id: String
+
+    private val db = FirebaseFirestore.getInstance()
 
     fun MembreRecyclerAdapter(membresList: ArrayList<Membre>, contxt: Context) {
         this.membres = membresList
@@ -36,36 +43,44 @@ class MembreRecyclerAdapter : RecyclerView.Adapter<MembreRecyclerAdapter.ViewHol
             with(membres[position]) {
                 binding.txtNom.text = this.nomMembre
 
+                //TODO Monstrar la imatge des de Storage de Firebase
+                val storageRef = FirebaseStorage.getInstance().reference
+
+                Log.i("idFoto", "$id")
 
 
-            /*
-                PER MES ENDAVANT
-                 //Monstrar la imatge des de Storage de Firebase
-                 val storageRef = FirebaseStorage.getInstance().reference
-                 val imageRef = storageRef.child("rv/${this.animalName}")
-                 imageRef.downloadUrl.addOnSuccessListener { url ->
-                     binding.imgAnimal.load(url)
-                 }.addOnFailureListener {
-                     //mostrar error
-                 } */
-            }
-        }
-        val item = membres[position]
-
-        holder.bind(item)
-    }
+                val imageRef = storageRef.child("users/" + imageMembre)
+                imageRef.downloadUrl.addOnSuccessListener { url ->
+                    binding.imgMembre.load(url)
+                    println(id)
+                    Log.i("idFoto", "$imageMembre")
+                }.addOnFailureListener {
+                    //mostrar error
+                }
 
 
-    override fun getItemCount(): Int {
-        return membres.size
-    }
 
 
-    class ViewHolder(val binding: ItemMembreListBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Membre) {
 
         }
     }
+
+    val item = membres[position]
+
+    holder.bind(item)
+}
+
+
+override fun getItemCount(): Int {
+    return membres.size
+}
+
+
+class ViewHolder(val binding: ItemMembreListBinding) : RecyclerView.ViewHolder(binding.root) {
+    fun bind(item: Membre) {
+
+    }
+}
 }
 
 
