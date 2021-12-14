@@ -1,6 +1,7 @@
 package cat.copernic.meetdis.adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 
@@ -8,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 import cat.copernic.meetdis.models.Oferta
 import cat.copernic.meetdis.databinding.ItemOfertaListBinding
+import coil.api.load
+import com.google.firebase.storage.FirebaseStorage
 import kotlin.collections.ArrayList
 
 
@@ -40,16 +43,18 @@ class OfertaRecyclerAdapter : RecyclerView.Adapter<OfertaRecyclerAdapter.ViewHol
 
 
 
-            /*
-                PER MES ENDAVANT
+
+
                  //Monstrar la imatge des de Storage de Firebase
-                 val storageRef = FirebaseStorage.getInstance().reference
-                 val imageRef = storageRef.child("rv/${this.animalName}")
-                 imageRef.downloadUrl.addOnSuccessListener { url ->
-                     binding.imgAnimal.load(url)
-                 }.addOnFailureListener {
-                     //mostrar error
-                 } */
+                val storageRef = FirebaseStorage.getInstance().reference
+
+                val imageRef = storageRef.child("ofertes/$imatge")
+                imageRef.downloadUrl.addOnSuccessListener { url ->
+                    binding.imgOferta.load(url)
+                   // Log.i("proba_id", "$imageMembre")
+                }.addOnFailureListener {
+                    //mostrar error
+                }
             }
         }
 

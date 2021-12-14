@@ -29,6 +29,7 @@ import cat.copernic.meetdis.databinding.FragmentCrearOfertaBinding
 import cat.copernic.meetdis.databinding.FragmentRegistreBinding
 import cat.copernic.meetdis.databinding.FragmentRegistreFamiliarBinding
 import cat.copernic.meetdis.databinding.FragmentRegistreUsuariBinding
+import cat.copernic.meetdis.models.Oferta
 import com.bumptech.glide.manager.SupportRequestManagerFragment
 import com.google.android.gms.dynamic.SupportFragmentWrapper
 import com.google.firebase.firestore.FirebaseFirestore
@@ -76,6 +77,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
     private var spinner: Spinner? = null
     private var opcion: String? = null
+    private var identificadorOferta: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -135,6 +137,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
             }
             pujarImatge(view)
         }
+
 
         binding.textData.setOnClickListener{ showDatePickerDialog()}
 
@@ -199,7 +202,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
         // https://firebase.google.com/docs/storage/android/upload-files?hl=es
         val args = CrearOfertaArgs.fromBundle(requireArguments())
         // Creem una referència amb el path i el nom de la imatge per pujar la imatge
-        val pathReference = storageRef.child("ofertes/"+ args.dni.uppercase())
+        val pathReference = storageRef.child("ofertes/"+ identificadorOferta)
         val bitmap = (binding.imageCamara.drawable as BitmapDrawable).bitmap // agafem la imatge del imageView
         val baos = ByteArrayOutputStream() // declarem i inicialitzem un outputstream
 

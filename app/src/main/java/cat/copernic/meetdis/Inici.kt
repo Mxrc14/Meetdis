@@ -54,7 +54,8 @@ class Inici : Fragment() {
                             document.get("descripcio").toString(),
                             document.get("dni").toString(),
                             document.get("data").toString(),
-                            document.get("tipus").toString()
+                            document.get("tipus").toString(),
+                            document.id
                         )
                     )
                 }
