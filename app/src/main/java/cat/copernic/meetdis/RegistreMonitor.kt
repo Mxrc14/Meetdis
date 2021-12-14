@@ -109,8 +109,8 @@ class RegistreMonitor : Fragment() {
                             "tipus d´usuari" to args.tipus,
                             "nom" to textNom.text.toString(),
                             "cognoms" to textCognom.text.toString(),
-                            "correuMonitor" to textCorreu.text.toString(),
-                            "dni" to dni.uppercase()
+                            "correuMonitor" to textCorreu.text.toString()
+
                         )
                     )
 

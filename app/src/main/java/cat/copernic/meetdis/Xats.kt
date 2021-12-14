@@ -1,6 +1,7 @@
 package cat.copernic.meetdis
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -25,7 +26,7 @@ class Xats : Fragment() {
 
     private val db = FirebaseFirestore.getInstance()
 
-    private var membres: ArrayList<Membre> = arrayListOf()
+    private var membres: ArrayList<Membre> = arrayListOf();
 
 
     override fun onCreateView(
@@ -50,6 +51,7 @@ class Xats : Fragment() {
             .addOnSuccessListener { documents ->
                 membres.clear()
                 for (document in documents) {
+                    Log.i("proba_id", document.id)
                     membres.add(
                         Membre(
                             document.get("cognoms").toString(),
@@ -57,7 +59,8 @@ class Xats : Fragment() {
                             document.get("correu").toString(),
                             document.get("nom").toString(),
                             document.get("tipus d'usuari").toString(),
-                            document.get("dni").toString()
+                            document.id
+
                         )
                     )
                 }

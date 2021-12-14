@@ -46,41 +46,37 @@ class MembreRecyclerAdapter : RecyclerView.Adapter<MembreRecyclerAdapter.ViewHol
                 //TODO Monstrar la imatge des de Storage de Firebase
                 val storageRef = FirebaseStorage.getInstance().reference
 
-                Log.i("idFoto", "$id")
+                Log.i("proba_id", "$imageMembre")
+
+                Log.i("idFoto", "${this.imageMembre}")
 
 
-                val imageRef = storageRef.child("users/" + imageMembre)
+                val imageRef = storageRef.child("users/$imageMembre")
                 imageRef.downloadUrl.addOnSuccessListener { url ->
                     binding.imgMembre.load(url)
-                    println(id)
-                    Log.i("idFoto", "$imageMembre")
+                    Log.i("proba_id", "$imageMembre")
                 }.addOnFailureListener {
                     //mostrar error
                 }
+            }
+        }
+
+        val item = membres[position]
+
+        holder.bind(item)
+    }
 
 
+    override fun getItemCount(): Int {
+        return membres.size
+    }
 
 
+    class ViewHolder(val binding: ItemMembreListBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(item: Membre) {
 
         }
     }
-
-    val item = membres[position]
-
-    holder.bind(item)
-}
-
-
-override fun getItemCount(): Int {
-    return membres.size
-}
-
-
-class ViewHolder(val binding: ItemMembreListBinding) : RecyclerView.ViewHolder(binding.root) {
-    fun bind(item: Membre) {
-
-    }
-}
 }
 
 

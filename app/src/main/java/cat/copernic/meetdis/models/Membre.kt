@@ -1,5 +1,7 @@
 package cat.copernic.meetdis.models
 
+import android.util.Log
+
 data class Membre(
     val cognoms: String,
     val contrasenya: String,
@@ -19,12 +21,16 @@ data class Membre(
 
 
     init {
+
         this.nomMembre = nom
         this.cognomsMembre = cognoms
         this.dniMembre = dni
         this.contrasenyaMembre = contrasenya
         this.tipusMembre = tipus
         this.imageMembre = img
+
+        Log.i("proba_id", "$img")
+        Log.i("proba_id", "$imageMembre")
 
 
     }
