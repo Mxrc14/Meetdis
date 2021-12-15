@@ -95,7 +95,7 @@ class LogInFragment : Fragment() {
                                 if (result.exists()) {
                                     FirebaseAuth.getInstance()
                                         .signInWithEmailAndPassword(
-                                            result.data?.get("dni") as String, //correu electronic
+                                            result.data?.get("correu") as String, //correu electronic
                                             contrasenya
 
                                         ).addOnCompleteListener() {

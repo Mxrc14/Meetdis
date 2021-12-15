@@ -9,20 +9,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/bordes_meetdis"
+        style="@style/bordesMeetdis"
         app:cardCornerRadius="8dp"
         app:cardElevation="10dp"
         app:cardMaxElevation="10dp"
         app:cardPreventCornerOverlap="false"
-        app:elevation="10dp"
-
-
-
-        >
+        app:elevation="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="393dp"
-            android:layout_height="356dp"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/bordes_meetdis"
 
@@ -42,8 +38,8 @@
             <TextView
 
                 android:id="@+id/txtTitol"
-                android:layout_width="0dp"
-                android:layout_height="33dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
 
                 android:textAlignment="center"
@@ -55,8 +51,8 @@
             <TextView
 
                 android:id="@+id/txtDesc"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:textAlignment="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -107,7 +107,7 @@ class RegistreUsuari : Fragment() {
 
                 db.collection("users").document(args.dni).set(
                     hashMapOf(
-                        "dni" to dni + "@prodis.cat",
+                        "correu" to dni + "@prodis.cat",
                         "contrasenya" to args.contrasenya,
                         "tipus d´usuari" to args.tipus,
                         "nom" to textNom.text.toString(),

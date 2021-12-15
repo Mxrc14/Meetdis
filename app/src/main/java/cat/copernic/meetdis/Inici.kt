@@ -41,8 +41,6 @@ class Inici : Fragment() {
         binding.rvOfertes.layoutManager = LinearLayoutManager(requireContext())
 
 
-
-
         db.collection("ofertes")
             .get()
             .addOnSuccessListener { documents ->
@@ -54,7 +52,8 @@ class Inici : Fragment() {
                             document.get("descripcio").toString(),
                             document.get("dni").toString(),
                             document.get("data").toString(),
-                            document.get("tipus").toString()
+                            document.get("tipus").toString(),
+                            document.id
                         )
                     )
                 }
@@ -69,6 +68,7 @@ class Inici : Fragment() {
                 .navigate(IniciDirections.actionIniciFragmentToCrearOfertaFragment(dni))
 
         }
+
 
         return binding.root
     }

@@ -4,4 +4,19 @@
     <style name="SplashTheme" parent="AppTheme">
         <item name="android:windowBackground">@drawable/splashscreen</item>
     </style>
+
+
+
+    <style name="bordesMeetdis" parent="AppTheme">
+        <item name= "android:background">@drawable/bordes_meetdis</item>
+    </style>
+
+    <style name="colorMeetdis" parent="AppTheme">
+        <item name= "android:background">@drawable/bordes</item>
+    </style>
+
+    <style name="spinner" parent="AppTheme">
+        <item name= "android:background">@drawable/spinner</item>
+    </style>
+    
 </resources>

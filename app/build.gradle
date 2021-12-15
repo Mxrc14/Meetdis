@@ -132,6 +132,10 @@ dependencies {
 
 
 
+    //PICASSO
+    implementation 'io.coil-kt:coil:0.11.0'
+
+
 
 
 

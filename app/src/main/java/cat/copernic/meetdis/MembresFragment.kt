@@ -46,11 +46,14 @@ class Membres : Fragment() {
                 membres.clear()
                 for (document in documents) {
                     membres.add(
-                        Membre(document.get("nom").toString(),
+                        Membre(
+                            document.get("nom").toString(),
                             document.get("cognoms").toString(),
                             document.get("dni").toString(),
                             document.get("contrasenya").toString(),
-                            document.get("tipus d'usuari").toString()
+                            document.get("tipus d'usuari").toString(),
+                            document.id
+
                         )
                     )
                 }
