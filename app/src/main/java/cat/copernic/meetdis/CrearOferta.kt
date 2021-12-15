@@ -141,6 +141,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
                     "tipus" to opcion.toString()
                 )
 
+
                 doc.set(data)
                 identificadorOferta = doc.id
                 Log.i("crearOferta", "doc.id: ${doc.id}")
