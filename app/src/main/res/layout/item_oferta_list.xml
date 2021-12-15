@@ -9,16 +9,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/bordes_meetdis"
+        style="@style/bordesMeetdis"
         app:cardCornerRadius="8dp"
         app:cardElevation="10dp"
         app:cardMaxElevation="10dp"
         app:cardPreventCornerOverlap="false"
-        app:elevation="10dp"
-
-
-
-        >
+        app:elevation="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="360dp"

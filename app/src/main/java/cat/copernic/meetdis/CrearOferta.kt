@@ -14,10 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.autofill.AutofillValue
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
+import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.NonNull
 import androidx.appcompat.view.SupportActionModeWrapper
@@ -32,6 +29,7 @@ import cat.copernic.meetdis.databinding.FragmentRegistreFamiliarBinding
 import cat.copernic.meetdis.databinding.FragmentRegistreUsuariBinding
 import cat.copernic.meetdis.models.Oferta
 import com.bumptech.glide.manager.SupportRequestManagerFragment
+import com.github.dhaval2404.colorpicker.util.setVisibility
 import com.google.android.gms.dynamic.SupportFragmentWrapper
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FieldValue
@@ -43,7 +41,7 @@ import kotlinx.android.synthetic.main.fragment_registre_familiar.*
 import kotlinx.android.synthetic.main.fragment_registre_usuari.*
 import kotlinx.android.synthetic.main.fragment_registre_usuari.textCognom
 import kotlinx.android.synthetic.main.fragment_registre_usuari.textNom
-import kotlinx.coroutines.DEBUG_PROPERTY_VALUE_AUTO
+import kotlinx.coroutines.*
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.util.*
@@ -119,16 +117,20 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
             cridarMapa()
 
         }
-
+        var tasca1: Job? = null
         binding.bCrear.setOnClickListener { view: View ->
 
+
+
+
             if (textTitol.text.isNotEmpty() && descripcio.text.isNotEmpty()) {
+
+
 
                 val dni: String = args.dni.uppercase();
 
 
-                view.findNavController()
-                    .navigate(CrearOfertaDirections.actionCrearOfertaFragmentToIniciFragment(dni))
+
 
 
                 var collUsersRef: CollectionReference = db.collection("ofertes")
@@ -146,17 +148,23 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
                 identificadorOferta = doc.id
                 Log.i("crearOferta", "doc.id: ${doc.id}")
 
+                pujarImatge(view)
+
+                tasca1 = crearCorrutina(
+                    5, //Temps de durada de la corrutina 1
+                    binding.bCrear, //Botó per activar la corrutina 1
+                    binding.progressBarUn, //Progrés de la corrutina 1
+                )
+                
+                view.findNavController()
+                    .navigate(CrearOfertaDirections.actionCrearOfertaFragmentToIniciFragment(dni))
+
 
             } else {
                 val toast =
                     Toast.makeText(requireContext(), "Algun camp esta buit", Toast.LENGTH_LONG)
                 toast.show()
             }
-
-
-
-
-            pujarImatge(view)
         }
 
 
@@ -289,6 +297,36 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
         TODO("Not yet implemented")
+    }
+
+
+    @DelicateCoroutinesApi
+    private fun crearCorrutina(durada: Int, inici: Button, progres: ProgressBar) = GlobalScope.launch(
+
+        Dispatchers.Main) {
+
+        progres.setVisibility(true)
+        progres.progress = 0 //Situem el ProgressBar a l'inici del procés
+        delay(5000)
+        withContext(Dispatchers.IO) {
+            var comptador = 0
+            //Inciem el progrés de la barra de progrés
+            while (comptador < durada) {
+                //Retardem el progrés de la barra
+                if(suspensio((durada * 50).toLong())) {
+                    comptador++
+                    progres.progress = (comptador * 50) / durada
+                }
+            }
+        }
+
+        progres.progress = 0 //Situem el ProgressBar a l'inici del procés
+        progres.setVisibility(false)
+    }
+
+    suspend fun suspensio(duracio: Long): Boolean {
+        delay(duracio)
+        return true
     }
 
 }
