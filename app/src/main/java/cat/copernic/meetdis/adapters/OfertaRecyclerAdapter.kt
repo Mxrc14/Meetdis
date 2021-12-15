@@ -23,6 +23,7 @@ class OfertaRecyclerAdapter : RecyclerView.Adapter<OfertaRecyclerAdapter.ViewHol
 
     //és l'encarregat de retornar el ViewHolder ja configurat
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
         val layoutInflater = LayoutInflater.from(parent.context)
 
         return ViewHolder(
