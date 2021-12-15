@@ -2,6 +2,7 @@ package cat.copernic.meetdis
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.ContentValues
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
@@ -32,6 +33,8 @@ import cat.copernic.meetdis.databinding.FragmentRegistreUsuariBinding
 import cat.copernic.meetdis.models.Oferta
 import com.bumptech.glide.manager.SupportRequestManagerFragment
 import com.google.android.gms.dynamic.SupportFragmentWrapper
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_crear_oferta.*
@@ -44,6 +47,7 @@ import kotlinx.coroutines.DEBUG_PROPERTY_VALUE_AUTO
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.util.*
+import kotlin.reflect.jvm.internal.impl.load.kotlin.JvmType
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -66,35 +70,41 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
     private var latestTmpUri: Uri? = null
 
-    val takeImageResult = registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
-        if (isSuccess) {
-            latestTmpUri?.let { uri ->
-                binding.imageCamara.setImageURI(uri)
+
+    val takeImageResult =
+        registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
+            if (isSuccess) {
+                latestTmpUri?.let { uri ->
+                    binding.imageCamara.setImageURI(uri)
+                }
             }
         }
-    }
 
 
     private var spinner: Spinner? = null
     private var opcion: String? = null
     private var identificadorOferta: String? = null
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate<FragmentCrearOfertaBinding>(inflater,
-            R.layout.fragment_crear_oferta,container,false)
-        ArrayAdapter.createFromResource(requireContext(), R.array.tipus_Events,
+        binding = DataBindingUtil.inflate<FragmentCrearOfertaBinding>(
+            inflater,
+            R.layout.fragment_crear_oferta, container, false
+        )
+        ArrayAdapter.createFromResource(
+            requireContext(), R.array.tipus_Events,
 
-            R.layout.spinner_item).also { adapter ->
+            R.layout.spinner_item
+        ).also { adapter ->
 
             adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
             binding.spinnerEvents.adapter = adapter
 
         }
-
 
         val args = CrearOfertaArgs.fromBundle(requireArguments())
 
@@ -121,25 +131,35 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
                     .navigate(CrearOfertaDirections.actionCrearOfertaFragmentToIniciFragment(dni))
 
 
-                db.collection("ofertes").document().set(
-                    hashMapOf(
-                        "dni" to args.dni.uppercase(),
-                        "titol" to textTitol.text.toString(),
-                        "descripcio" to descripcio.text.toString(),
-                        "data" to textData.text.toString(),
-                        "tipus" to opcion.toString()
-                    )
+                var collUsersRef: CollectionReference = db.collection("ofertes")
+                val doc = collUsersRef.document()
+                var data: HashMap<String, Any> = hashMapOf(
+                    "dni" to args.dni.uppercase(),
+                    "titol" to textTitol.text.toString(),
+                    "descripcio" to descripcio.text.toString(),
+                    "data" to textData.text.toString(),
+                    "tipus" to opcion.toString()
                 )
 
-            }else{
-                val toast = Toast.makeText(requireContext(), "Algun camp esta buit", Toast.LENGTH_LONG)
+                doc.set(data)
+                identificadorOferta = doc.id
+                Log.i("crearOferta", "doc.id: ${doc.id}")
+
+
+            } else {
+                val toast =
+                    Toast.makeText(requireContext(), "Algun camp esta buit", Toast.LENGTH_LONG)
                 toast.show()
             }
+
+
+
+
             pujarImatge(view)
         }
 
 
-        binding.textData.setOnClickListener{ showDatePickerDialog()}
+        binding.textData.setOnClickListener { showDatePickerDialog() }
 
 
         binding.spinnerEvents.onItemSelectedListener = this
@@ -149,8 +169,9 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
     }
 
     private val startForActivityGallery = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()){ result ->
-        if (result.resultCode == Activity.RESULT_OK){
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
             val data = result.data?.data
             //setImageUri només funciona per rutes locals, no a internet
             binding?.imageCamara?.setImageURI(data)
@@ -175,16 +196,16 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
         }
     }
 
-    fun escollirCamaraGaleria(){
+    fun escollirCamaraGaleria() {
         val alertDialog = AlertDialog.Builder(context).create()
         alertDialog.setTitle("Selecciona l´ opció amb la que vols obtenir la foto")
         alertDialog.setMessage("Selecciona:")
         alertDialog.setButton(
             AlertDialog.BUTTON_POSITIVE, "CAMARA"
-        ){dialog, which -> obrirCamera()}
+        ) { dialog, which -> obrirCamera() }
         alertDialog.setButton(
             AlertDialog.BUTTON_NEGATIVE, "GALERIA"
-        ){dialog, which -> obrirGaleria()}
+        ) { dialog, which -> obrirGaleria() }
         alertDialog.show()
 
     }
@@ -195,40 +216,58 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
             deleteOnExit()
         }
 
-        return activity?.let { FileProvider.getUriForFile(it.applicationContext, "cat.copernic.meetdis.provider", tmpFile) }
+        return activity?.let {
+            FileProvider.getUriForFile(
+                it.applicationContext,
+                "cat.copernic.meetdis.provider",
+                tmpFile
+            )
+        }
     }
-    fun pujarImatge(root: View){
+
+    fun pujarImatge(root: View) {
         // pujar imatge al Cloud Storage de Firebase
         // https://firebase.google.com/docs/storage/android/upload-files?hl=es
         val args = CrearOfertaArgs.fromBundle(requireArguments())
         // Creem una referència amb el path i el nom de la imatge per pujar la imatge
-        val pathReference = storageRef.child("ofertes/"+ identificadorOferta)
-        val bitmap = (binding.imageCamara.drawable as BitmapDrawable).bitmap // agafem la imatge del imageView
+        Log.i("OFERTITA", "$identificadorOferta")
+        val pathReference = storageRef.child("ofertes/${this.identificadorOferta}")
+        val bitmap =
+            (binding.imageCamara.drawable as BitmapDrawable).bitmap // agafem la imatge del imageView
         val baos = ByteArrayOutputStream() // declarem i inicialitzem un outputstream
 
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos) // convertim el bitmap en outputstream
+        bitmap.compress(
+            Bitmap.CompressFormat.JPEG,
+            100,
+            baos
+        ) // convertim el bitmap en outputstream
         val data = baos.toByteArray() //convertim el outputstream en array de bytes.
 
         val uploadTask = pathReference.putBytes(data)
         uploadTask.addOnFailureListener {
-            Toast.makeText(activity, resources.getText(R.string.Error_pujar_foto), Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                activity,
+                resources.getText(R.string.Error_pujar_foto),
+                Toast.LENGTH_LONG
+            ).show()
 
 
         }.addOnSuccessListener {
-            Toast.makeText(activity, resources.getText(R.string.Exit_pujar_foto), Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, resources.getText(R.string.Exit_pujar_foto), Toast.LENGTH_LONG)
+                .show()
 
         }
     }
 
     private fun showDatePickerDialog() {
-        val datePicker = DatePickerFragment{day, month, year -> onDateSelected(day, month, year)}
+        val datePicker = DatePickerFragment { day, month, year -> onDateSelected(day, month, year) }
 
         activity?.let { datePicker.show(it.supportFragmentManager, "Date Picker") }
 
 
     }
 
-    fun cridarMapa(){
+    fun cridarMapa() {
 
         val gmmIntentUri =
             Uri.parse("geo:41.210103794078506,1.6732920326085583")
@@ -238,7 +277,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
     }
 
 
-    fun onDateSelected(day:Int, month: Int, year:Int){
+    fun onDateSelected(day: Int, month: Int, year: Int) {
         textData.setText("$day/$month/$year")
     }
 
