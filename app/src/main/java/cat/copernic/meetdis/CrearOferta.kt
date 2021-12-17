@@ -31,6 +31,7 @@ import cat.copernic.meetdis.models.Oferta
 import com.bumptech.glide.manager.SupportRequestManagerFragment
 import com.github.dhaval2404.colorpicker.util.setVisibility
 import com.google.android.gms.dynamic.SupportFragmentWrapper
+import com.google.android.gms.maps.GoogleMap
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
@@ -117,6 +118,8 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
             cridarMapa()
 
         }
+
+
         var tasca1: Job? = null
         binding.bCrear.setOnClickListener { view: View ->
 
@@ -155,7 +158,6 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
                     binding.bCrear, //Botó per activar la corrutina 1
                     binding.progressBarUn, //Progrés de la corrutina 1
                 )
-                
                 view.findNavController()
                     .navigate(CrearOfertaDirections.actionCrearOfertaFragmentToIniciFragment(dni))
 
@@ -283,8 +285,11 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
         val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
         mapIntent.setPackage("com.google.android.apps.maps")
         startActivity(mapIntent)
-    }
 
+    }
+    private fun setMapClick(map: GoogleMap) {
+        map.setOnMapLongClickListener { }
+    }
 
     fun onDateSelected(day: Int, month: Int, year: Int) {
         textData.setText("$day/$month/$year")
