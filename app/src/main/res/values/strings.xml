@@ -76,6 +76,7 @@
 
     <string name="Error_pujar_foto">Error al pujar la foto</string>
     <string name="Exit_pujar_foto">La foto s´ha pujat correctament</string>
+    <string name="ok">OK</string>
 
 
 </resources>

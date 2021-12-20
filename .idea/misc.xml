@@ -50,6 +50,8 @@
         <entry key="app/src/main/res/layout/fragment_inici.xml" value="0.2376237623762376" />
         <entry key="app/src/main/res/layout/fragment_log_in.xml" value="0.309375" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.36041666666666666" />
+        <entry key="app/src/main/res/layout/fragment_maps.xml" value="0.21495726495726497" />
+        <entry key="app/src/main/res/layout/fragment_maps2.xml" value="0.21495726495726497" />
         <entry key="app/src/main/res/layout/fragment_membres.xml" value="0.36041666666666666" />
         <entry key="app/src/main/res/layout/fragment_notificacio.xml" value="0.20104166666666667" />
         <entry key="app/src/main/res/layout/fragment_oblida_contrasenya.xml" value="0.36041666666666666" />

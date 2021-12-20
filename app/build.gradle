@@ -131,9 +131,12 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-storage:4.3.2'
 
 
-
     //PICASSO
     implementation 'io.coil-kt:coil:0.11.0'
+
+
+    //MAPS
+    implementation 'com.google.android.gms:play-services-maps:18.0.1'
 
 
 

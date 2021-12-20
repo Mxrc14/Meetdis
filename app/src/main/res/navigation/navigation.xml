@@ -58,6 +58,9 @@
             android:id="@+id/action_crearOfertaFragment_to_iniciFragment"
             app:destination="@id/iniciFragment" />
         <argument android:name="dni" />
+        <action
+            android:id="@+id/action_crearOfertaFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
     </fragment>
 
     <fragment
@@ -240,5 +243,14 @@
         android:name="cat.copernic.meetdis.ValidacioUsuaris"
         android:label="activity_main"
         tools:layout="@layout/fragment_validacio_usuaris" />
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="cat.copernic.meetdis.MapsFragment"
+        android:label="fragment_maps2"
+        tools:layout="@layout/fragment_maps2" >
+        <action
+            android:id="@+id/action_mapsFragment_to_crearOfertaFragment"
+            app:destination="@id/crearOfertaFragment" />
+    </fragment>
 
 </navigation>
