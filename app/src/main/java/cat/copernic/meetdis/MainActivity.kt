@@ -2,6 +2,7 @@ package cat.copernic.meetdis
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -19,6 +20,7 @@ import cat.copernic.meetdis.R
 import cat.copernic.meetdis.databinding.ActivityMainBinding
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity()  {
     var visibleBottom: Boolean = false
@@ -26,7 +28,7 @@ class MainActivity : AppCompatActivity()  {
 
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
-
+    val user = FirebaseAuth.getInstance().currentUser
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,8 +57,19 @@ class MainActivity : AppCompatActivity()  {
             )
         )
 
+       // sesion()
+
      }
 
+    /*fun sesion() {
+        if (user != null) {
+            this?.findNavController()
+                ?.navigate(MapsFragmentDirections.actionMapsFragmentToCrearOfertaFragment(user))
+
+            navController.navigate(R.id.iniciFragment)
+
+        }
+    }*/
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

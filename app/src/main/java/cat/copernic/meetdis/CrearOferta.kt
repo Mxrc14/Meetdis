@@ -28,7 +28,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
@@ -39,6 +41,7 @@ import com.github.dhaval2404.colorpicker.util.setVisibility
 import com.google.android.gms.common.api.ResolvableApiException
 
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.firestore.CollectionReference
 
@@ -53,6 +56,7 @@ import java.io.ByteArrayOutputStream
 import java.io.File
 import java.net.URI.create
 import java.util.*
+import kotlin.properties.Delegates
 
 class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
@@ -63,6 +67,13 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
     lateinit var binding: FragmentCrearOfertaBinding
 
     private var latestTmpUri: Uri? = null
+
+    var lat: Double? = 0.0
+
+    var lon: Double? = 0.0
+
+
+    lateinit var localitzacio: LatLng
 
     private val runningQOrLater =
         android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q
@@ -89,10 +100,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
     ): View? {
 
 
-        setFragmentResultListener("requestKey") { requestKey, bundle ->
-            // We use a String here, but any type that can be put in a Bundle is supported
-            val result = bundle.getString("bundleKey")
-        }
+
 
             // Inflate the layout for this fragment
             binding = DataBindingUtil.inflate<FragmentCrearOfertaBinding>(
@@ -160,11 +168,35 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
                         Toast.makeText(requireContext(), "Algun camp esta buit", Toast.LENGTH_LONG)
                     toast.show()
                 }
+
+                setFragmentResultListener("latKey") { latKey, bundle ->
+                    // We use a String here, but any type that can be put in a Bundle is supported
+                    lat = bundle.getDouble("bundleKey1")
+                }
+
+                setFragmentResultListener("lonKey") { longKey, bundle ->
+                    // We use a String here, but any type that can be put in a Bundle is supported
+                    lon = bundle.getDouble("bundleKey2")
+                }
+                localitzacio = LatLng(lat!!.toDouble(), lon!!.toDouble())
+
+                Log.i("CrearOferta", "${localitzacio.latitude}, ${localitzacio.longitude}")
+
             }
+
+
+
+
+
+
+
 
             binding.mapView.setOnClickListener { view: View ->
 
                 Log.i("CrearOferta", "Boto de Maps")
+
+                setFragmentResult("dniKey", bundleOf("DNIKey" to args.dni))
+
                 view.findNavController()
                     .navigate(CrearOfertaDirections.actionCrearOfertaFragmentToMapsFragment())
             }
