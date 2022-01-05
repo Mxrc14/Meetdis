@@ -77,6 +77,11 @@
     <string name="Error_pujar_foto">Error al pujar la foto</string>
     <string name="Exit_pujar_foto">La foto s´ha pujat correctament</string>
     <string name="ok">OK</string>
+    <string name="telematic">TELEMÀTIC</string>
+    <string name="modificar">MODIFICAR</string>
+    <string name="eliminar">ELIMINAR</string>
+    <string name="actualitza">ACTUALITZA</string>
+    <string name="dni_usuari_prodis">DNI Usuari Prodis</string>
 
 
 </resources>

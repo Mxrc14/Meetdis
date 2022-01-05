@@ -130,6 +130,20 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
             var tasca1: Job? = null
             binding.bCrear.setOnClickListener { view: View ->
 
+                setFragmentResultListener("latKey") { latKey, bundle ->
+                    // We use a String here, but any type that can be put in a Bundle is supported
+                    lat = bundle.getDouble("bundleKey1")
+                }
+
+                setFragmentResultListener("lonKey") { longKey, bundle ->
+                    // We use a String here, but any type that can be put in a Bundle is supported
+                    lon = bundle.getDouble("bundleKey2")
+                }
+                localitzacio = LatLng(lat!!.toDouble(), lon!!.toDouble())
+
+                Log.i("CrearOferta", "${localitzacio.latitude}, ${localitzacio.longitude}")
+
+
 
                 if (textTitol.text.isNotEmpty() && descripcio.text.isNotEmpty()) {
 
@@ -144,8 +158,10 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
                         "titol" to textTitol.text.toString(),
                         "descripcio" to descripcio.text.toString(),
                         "data" to textData.text.toString(),
-                        "tipus" to opcion.toString()
-                    )
+                        "tipus" to opcion.toString(),
+                        "latitut" to localitzacio.latitude,
+                        "longitud" to localitzacio.longitude
+                     )
 
 
                     doc.set(data)
@@ -169,18 +185,6 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
                     toast.show()
                 }
 
-                setFragmentResultListener("latKey") { latKey, bundle ->
-                    // We use a String here, but any type that can be put in a Bundle is supported
-                    lat = bundle.getDouble("bundleKey1")
-                }
-
-                setFragmentResultListener("lonKey") { longKey, bundle ->
-                    // We use a String here, but any type that can be put in a Bundle is supported
-                    lon = bundle.getDouble("bundleKey2")
-                }
-                localitzacio = LatLng(lat!!.toDouble(), lon!!.toDouble())
-
-                Log.i("CrearOferta", "${localitzacio.latitude}, ${localitzacio.longitude}")
 
             }
 
@@ -195,7 +199,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
                 Log.i("CrearOferta", "Boto de Maps")
 
-                setFragmentResult("dniKey", bundleOf("DNIKey" to args.dni))
+
 
                 view.findNavController()
                     .navigate(CrearOfertaDirections.actionCrearOfertaFragmentToMapsFragment())

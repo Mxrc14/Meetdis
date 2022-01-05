@@ -5,23 +5,50 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.setFragmentResultListener
+import cat.copernic.meetdis.databinding.FragmentCrearOfertaBinding
+import cat.copernic.meetdis.databinding.FragmentOfertaBinding
+import com.github.dhaval2404.colorpicker.util.setVisibility
 
 
 class ContingutOferta() : Fragment() {
+    lateinit var binding: FragmentOfertaBinding
+    lateinit var dni: String
+    lateinit var dniC: String
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_oferta, container, false)
-    }
+        binding = DataBindingUtil.inflate<FragmentOfertaBinding>(
+                inflater,
+                R.layout.fragment_crear_oferta, container, false
+        )
 
+        var lat: Double? = null
+        var lon: Double? = null
+
+        if (lat == 0.0 && lon == 0.0) {
+            binding.telematicText.setVisibility(true)
+        } else {
+            binding.mapView.setVisibility(true)
+        }
+        setFragmentResultListener("dniKey") { dniKey, bundle ->
+            // We use a String here, but any type that can be put in a Bundle is supported
+            dni = bundle.getString("DNIKey").toString()
+        }
+
+        if (dniC == dni) {
+            binding.bModificar.setVisibility(true)
+            binding.bEliminar.setVisibility(true)
+        } else {
+            binding.bInscriuMe.setVisibility(true)
+        }
+
+
+        return binding.root
+    }
 
 
 }

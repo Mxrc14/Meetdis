@@ -3,9 +3,13 @@ package cat.copernic.meetdis.adapters
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 
 import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.meetdis.R
 
 import cat.copernic.meetdis.models.Oferta
 import cat.copernic.meetdis.databinding.ItemOfertaListBinding
@@ -28,9 +32,14 @@ class OfertaRecyclerAdapter : RecyclerView.Adapter<OfertaRecyclerAdapter.ViewHol
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
 
+
+
+
         return ViewHolder(
             ItemOfertaListBinding.inflate(layoutInflater, parent, false)
         )
+
+
     }
 
     //Aquest mètode s'encarrega de passar els objectes, un a un al ViewHolder personalitzat

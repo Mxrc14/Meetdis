@@ -50,13 +50,13 @@ class MainActivity : AppCompatActivity()  {
         binding.bottomMenu.setupWithNavController(navController)
 
 
-        appBarConfiguration = AppBarConfiguration(
+        /*appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.iniciFragment, R.id.buscarFragment, R.id.notificacioFragment,
                 R.id.xatsFragment, R.id.perfilUsuariFragment
             )
         )
-
+*/
        // sesion()
 
      }
