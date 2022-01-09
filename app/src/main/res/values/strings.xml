@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Meetdis</string>
     <string name="oblidar"><u>¿ Has oblidat la teva contrasenya ?</u></string>
     <string name="entrar">ENTRAR</string>
     <string name="password">Contrasenya</string>
@@ -38,9 +37,16 @@
         <item>Llibres</item>
     </string-array>
 
+
+
+    <string name="catala">Català</string>
+    <string name="castella">Castellà</string>
+    <string name="angles">Anglès</string>
+
     <string-array name="idiomas">
-        <item>Catala</item>
-        <item>Castella</item>
+        <item>@string/catala</item>
+        <item>@string/castella</item>
+        <item>@string/angles</item>
     </string-array>
 
     <string name="nomICognoms">Nom i Cognoms</string>
@@ -53,7 +59,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="registre">REGISTRE</string>
-    <string name="seleccioUsuari">Selecciona el tipus d\'Usuari:</string>
+    <string name="seleccioUsuari">Selecciona el Tipus d\'Usuari:</string>
     <string name="termes_i_condicions">Termes i condicions</string>
     <string name="colorSorpresa">COLOR SORPRESA</string>
     <string name="color_fons">COLOR FONS</string>
@@ -67,7 +73,7 @@
     <string name="aboutApp">Aquesta Aplicació mobil es una ajuda per l´empresa Prodis per facilitar-lis
     una eina amb la que els seus usuaris puguin millorar i organitzar la seva vida , d´aquesta manera podrien quedar i socialitzar
     amb companys que no saben que tenen.</string>
-    <string name="propietaris">Aquesta App esta desarrollada per Marc Hernandez i Adrià Tomás.</string>
+    <string name="propietaris">Aquesta App esta desarrollada per Marc Hernández i Adrià Tomás.</string>
     <string name="versio">Versió:</string>
     <string name="membres">Membres</string>
 
@@ -82,6 +88,16 @@
     <string name="eliminar">ELIMINAR</string>
     <string name="actualitza">ACTUALITZA</string>
     <string name="dni_usuari_prodis">DNI Usuari Prodis</string>
+    <string name="app_name">Meetdis</string>
+
+    <string name="notificacio_titol">Event nou creat</string>
+    <string name="notificacio_descripcio">S\'ha agregat un event al Calendari.</string>
+
+    <string name="basic_channel_id">Chnl1</string>
+    <string name="channel_name">MeetdisNot</string>
+    <string name="channel_description">Nullxd</string>
+
+
 
 
 </resources>

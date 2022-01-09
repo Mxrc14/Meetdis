@@ -49,17 +49,17 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
 
         val binding = DataBindingUtil.inflate<FragmentRegistreBinding>(inflater,
         R.layout.fragment_registre,container,false)
+         ArrayAdapter.createFromResource(requireContext(), R.array.tipus_Usuaris,
+
+             R.layout.spinner_item).also{ adapter->
+
+             adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
+             binding.spinnerUsuaris.adapter = adapter
+             //TODO documentar-lo en la memoria
+
+         }
 
 
-        ArrayAdapter.createFromResource(requireContext(), R.array.tipus_Usuaris,
-
-            R.layout.spinner_item).also{ adapter->
-
-            adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
-            binding.spinnerUsuaris.adapter = adapter
-            //TODO documentar-lo en la memoria
-
-        }
 
 
         binding.bContinuar.setOnClickListener { view: View ->

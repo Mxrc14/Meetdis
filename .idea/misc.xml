@@ -47,6 +47,8 @@
         <entry key="app/src/main/res/layout/fragment_about.xml" value="0.26666666666666666" />
         <entry key="app/src/main/res/layout/fragment_buscar.xml" value="0.20104166666666667" />
         <entry key="app/src/main/res/layout/fragment_contacte.xml" value="0.26666666666666666" />
+        <entry key="app/src/main/res/layout/fragment_contingutOferta.xml" value="0.2918803418803419" />
+        <entry key="app/src/main/res/layout/fragment_contingut_oferta.xml" value="0.2918803418803419" />
         <entry key="app/src/main/res/layout/fragment_crear_oferta.xml" value="0.28291316526610644" />
         <entry key="app/src/main/res/layout/fragment_inici.xml" value="0.2376237623762376" />
         <entry key="app/src/main/res/layout/fragment_log_in.xml" value="0.309375" />

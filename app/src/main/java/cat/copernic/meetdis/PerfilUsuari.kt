@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import cat.copernic.meetdis.databinding.FragmentIniciBinding
 import cat.copernic.meetdis.databinding.FragmentMembresBinding
-import cat.copernic.meetdis.databinding.FragmentOfertaBinding
 import cat.copernic.meetdis.databinding.FragmentPerfilUsuariBinding
 
 // TODO: Rename parameter arguments, choose names that match

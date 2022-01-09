@@ -6,7 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import cat.copernic.meetdis.databinding.FragmentOfertaBinding
+import cat.copernic.meetdis.databinding.FragmentContingutOfertaBinding
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,9 +25,9 @@ class ValidacioUsuaris : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = DataBindingUtil.inflate<FragmentOfertaBinding>(
+        val binding = DataBindingUtil.inflate<FragmentContingutOfertaBinding>(
             inflater,
-            R.layout.fragment_oferta, container, false
+            R.layout.fragment_contingut_oferta, container, false
         )
 
         return binding.root

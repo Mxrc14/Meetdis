@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="cat.copernic.meetdis.LogInFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container"
@@ -78,10 +78,10 @@
 
         <TextView
             android:id="@+id/spinnerEvents"
+            style="@style/spinner"
             android:layout_width="148dp"
             android:layout_height="55dp"
             android:layout_marginTop="16dp"
-            style="@style/spinner"
             android:fontFamily="@font/pt_sans_caption"
             android:gravity="center"
             android:spinnerMode="dropdown"
@@ -98,9 +98,9 @@
             android:layout_width="161dp"
             android:layout_height="51dp"
             android:layout_marginTop="16dp"
+            android:background="@drawable/bordes_meetdis"
             android:clickable="false"
             android:ems="10"
-            android:background="@drawable/bordes_meetdis"
             android:focusable="false"
             android:hint="@string/data"
             app:layout_constraintEnd_toEndOf="parent"
@@ -115,11 +115,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:src="@drawable/ic_location_oferta"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.263"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textData"
-            android:visibility="invisible"/>
+            app:layout_constraintTop_toBottomOf="@+id/textData" />
 
         <TextView
             android:id="@+id/telematicText"
@@ -128,7 +128,7 @@
             android:layout_marginTop="68dp"
             android:text="@string/telematic"
             android:textAlignment="center"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.189"
@@ -176,7 +176,6 @@
             app:layout_constraintHorizontal_bias="0.885"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/icMembres" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

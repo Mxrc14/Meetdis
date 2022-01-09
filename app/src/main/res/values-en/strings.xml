@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Meetdis</string>
+    <string name="oblidar"><u>¿ Forgot your password ?</u></string>
+    <string name="entrar">ENTER</string>
+    <string name="password">Password</string>
+    <string name="repeatPassword">Repeat Password</string>
+    <string name="dni">DNI</string>
+    <string name="inici">Home</string>
+    <string name="buscar">Search</string>
+    <string name="xat">Chat</string>
+    <string name="notificacio">Notification</string>
+    <string name="perfil">Profile</string>
+    <string name="personalitzacio">Personalize</string>
+    <string name="validacioUsuari">Validate Users</string>
+    <string name="contacte">Contact</string>
+    <string name="about">About App</string>
+    <string name="tancarSessio">Log Out</string>
+    <string name="continuar">CONTINUE</string>
+    <string name="finalitzar">FINALIZE</string>
+    <string name="nom">Name</string>
+    <string name="cognom">Last Name</string>
+    <string name="acceptarCondicions">Accept the terms and conditions</string>
+    <string name="correu">Mail</string>
+    <string name="dniProdis">DNI Prodis User</string>
+
+    <string-array name="tipus_Usuaris">
+        <item>Usuari</item>
+        <item>Monitor</item>
+        <item>Familiar</item>
+    </string-array>
+
+    <string-array name="tipus_Events">
+        <item>Esports</item>
+        <item>Musica</item>
+        <item>VideoJocs</item>
+        <item>Art</item>
+        <item>Pelis</item>
+        <item>Llibres</item>
+    </string-array>
+
+
+    <string name="catala">Catalan</string>
+    <string name="castella">Spanish</string>
+    <string name="angles">English</string>
+
+    <string-array name="idiomas">
+        <item>@string/angles</item>
+        <item>@string/catala</item>
+        <item>@string/castella</item>
+
+    </string-array>
+
+    <string name="nomICognoms">Name and Surname</string>
+    <string name="titol">Title</string>
+    <string name="descripcio">Description</string>
+    <string name="enviar">SEND</string>
+    <string name="crear">CREATE</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="registre">REGISTRATION</string>
+    <string name="seleccioUsuari">Select User Type:</string>
+    <string name="termes_i_condicions">Termes i condicions</string>
+    <string name="colorSorpresa">"SURPRISE COLOR "</string>
+    <string name="color_fons">BACKGROUND COLOR</string>
+    <string name="color_lleteres">"DAIRY COLOR "</string>
+
+
+    <string name="error_4digits">Password must be 4 numbers.</string>
+    <string name="data">Select the date</string>
+
+
+    <string name="aboutApp">"This mobile application is a help for the company Prodis to facilitate them\n     a tool with which its users can improve and organize their lives, in this way they could stay and socialize\n     with peers who don’t know they have. "</string>
+    <string name="versio">Version:</string>
+    <string name="membres">Members</string>
+
+    <string name="inscriu_me">"SIGN UP "</string>
+    <string name="localitzacio">Localization</string>
+
+    <string name="Error_pujar_foto">Error uploading photo</string>
+    <string name="Exit_pujar_foto">"Photo uploaded successfully "</string>
+    <string name="ok">OK</string>
+    <string name="telematic">TELEMATIC</string>
+    <string name="modificar">MODIFY</string>
+    <string name="eliminar">ELIMINATE</string>
+    <string name="actualitza">UPDATE</string>
+    <string name="dni_usuari_prodis">DNI Prodis User</string>
+    <string name="propietaris">"This App is developed by Marc Hernández and Adrià Tomás. "</string>
+
+
+
+    <string name="notificacio_titol">Meetdis</string>
+    <string name="notificacio_descripcio">Meetdis</string>
+
+
+</resources>
+
+
+
+
+
