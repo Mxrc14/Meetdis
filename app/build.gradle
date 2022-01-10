@@ -138,6 +138,11 @@ dependencies {
     //MAPS
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
 
+    //VIEW MODEL
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
+
+    //LIVE DATA
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0"
 
 
 
