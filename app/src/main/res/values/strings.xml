@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Meetdis</string>
     <string name="oblidar"><u>¿ Has oblidat la teva contrasenya ?</u></string>
     <string name="entrar">ENTRAR</string>
     <string name="password">Contrasenya</string>
@@ -24,23 +23,39 @@
     <string name="dniProdis">DNI Usuari Prodis</string>
 
     <string-array name="tipus_Usuaris">
-        <item>Usuari</item>
-        <item>Monitor</item>
-        <item>Familiar</item>
+        <item>@string/usuari</item>
+        <item>@string/monitor</item>
+        <item>@string/familiar</item>
     </string-array>
+
+    <string name="usuari">Usuari</string>
+    <string name="monitor">Monitor</string>
+    <string name="familiar">VideoJocs</string>
 
     <string-array name="tipus_Events">
-        <item>Esports</item>
-        <item>Musica</item>
-        <item>VideoJocs</item>
-        <item>Art</item>
-        <item>Pelis</item>
-        <item>Llibres</item>
+        <item>@string/esports</item>
+        <item>@string/musica</item>
+        <item>@string/videojocs</item>
+        <item>@string/art</item>
+        <item>@string/pelis</item>
+        <item>@string/llibres</item>
     </string-array>
 
+    <string name="esports">Esports</string>
+    <string name="musica">Música</string>
+    <string name="videojocs">VideoJocs</string>
+    <string name="art">Art</string>
+    <string name="pelis">Pel·lícules</string>
+    <string name="llibres">Llibres</string>
+
+    <string name="catala">Català</string>
+    <string name="castella">Castellà</string>
+    <string name="angles">Anglès</string>
+
     <string-array name="idiomas">
-        <item>Catala</item>
-        <item>Castella</item>
+        <item>@string/catala</item>
+        <item>@string/castella</item>
+        <item>@string/angles</item>
     </string-array>
 
     <string name="nomICognoms">Nom i Cognoms</string>
@@ -53,7 +68,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="registre">REGISTRE</string>
-    <string name="seleccioUsuari">Selecciona el tipus d\'Usuari:</string>
+    <string name="seleccioUsuari">Selecciona el Tipus d\'Usuari:</string>
     <string name="termes_i_condicions">Termes i condicions</string>
     <string name="colorSorpresa">COLOR SORPRESA</string>
     <string name="color_fons">COLOR FONS</string>
@@ -67,7 +82,7 @@
     <string name="aboutApp">Aquesta Aplicació mobil es una ajuda per l´empresa Prodis per facilitar-lis
     una eina amb la que els seus usuaris puguin millorar i organitzar la seva vida , d´aquesta manera podrien quedar i socialitzar
     amb companys que no saben que tenen.</string>
-    <string name="propietaris">Aquesta App esta desarrollada per Marc Hernandez i Adrià Tomás.</string>
+    <string name="propietaris">Aquesta App esta desarrollada per Marc Hernández i Adrià Tomás.</string>
     <string name="versio">Versió:</string>
     <string name="membres">Membres</string>
 
@@ -76,6 +91,52 @@
 
     <string name="Error_pujar_foto">Error al pujar la foto</string>
     <string name="Exit_pujar_foto">La foto s´ha pujat correctament</string>
+    <string name="ok">OK</string>
+    <string name="telematic">TELEMÀTIC</string>
+    <string name="modificar">MODIFICAR</string>
+    <string name="eliminar">ELIMINAR</string>
+    <string name="actualitza">ACTUALITZA</string>
+    <string name="dni_usuari_prodis">DNI Usuari Prodis</string>
+    <string name="app_name">Meetdis</string>
+
+    <string name="notificacio_titol">Nou Event Creat</string>
+    <string name="notificacio_descripcio">S\'ha agregat un event al Calendari.</string>
+
+    <string name="basic_channel_id">Chnl1</string>
+    <string name="channel_name">MeetdisNot</string>
+    <string name="channel_description">Nullxd</string>
+
+    <string name="camp_buit">Algun camp esta buit</string>
+
+    <string name="seleccio_opcio">Selecciona l\'opció amb la que vols obtenir la foto</string>
+
+
+
+    <string name="selecciona">Selecciona:</string>
+    <string name="camara">CÀMERA</string>
+    <string name="galeria">GALERIA</string>
+
+
+
+
+    <string name="dni_invalid">DNI no vàlid</string>
+    <string name="algun_camp_buit">Algún camp esta buit</string>
+    <string name="error">Error</string>
+
+    <string name="error_autenticar">S\'ha produit un error al autenticar l\'usuari</string>
+    <string name="acceptar">Acceptar</string>
+
+    <string name="constar_4_numeros">La contrasenya te que constar de 4 numeros.</string>
+    <string name="contrasenyas_diferents">Has introduit contrasenyes diferents</string>
+
+
+
+
+
+
+
+
+
 
 
 </resources>

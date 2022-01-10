@@ -4,13 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
-import androidx.navigation.ui.NavigationUI
-import cat.copernic.meetdis.databinding.FragmentBuscarBinding
-import cat.copernic.meetdis.databinding.FragmentIniciBinding
-
-
-
+import cat.copernic.meetdis.databinding.FragmentContingutOfertaBinding
 
 
 
@@ -22,12 +16,12 @@ class Buscar : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding = DataBindingUtil.inflate<FragmentBuscarBinding>(
+        val binding = DataBindingUtil.inflate<FragmentContingutOfertaBinding>(
             inflater,
-            R.layout.fragment_buscar, container, false
+            R.layout.fragment_contingut_oferta, container, false
         )
 
-        val args = BuscarArgs.fromBundle(requireArguments())
+        //val args = BuscarArgs.fromBundle(requireArguments())
 
 
         return binding.root

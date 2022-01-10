@@ -49,17 +49,17 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
 
         val binding = DataBindingUtil.inflate<FragmentRegistreBinding>(inflater,
         R.layout.fragment_registre,container,false)
+         ArrayAdapter.createFromResource(requireContext(), R.array.tipus_Usuaris,
+
+             R.layout.spinner_item).also{ adapter->
+
+             adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
+             binding.spinnerUsuaris.adapter = adapter
+             //TODO documentar-lo en la memoria
+
+         }
 
 
-        ArrayAdapter.createFromResource(requireContext(), R.array.tipus_Usuaris,
-
-            R.layout.spinner_item).also{ adapter->
-
-            adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
-            binding.spinnerUsuaris.adapter = adapter
-            //TODO documentar-lo en la memoria
-
-        }
 
 
         binding.bContinuar.setOnClickListener { view: View ->
@@ -118,7 +118,7 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
                         } else {
                             val toast = Toast.makeText(
                                 requireContext(),
-                                "La contrasenya te que constar de 4 numeros.",
+                                R.string.constar_4_numeros,
                                 Toast.LENGTH_LONG
                             )
                             toast.show()
@@ -127,17 +127,17 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
                     } else {
                         val toast = Toast.makeText(
                             requireContext(),
-                            "Has introduit contrasenyas diferents",
+                            R.string.contrasenyas_diferents,
                             Toast.LENGTH_LONG
                         )
                         toast.show()
                     }
                 } else {
-                    val toast = Toast.makeText(requireContext(), "DNI no valid", Toast.LENGTH_LONG)
+                    val toast = Toast.makeText(requireContext(), R.string.dni_invalid, Toast.LENGTH_LONG)
                     toast.show()
                 }
             }else{
-                val toast = Toast.makeText(requireContext(), "Algun camp esta buit", Toast.LENGTH_LONG)
+                val toast = Toast.makeText(requireContext(), R.string.algun_camp_buit, Toast.LENGTH_LONG)
                 toast.show()
             }
         }

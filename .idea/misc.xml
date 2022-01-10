@@ -27,6 +27,7 @@
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/menu/options_menu.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/meetdis/app/src/main/res/xml/provider_paths.xml" value="0.2128623188405797" />
         <entry key="app/src/main/res/drawable/bordes.xml" value="0.19907407407407407" />
+        <entry key="app/src/main/res/drawable/bordes_eliminar.xml" value="0.1717948717948718" />
         <entry key="app/src/main/res/drawable/bordes_meetdis.xml" value="0.2291139240506329" />
         <entry key="app/src/main/res/drawable/custom_input.xml" value="0.2094017094017094" />
         <entry key="app/src/main/res/drawable/custom_lock.xml" value="0.2994791666666667" />
@@ -47,17 +48,21 @@
         <entry key="app/src/main/res/layout/fragment_about.xml" value="0.26666666666666666" />
         <entry key="app/src/main/res/layout/fragment_buscar.xml" value="0.20104166666666667" />
         <entry key="app/src/main/res/layout/fragment_contacte.xml" value="0.26666666666666666" />
-        <entry key="app/src/main/res/layout/fragment_crear_oferta.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_contingutOferta.xml" value="0.2918803418803419" />
+        <entry key="app/src/main/res/layout/fragment_contingut_oferta.xml" value="0.2918803418803419" />
+        <entry key="app/src/main/res/layout/fragment_crear_oferta.xml" value="0.28291316526610644" />
         <entry key="app/src/main/res/layout/fragment_inici.xml" value="0.2376237623762376" />
         <entry key="app/src/main/res/layout/fragment_log_in.xml" value="0.309375" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.36041666666666666" />
+        <entry key="app/src/main/res/layout/fragment_maps.xml" value="0.21495726495726497" />
+        <entry key="app/src/main/res/layout/fragment_maps2.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_membres.xml" value="0.36041666666666666" />
         <entry key="app/src/main/res/layout/fragment_notificacio.xml" value="0.20104166666666667" />
         <entry key="app/src/main/res/layout/fragment_oblida_contrasenya.xml" value="0.36041666666666666" />
-        <entry key="app/src/main/res/layout/fragment_oferta.xml" value="0.36041666666666666" />
+        <entry key="app/src/main/res/layout/fragment_oferta.xml" value="0.258974358974359" />
         <entry key="app/src/main/res/layout/fragment_perfil_familiar.xml" value="0.36041666666666666" />
-        <entry key="app/src/main/res/layout/fragment_perfil_monitor.xml" value="0.36041666666666666" />
-        <entry key="app/src/main/res/layout/fragment_perfil_usuari.xml" value="0.20104166666666667" />
+        <entry key="app/src/main/res/layout/fragment_perfil_monitor.xml" value="0.26737967914438504" />
+        <entry key="app/src/main/res/layout/fragment_perfil_usuari.xml" value="0.3170940170940171" />
         <entry key="app/src/main/res/layout/fragment_personalitzacio.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_registre.xml" value="0.3082901554404145" />
         <entry key="app/src/main/res/layout/fragment_registre_familiar.xml" value="0.36041666666666666" />

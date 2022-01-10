@@ -2,9 +2,10 @@ package cat.copernic.meetdis
 
 import android.os.Bundle
 import android.view.*
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.setFragmentResult
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +17,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class Inici : Fragment() {
 
-    private lateinit var viewModel: IniciViewModel
 
     private var myAdapter: OfertaRecyclerAdapter = OfertaRecyclerAdapter()
 
@@ -28,17 +28,14 @@ class Inici : Fragment() {
 
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
 
         binding = DataBindingUtil.inflate<FragmentIniciBinding>(
-            inflater,
-            R.layout.fragment_inici, container, false
+                inflater,
+                R.layout.fragment_inici, container, false
         )
-
-        viewModel = ViewModelProvider(this).get(IniciViewModel::class.java)
-
         val args = IniciArgs.fromBundle(requireArguments())
 
         binding.rvOfertes.setHasFixedSize(true)
@@ -47,33 +44,36 @@ class Inici : Fragment() {
 
 
         db.collection("ofertes")
-            .get()
-            .addOnSuccessListener { documents ->
-                ofertes.clear()
-                for (document in documents) {
-                    ofertes.add(
-                        Oferta(
-                            document.get("titol").toString(),
-                            document.get("descripcio").toString(),
-                            document.get("dni").toString(),
-                            document.get("data").toString(),
-                            document.get("tipus").toString(),
-                            document.id
+                .get()
+                .addOnSuccessListener { documents ->
+                    ofertes.clear()
+                    for (document in documents) {
+                        ofertes.add(
+                                Oferta(
+                                        document.get("titol").toString(),
+                                        document.get("descripcio").toString(),
+                                        document.get("dni").toString(),
+                                        document.get("data").toString(),
+                                        document.get("tipus").toString(),
+                                        document . id,
+                                        document.get("latitut") as Double,
+                                        document.get("longitud") as Double
+                                )
                         )
-                    )
-                }
-                context?.let { myAdapter.OfertaRecyclerAdapter(ofertes, it) }
-                binding.rvOfertes.adapter = myAdapter
+                    }
+                    context?.let { myAdapter.OfertaRecyclerAdapter(ofertes, it) }
+                    binding.rvOfertes.adapter = myAdapter
 
-            }
+                }
 
         binding.crearButton.setOnClickListener { view: View ->
             val dni: String = args.dni;
             view.findNavController()
-                .navigate(IniciDirections.actionIniciFragmentToCrearOfertaFragment(dni))
+                    .navigate(IniciDirections.actionIniciFragmentToCrearOfertaFragment(dni))
 
         }
 
+        setFragmentResult("dniKey", bundleOf("DNIKey" to args.dni))
 
         return binding.root
     }

@@ -127,12 +127,12 @@ class LogInFragment : Fragment() {
                         toast.show()
                     }
                 } else {
-                    val toast = Toast.makeText(requireContext(), "DNI no valid", Toast.LENGTH_LONG)
+                    val toast = Toast.makeText(requireContext(), R.string.dni_invalid, Toast.LENGTH_LONG)
                     toast.show()
                 }
             } else {
                 val toast =
-                    Toast.makeText(requireContext(), "Algun camp esta buit", Toast.LENGTH_LONG)
+                    Toast.makeText(requireContext(), R.string.algun_camp_buit, Toast.LENGTH_LONG)
                 toast.show()
             }
 
@@ -149,9 +149,9 @@ class LogInFragment : Fragment() {
     private fun showAlert() {
 
         val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Error")
-        builder.setMessage("Se ha produit un error al autenticar l´usuari")
-        builder.setPositiveButton("Acceptar", null)
+        builder.setTitle(R.string.error)
+        builder.setMessage(R.string.error_autenticar)
+        builder.setPositiveButton(R.string.acceptar, null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
 

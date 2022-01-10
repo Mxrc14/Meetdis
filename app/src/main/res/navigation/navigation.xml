@@ -58,13 +58,16 @@
             android:id="@+id/action_crearOfertaFragment_to_iniciFragment"
             app:destination="@id/iniciFragment" />
         <argument android:name="dni" />
+        <action
+            android:id="@+id/action_crearOfertaFragment_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/ofertaFragment"
         android:name="cat.copernic.meetdis.Oferta"
         android:label="fragment_title"
-        tools:layout="@layout/fragment_oferta">
+        tools:layout="@layout/fragment_contingutOferta">
         <action
             android:id="@+id/action_ofertaFragmentFragment_to_iniciFragment"
             app:destination="@id/iniciFragment" />
@@ -82,7 +85,7 @@
 
     <fragment
         android:id="@+id/buscarFragment"
-        android:name="cat.copernic.meetdis.Buscar"
+        android:name="cat.copernic.meetdis.ContingutOferta"
         android:label="activity_main"
         tools:layout="@layout/fragment_buscar" >
         <action
@@ -222,7 +225,11 @@
         android:id="@+id/personalitzacioFragment"
         android:name="cat.copernic.meetdis.Personalitzacio"
         android:label="activity_main"
-        tools:layout="@layout/fragment_personalitzacio" />
+        tools:layout="@layout/fragment_personalitzacio" >
+        <action
+            android:id="@+id/action_personalitzacioFragment_to_iniciFragment"
+            app:destination="@id/iniciFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/aboutFragment"
@@ -240,5 +247,14 @@
         android:name="cat.copernic.meetdis.ValidacioUsuaris"
         android:label="activity_main"
         tools:layout="@layout/fragment_validacio_usuaris" />
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="cat.copernic.meetdis.MapsFragment"
+        android:label="fragment_maps2"
+        tools:layout="@layout/fragment_maps2" >
+        <action
+            android:id="@+id/action_mapsFragment_to_crearOfertaFragment"
+            app:destination="@id/crearOfertaFragment" />
+    </fragment>
 
 </navigation>
