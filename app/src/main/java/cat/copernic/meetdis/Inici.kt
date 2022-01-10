@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,6 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class Inici : Fragment() {
 
+    private lateinit var viewModel: IniciViewModel
 
     private var myAdapter: OfertaRecyclerAdapter = OfertaRecyclerAdapter()
 
@@ -34,6 +36,9 @@ class Inici : Fragment() {
             inflater,
             R.layout.fragment_inici, container, false
         )
+
+        viewModel = ViewModelProvider(this).get(IniciViewModel::class.java)
+
         val args = IniciArgs.fromBundle(requireArguments())
 
         binding.rvOfertes.setHasFixedSize(true)

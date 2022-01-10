@@ -130,9 +130,14 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:20.0.0'
     implementation 'com.firebaseui:firebase-ui-storage:4.3.2'
 
-
     //PICASSO
     implementation 'io.coil-kt:coil:0.11.0'
+
+    //VIEW MODEL
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0"
+
+    //LIVE DATA
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.0"
 
 
 

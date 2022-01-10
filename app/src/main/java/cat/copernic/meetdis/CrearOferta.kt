@@ -2,7 +2,6 @@ package cat.copernic.meetdis
 
 import android.app.Activity
 import android.app.AlertDialog
-import android.content.ContentValues
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
@@ -13,39 +12,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.autofill.AutofillValue
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.NonNull
-import androidx.appcompat.view.SupportActionModeWrapper
 import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import cat.copernic.meetdis.databinding.FragmentCrearOfertaBinding
-import cat.copernic.meetdis.databinding.FragmentRegistreBinding
-import cat.copernic.meetdis.databinding.FragmentRegistreFamiliarBinding
-import cat.copernic.meetdis.databinding.FragmentRegistreUsuariBinding
-import cat.copernic.meetdis.models.Oferta
-import com.bumptech.glide.manager.SupportRequestManagerFragment
 import com.github.dhaval2404.colorpicker.util.setVisibility
-import com.google.android.gms.dynamic.SupportFragmentWrapper
 import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_crear_oferta.*
-import kotlinx.android.synthetic.main.fragment_registre.*
-import kotlinx.android.synthetic.main.fragment_registre_familiar.*
-import kotlinx.android.synthetic.main.fragment_registre_usuari.*
-import kotlinx.android.synthetic.main.fragment_registre_usuari.textCognom
-import kotlinx.android.synthetic.main.fragment_registre_usuari.textNom
 import kotlinx.coroutines.*
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.util.*
-import kotlin.reflect.jvm.internal.impl.load.kotlin.JvmType
+
 
 
 

@@ -21,6 +21,7 @@ import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.isDigitsOnly
+import androidx.lifecycle.ViewModelProvider
 import com.github.dhaval2404.colorpicker.util.setVisibility
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -32,7 +33,6 @@ import kotlinx.coroutines.*
 
 
 class LogInFragment : Fragment() {
-
 
     private lateinit var drawerLayout: DrawerLayout
 
