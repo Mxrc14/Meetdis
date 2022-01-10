@@ -45,7 +45,7 @@
 
     <string name="esports">Deportes</string>
     <string name="musica">Música</string>
-    <string name="videojocs">VideoJocs</string>
+    <string name="videojocs">VideoJuegos</string>
     <string name="art">Arte</string>
     <string name="pelis">Películas</string>
     <string name="llibres">Libros</string>
@@ -122,7 +122,7 @@
 
 
     <string name="dni_invalid">"DNI no válido "</string>
-    <string name="algun_camp_buit">"Alguno campo está vacío "</string>
+    <string name="algun_camp_buit">Algún campo está vacío</string>
     <string name="error">Error</string>
 
     <string name="error_autenticar">"Se ha producido un error al autenticar al usuario "</string>
