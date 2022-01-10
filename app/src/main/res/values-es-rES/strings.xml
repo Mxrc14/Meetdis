@@ -25,19 +25,30 @@
     <string name="dniProdis">DNI Usuario Prodis</string>
 
     <string-array name="tipus_Usuaris">
-        <item>Usuari</item>
-        <item>Monitor</item>
-        <item>Familiar</item>
+        <item>@string/usuari</item>
+        <item>@string/monitor</item>
+        <item>@string/familiar</item>
     </string-array>
 
+    <string name="usuari">Usuario</string>
+    <string name="monitor">Monitor</string>
+    <string name="familiar">VideoJuegos</string>
+
     <string-array name="tipus_Events">
-        <item>Esports</item>
-        <item>Musica</item>
-        <item>VideoJocs</item>
-        <item>Art</item>
-        <item>Pelis</item>
-        <item>Llibres</item>
+        <item>@string/esports</item>
+        <item>@string/musica</item>
+        <item>@string/videojocs</item>
+        <item>@string/art</item>
+        <item>@string/pelis</item>
+        <item>@string/llibres</item>
     </string-array>
+
+    <string name="esports">Deportes</string>
+    <string name="musica">Música</string>
+    <string name="videojocs">VideoJocs</string>
+    <string name="art">Arte</string>
+    <string name="pelis">Películas</string>
+    <string name="llibres">Libros</string>
 
 
     <string name="catala">Catalán</string>
@@ -90,8 +101,36 @@
 
 
 
-    <string name="notificacio_titol">Meetdis</string>
-    <string name="notificacio_descripcio">Meetdis</string>
+    <string name="notificacio_titol">Nuevo Evento Creado</string>
+    <string name="notificacio_descripcio">"Se ha agregado un evento al Calendario. "</string>
+
+    <string name="basic_channel_id">Chnl1</string>
+    <string name="channel_name">MeetdisNot</string>
+    <string name="channel_description">Nullxd</string>
+
+    <string name="camp_buit">Algún campo está vacío</string>
+
+    <string name="seleccio_opcio">Selecciona la opción con la que quieres obtener la foto</string>
+
+
+
+    <string name="selecciona">Selecciona:</string>
+    <string name="camara">CÁMARA</string>
+    <string name="galeria">GALERÍA</string>
+
+
+
+
+    <string name="dni_invalid">"DNI no válido "</string>
+    <string name="algun_camp_buit">"Alguno campo está vacío "</string>
+    <string name="error">Error</string>
+
+    <string name="error_autenticar">"Se ha producido un error al autenticar al usuario "</string>
+    <string name="acceptar">Aceptar</string>
+
+    <string name="constar_4_numeros">La contraseña tiene que constar de 4 números.</string>
+    <string name="contrasenyas_diferents">Has introducido contraseñas diferentes</string>
+
 
 </resources>
 

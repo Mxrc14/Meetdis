@@ -118,7 +118,7 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
                         } else {
                             val toast = Toast.makeText(
                                 requireContext(),
-                                "La contrasenya te que constar de 4 numeros.",
+                                R.string.constar_4_numeros,
                                 Toast.LENGTH_LONG
                             )
                             toast.show()
@@ -127,17 +127,17 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
                     } else {
                         val toast = Toast.makeText(
                             requireContext(),
-                            "Has introduit contrasenyas diferents",
+                            R.string.contrasenyas_diferents,
                             Toast.LENGTH_LONG
                         )
                         toast.show()
                     }
                 } else {
-                    val toast = Toast.makeText(requireContext(), "DNI no valid", Toast.LENGTH_LONG)
+                    val toast = Toast.makeText(requireContext(), R.string.dni_invalid, Toast.LENGTH_LONG)
                     toast.show()
                 }
             }else{
-                val toast = Toast.makeText(requireContext(), "Algun camp esta buit", Toast.LENGTH_LONG)
+                val toast = Toast.makeText(requireContext(), R.string.algun_camp_buit, Toast.LENGTH_LONG)
                 toast.show()
             }
         }

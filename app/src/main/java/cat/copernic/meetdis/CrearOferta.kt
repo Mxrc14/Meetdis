@@ -216,7 +216,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
             } else {
                 val toast =
-                    Toast.makeText(requireContext(), "Algun camp esta buit", Toast.LENGTH_LONG)
+                    Toast.makeText(requireContext(), R.string.camp_buit, Toast.LENGTH_LONG)
                 toast.show()
             }
 
@@ -351,13 +351,13 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
     fun escollirCamaraGaleria() {
         val alertDialog = AlertDialog.Builder(context).create()
-        alertDialog.setTitle("Selecciona l´ opció amb la que vols obtenir la foto")
-        alertDialog.setMessage("Selecciona:")
+        alertDialog.setTitle(R.string.seleccio_opcio)
+        alertDialog.setMessage(R.string.selecciona.toString())
         alertDialog.setButton(
-            AlertDialog.BUTTON_POSITIVE, "CAMARA"
+            AlertDialog.BUTTON_POSITIVE, R.string.camara.toString()
         ) { dialog, which -> obrirCamera() }
         alertDialog.setButton(
-            AlertDialog.BUTTON_NEGATIVE, "GALERIA"
+            AlertDialog.BUTTON_NEGATIVE, R.string.galeria.toString()
         ) { dialog, which -> obrirGaleria() }
         alertDialog.show()
 

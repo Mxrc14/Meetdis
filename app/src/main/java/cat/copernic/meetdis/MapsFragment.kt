@@ -41,7 +41,7 @@ class MapsFragment : Fragment() {
         )
 
         binding.OKButton.setOnClickListener {
-            val dni: String = "12345678A"
+
 
 
             view?.findNavController()

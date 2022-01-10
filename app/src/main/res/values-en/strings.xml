@@ -25,19 +25,30 @@
     <string name="dniProdis">DNI Prodis User</string>
 
     <string-array name="tipus_Usuaris">
-        <item>Usuari</item>
-        <item>Monitor</item>
-        <item>Familiar</item>
+        <item>@string/usuari</item>
+        <item>@string/monitor</item>
+        <item>@string/familiar</item>
     </string-array>
 
+    <string name="usuari">User</string>
+    <string name="monitor">Monitor</string>
+    <string name="familiar">Video games</string>
+
     <string-array name="tipus_Events">
-        <item>Esports</item>
-        <item>Musica</item>
-        <item>VideoJocs</item>
-        <item>Art</item>
-        <item>Pelis</item>
-        <item>Llibres</item>
+        <item>@string/esports</item>
+        <item>@string/musica</item>
+        <item>@string/videojocs</item>
+        <item>@string/art</item>
+        <item>@string/pelis</item>
+        <item>@string/llibres</item>
     </string-array>
+
+    <string name="esports">Sports</string>
+    <string name="musica">Music</string>
+    <string name="videojocs">VideoJocs</string>
+    <string name="art">Art</string>
+    <string name="pelis">Films</string>
+    <string name="llibres">Books</string>
 
 
     <string name="catala">Catalan</string>
@@ -91,8 +102,36 @@
 
 
 
-    <string name="notificacio_titol">Meetdis</string>
-    <string name="notificacio_descripcio">Meetdis</string>
+    <string name="notificacio_titol">New Event Created</string>
+    <string name="notificacio_descripcio">"An event has been added to the Calendar. "</string>
+
+    <string name="basic_channel_id">Chnl1</string>
+    <string name="channel_name">MeetdisNot</string>
+    <string name="channel_description">Nullxd</string>
+
+    <string name="camp_buit">Some fields are empty</string>
+
+    <string name="seleccio_opcio">Select the option with which you want to get the photo</string>
+
+
+
+    <string name="selecciona">Select:</string>
+    <string name="camara">CAMERA</string>
+    <string name="galeria">GALLERY</string>
+
+
+
+
+    <string name="dni_invalid">DNI no valid</string>
+    <string name="algun_camp_buit">Some fields are empty</string>
+    <string name="error">Error</string>
+
+    <string name="error_autenticar">"An error occurred while authenticating the user "</string>
+    <string name="acceptar">Accept</string>
+
+    <string name="constar_4_numeros">The password must consist of 4 numbers.</string>
+    <string name="contrasenyas_diferents">You have entered different passwords</string>
+
 
 
 </resources>
