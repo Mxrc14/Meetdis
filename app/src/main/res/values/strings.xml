@@ -30,7 +30,7 @@
 
     <string name="usuari">Usuari</string>
     <string name="monitor">Monitor</string>
-    <string name="familiar">VideoJocs</string>
+    <string name="familiar">Familiar</string>
 
     <string-array name="tipus_Events">
         <item>@string/esports</item>

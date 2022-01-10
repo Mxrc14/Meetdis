@@ -14,6 +14,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.*
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import cat.copernic.meetdis.R
@@ -21,6 +22,7 @@ import cat.copernic.meetdis.databinding.ActivityMainBinding
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.fragment_perfil_usuari.*
 
 class MainActivity : AppCompatActivity()  {
     var visibleBottom: Boolean = false
@@ -28,7 +30,9 @@ class MainActivity : AppCompatActivity()  {
 
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
-    val user = FirebaseAuth.getInstance().currentUser
+
+    val user = FirebaseAuth.getInstance().tenantId
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,28 +54,26 @@ class MainActivity : AppCompatActivity()  {
         binding.bottomMenu.setupWithNavController(navController)
 
 
-        /*appBarConfiguration = AppBarConfiguration(
+        appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.iniciFragment, R.id.buscarFragment, R.id.notificacioFragment,
                 R.id.xatsFragment, R.id.perfilUsuariFragment
             )
         )
-*/
-       // sesion()
+
+
+        sesion()
 
      }
 
-    /*fun sesion() {
-        if (user != null) {
-            this?.findNavController()
-                ?.navigate(MapsFragmentDirections.actionMapsFragmentToCrearOfertaFragment(user))
+    fun sesion() {
 
-            navController.navigate(R.id.iniciFragment)
+        if (user != null) {
+            Log.i("MainActivityxd", "$user")
+           // this.navController.navigate(MapsFragmentDirections.actionMapsFragmentToCrearOfertaFragment(user))
 
         }
-    }*/
-
-
+    }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(item,navController)
                 ||super.onOptionsItemSelected(item)
