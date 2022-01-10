@@ -152,17 +152,13 @@ class RegistreMonitor : Fragment() {
         }
     }
 
-    fun escollirCamaraGaleria(){
-        val alertDialog = AlertDialog.Builder(context).create()
-        alertDialog.setTitle(R.string.seleccio_opcio)
-        alertDialog.setMessage(R.string.selecciona.toString())
-        alertDialog.setButton(
-            AlertDialog.BUTTON_POSITIVE, R.string.camara.toString()
-        ){dialog, which -> obrirCamera()}
-        alertDialog.setButton(
-            AlertDialog.BUTTON_NEGATIVE, R.string.galeria.toString()
-        ){dialog, which -> obrirGaleria()}
-        alertDialog.show()
+    fun escollirCamaraGaleria() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle(R.string.seleccio_opcio)
+        builder.setMessage(R.string.selecciona)
+        builder.setPositiveButton(R.string.camara, { dialog, which -> obrirCamera() })
+        builder.setNegativeButton(R.string.galeria, { dialog, which -> obrirGaleria() })
+        builder.show()
     }
 
     private fun getTmpFileUri(): Uri? {

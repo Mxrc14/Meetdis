@@ -32,7 +32,7 @@
 
     <string name="usuari">User</string>
     <string name="monitor">Monitor</string>
-    <string name="familiar">Video games</string>
+    <string name="familiar">Familiar</string>
 
     <string-array name="tipus_Events">
         <item>@string/esports</item>
@@ -45,7 +45,7 @@
 
     <string name="esports">Sports</string>
     <string name="musica">Music</string>
-    <string name="videojocs">VideoJocs</string>
+    <string name="videojocs">VideoGames</string>
     <string name="art">Art</string>
     <string name="pelis">Films</string>
     <string name="llibres">Books</string>
