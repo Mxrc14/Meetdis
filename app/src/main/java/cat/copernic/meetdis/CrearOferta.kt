@@ -168,47 +168,12 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
                 )
 
 
-                val channelId = getString(R.string.basic_channel_id) // (1)
-
-
-                val builder = NotificationCompat.Builder(requireContext(), channelId)
-                    .setSmallIcon(R.drawable.meetdis) // (5)
-                    .setContentTitle(R.string.notificacio_titol.toString()) // (6)
-                    .setContentText(R.string.notificacio_descripcio.toString()) // (7)
-                    .setPriority(NotificationCompat.PRIORITY_DEFAULT) // (9)
-                    .setAutoCancel(true)
-
-
-                // Create the NotificationChannel, but only on API 26+ because
-                // the NotificationChannel class is new and not in the support library
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    val channelId = getString(R.string.basic_channel_id)
-                    val name = getString(R.string.channel_name)
-                    val descriptionText = getString(R.string.channel_description)
-                    val importance = NotificationManager.IMPORTANCE_DEFAULT
-                    val channel = NotificationChannel(channelId, name, importance).apply {
-                        description = descriptionText
-                    }
-
-                    // Register the channel with the system
-                    val notificationManager: NotificationManager =
-                        activity!!.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-                    notificationManager.createNotificationChannel(channel)
-                }
-
-
-                val notificationId: Int = 1
+                generateNotification()
 
 
 
-                with(NotificationManagerCompat.from(requireContext())) {
-                    // notificationId is a unique int for each notification that you must define
-                    notify(notificationId, builder.build())
-                }
 
-
-                crearEvento()
+                //crearEvento()
 
                 view.findNavController()
                     .navigate(CrearOfertaDirections.actionCrearOfertaFragmentToIniciFragment(dni))
@@ -288,15 +253,42 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
     }
 
     private fun generateNotification() {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channelId = getString(R.string.basic_channel_id)
+            val name = getString(R.string.channel_name)
+            val descriptionText = getString(R.string.channel_description)
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(channelId, name, importance).apply {
+                description = descriptionText
+            }
+
+            // Register the channel with the system
+            val notificationManager: NotificationManager =
+                activity!!.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+
+
         val channelId = getString(R.string.basic_channel_id) // (1)
 
+        var titol = "Event Creat"
+        var descripcio = "L'event ha siguit creat correctament"
 
         val notification = NotificationCompat.Builder(requireContext(), channelId)
             .setSmallIcon(R.drawable.meetdis) // (5)
-            .setContentTitle(R.string.notificacio_titol.toString()) // (6)
-            .setContentText(R.string.notificacio_descripcio.toString()) // (7)
+            .setContentTitle(titol) // (6)
+            .setContentText(descripcio) // (7)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT) // (9)
             .setAutoCancel(true)
+
+        val notificationId: Int = 1
+
+        with(NotificationManagerCompat.from(requireContext())) {
+            // notificationId is a unique int for each notification that you must define
+            notify(notificationId, notification.build())
+        }
+
     }
 
     private fun createNotificationChannel() {

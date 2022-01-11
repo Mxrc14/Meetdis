@@ -23,7 +23,6 @@ class Buscar : Fragment() {
 
         //val args = BuscarArgs.fromBundle(requireArguments())
 
-
         return binding.root
     }
 

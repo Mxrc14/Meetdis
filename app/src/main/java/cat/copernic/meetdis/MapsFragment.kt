@@ -33,7 +33,10 @@ class MapsFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-
+        setFragmentResultListener("dniKey") { dniKey, bundle ->
+            // We use a String here, but any type that can be put in a Bundle is supported
+            dni = bundle.getString("DNIKey").toString()
+        }
 
         binding = DataBindingUtil.inflate(
                 inflater,
@@ -45,7 +48,7 @@ class MapsFragment : Fragment() {
 
 
             view?.findNavController()
-                    ?.navigate(MapsFragmentDirections.actionMapsFragmentToCrearOfertaFragment(dni))
+                    ?.navigate(MapsFragmentDirections.actionMapsFragmentToCrearOfertaFragment(dni!!))
 
 
         }
@@ -117,16 +120,13 @@ class MapsFragment : Fragment() {
             Log.i("MapsFragment", "$lat  $lon")
 
 
-            setFragmentResultListener("dniKey") { dniKey, bundle ->
-                // We use a String here, but any type that can be put in a Bundle is supported
-                dni = bundle.getString("DNIKey").toString()
-            }
+
 
             Log.i("MapsFragment", "$dni")
 
 
             view?.findNavController()
-                    ?.navigate(MapsFragmentDirections.actionMapsFragmentToCrearOfertaFragment(dni))
+                    ?.navigate(MapsFragmentDirections.actionMapsFragmentToCrearOfertaFragment(dni!!))
 
         }
 
