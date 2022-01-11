@@ -85,7 +85,7 @@
 
     <fragment
         android:id="@+id/buscarFragment"
-        android:name="cat.copernic.meetdis.ContingutOferta"
+        android:name="cat.copernic.meetdis.Buscar"
         android:label="activity_main"
         tools:layout="@layout/fragment_buscar" >
         <action
@@ -134,18 +134,6 @@
         android:name="cat.copernic.meetdis.PerfilUsuari"
         android:label="activity_main"
         tools:layout="@layout/fragment_perfil_usuari" />
-
-    <fragment
-        android:id="@+id/perfilMonitorFragment"
-        android:name="cat.copernic.meetdis.PerfilMonitor"
-        android:label="activity_main"
-        tools:layout="@layout/fragment_perfil_monitor" />
-
-    <fragment
-        android:id="@+id/perfilFamiliarFragment"
-        android:name="cat.copernic.meetdis.PerfilFamiliar"
-        android:label="activity_main"
-        tools:layout="@layout/fragment_perfil_familiar" />
 
     <fragment
         android:id="@+id/registreFragment"
