@@ -65,9 +65,9 @@
 
     <fragment
         android:id="@+id/ofertaFragment"
-        android:name="cat.copernic.meetdis.Oferta"
+        android:name="cat.copernic.meetdis.ContingutOferta"
         android:label="fragment_title"
-        tools:layout="@layout/fragment_contingutOferta">
+        tools:layout="@layout/fragment_contingut_oferta">
         <action
             android:id="@+id/action_ofertaFragmentFragment_to_iniciFragment"
             app:destination="@id/iniciFragment" />
