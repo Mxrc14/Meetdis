@@ -188,13 +188,6 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
         }
 
-
-
-
-
-
-
-
         binding.mapView.setOnClickListener { view: View ->
 
             Log.i("CrearOferta", "Boto de Maps")
