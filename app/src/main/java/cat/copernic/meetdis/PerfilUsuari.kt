@@ -36,7 +36,7 @@ class PerfilUsuari : Fragment() {
 
     lateinit var binding: FragmentPerfilUsuariBinding
 
-    var tipo : String? = null
+    var tipo: String? = null
 
 
     override fun onCreateView(
@@ -45,7 +45,7 @@ class PerfilUsuari : Fragment() {
     ): View? {
 
 
-         binding = DataBindingUtil.inflate<FragmentPerfilUsuariBinding>(
+        binding = DataBindingUtil.inflate<FragmentPerfilUsuariBinding>(
             inflater,
             R.layout.fragment_perfil_usuari, container, false
         )
@@ -59,49 +59,47 @@ class PerfilUsuari : Fragment() {
 
         val userdni = db.collection("users").document(dni.uppercase())
 
-        userdni.get().addOnSuccessListener { document -> if(document.exists()){
-            tipo = document.data?.get("tipus").toString()
-        }
+        Log.i("aaaaaaaaa", "${dni.uppercase()}")
+
+        userdni.get().addOnSuccessListener { document ->
+            if (document.exists()) {
+                tipo = document.data?.get("tipus").toString()
+            }
         }
 
-        if(tipo == "Monitor"){
+        if (tipo == "Monitor") {
             binding.dniUsuariProdis.setVisibility(false)
-        }else if(tipo == "Familiar"){
+        } else if (tipo == "Familiar") {
             binding.textCorreu.setVisibility(false)
-        }else{
+        } else {
             binding.dniUsuariProdis.setVisibility(false)
             binding.textCorreu.setVisibility(false)
         }
 
+        binding.bActualitza.setOnClickListener {
 
 
-        binding.bActualitza.setOnClickListener(){
+            if (binding.textNom.text.toString().isNotEmpty()) {
+                userdni.update("nom", binding.textNom.text.toString())
+            }
+
+            if (binding.textCognom.text.toString().isNotEmpty()) {
+                userdni.update("cognoms", binding.textCognom.text.toString())
+            }
+            if (binding.descripcio.text.toString().isNotEmpty()) {
+                userdni.update("descripcio", binding.descripcio.text.toString())
+            }
+            if (binding.textCorreu.text.toString().isNotEmpty()) {
+                userdni.update("correu", binding.textCorreu.text.toString())
+            }
 
 
-               Log.i("aaaaaaaaa", "Estem dentro1")
 
-               if(binding.textNom.text.toString().isNotEmpty()){
-                   userdni.set(hashMapOf(
-                       "nom" to binding.textNom.text.toString()
-
-                   )
-                   )
-                   Log.i("aaaaaaaaa", "Estem dentro")
-               }
-               if(binding.textCognom.text.toString().isNotEmpty()){
-                   userdni.update("cognoms", binding.textCognom.text.toString())
-               }
-               if(binding.descripcio.text.toString().isNotEmpty()){
-                   userdni.update("descripcio", binding.descripcio.text.toString())
-               }
-               if(binding.textCorreu.text.toString().isNotEmpty()){
-                   userdni.update("correu", binding.textCorreu.text.toString())
-               }
-            if(binding.dniUsuariProdis.text.toString().isNotEmpty()){
+            if (binding.dniUsuariProdis.text.toString().isNotEmpty()) {
                 userdni.update("dniUsuariProdis", binding.dniUsuariProdis.text.toString())
             }
 
-           }
+        }
 
 
 
@@ -111,4 +109,4 @@ class PerfilUsuari : Fragment() {
     }
 
 
-    }
+}
