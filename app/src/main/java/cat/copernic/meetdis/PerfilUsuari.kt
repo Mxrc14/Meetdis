@@ -59,8 +59,6 @@ class PerfilUsuari : Fragment() {
 
         val userdni = db.collection("users").document(dni.uppercase())
 
-        Log.i("aaaaaaaaa", "${dni.uppercase()}")
-
         userdni.get().addOnSuccessListener { document ->
             if (document.exists()) {
                 tipo = document.data?.get("tipus").toString()
@@ -92,8 +90,6 @@ class PerfilUsuari : Fragment() {
             if (binding.textCorreu.text.toString().isNotEmpty()) {
                 userdni.update("correu", binding.textCorreu.text.toString())
             }
-
-
 
             if (binding.dniUsuariProdis.text.toString().isNotEmpty()) {
                 userdni.update("dniUsuariProdis", binding.dniUsuariProdis.text.toString())
