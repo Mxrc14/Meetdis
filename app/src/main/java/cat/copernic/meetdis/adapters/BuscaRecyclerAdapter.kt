@@ -70,12 +70,8 @@ class BuscaRecyclerAdapter : RecyclerView.Adapter<BuscaRecyclerAdapter.ViewHolde
 
             bundle.putSerializable("buscaTitol", busca[position].titolBusca)
 
-//            holder.itemView.findNavController().navigate(
-//                R.id.action_buscarFragment_to_filtroFragment, bundle
-//            )
-
             holder.itemView.findNavController()
-                .navigate(IniciDirections.actionIniciFragmentToOfertaFragment())
+                .navigate(IniciDirections.actionIniciFragmentToFragmentContingutOferta())
         }
     }
 

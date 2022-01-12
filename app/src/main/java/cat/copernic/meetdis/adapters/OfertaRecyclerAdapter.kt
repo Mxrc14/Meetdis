@@ -90,7 +90,7 @@ holder.bind(
 //            )
 
            holder.itemView.findNavController()
-                .navigate(IniciDirections.actionIniciFragmentToOfertaFragment())
+                .navigate(IniciDirections.actionIniciFragmentToFragmentContingutOferta())
         }
     }
 
