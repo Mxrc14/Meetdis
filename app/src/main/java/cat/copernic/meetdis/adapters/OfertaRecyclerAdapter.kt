@@ -85,9 +85,7 @@ holder.bind(
             bundle.putSerializable("ofertaLat", ofertes[position].latitutOferta)
             bundle.putSerializable("ofertaLon", ofertes[position].longitudOferta)
 
-//            holder.itemView.findNavController().navigate(
-//                R.id.action_iniciFragment_to_ofertaFragment, bundle
-//            )
+
 
            holder.itemView.findNavController()
                 .navigate(IniciDirections.actionIniciFragmentToFragmentContingutOferta())
