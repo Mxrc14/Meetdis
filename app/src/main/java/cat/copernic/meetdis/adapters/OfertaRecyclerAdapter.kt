@@ -89,9 +89,9 @@ holder.bind(
             bundle.putSerializable("ofertaLon", ofertes[position].longitudOferta)
 
 
-            val intent: Intent = requireActivity().getIntent()
+            //val intent: Intent = requireActivity().getIntent()
 
-              intent.putExtras(bundle)
+              //intent.putExtras(bundle)
 
 //            holder.itemView.findNavController().navigate(
 //                R.id.action_iniciFragment_to_ofertaFragment, bundle
