@@ -1,6 +1,7 @@
 package cat.copernic.meetdis.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.meetdis.CrearOfertaDirections
 import cat.copernic.meetdis.IniciDirections
+import cat.copernic.meetdis.MainActivity
 import cat.copernic.meetdis.R
 import cat.copernic.meetdis.models.Oferta
 import cat.copernic.meetdis.databinding.ItemOfertaListBinding
@@ -28,6 +30,7 @@ class OfertaRecyclerAdapter : RecyclerView.Adapter<OfertaRecyclerAdapter.ViewHol
     private val db = FirebaseFirestore.getInstance()
     var ofertes: ArrayList<Oferta> = ArrayList()
     lateinit var context: Context
+
 
     fun OfertaRecyclerAdapter(ofertasList: ArrayList<Oferta>, contxt: Context) {
         this.ofertes = ofertasList
@@ -86,6 +89,13 @@ holder.bind(
             bundle.putSerializable("ofertaLon", ofertes[position].longitudOferta)
 
 
+            val intent: Intent = requireActivity().getIntent()
+
+              intent.putExtras(bundle)
+
+//            holder.itemView.findNavController().navigate(
+//                R.id.action_iniciFragment_to_ofertaFragment, bundle
+//            )
 
            holder.itemView.findNavController()
                 .navigate(IniciDirections.actionIniciFragmentToFragmentContingutOferta())
@@ -96,7 +106,6 @@ holder.bind(
     override fun getItemCount(): Int {
         return ofertes.size
     }
-
 
     class ViewHolder(val binding: ItemOfertaListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Oferta) {
