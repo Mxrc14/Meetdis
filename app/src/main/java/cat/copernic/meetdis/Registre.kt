@@ -87,7 +87,7 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
 
                             when (opcion) {
 
-                                "Usuari" -> view.findNavController()
+                                "Usuari","Usuario","User" -> view.findNavController()
                                     .navigate(
                                         RegistreDirections.actionRegistreFragmentToRegistreUsuariFragment(
                                             dni,

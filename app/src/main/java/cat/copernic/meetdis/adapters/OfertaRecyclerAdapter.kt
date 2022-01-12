@@ -14,7 +14,6 @@ import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.meetdis.CrearOfertaDirections
 import cat.copernic.meetdis.IniciDirections
-import cat.copernic.meetdis.OfertaDirections
 import cat.copernic.meetdis.R
 import cat.copernic.meetdis.models.Oferta
 import cat.copernic.meetdis.databinding.ItemOfertaListBinding

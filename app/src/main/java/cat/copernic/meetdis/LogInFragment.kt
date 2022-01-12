@@ -39,6 +39,8 @@ class LogInFragment : Fragment() {
     private val db = FirebaseFirestore.getInstance()
 
 
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,6 +51,10 @@ class LogInFragment : Fragment() {
             inflater,
             R.layout.fragment_log_in, container, false
         )
+
+
+        FirebaseAuth.getInstance().signOut()
+
 
         binding.bRegistre.setOnClickListener { view: View ->
 

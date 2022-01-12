@@ -117,7 +117,8 @@ class RegistreFamiliar : Fragment() {
                             "tipus d´usuari" to args.tipus,
                             "nom" to textNom.text.toString(),
                             "cognoms" to textCognom.text.toString(),
-                            "dniUsuariProdis" to textCorreu.text.toString()
+                            "dniUsuariProdis" to textCorreu.text.toString(),
+                            "descripcio" to ""
 
                         )
                     )

@@ -111,7 +111,8 @@ class RegistreUsuari : Fragment() {
                         "contrasenya" to args.contrasenya,
                         "tipus d´usuari" to args.tipus,
                         "nom" to textNom.text.toString(),
-                        "cognoms" to textCognom.text.toString()
+                        "cognoms" to textCognom.text.toString(),
+                        "descripcio" to ""
                     )
                 )
 

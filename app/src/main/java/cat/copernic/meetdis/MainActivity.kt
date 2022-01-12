@@ -22,6 +22,7 @@ import cat.copernic.meetdis.databinding.ActivityMainBinding
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_perfil_usuari.*
 
 class MainActivity : AppCompatActivity()  {
@@ -31,7 +32,11 @@ class MainActivity : AppCompatActivity()  {
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
-    val user = FirebaseAuth.getInstance().tenantId
+   // val user = FirebaseAuth.getInstance()
+
+    val user = FirebaseAuth.getInstance().currentUser
+
+    val uid = user?.email
 
 
 
@@ -54,6 +59,8 @@ class MainActivity : AppCompatActivity()  {
         binding.bottomMenu.setupWithNavController(navController)
 
 
+
+
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.iniciFragment, R.id.buscarFragment, R.id.notificacioFragment,
@@ -69,8 +76,12 @@ class MainActivity : AppCompatActivity()  {
     fun sesion() {
 
         if (user != null) {
-            Log.i("MainActivityxd", "$user")
-           // this.navController.navigate(MapsFragmentDirections.actionMapsFragmentToCrearOfertaFragment(user))
+
+            var dni: String = uid.toString().substring(0, uid.toString().length - 11)
+
+            Log.i("MainActivityxd", "${dni.uppercase()}")
+
+           this.navController.navigate(LogInFragmentDirections.actionLogInFragmentToIniciFragment(dni.uppercase()))
 
         }
     }
