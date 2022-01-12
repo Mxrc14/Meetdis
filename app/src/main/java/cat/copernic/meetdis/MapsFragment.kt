@@ -24,9 +24,9 @@ import com.google.android.gms.maps.model.MarkerOptions
 class MapsFragment : Fragment() {
 
     private lateinit var binding: FragmentMaps2Binding
-    lateinit var dni: String
-    var lat: Double? = null
-    var lon: Double? = null
+    var dni: String? = null
+    var lat: Double? = 0.0
+    var lon: Double? = 0.0
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -42,16 +42,6 @@ class MapsFragment : Fragment() {
                 inflater,
                 R.layout.fragment_maps2, container, false
         )
-
-        binding.OKButton.setOnClickListener {
-
-
-
-            view?.findNavController()
-                    ?.navigate(MapsFragmentDirections.actionMapsFragmentToCrearOfertaFragment(dni!!))
-
-
-        }
         return binding.root
     }
 
@@ -65,42 +55,28 @@ class MapsFragment : Fragment() {
 
 
     val callback = OnMapReadyCallback { googleMap ->
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
         val terrassa = LatLng(41.56316375007589, 2.008833765210524)
         googleMap.addMarker(MarkerOptions().position(terrassa).title("Marker in Terrassa"))
 
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(terrassa, 15f), 2000, null)
-        // Zoom in, animating the camera.
-        //googleMap.animateCamera(CameraUpdateFactory.zoomIn())
-        // Zoom out to zoom level 10, animating with a duration of 2 seconds.
-        //googleMap.animateCamera(CameraUpdateFactory.zoomTo(15f), 2000, null)
 
         googleMap.setOnMapClickListener { latLng -> // Creating a marker
             val markerOptions = MarkerOptions()
             binding.OKButton.setVisibility(true)
-            // Setting the position for the marker
+
+            // Establint la posicio al marker.
             markerOptions.position(latLng)
 
-            // Setting the title for the marker.
-
-            // This will be displayed on taping the marker
+            // Realitzacio del marker amb la latitut i longitud
             markerOptions.title(latLng.latitude.toString() + " : " + latLng.longitude)
 
-            // Clears the previously touched position
+            // Eliminacio del marker anterior
             googleMap.clear()
 
-            // Animating to the touched position
+            // Animacio a la posicio seleccionada
             googleMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
 
-            // Placing a marker on the touched position
+            // Realitzant un marker en la nova localitzacio
             googleMap.addMarker(markerOptions)
 
            lat = latLng .latitude
@@ -110,17 +86,12 @@ class MapsFragment : Fragment() {
 
         binding.OKButton.setOnClickListener { latLng -> // Creating a marker
 
-
-
             // Pasar les variables de latitud i longitud
             setFragmentResult("latKey", bundleOf("bundleKey1" to lat))
 
             setFragmentResult("lonKey", bundleOf("bundleKey2" to lon))
 
             Log.i("MapsFragment", "$lat  $lon")
-
-
-
 
             Log.i("MapsFragment", "$dni")
 
