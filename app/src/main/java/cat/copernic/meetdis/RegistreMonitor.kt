@@ -19,7 +19,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.Person.fromBundle
 import androidx.core.content.FileProvider
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.lifecycleScope
 import androidx.media.AudioAttributesCompat.fromBundle
 import androidx.navigation.findNavController
@@ -94,8 +96,9 @@ class RegistreMonitor : Fragment() {
                 if (textCorreu.text.isNotEmpty() && textNom.text.isNotEmpty() && textCognom.text.isNotEmpty()) {
                     var dni: String = args.dni;
                     dni = dni.lowercase()
+                    setFragmentResult("dniKey", bundleOf("DNIKey" to dni))
                     view.findNavController()
-                        .navigate(RegistreMonitorDirections.actionLogInFragmentToIniciFragment(dni))
+                        .navigate(RegistreMonitorDirections.actionLogInFragmentToIniciFragment())
 
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(
                         dni + "@prodis.cat",

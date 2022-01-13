@@ -9,8 +9,10 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.setFragmentResult
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -24,6 +26,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_perfil_usuari.*
+import android.content.Intent
+import java.security.AccessController.getContext
+
 
 class MainActivity : AppCompatActivity()  {
     var visibleBottom: Boolean = false
@@ -37,7 +42,7 @@ class MainActivity : AppCompatActivity()  {
     val user = FirebaseAuth.getInstance().currentUser
 
     val uid = user?.email
-
+public var dni: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,14 +82,28 @@ class MainActivity : AppCompatActivity()  {
 
         if (user != null) {
 
+
+
+
+
             var dni: String = uid.toString().substring(0, uid.toString().length - 11)
 
-            Log.i("MainActivityxd", "${dni.uppercase()}")
+            dni = dni.uppercase()
 
-           this.navController.navigate(LogInFragmentDirections.actionLogInFragmentToIniciFragment(dni.uppercase()))
+            val bundle = Bundle()
+            val intent: Intent= intent
+            bundle.putString("dniMain", dni)
+            intent.putExtras(bundle)
+            startActivity(intent)
+
+          /* setFragmentResult("dniKey", bundleOf("DNIKey" to dni))*/
+
+           this.navController.navigate(LogInFragmentDirections.actionLogInFragmentToIniciFragment())
 
         }
     }
+
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return NavigationUI.onNavDestinationSelected(item,navController)
                 ||super.onOptionsItemSelected(item)

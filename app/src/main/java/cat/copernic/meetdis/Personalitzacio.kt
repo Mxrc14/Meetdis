@@ -127,7 +127,7 @@ class Personalitzacio : Fragment(), AdapterView.OnItemSelectedListener {
 
             view.findNavController()
                 .navigate(
-                    PersonalitzacioDirections.actionPersonalitzacioFragmentToIniciFragment(dni)
+                    PersonalitzacioDirections.actionPersonalitzacioFragmentToIniciFragment()
                 )
 
         }
