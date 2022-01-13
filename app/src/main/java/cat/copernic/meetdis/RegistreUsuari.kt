@@ -17,8 +17,6 @@ import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
-import androidx.core.os.bundleOf
-import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.lifecycleScope
 import cat.copernic.meetdis.databinding.FragmentRegistreUsuariBinding
 import com.github.dhaval2404.colorpicker.util.setVisibility
@@ -101,9 +99,8 @@ class RegistreUsuari : Fragment() {
             if (textNom.text.isNotEmpty() && textCognom.text.isNotEmpty()) {
                 var dni: String = args.dni;
                 dni = dni.lowercase()
-                setFragmentResult("dniKey", bundleOf("DNIKey" to dni))
                 view.findNavController()
-                    .navigate(RegistreUsuariDirections.actionLogInFragmentToIniciFragment())
+                    .navigate(RegistreUsuariDirections.actionLogInFragmentToIniciFragment(dni))
 
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(dni + "@prodis.cat",
                     args.contrasenya)

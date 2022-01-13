@@ -16,10 +16,8 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
-import androidx.core.os.bundleOf
 import androidx.core.text.isDigitsOnly
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import cat.copernic.meetdis.databinding.FragmentRegistreFamiliarBinding
@@ -104,10 +102,10 @@ class RegistreFamiliar : Fragment() {
                 if (letra.isLetter() && numeros.isDigitsOnly() && letra.isUpperCase()) {
                     var dni: String = args.dni;
                     dni = dni.lowercase()
-                    setFragmentResult("dniKey", bundleOf("DNIKey" to dni))
+
 
                     view.findNavController()
-                        .navigate(RegistreFamiliarDirections.actionLogInFragmentToIniciFragment())
+                        .navigate(RegistreFamiliarDirections.actionLogInFragmentToIniciFragment(dni))
 
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(dni + "@prodis.cat",
                     args.contrasenya)

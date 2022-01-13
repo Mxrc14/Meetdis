@@ -15,7 +15,6 @@ import androidx.core.os.bundleOf
 import androidx.core.text.isDigitsOnly
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.setFragmentResult
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import cat.copernic.meetdis.databinding.ActivityMainBinding
@@ -84,8 +83,6 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
                             val dni: String = textDNI.text.toString()
                             val contrasenya: String = textContrasenya.text.toString() + "prodis"
                             val tipus: String = opcion.toString();
-
-
 
 
                             when (opcion) {

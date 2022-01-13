@@ -20,9 +20,7 @@ import android.content.ContentValues.TAG
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
 import androidx.core.text.isDigitsOnly
-import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModelProvider
 import com.github.dhaval2404.colorpicker.util.setVisibility
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -110,10 +108,11 @@ class LogInFragment : Fragment() {
 
 
                                             if (it.isSuccessful) {
-                                                setFragmentResult("dniKey", bundleOf("DNIKey" to dni))
                                                 view.findNavController()
                                                     .navigate(
-                                                        LogInFragmentDirections.actionLogInFragmentToIniciFragment()
+                                                        LogInFragmentDirections.actionLogInFragmentToIniciFragment(
+                                                            dni
+                                                        )
 
                                                     )
                                             }
