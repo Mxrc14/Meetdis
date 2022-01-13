@@ -176,7 +176,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
                 //crearEvento()
 
                 view.findNavController()
-                    .navigate(CrearOfertaDirections.actionCrearOfertaFragmentToIniciFragment(dni))
+                    .navigate(CrearOfertaDirections.actionCrearOfertaFragmentToIniciFragment())
 
 
             } else {

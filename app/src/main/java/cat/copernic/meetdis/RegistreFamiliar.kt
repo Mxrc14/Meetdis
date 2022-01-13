@@ -105,7 +105,7 @@ class RegistreFamiliar : Fragment() {
 
 
                     view.findNavController()
-                        .navigate(RegistreFamiliarDirections.actionLogInFragmentToIniciFragment(dni))
+                        .navigate(RegistreFamiliarDirections.actionLogInFragmentToIniciFragment())
 
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(dni + "@prodis.cat",
                     args.contrasenya)

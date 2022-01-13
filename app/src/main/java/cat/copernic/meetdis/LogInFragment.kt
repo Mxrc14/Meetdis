@@ -120,7 +120,7 @@ class LogInFragment : Fragment() {
                                                 view.findNavController()
                                                     .navigate(
                                                         LogInFragmentDirections.actionLogInFragmentToIniciFragment(
-                                                            dni
+
                                                         )
 
                                                     )

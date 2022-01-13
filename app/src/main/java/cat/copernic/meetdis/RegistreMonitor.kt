@@ -95,7 +95,7 @@ class RegistreMonitor : Fragment() {
                     var dni: String = args.dni;
                     dni = dni.lowercase()
                     view.findNavController()
-                        .navigate(RegistreMonitorDirections.actionLogInFragmentToIniciFragment(dni))
+                        .navigate(RegistreMonitorDirections.actionLogInFragmentToIniciFragment())
 
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(
                         dni + "@prodis.cat",

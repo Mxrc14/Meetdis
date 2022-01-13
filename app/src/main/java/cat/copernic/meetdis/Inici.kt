@@ -29,9 +29,9 @@ class Inici : Fragment() {
     private lateinit var binding: FragmentIniciBinding
 
 
+    val user = FirebaseAuth.getInstance().currentUser
 
-
-
+    val uid = user?.email
 
 
     override fun onCreateView(
@@ -44,13 +44,15 @@ class Inici : Fragment() {
                 R.layout.fragment_inici, container, false
         )
 
-        val args = IniciArgs.fromBundle(requireArguments())
+        var dni: String = uid.toString().substring(0, uid.toString().length - 11)
 
-        setFragmentResult("dniKey", bundleOf("DNIKey" to args.dni))
+        //val args = IniciArgs.fromBundle(requireArguments())
+
+        setFragmentResult("dniKey", bundleOf("DNIKey" to dni))
 
        // setFragmentResult("tancar", bundleOf("singOut" to 1))
 
-        Log.i("MainActivityxd1", args.dni)
+        Log.i("MainActivityxd1", dni)
 
 
         binding.rvOfertes.setHasFixedSize(true)
@@ -82,7 +84,7 @@ class Inici : Fragment() {
                 }
 
         binding.crearButton.setOnClickListener { view: View ->
-            val dni: String = args.dni;
+
             view.findNavController()
                     .navigate(IniciDirections.actionIniciFragmentToCrearOfertaFragment(dni))
         }

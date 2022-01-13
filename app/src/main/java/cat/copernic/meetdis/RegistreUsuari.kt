@@ -100,7 +100,7 @@ class RegistreUsuari : Fragment() {
                 var dni: String = args.dni;
                 dni = dni.lowercase()
                 view.findNavController()
-                    .navigate(RegistreUsuariDirections.actionLogInFragmentToIniciFragment(dni))
+                    .navigate(RegistreUsuariDirections.actionLogInFragmentToIniciFragment())
 
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(dni + "@prodis.cat",
                     args.contrasenya)

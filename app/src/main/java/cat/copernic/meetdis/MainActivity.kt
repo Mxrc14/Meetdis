@@ -76,7 +76,6 @@ class MainActivity : AppCompatActivity() {
 
             this.navController.navigate(
                 LogInFragmentDirections.actionLogInFragmentToIniciFragment(
-                    dni.uppercase()
                 )
             )
         }
