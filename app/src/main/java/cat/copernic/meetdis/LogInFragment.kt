@@ -53,7 +53,7 @@ class LogInFragment : Fragment() {
         )
 
 
-        FirebaseAuth.getInstance().signOut()
+        // FirebaseAuth.getInstance().signOut()
 
 
         binding.bRegistre.setOnClickListener { view: View ->

@@ -55,7 +55,7 @@ class PerfilUsuari : Fragment() {
 
         val uid = user?.email
 
-        var dni: String = uid.toString().substring(0, uid.toString().length - 11)
+        var dni: String = uid.toString().substring(0, 9)
 
         val userdni = db.collection("users").document(dni.uppercase())
 

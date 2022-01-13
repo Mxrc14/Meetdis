@@ -1,6 +1,7 @@
 package cat.copernic.meetdis
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
@@ -36,12 +37,18 @@ class Inici : Fragment() {
                 inflater,
                 R.layout.fragment_inici, container, false
         )
+
+
         val args = IniciArgs.fromBundle(requireArguments())
+        setFragmentResult("dniKey", bundleOf("DNIKey" to args.dni))
+        Log.i("Inicixd", "${args.dni}")
 
         binding.rvOfertes.setHasFixedSize(true)
 
         binding.rvOfertes.layoutManager = LinearLayoutManager(requireContext())
 
+        context?.let { myAdapter.OfertaRecyclerAdapter(ofertes, it) }
+        binding.rvOfertes.adapter = myAdapter
 
         db.collection("ofertes")
                 .get()
@@ -73,7 +80,7 @@ class Inici : Fragment() {
 
         }
 
-        setFragmentResult("dniKey", bundleOf("DNIKey" to args.dni))
+
 
         return binding.root
     }
