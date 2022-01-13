@@ -9,6 +9,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -61,7 +62,6 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-
         sesion()
 
     }
@@ -83,8 +83,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item, navController)
-                || super.onOptionsItemSelected(item)
+        /*return NavigationUI.onNavDestinationSelected(item, navController)
+                || super.onOptionsItemSelected(item)*/
+
+        return when(item.itemId){
+            R.id.logInFragment -> {
+                FirebaseAuth.getInstance().signOut()
+                NavigationUI.onNavDestinationSelected(item, navController)
+                true
+            }
+            else -> NavigationUI.onNavDestinationSelected(item, navController)
+                    || super.onOptionsItemSelected(item)
+        }
     }
 
 

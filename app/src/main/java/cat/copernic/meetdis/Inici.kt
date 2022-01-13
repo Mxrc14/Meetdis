@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import cat.copernic.meetdis.adapters.OfertaRecyclerAdapter
 import cat.copernic.meetdis.databinding.FragmentIniciBinding
 import cat.copernic.meetdis.models.Oferta
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 
@@ -28,6 +29,11 @@ class Inici : Fragment() {
     private lateinit var binding: FragmentIniciBinding
 
 
+
+
+
+
+
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -38,17 +44,19 @@ class Inici : Fragment() {
                 R.layout.fragment_inici, container, false
         )
 
-
         val args = IniciArgs.fromBundle(requireArguments())
+
         setFragmentResult("dniKey", bundleOf("DNIKey" to args.dni))
-        Log.i("Inicixd", "${args.dni}")
+
+       // setFragmentResult("tancar", bundleOf("singOut" to 1))
+
+        Log.i("MainActivityxd1", args.dni)
+
 
         binding.rvOfertes.setHasFixedSize(true)
 
         binding.rvOfertes.layoutManager = LinearLayoutManager(requireContext())
 
-        context?.let { myAdapter.OfertaRecyclerAdapter(ofertes, it) }
-        binding.rvOfertes.adapter = myAdapter
 
         db.collection("ofertes")
                 .get()
@@ -77,10 +85,7 @@ class Inici : Fragment() {
             val dni: String = args.dni;
             view.findNavController()
                     .navigate(IniciDirections.actionIniciFragmentToCrearOfertaFragment(dni))
-
         }
-
-
 
         return binding.root
     }

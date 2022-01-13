@@ -21,6 +21,7 @@ import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.isDigitsOnly
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import com.github.dhaval2404.colorpicker.util.setVisibility
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -38,6 +39,7 @@ class LogInFragment : Fragment() {
 
     private val db = FirebaseFirestore.getInstance()
 
+    var singOut: Int = 0
 
 
 
@@ -52,8 +54,15 @@ class LogInFragment : Fragment() {
             R.layout.fragment_log_in, container, false
         )
 
+       /* setFragmentResultListener("tancar") { tancar, bundle ->
+            // We use a String here, but any type that can be put in a Bundle is supported
+            singOut = bundle.getInt("singOut")
+        }
 
-        // FirebaseAuth.getInstance().signOut()
+        if (singOut == 1){
+            FirebaseAuth.getInstance().signOut()
+       }*/
+
 
 
         binding.bRegistre.setOnClickListener { view: View ->
