@@ -78,6 +78,7 @@ holder.bind(
 
 
         holder.itemView.setOnClickListener {
+           /*
             val bundle = Bundle()
 
             bundle.putSerializable("ofertaTitol", ofertes[position].titolOferta)
@@ -88,7 +89,7 @@ holder.bind(
             bundle.putSerializable("ofertaLat", ofertes[position].latitutOferta)
             bundle.putSerializable("ofertaLon", ofertes[position].longitudOferta)
 
-
+                */
          //   val intent: Intent = requireActivity().getIntent()
 
            //   intent.putExtras(bundle)
