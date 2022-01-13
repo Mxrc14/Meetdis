@@ -23,16 +23,16 @@ class ContingutOferta : Fragment() {
             R.layout.fragment_contingut_oferta, container, false
         )
 
-        val intent: Intent = requireActivity().getIntent()
-        val bundle = intent.extras
+        //val intent: Intent = requireActivity().getIntent()
+        //val bundle = intent.extras
 
-        var titol = bundle!!.getSerializable("ofertaTitol")
-        var descripcio = bundle!!.getSerializable("ofertaDesc")
-        var data = bundle!!.getSerializable("ofertaData")
-        var dni = bundle!!.getSerializable("ofertaDNI")
-        var img = bundle!!.getSerializable("ofertaImg")
-        var lat = bundle!!.getSerializable("ofertaLat")
-        var lon = bundle!!.getSerializable("ofertaLon")
+//        var titol = bundle!!.getSerializable("ofertaTitol")
+//        var descripcio = bundle!!.getSerializable("ofertaDesc")
+//        var data = bundle!!.getSerializable("ofertaData")
+//        var dni = bundle!!.getSerializable("ofertaDNI")
+//        var img = bundle!!.getSerializable("ofertaImg")
+//        var lat = bundle!!.getSerializable("ofertaLat")
+//        var lon = bundle!!.getSerializable("ofertaLon")
 
 
 
