@@ -6,6 +6,7 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,17 +27,31 @@ class Inici : Fragment() {
 
     private lateinit var binding: FragmentIniciBinding
 
+    lateinit var dni: String
+
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
 
+        activity!!.intent.extras?.getString("dniMain").also {
+            if (it != null) {
+                dni = it
+            }
+        }
+
+        setFragmentResultListener("dniKey") { dniKey, bundle ->
+            // We use a String here, but any type that can be put in a Bundle is supported
+            dni = bundle.getString("DNIKey").toString()
+        }
+
         binding = DataBindingUtil.inflate<FragmentIniciBinding>(
                 inflater,
                 R.layout.fragment_inici, container, false
         )
-        val args = IniciArgs.fromBundle(requireArguments())
+
+
 
         binding.rvOfertes.setHasFixedSize(true)
 
@@ -67,13 +82,17 @@ class Inici : Fragment() {
                 }
 
         binding.crearButton.setOnClickListener { view: View ->
-            val dni: String = args.dni;
+
+
+
+
+
             view.findNavController()
                     .navigate(IniciDirections.actionIniciFragmentToCrearOfertaFragment(dni))
 
         }
 
-        setFragmentResult("dniKey", bundleOf("DNIKey" to args.dni))
+
 
         return binding.root
     }

@@ -24,8 +24,10 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.FileProvider
+import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
@@ -176,7 +178,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
                 //crearEvento()
 
                 view.findNavController()
-                    .navigate(CrearOfertaDirections.actionCrearOfertaFragmentToIniciFragment(dni))
+                    .navigate(CrearOfertaDirections.actionCrearOfertaFragmentToIniciFragment())
 
 
             } else {
