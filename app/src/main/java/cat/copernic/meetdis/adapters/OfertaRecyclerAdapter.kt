@@ -23,7 +23,6 @@ import coil.api.load
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -78,18 +77,19 @@ holder.bind(
         holder.bind(item)
 
 
-       holder.itemView.setOnClickListener {
-        //    val bundle = Bundle()
+        holder.itemView.setOnClickListener {
+           /*
+            val bundle = Bundle()
 
-           /* bundle.putSerializable("ofertaTitol", ofertes[position].titolOferta)
+            bundle.putSerializable("ofertaTitol", ofertes[position].titolOferta)
             bundle.putSerializable("ofertaDesc", ofertes[position].descripcioOferta)
             bundle.putSerializable("ofertaData", ofertes[position].dataOferta)
             bundle.putSerializable("ofertaDNI", ofertes[position].dniOferta)
             bundle.putSerializable("ofertaImg", ofertes[position].imatgeOferta)
             bundle.putSerializable("ofertaLat", ofertes[position].latitutOferta)
-            bundle.putSerializable("ofertaLon", ofertes[position].longitudOferta)*/
+            bundle.putSerializable("ofertaLon", ofertes[position].longitudOferta)
 
-
+                */
          //   val intent: Intent = requireActivity().getIntent()
 
            //   intent.putExtras(bundle)
