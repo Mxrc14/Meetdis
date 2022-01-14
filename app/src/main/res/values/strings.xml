@@ -41,12 +41,11 @@
         <item>@string/llibres</item>
     </string-array>
 
-    <string name="esports">Esports</string>
-    <string name="musica">Música</string>
-    <string name="videojocs">VideoJocs</string>
+    <string name="esports">Sports</string>
+    <string name="musica">Music</string>
     <string name="art">Art</string>
-    <string name="pelis">Pel·lícules</string>
-    <string name="llibres">Llibres</string>
+    <string name="pelis">Películas</string>
+    <string name="llibres">Libros</string>
 
     <string name="catala">Català</string>
     <string name="castella">Castellà</string>
@@ -111,12 +110,9 @@
     <string name="seleccio_opcio">Selecciona l\'opció amb la que vols obtenir la foto</string>
 
 
-
     <string name="selecciona">Selecciona:</string>
     <string name="camara">CÀMERA</string>
     <string name="galeria">GALERIA</string>
-
-
 
 
     <string name="dni_invalid">DNI no vàlid</string>
@@ -129,6 +125,7 @@
     <string name="constar_4_numeros">La contrasenya te que constar de 4 numeros.</string>
     <string name="contrasenyas_diferents">Has introduit contrasenyes diferents</string>
     <string name="pr_ximament">Pròximament...</string>
+    <string name="videojocs">VideoGames</string>
 
 
 </resources>

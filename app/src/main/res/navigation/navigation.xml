@@ -91,6 +91,9 @@
         <argument
             android:name="dni"
             app:argType="string" />
+        <action
+            android:id="@+id/action_buscarFragment_to_filtratFragment"
+            app:destination="@id/filtratFragment" />
     </fragment>
 
     <fragment
@@ -240,6 +243,14 @@
         <action
             android:id="@+id/action_mapsFragment_to_crearOfertaFragment"
             app:destination="@id/crearOfertaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/filtratFragment"
+        android:name="cat.copernic.meetdis.Filtrat"
+        android:label="Filtrat" >
+        <action
+            android:id="@+id/action_filtratFragment_to_ofertaFragment"
+            app:destination="@id/ofertaFragment" />
     </fragment>
 
 </navigation>

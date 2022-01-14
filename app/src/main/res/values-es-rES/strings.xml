@@ -43,10 +43,10 @@
         <item>@string/llibres</item>
     </string-array>
 
-    <string name="esports">Deportes</string>
-    <string name="musica">Música</string>
-    <string name="videojocs">VideoJuegos</string>
-    <string name="art">Arte</string>
+    <string name="esports">Sports</string>
+    <string name="musica">Music</string>
+    <string name="videojocs">VideoGames</string>
+    <string name="art">Art</string>
     <string name="pelis">Películas</string>
     <string name="llibres">Libros</string>
 

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.meetdis.IniciDirections
+import cat.copernic.meetdis.R
 import cat.copernic.meetdis.databinding.ItemBuscaListBinding
 import cat.copernic.meetdis.models.Busca
 import coil.api.load
@@ -66,12 +67,18 @@ class BuscaRecyclerAdapter : RecyclerView.Adapter<BuscaRecyclerAdapter.ViewHolde
 
 
         holder.itemView.setOnClickListener {
+
             val bundle = Bundle()
+
 
             bundle.putSerializable("buscaTitol", busca[position].titolBusca)
 
-            holder.itemView.findNavController()
-                .navigate(IniciDirections.actionIniciFragmentToFragmentContingutOferta())
+            holder.itemView.findNavController().navigate(
+                R.id.action_buscarFragment_to_filtratFragment, bundle
+            )
+
+//           holder.itemView.findNavController()
+//                .navigate(IniciDirections.actionIniciFragmentToFragmentContingutOferta())
         }
     }
 

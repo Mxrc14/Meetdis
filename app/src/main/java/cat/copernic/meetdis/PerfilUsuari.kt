@@ -1,23 +1,16 @@
 package cat.copernic.meetdis
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isGone
-import androidx.core.view.isVisible
+import android.widget.EditText
 import androidx.databinding.DataBindingUtil
-import cat.copernic.meetdis.databinding.FragmentCrearOfertaBinding
-import cat.copernic.meetdis.databinding.FragmentIniciBinding
-import cat.copernic.meetdis.databinding.FragmentMembresBinding
+import androidx.fragment.app.Fragment
 import cat.copernic.meetdis.databinding.FragmentPerfilUsuariBinding
 import com.github.dhaval2404.colorpicker.util.setVisibility
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_registre.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -37,7 +30,12 @@ class PerfilUsuari : Fragment() {
     lateinit var binding: FragmentPerfilUsuariBinding
 
     var tipo: String? = null
-
+    var nom: String? = null
+    var cognom: String? = null
+    var descrip: String? = null
+    var img: String? = null
+    var dniF: String? = null
+    var monitorC: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,7 +47,6 @@ class PerfilUsuari : Fragment() {
             inflater,
             R.layout.fragment_perfil_usuari, container, false
         )
-
 
         val user = FirebaseAuth.getInstance().currentUser
 
@@ -63,15 +60,69 @@ class PerfilUsuari : Fragment() {
             if (document.exists()) {
                 tipo = document.data?.get("tipus").toString()
             }
+
+
         }
 
-        if (tipo == "Monitor") {
-            binding.dniUsuariProdis.setVisibility(false)
-        } else if (tipo == "Familiar") {
-            binding.textCorreu.setVisibility(false)
-        } else {
-            binding.dniUsuariProdis.setVisibility(false)
-            binding.textCorreu.setVisibility(false)
+        when (tipo) {
+            "Monitor" -> {
+                binding.dniUsuariProdis.setVisibility(false)
+                userdni.get().addOnSuccessListener { document ->
+                    if (document.exists()) {
+
+                        nom = document.data?.get("nom").toString()
+                        cognom = document.data?.get("nom").toString()
+                        descrip = document.data?.get("nom").toString()
+                        img = document.data?.get("nom").toString()
+                        monitorC = document.data?.get("nom").toString()
+
+                    }
+
+
+                }
+
+            }
+            "Familiar" -> {
+                binding.textCorreu.setVisibility(false)
+
+                userdni.get().addOnSuccessListener { document ->
+                    if (document.exists()) {
+                        nom = document.data?.get("nom").toString()
+                        cognom = document.data?.get("nom").toString()
+                        descrip = document.data?.get("nom").toString()
+                        img = document.data?.get("nom").toString()
+                        dniF = document.data?.get("nom").toString()
+
+                    }
+
+
+                }
+
+            }
+            else -> {
+                binding.dniUsuariProdis.setVisibility(false)
+                binding.textCorreu.setVisibility(false)
+
+                userdni.get().addOnSuccessListener { document ->
+                    if (document.exists()) {
+                        nom = document.data?.get("nom").toString()
+                        cognom = document.data?.get("nom").toString()
+                        descrip = document.data?.get("nom").toString()
+                        img = document.data?.get("nom").toString()
+
+
+                    }
+
+
+                }
+
+                //binding.textNom.text = nom
+
+
+
+
+
+            }
         }
 
         binding.bActualitza.setOnClickListener {
