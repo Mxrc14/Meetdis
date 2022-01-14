@@ -44,7 +44,7 @@ class Inici : Fragment() {
                 R.layout.fragment_inici, container, false
         )
 
-        var dni: String = uid.toString().substring(0, uid.toString().length - 11)
+        var dni: String = uid.toString().substring(0, uid.toString().length - 11).uppercase()
 
         //val args = IniciArgs.fromBundle(requireArguments())
 

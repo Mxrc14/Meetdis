@@ -131,7 +131,7 @@
 
     <string name="constar_4_numeros">The password must consist of 4 numbers.</string>
     <string name="contrasenyas_diferents">You have entered different passwords</string>
-
+    <string name="pr_ximament">"Coming soon... "</string>
 
 
 </resources>

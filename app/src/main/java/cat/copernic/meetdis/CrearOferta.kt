@@ -138,8 +138,6 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
             if (textTitol.text.isNotEmpty() && descripcio.text.isNotEmpty()) {
 
 
-                val dni: String = args.dni.uppercase();
-
 
                 var collUsersRef: CollectionReference = db.collection("ofertes")
                 val doc = collUsersRef.document()
@@ -328,6 +326,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
         lifecycleScope.launchWhenStarted {
             getTmpFileUri().let { uri ->
                 latestTmpUri = uri
+
 
                 takeImageResult.launch(uri)
             }

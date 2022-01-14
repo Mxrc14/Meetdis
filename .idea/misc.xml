@@ -70,7 +70,7 @@
         <entry key="app/src/main/res/layout/fragment_registre_usuari.xml" value="0.36041666666666666" />
         <entry key="app/src/main/res/layout/fragment_validacio_usuaris.xml" value="0.26666666666666666" />
         <entry key="app/src/main/res/layout/fragment_xat.xml" value="0.26666666666666666" />
-        <entry key="app/src/main/res/layout/fragment_xats.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_xats.xml" value="0.25" />
         <entry key="app/src/main/res/layout/inici.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_busca_list.xml" value="0.21495726495726497" />
         <entry key="app/src/main/res/layout/item_membre_list.xml" value="0.33" />

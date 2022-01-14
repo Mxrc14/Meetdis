@@ -128,15 +128,7 @@
 
     <string name="constar_4_numeros">La contrasenya te que constar de 4 numeros.</string>
     <string name="contrasenyas_diferents">Has introduit contrasenyes diferents</string>
-
-
-
-
-
-
-
-
-
+    <string name="pr_ximament">Pròximament...</string>
 
 
 </resources>

@@ -130,6 +130,7 @@
 
     <string name="constar_4_numeros">La contraseña tiene que constar de 4 números.</string>
     <string name="contrasenyas_diferents">Has introducido contraseñas diferentes</string>
+    <string name="pr_ximament">Próximamente...</string>
 
 
 </resources>

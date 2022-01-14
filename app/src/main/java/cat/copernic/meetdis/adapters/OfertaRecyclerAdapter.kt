@@ -9,13 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import cat.copernic.meetdis.CrearOfertaDirections
 import cat.copernic.meetdis.IniciDirections
-import cat.copernic.meetdis.MainActivity
 import cat.copernic.meetdis.R
 import cat.copernic.meetdis.models.Oferta
 import cat.copernic.meetdis.databinding.ItemOfertaListBinding
@@ -24,6 +24,14 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import kotlin.collections.ArrayList
+import androidx.core.content.ContextCompat.startActivity
+
+
+
+
+
+
+
 
 
 class OfertaRecyclerAdapter : RecyclerView.Adapter<OfertaRecyclerAdapter.ViewHolder>() {
@@ -78,8 +86,9 @@ holder.bind(
 
 
         holder.itemView.setOnClickListener {
-           /*
+
             val bundle = Bundle()
+
 
             bundle.putSerializable("ofertaTitol", ofertes[position].titolOferta)
             bundle.putSerializable("ofertaDesc", ofertes[position].descripcioOferta)
@@ -88,19 +97,19 @@ holder.bind(
             bundle.putSerializable("ofertaImg", ofertes[position].imatgeOferta)
             bundle.putSerializable("ofertaLat", ofertes[position].latitutOferta)
             bundle.putSerializable("ofertaLon", ofertes[position].longitudOferta)
+            bundle.putSerializable("ofertaTipus", ofertes[position].tipusOferta)
 
-                */
-         //   val intent: Intent = requireActivity().getIntent()
 
-           //   intent.putExtras(bundle)
 
-//            holder.itemView.findNavController().navigate(
-//                R.id.action_iniciFragment_to_ofertaFragment, bundle
-//            )
+            holder.itemView.findNavController().navigate(
+                R.id.action_iniciFragment_to_fragment_contingut_oferta, bundle
+            )
 
-           holder.itemView.findNavController()
-                .navigate(IniciDirections.actionIniciFragmentToFragmentContingutOferta())
+//           holder.itemView.findNavController()
+//                .navigate(IniciDirections.actionIniciFragmentToFragmentContingutOferta())
         }
+
+
     }
 
 

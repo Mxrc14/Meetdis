@@ -34,13 +34,12 @@
             android:id="@+id/icMembres"
             android:layout_width="55dp"
             android:layout_height="66dp"
-            android:layout_marginTop="44dp"
-            android:layout_marginEnd="76dp"
+            android:layout_marginTop="48dp"
             android:src="@drawable/ic_members"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.547"
             app:layout_constraintStart_toEndOf="@+id/mapView"
-            app:layout_constraintTop_toBottomOf="@+id/spinnerEvents" />
+            app:layout_constraintTop_toBottomOf="@+id/textTipus" />
 
         <TextView
             android:id="@+id/textTitol"
@@ -48,14 +47,15 @@
             android:layout_height="60dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/bordes_meetdis"
-            android:drawablePadding="5dp"
 
-            android:ems="10"
+
+
             android:hint="@string/titol"
             android:inputType="textPersonName"
-            android:paddingStart="30dp"
-            android:paddingEnd="5dp"
+
+
             android:textSize="12sp"
+            android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageCamara" />
@@ -66,10 +66,9 @@
             android:layout_height="108dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/bordes_meetdis"
-
-
+            android:gravity="center"
             android:hint="@string/descripcio"
-            android:paddingTop="10dp"
+
             android:textAlignment="center"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -77,21 +76,21 @@
             app:layout_constraintTop_toBottomOf="@+id/textTitol" />
 
         <TextView
-            android:id="@+id/spinnerEvents"
-            style="@style/spinner"
-            android:layout_width="148dp"
-            android:layout_height="55dp"
+            android:id="@+id/textTipus"
+            android:layout_width="161dp"
+            android:layout_height="51dp"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/pt_sans_caption"
+            android:background="@drawable/bordes_meetdis"
+            android:clickable="false"
+
             android:gravity="center"
-            android:spinnerMode="dropdown"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:theme="@style/ThemeOverlay.AppCompat.Light"
+            android:focusable="false"
+            android:hint="@string/data"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.878"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descripcio" />
+            app:layout_constraintTop_toBottomOf="@+id/descripcio"
+            />
 
         <TextView
             android:id="@+id/textData"
@@ -100,7 +99,8 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/bordes_meetdis"
             android:clickable="false"
-            android:ems="10"
+
+            android:gravity="center"
             android:focusable="false"
             android:hint="@string/data"
             app:layout_constraintEnd_toEndOf="parent"
@@ -167,13 +167,13 @@
             android:id="@+id/bEliminar"
             android:layout_width="132dp"
             android:layout_height="59dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="32dp"
             android:background="@drawable/bordes_eliminar"
             android:fontFamily="@font/pt_sans_caption"
             android:text="@string/eliminar"
             android:textColor="@color/red_500"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.885"
+            app:layout_constraintHorizontal_bias="0.888"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/icMembres" />
 

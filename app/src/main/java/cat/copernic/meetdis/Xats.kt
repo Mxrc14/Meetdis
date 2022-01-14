@@ -34,41 +34,12 @@ class Xats : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding = DataBindingUtil.inflate<FragmentMembresBinding>(
+        val binding = DataBindingUtil.inflate<FragmentXatsBinding>(
             inflater,
-            R.layout.fragment_membres, container, false
+            R.layout.fragment_xats, container, false
         )
 
-        binding.rvMembres.setHasFixedSize(true)
 
-        binding.rvMembres.layoutManager = LinearLayoutManager(requireContext())
-
-
-
-
-        db.collection("users")
-            .get()
-            .addOnSuccessListener { documents ->
-                membres.clear()
-                for (document in documents) {
-                    Log.i("proba_id", document.id)
-                    membres.add(
-                        Membre(
-                            document.get("cognoms").toString(),
-                            document.get("contrasenya").toString(),
-                            document.get("correu").toString(),
-                            document.get("nom").toString(),
-                            document.get("tipus d'usuari").toString(),
-                            document.id
-
-                        )
-                    )
-                }
-
-                context?.let { myAdapter.MembreRecyclerAdapter(membres, it) }
-                binding.rvMembres.adapter = myAdapter
-
-            }
 
         return binding.root
     }
