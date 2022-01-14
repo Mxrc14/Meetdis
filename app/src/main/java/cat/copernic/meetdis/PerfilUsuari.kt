@@ -1,5 +1,11 @@
 package cat.copernic.meetdis
 
+import android.app.Activity
+import android.app.AlertDialog
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,8 +21,14 @@ import kotlinx.android.synthetic.main.fragment_registre.*
 import android.text.SpannableStringBuilder
 
 import android.text.Editable
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.FileProvider
+import androidx.lifecycle.lifecycleScope
 import coil.api.load
 import com.google.firebase.storage.FirebaseStorage
+import java.io.ByteArrayOutputStream
+import java.io.File
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -35,6 +47,18 @@ class PerfilUsuari : Fragment() {
 
     lateinit var binding: FragmentPerfilUsuariBinding
 
+   private val storageRef = FirebaseStorage.getInstance().getReference()
+
+    private var latestTmpUri: Uri? = null
+
+    val takeImageResult = registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
+        if (isSuccess) {
+            latestTmpUri?.let { uri ->
+                binding.imageCamara.setImageURI(uri)
+            }
+        }
+    }
+
     var tipo: String? = null
     var nom: String? = null
 //    var cognom: String? = null
@@ -42,6 +66,8 @@ class PerfilUsuari : Fragment() {
 //    var img: String? = null
 //    var dniF: String? = null
 //    var monitorC: String? = null
+
+  var dniU: String? = null
 
 
 
@@ -60,6 +86,8 @@ class PerfilUsuari : Fragment() {
 
         val uid = user?.email
 
+       dniU = uid.toString().substring(0, uid.toString().length - 11).uppercase()
+
         var dniUser: String = uid.toString().substring(0, uid.toString().length - 11).uppercase()
 
         val userdni = db.collection("users").document(dniUser.uppercase())
@@ -72,9 +100,9 @@ class PerfilUsuari : Fragment() {
 
         }
 
-        val storageRef = FirebaseStorage.getInstance().reference
+        val storageRef1 = FirebaseStorage.getInstance().reference
 
-        val imageRef = storageRef.child("users/$dniUser")
+        val imageRef = storageRef1.child("users/$dniUser")
         imageRef.downloadUrl.addOnSuccessListener { url ->
             binding.imageCamara.load(url)
             // Log.i("proba_id", "$imageMembre")
@@ -136,7 +164,12 @@ class PerfilUsuari : Fragment() {
             }
         }
 
-        binding.bActualitza.setOnClickListener {
+        binding.imageCamara.setOnClickListener(){
+            escollirCamaraGaleria()
+
+        }
+
+        binding.bActualitza.setOnClickListener { view: View ->
 
 
             if (binding.textNom.text.toString().isNotEmpty()) {
@@ -157,13 +190,81 @@ class PerfilUsuari : Fragment() {
                 userdni.update("dniUsuariProdis", binding.dniUsuariProdis.text.toString())
             }
 
+          pujarImatge(view)
+
         }
-
-
 
 
         return binding.root
 
+    }
+
+
+    private val startForActivityGallery = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()){ result ->
+        if (result.resultCode == Activity.RESULT_OK){
+            val data = result.data?.data
+            //setImageUri només funciona per rutes locals, no a internet
+            binding?.imageCamara?.setImageURI(data)
+
+        }
+    }
+
+    private fun obrirGaleria() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_PICK
+        startForActivityGallery.launch(intent)
+    }
+
+    private fun obrirCamera() {
+        lifecycleScope.launchWhenStarted {
+            getTmpFileUri().let { uri ->
+                latestTmpUri = uri
+
+                takeImageResult.launch(uri)
+            }
+        }
+    }
+
+    fun escollirCamaraGaleria() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle(R.string.seleccio_opcio)
+        builder.setMessage(R.string.selecciona)
+        builder.setPositiveButton(R.string.camara, { dialog, which -> obrirCamera() })
+        builder.setNegativeButton(R.string.galeria, { dialog, which -> obrirGaleria() })
+        builder.show()
+    }
+
+    private fun getTmpFileUri(): Uri? {
+        val tmpFile = File.createTempFile("tmp_image_file", ".png", activity?.cacheDir).apply {
+            createNewFile()
+            deleteOnExit()
+        }
+
+        return activity?.let { FileProvider.getUriForFile(it.applicationContext, "cat.copernic.meetdis.provider", tmpFile) }
+    }
+  fun pujarImatge(root: View){
+        // pujar imatge al Cloud Storage de Firebase
+        // https://firebase.google.com/docs/storage/android/upload-files?hl=es
+        val args = RegistreUsuariArgs.fromBundle(requireArguments())
+        // Creem una referència amb el path i el nom de la imatge per pujar la imatge
+        val pathReference = storageRef.child("users/$dniU")
+        val bitmap = (binding.imageCamara.drawable as BitmapDrawable).bitmap // agafem la imatge del imageView
+        val baos = ByteArrayOutputStream() // declarem i inicialitzem un outputstream
+
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos) // convertim el bitmap en outputstream
+        val data = baos.toByteArray() //convertim el outputstream en array de bytes.
+
+        val uploadTask = pathReference.putBytes(data)
+        uploadTask.addOnFailureListener {
+            Toast.makeText(activity, resources.getText(R.string.Error_pujar_foto), Toast.LENGTH_LONG).show()
+
+
+        }.addOnSuccessListener {
+            Toast.makeText(activity, resources.getText(R.string.Exit_pujar_foto), Toast.LENGTH_LONG).show()
+
+        }
     }
 
 
