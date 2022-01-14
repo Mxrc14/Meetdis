@@ -9,6 +9,7 @@ import cat.copernic.meetdis.databinding.FragmentContingutOfertaBinding
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.findNavController
 import coil.api.load
@@ -31,7 +32,7 @@ var ofertaLat: Double? = null
 var ofertaLon: Double? = null
 var ofertaTipus: String? = null
 
-class ContingutOferta : Fragment(), OnMapReadyCallback {
+class ContingutOferta : Fragment(){
 
 
     val user = FirebaseAuth.getInstance().currentUser
@@ -41,6 +42,8 @@ class ContingutOferta : Fragment(), OnMapReadyCallback {
     var dniS: String = uid.toString().substring(0, uid.toString().length - 11).uppercase()
 
     private var latestTmpUri: Uri? = null
+
+    private lateinit var map: GoogleMap
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -100,25 +103,9 @@ Log.i("ContingutOferta1", "$ofertaTitol")
 
         binding.mapView.setOnClickListener{ view: View ->
 
+            var intent = Intent(Intent.ACTION_VIEW, Uri.parse("geo:<$ofertaLat>,<$ofertaLon>?q=<$ofertaLat>,<$ofertaLon>"))
 
-        //cridarMapa()
-
-
-            val gmmIntentUri =
-                Uri.parse("geo:$ofertaLat,$ofertaLon")
-            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-            mapIntent.setPackage("com.google.android.apps.maps")
-            startActivity(mapIntent)
-
-
-
-//            // Display a label at the location of Google's Sydney office
-//            // Display a label at the location of Google's Sydney office
-//            val gmmIntentUri = Uri.parse("41°35'16.4\"N 1°58'51.0\"E")
-//            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-//            mapIntent.setPackage("com.google.android.apps.maps")
-//            startActivity(mapIntent)
-
+            startActivity(intent)
 
         }
 
@@ -146,40 +133,17 @@ Log.i("ContingutOferta1", "$ofertaTitol")
             }
 
 
-        //val args = BuscarArgs.fromBundle(requireArguments())
+
 
 
         return binding.root
     }
 
-    fun cridarMapa() {
 
-//        val gmmIntentUri =
-//            Uri.parse("geo:41.210103794078506,1.6732920326085583")
-//        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-//        mapIntent.setPackage("com.google.android.apps.maps")
-//        startActivity(mapIntent)
 
-    }
 
-    override fun onMapReady(p0: GoogleMap) {
-//        var mLatLng1 = ofertaLon?.let {
-//            if (ofertaLat != null) {
-//                LatLng(ofertaLat!!, it)
-//            }
-//        }
 
-        // Add a marker in Sydney, Australia,
-        // and move the map's camera to the same location.
-        val sydney = LatLng(-33.852, 151.211)
-        p0.addMarker(
-            MarkerOptions()
-                .position(sydney)
-                .title("Marker in Sydney")
-        )
-        p0.moveCamera(CameraUpdateFactory.newLatLng(sydney))
 
-    }
 
 
 }
