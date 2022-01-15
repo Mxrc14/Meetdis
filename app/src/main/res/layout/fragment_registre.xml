@@ -30,17 +30,17 @@
         <EditText
             android:id="@+id/textDNI"
             android:layout_width="209dp"
-            android:layout_height="45dp"
+            android:layout_height="48dp"
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_email"
             android:drawablePadding="5dp"
             android:ems="10"
             android:hint="@string/dni"
             android:inputType="textPersonName"
+            android:maxLength="9"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
             android:textSize="12sp"
-            android:maxLength="9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/meetdis" />
@@ -48,7 +48,7 @@
         <EditText
             android:id="@+id/textContrasenya"
             android:layout_width="209dp"
-            android:layout_height="45dp"
+            android:layout_height="48dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_lock"
@@ -56,10 +56,10 @@
             android:ems="10"
             android:hint="@string/password"
             android:inputType="numberPassword"
+            android:maxLength="4"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
             android:textSize="12sp"
-            android:maxLength="4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textDNI" />
@@ -67,7 +67,7 @@
         <EditText
             android:id="@+id/textRepeteixContrasenya"
             android:layout_width="209dp"
-            android:layout_height="45dp"
+            android:layout_height="48dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/custom_input"
             android:drawableStart="@drawable/custom_lock"
@@ -75,29 +75,30 @@
             android:ems="10"
             android:hint="@string/repeatPassword"
             android:inputType="numberPassword"
+            android:maxLength="4"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
             android:textSize="12sp"
-            android:maxLength="4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textContrasenya" />
 
         <Spinner
             android:id="@+id/spinnerUsuaris"
+            style="@style/spinner"
             android:layout_width="220dp"
             android:layout_height="56dp"
             android:layout_marginTop="16dp"
-            android:textAlignment="center"
-            android:gravity="center"
-            style="@style/spinner"
             android:fontFamily="@font/pt_sans_caption"
-            android:textColor="@color/white"
+            android:gravity="center"
             android:spinnerMode="dropdown"
+            android:textAlignment="center"
+            android:textColor="@color/white"
             android:theme="@style/ThemeOverlay.AppCompat.Light"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/bContinuar"
