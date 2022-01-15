@@ -1,12 +1,15 @@
 package cat.copernic.meetdis.adapters
 
 import android.content.Context
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import cat.copernic.meetdis.R
 import cat.copernic.meetdis.databinding.ItemNotificacioListBinding
-import cat.copernic.meetdis.models.Notifica
+import cat.copernic.meetdis.models.Oferta
 import coil.api.load
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -14,13 +17,13 @@ import com.google.firebase.storage.FirebaseStorage
 
 class NotificacioRecyclerAdapter : RecyclerView.Adapter<NotificacioRecyclerAdapter.ViewHolder>() {
 
-    var notifica: ArrayList<Notifica> = ArrayList()
+    var notifica: ArrayList<Oferta> = ArrayList()
     lateinit var context: Context
     lateinit var id: String
 
     private val db = FirebaseFirestore.getInstance()
 
-    fun NotificacioRecyclerAdapter(notificaList: ArrayList<Notifica>, contxt: Context) {
+    fun NotificacioRecyclerAdapter(notificaList: ArrayList<Oferta>, contxt: Context) {
         this.notifica = notificaList
         this.context = contxt
     }
@@ -39,20 +42,20 @@ class NotificacioRecyclerAdapter : RecyclerView.Adapter<NotificacioRecyclerAdapt
 
         with(holder) {
             with(notifica[position]) {
-                binding.txtNom.text = this.nomNotifica
+                binding.txtNom.text = this.titolOferta
 
                 //TODO Monstrar la imatge des de Storage de Firebase
                 val storageRef = FirebaseStorage.getInstance().reference
 
-                Log.i("proba_id", "$imageNotifica")
+                Log.i("proba_id", "$imatgeOferta")
 
-                Log.i("idFoto", "${this.imageNotifica}")
+                Log.i("idFoto", "${this.imatgeOferta}")
 
 
-                val imageRef = storageRef.child("ofertes/$imageNotifica")
+                val imageRef = storageRef.child("ofertes/$imatgeOferta")
                 imageRef.downloadUrl.addOnSuccessListener { url ->
                     binding.imgNotificacio.load(url)
-                    Log.i("proba_id", "$imageNotifica")
+                    Log.i("proba_id", "$imatgeOferta")
                 }.addOnFailureListener {
                     //mostrar error
                 }
@@ -62,6 +65,34 @@ class NotificacioRecyclerAdapter : RecyclerView.Adapter<NotificacioRecyclerAdapt
         val item = notifica[position]
 
         holder.bind(item)
+
+
+        holder.itemView.setOnClickListener {
+
+            val bundle = Bundle()
+
+
+            bundle.putSerializable("ofertaTitol", notifica[position].titolOferta)
+            bundle.putSerializable("ofertaDesc", notifica[position].descripcioOferta)
+            bundle.putSerializable("ofertaData", notifica[position].dataOferta)
+            bundle.putSerializable("ofertaDNI", notifica[position].dniOferta)
+            bundle.putSerializable("ofertaImg", notifica[position].imatgeOferta)
+            bundle.putSerializable("ofertaLat", notifica[position].latitutOferta)
+            bundle.putSerializable("ofertaLon", notifica[position].longitudOferta)
+            bundle.putSerializable("ofertaTipus", notifica[position].tipusOferta)
+
+
+
+            holder.itemView.findNavController().navigate(
+                R.id.action_notificacioFragment_to_ofertaFragment, bundle
+            )
+
+//           holder.itemView.findNavController()
+//                .navigate(IniciDirections.actionIniciFragmentToFragmentContingutOferta())
+        }
+
+
+
     }
 
 
@@ -72,7 +103,8 @@ class NotificacioRecyclerAdapter : RecyclerView.Adapter<NotificacioRecyclerAdapt
 
     class ViewHolder(val binding: ItemNotificacioListBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: Notifica) {
+        fun bind(item: Oferta) {
+
 
         }
     }
