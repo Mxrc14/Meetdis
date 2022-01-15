@@ -3,16 +3,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.NotificationManagerCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import cat.copernic.meetdis.adapters.BuscaRecyclerAdapter
 import cat.copernic.meetdis.adapters.NotificacioRecyclerAdapter
-import cat.copernic.meetdis.databinding.FragmentBuscarBinding
 import cat.copernic.meetdis.databinding.FragmentNotificacioBinding
-import cat.copernic.meetdis.models.Busca
-import cat.copernic.meetdis.models.Notifica
+import cat.copernic.meetdis.models.Oferta
 import com.google.firebase.firestore.FirebaseFirestore
 
 
@@ -22,7 +18,7 @@ class Notificacio: Fragment() {
 
     private val db = FirebaseFirestore.getInstance()
 
-    private var notifica: ArrayList<Notifica> = arrayListOf()
+    private var notifica: ArrayList<Oferta> = arrayListOf()
 
 
     override fun onCreateView(
@@ -47,9 +43,15 @@ class Notificacio: Fragment() {
                 notifica.clear()
                 for (document in documents) {
                     notifica.add(
-                        Notifica(
+                        Oferta(
                             document.get("titol").toString(),
-                            document.id
+                            document.get("descripcio").toString(),
+                            document.get("dni").toString(),
+                            document.get("data").toString(),
+                            document.get("tipus").toString(),
+                            document . id,
+                            document.get("latitut") as Double,
+                            document.get("longitud") as Double
                         )
                     )
                 }

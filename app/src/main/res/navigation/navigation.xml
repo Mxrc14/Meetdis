@@ -100,7 +100,11 @@
         android:id="@+id/notificacioFragment"
         android:name="cat.copernic.meetdis.Notificacio"
         android:label="activity_main"
-        tools:layout="@layout/fragment_notificacio" />
+        tools:layout="@layout/fragment_notificacio" >
+        <action
+            android:id="@+id/action_notificacioFragment_to_ofertaFragment"
+            app:destination="@id/ofertaFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/xatsFragment"
