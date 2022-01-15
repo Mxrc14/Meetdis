@@ -58,10 +58,10 @@
 
         <Spinner
             android:id="@+id/spinnerEvents"
+            style="@style/spinner"
             android:layout_width="148dp"
             android:layout_height="55dp"
             android:layout_marginTop="16dp"
-            style="@style/spinner"
             android:fontFamily="@font/pt_sans_caption"
             android:gravity="center"
             android:spinnerMode="dropdown"
@@ -71,7 +71,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.878"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descripcio" />
+            app:layout_constraintTop_toBottomOf="@+id/descripcio"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <EditText
             android:id="@+id/textData"
@@ -93,11 +94,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
+            android:minHeight="48dp"
             android:src="@drawable/ic_location"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textData" />
+            app:layout_constraintTop_toBottomOf="@+id/textData"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/bCrear"
