@@ -130,7 +130,11 @@
         android:id="@+id/membresFragment"
         android:name="cat.copernic.meetdis.Membres"
         android:label="activity_main"
-        tools:layout="@layout/fragment_membres" />
+        tools:layout="@layout/fragment_membres" >
+        <argument
+            android:name="idOferta"
+            app:argType="string" />
+    </fragment>
 
 
     <fragment
