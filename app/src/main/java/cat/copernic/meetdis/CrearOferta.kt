@@ -35,12 +35,15 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_crear_oferta.*
+import kotlinx.android.synthetic.main.fragment_registre_usuari.*
 import kotlinx.coroutines.*
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.properties.Delegates
 
 
@@ -56,6 +59,9 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
     var month by Delegates.notNull<Int>()
     var year by Delegates.notNull<Int>()
 
+    private var spinner: Spinner? = null
+    private var opcion: String? = null
+    private var identificadorOferta: String? = null
 
     private var latestTmpUri: Uri? = null
 
@@ -80,9 +86,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
         }
 
 
-    private var spinner: Spinner? = null
-    private var opcion: String? = null
-    private var identificadorOferta: String? = null
+
 
 
     override fun onCreateView(
@@ -141,6 +145,8 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
                 var collUsersRef: CollectionReference = db.collection("ofertes")
                 val doc = collUsersRef.document()
+
+
                 var data: HashMap<String, Any> = hashMapOf(
                     "dni" to args.dni.uppercase(),
                     "titol" to textTitol.text.toString(),
@@ -170,8 +176,25 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
 
 
-
                 //crearEvento()
+
+                val userdetail = HashMap<String, Any>()
+                var users = arrayListOf<String>()
+
+                users.add(args.dni)
+                userdetail["users"] = users
+
+
+              db.collection("inscrit").document(identificadorOferta!!).set(userdetail)
+
+
+
+                users!!.add(args.dni)
+
+
+
+
+
 
                 view.findNavController()
                     .navigate(CrearOfertaDirections.actionCrearOfertaFragmentToIniciFragment())
