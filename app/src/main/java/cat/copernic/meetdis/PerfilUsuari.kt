@@ -7,30 +7,27 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.text.SpannableStringBuilder
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import cat.copernic.meetdis.databinding.FragmentPerfilUsuariBinding
-import com.github.dhaval2404.colorpicker.util.setVisibility
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.fragment_registre.*
-import android.text.SpannableStringBuilder
-
-import android.text.Editable
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
+import androidx.core.text.isDigitsOnly
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import cat.copernic.meetdis.databinding.FragmentPerfilUsuariBinding
 import coil.api.load
+import com.github.dhaval2404.colorpicker.util.setVisibility
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.android.synthetic.main.fragment_registre.*
 import java.io.ByteArrayOutputStream
 import java.io.File
-
 
 
 class PerfilUsuari : Fragment() {
@@ -51,10 +48,10 @@ class PerfilUsuari : Fragment() {
     private val db = FirebaseFirestore.getInstance()
 
     lateinit var binding: FragmentPerfilUsuariBinding
-
-    var tipo: String? = null
+    var tipo: String = "No Funciona"
     var nom: String? = null
-//    var cognom: String? = null
+
+    //    var cognom: String? = null
 //    var descrip: String? = null
 //    var img: String? = null
 //    var dniF: String? = null
@@ -78,17 +75,97 @@ class PerfilUsuari : Fragment() {
 
 
 
-
+        Log.i("PerfilUsuariDNI", dniUser)
 
         val userdni = db.collection("users").document(dniUser.uppercase())
 
+
+
+
+
         userdni.get().addOnSuccessListener { document ->
             if (document.exists()) {
-                tipo = document.data?.get("tipus").toString()
+
+                tipo = document.data?.get("tipus d´usuari").toString()
+                Log.i("PerfilUsuariTIPOD", "$tipo")
+
+
+                when (tipo) {
+                    "Monitor" -> {
+                        binding.dniUsuariProdis.setVisibility(false)
+                        userdni.get().addOnSuccessListener { document ->
+                            if (document.exists()) {
+
+                                binding.textNom.text =
+                                    SpannableStringBuilder(document.data?.get("nom").toString())
+                                binding.textCognom.text =
+                                    SpannableStringBuilder(document.data?.get("cognoms").toString())
+                                binding.descripcio.text = SpannableStringBuilder(
+                                    document.data?.get("descripcio").toString()
+                                )
+                                binding.textCorreu.text = SpannableStringBuilder(
+                                    document.data?.get("correuMonitor").toString()
+                                )
+
+
+                            }
+
+
+                        }
+                    }
+                    "Familiar" -> {
+                        binding.textCorreu.setVisibility(false)
+
+                        userdni.get().addOnSuccessListener { document ->
+                            if (document.exists()) {
+
+                                binding.textNom.text =
+                                    SpannableStringBuilder(document.data?.get("nom").toString())
+                                binding.textCognom.text =
+                                    SpannableStringBuilder(document.data?.get("cognoms").toString())
+                                binding.descripcio.text = SpannableStringBuilder(
+                                    document.data?.get("descripcio").toString()
+                                )
+                                binding.dniUsuariProdis.text = SpannableStringBuilder(
+                                    document.data?.get("dniUsuariProdis").toString()
+                                )
+
+                            }
+
+                        }
+
+                    }
+                    else -> {
+                        binding.dniUsuariProdis.setVisibility(false)
+                        binding.textCorreu.setVisibility(false)
+
+                        userdni.get().addOnSuccessListener { document ->
+                            if (document.exists()) {
+
+                                binding.textNom.text =
+                                    SpannableStringBuilder(document.data?.get("nom").toString())
+                                binding.textCognom.text =
+                                    SpannableStringBuilder(document.data?.get("cognoms").toString())
+                                binding.descripcio.text = SpannableStringBuilder(
+                                    document.data?.get("descripcio").toString()
+                                )
+
+
+                            }
+
+
+                        }
+
+                    }
+                }
+
+
             }
 
-
         }
+
+        Log.i("PerfilUsuariTIPOF", "$tipo")
+
 
         val storageRef1 = FirebaseStorage.getInstance().reference
 
@@ -101,62 +178,10 @@ class PerfilUsuari : Fragment() {
         }
 
 
-        when (tipo) {
-            "Monitor" -> {
-                binding.dniUsuariProdis.setVisibility(false)
-                userdni.get().addOnSuccessListener { document ->
-                    if (document.exists()) {
-
-                        binding.textNom.text = SpannableStringBuilder(document.data?.get("nom").toString())
-                        binding.textCognom.text = SpannableStringBuilder(document.data?.get("cognoms").toString())
-                        binding.descripcio.text = SpannableStringBuilder(document.data?.get("descripcio").toString())
-                        binding.textCorreu.text = SpannableStringBuilder(document.data?.get("correuMonitor").toString())
-
-
-                    }
-
-
-                }
-            }
-            "Familiar" -> {
-                binding.textCorreu.setVisibility(false)
-
-                userdni.get().addOnSuccessListener { document ->
-                    if (document.exists()) {
-
-                        binding.textNom.text = SpannableStringBuilder(document.data?.get("nom").toString())
-                        binding.textCognom.text = SpannableStringBuilder(document.data?.get("cognoms").toString())
-                        binding.descripcio.text = SpannableStringBuilder(document.data?.get("descripcio").toString())
-                        binding.dniUsuariProdis.text = SpannableStringBuilder(document.data?.get("dniUsuariProdis").toString())
-
-                    }
-
-                }
-
-            }
-            else -> {
-                binding.dniUsuariProdis.setVisibility(false)
-                binding.textCorreu.setVisibility(false)
-
-                userdni.get().addOnSuccessListener { document ->
-                    if (document.exists()) {
-
-                        binding.textNom.text = SpannableStringBuilder(document.data?.get("nom").toString())
-                        binding.textCognom.text = SpannableStringBuilder(document.data?.get("cognoms").toString())
-                        binding.descripcio.text = SpannableStringBuilder(document.data?.get("descripcio").toString())
-
-
-                    }
-
-
-                }
-
-            }
-        }
 
 
 
-        binding.imageCamara.setOnClickListener{  view: View ->
+        binding.imageCamara.setOnClickListener { view: View ->
 
             escollirCamaraGaleria()
 
@@ -166,31 +191,96 @@ class PerfilUsuari : Fragment() {
 
             pujarImatge(view)
 
-            if (binding.textNom.text.toString().isNotEmpty()) {
-                userdni.update("nom", binding.textNom.text.toString())
-            }
+            userdni.get().addOnSuccessListener { document ->
+                if (document.exists()) {
 
-            if (binding.textCognom.text.toString().isNotEmpty()) {
-                userdni.update("cognoms", binding.textCognom.text.toString())
-            }
-            if (binding.descripcio.text.toString().isNotEmpty()) {
-                userdni.update("descripcio", binding.descripcio.text.toString())
-            }
-            if (binding.textCorreu.text.toString().isNotEmpty()) {
-                userdni.update("correu", binding.textCorreu.text.toString())
-            }
+                    tipo = document.data?.get("tipus d´usuari").toString()
+                    Log.i("PerfilUsuariTIPOD", "$tipo")
 
-            if (binding.dniUsuariProdis.text.toString().isNotEmpty()) {
-                userdni.update("dniUsuariProdis", binding.dniUsuariProdis.text.toString())
+
+                    when (tipo) {
+                        "Monitor" -> {
+
+
+                            if (binding.textCorreu.text.toString()
+                                    .isNotEmpty() && binding.textCorreu.text.toString()
+                                    .contains("@")
+                            ) {
+                                userdni.update("correuMonitor", binding.textCorreu.text.toString())
+                            } else {
+                                val toast = Toast.makeText(
+                                    requireContext(),
+                                    getString(R.string.error_correu),
+                                    Toast.LENGTH_LONG
+                                )
+                                toast.show()
+                            }
+
+
+                        }
+                        "Familiar" -> {
+
+                            if (binding.dniUsuariProdis.text.toString().isNotEmpty()) {
+
+                                var letra: Char = binding.dniUsuariProdis.text.toString()
+                                    .substring(binding.dniUsuariProdis.length() - 1, binding.dniUsuariProdis.length())[0]
+
+                                var numeros: String =
+                                    binding.dniUsuariProdis.text.toString()
+                                        .substring(0, binding.dniUsuariProdis.length() - 1)
+
+                                if (letra.isLetter() && numeros.isDigitsOnly() && letra.isUpperCase() && binding.dniUsuariProdis.text.length == 9) {
+
+                                    userdni.update(
+                                        "dniUsuariProdis",
+                                        binding.dniUsuariProdis.text.toString()
+                                    )
+
+                                } else {
+                                    val toast =
+                                        Toast.makeText(
+                                            requireContext(),
+                                            R.string.dni_invalid,
+                                            Toast.LENGTH_LONG
+                                        )
+                                    toast.show()
+                                }
+                            }
+                        }
+
+                    }
+                    if (binding.textNom.text.toString()
+                            .isNotEmpty() && binding.textCognom.text.toString()
+                            .isNotEmpty() && binding.descripcio.text.toString().isNotEmpty()
+                    ) {
+
+                        userdni.update("nom", binding.textNom.text.toString())
+
+                        userdni.update("cognoms", binding.textCognom.text.toString())
+
+                        userdni.update("descripcio", binding.descripcio.text.toString())
+
+
+                    } else {
+                        val toast =
+                            Toast.makeText(
+                                requireContext(),
+                                R.string.algun_camp_buit,
+                                Toast.LENGTH_LONG
+                            )
+                        toast.show()
+                    }
+
+                }
+
+
             }
 
         }
 
-
         return binding.root
 
     }
-
 
 
     private val startForActivityGallery = registerForActivityResult(
@@ -282,7 +372,6 @@ class PerfilUsuari : Fragment() {
 
         }
     }
-
 
 
 }

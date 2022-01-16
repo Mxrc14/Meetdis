@@ -126,6 +126,7 @@
     <string name="contrasenyas_diferents">Has introduit contrasenyes diferents</string>
     <string name="pr_ximament">Pròximament...</string>
     <string name="videojocs">VideoGames</string>
+    <string name="error_correu">Error al Correu</string>
 
 
 </resources>

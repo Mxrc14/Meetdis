@@ -95,7 +95,7 @@ Log.i("ContingutOferta1", "$ofertaTitol")
             //mostrar error
         }
 
-
+//sdsdsd
 
         binding.icMembres.setOnClickListener { view: View ->
             Log.i("MembresF", ofertaImg!!)

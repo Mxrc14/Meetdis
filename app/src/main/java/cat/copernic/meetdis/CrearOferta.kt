@@ -286,8 +286,8 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
         val channelId = getString(R.string.basic_channel_id) // (1)
 
-        var titol = "Event Creat"
-        var descripcio = "L'event ha siguit creat correctament"
+        var titol = getString(R.string.notificacio_titol)
+        var descripcio = getString(R.string.notificacio_descripcio)
 
         val notification = NotificationCompat.Builder(requireContext(), channelId)
             .setSmallIcon(R.drawable.meetdis) // (5)
