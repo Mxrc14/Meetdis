@@ -20,12 +20,11 @@
             android:layout_width="match_parent"
             android:layout_height="95dp"
 
-            android:drawable="@drawable/bordes_meetdis"
-
             android:background="@drawable/bordes_meetdis"
 
-            android:textAlignment="center"
-            >
+            android:drawable="@drawable/bordes_meetdis"
+
+            android:textAlignment="center">
 
             <ImageView
                 android:id="@+id/imgNotificacio"
@@ -44,15 +43,14 @@
                 android:layout_width="0dp"
                 android:layout_height="81dp"
                 android:layout_gravity="center"
-
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imgNotificacio"
-                app:layout_constraintTop_toTopOf="parent"
                 android:paddingTop="30dp"
-                android:textAlignment="center"
+                android:paddingStart="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imageView"
 
 
-                />
+                app:layout_constraintStart_toEndOf="@+id/imgNotificacio"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/imageView"
