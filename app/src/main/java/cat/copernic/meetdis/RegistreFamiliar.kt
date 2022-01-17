@@ -104,8 +104,7 @@ class RegistreFamiliar : Fragment() {
                     dni = dni.lowercase()
 
 
-                    view.findNavController()
-                        .navigate(RegistreFamiliarDirections.actionLogInFragmentToIniciFragment())
+
 
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(dni + "@prodis.cat",
                     args.contrasenya)
@@ -122,6 +121,23 @@ class RegistreFamiliar : Fragment() {
 
                         )
                     )
+
+                    FirebaseAuth.getInstance()
+                        .signInWithEmailAndPassword(
+                            dni + "@prodis.cat", //correu electronic
+                            args.contrasenya
+
+                        ).addOnCompleteListener() {
+
+
+
+                            if (it.isSuccessful) {
+                                pujarImatge(view)
+                                view.findNavController()
+                                    .navigate(RegistreFamiliarDirections.actionRegistreFamiliarFragmentToIniciFragment())
+                            }
+                        }
+
                 } else {
                     val toast = Toast.makeText(requireContext(), R.string.dni_invalid, Toast.LENGTH_LONG)
                     toast.show()
@@ -130,7 +146,6 @@ class RegistreFamiliar : Fragment() {
                 val toast = Toast.makeText(requireContext(), R.string.algun_camp_buit, Toast.LENGTH_LONG)
                 toast.show()
             }
-            pujarImatge(view)
         }
         return binding.root
     }

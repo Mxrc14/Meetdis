@@ -1,27 +1,26 @@
 package cat.copernic.meetdis
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.*
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import cat.copernic.meetdis.databinding.FragmentRegistreUsuariBinding
 import com.github.dhaval2404.colorpicker.util.setVisibility
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -32,7 +31,6 @@ import kotlinx.android.synthetic.main.fragment_registre_usuari.textCognom
 import kotlinx.android.synthetic.main.fragment_registre_usuari.textNom
 import java.io.ByteArrayOutputStream
 import java.io.File
-
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -57,21 +55,25 @@ class RegistreUsuari : Fragment() {
 
     private var latestTmpUri: Uri? = null
 
-    val takeImageResult = registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
-        if (isSuccess) {
-            latestTmpUri?.let { uri ->
-                binding.imageCamara.setImageURI(uri)
+    val takeImageResult =
+        registerForActivityResult(ActivityResultContracts.TakePicture()) { isSuccess ->
+            if (isSuccess) {
+                latestTmpUri?.let { uri ->
+                    binding.imageCamara.setImageURI(uri)
+                }
             }
         }
-    }
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate<cat.copernic.meetdis.databinding.FragmentRegistreUsuariBinding>(inflater,
-            cat.copernic.meetdis.R.layout.fragment_registre_usuari,container,false)
+        binding =
+            DataBindingUtil.inflate<cat.copernic.meetdis.databinding.FragmentRegistreUsuariBinding>(
+                inflater,
+                cat.copernic.meetdis.R.layout.fragment_registre_usuari, container, false
+            )
 
 
         val args = RegistreUsuariArgs.fromBundle(requireArguments())
@@ -79,7 +81,6 @@ class RegistreUsuari : Fragment() {
         //Camara
         binding.imageCamara.setOnClickListener {
             escollirCamaraGaleria()
-
 
 
         }
@@ -99,11 +100,13 @@ class RegistreUsuari : Fragment() {
             if (textNom.text.isNotEmpty() && textCognom.text.isNotEmpty()) {
                 var dni: String = args.dni;
                 dni = dni.lowercase()
-                view.findNavController()
-                    .navigate(RegistreUsuariDirections.actionLogInFragmentToIniciFragment())
 
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(dni + "@prodis.cat",
-                    args.contrasenya)
+
+
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(
+                    dni + "@prodis.cat",
+                    args.contrasenya
+                )
 
                 db.collection("users").document(args.dni).set(
                     hashMapOf(
@@ -116,20 +119,41 @@ class RegistreUsuari : Fragment() {
                     )
                 )
 
+
+                FirebaseAuth.getInstance()
+                    .signInWithEmailAndPassword(
+                        dni + "@prodis.cat", //correu electronic
+                        args.contrasenya
+
+                    ).addOnCompleteListener() {
+
+
+
+                        if (it.isSuccessful) {
+                            pujarImatge(view)
+                            view.findNavController()
+                                .navigate(RegistreUsuariDirections.actionRegistreUsuariFragmentToIniciFragment())
+                        }
+                    }
+
+
             } else {
-                val toast = Toast.makeText(requireContext(), "Algun camp esta buit", Toast.LENGTH_LONG)
+                val toast =
+                    Toast.makeText(requireContext(), "Algun camp esta buit", Toast.LENGTH_LONG)
                 toast.show()
             }
-            pujarImatge(view)
+
 
         }
 
         return binding.root
 
     }
+
     private val startForActivityGallery = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()){ result ->
-        if (result.resultCode == Activity.RESULT_OK){
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
             val data = result.data?.data
             //setImageUri només funciona per rutes locals, no a internet
             binding?.imageCamara?.setImageURI(data)
@@ -169,27 +193,44 @@ class RegistreUsuari : Fragment() {
             deleteOnExit()
         }
 
-        return activity?.let { FileProvider.getUriForFile(it.applicationContext, "cat.copernic.meetdis.provider", tmpFile) }
+        return activity?.let {
+            FileProvider.getUriForFile(
+                it.applicationContext,
+                "cat.copernic.meetdis.provider",
+                tmpFile
+            )
+        }
     }
-    fun pujarImatge(root: View){
+
+    fun pujarImatge(root: View) {
         // pujar imatge al Cloud Storage de Firebase
         // https://firebase.google.com/docs/storage/android/upload-files?hl=es
         val args = RegistreUsuariArgs.fromBundle(requireArguments())
         // Creem una referència amb el path i el nom de la imatge per pujar la imatge
-        val pathReference = storageRef.child("users/"+ args.dni)
-        val bitmap = (binding.imageCamara.drawable as BitmapDrawable).bitmap // agafem la imatge del imageView
+        val pathReference = storageRef.child("users/" + args.dni)
+        val bitmap =
+            (binding.imageCamara.drawable as BitmapDrawable).bitmap // agafem la imatge del imageView
         val baos = ByteArrayOutputStream() // declarem i inicialitzem un outputstream
 
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos) // convertim el bitmap en outputstream
+        bitmap.compress(
+            Bitmap.CompressFormat.JPEG,
+            100,
+            baos
+        ) // convertim el bitmap en outputstream
         val data = baos.toByteArray() //convertim el outputstream en array de bytes.
 
         val uploadTask = pathReference.putBytes(data)
         uploadTask.addOnFailureListener {
-            Toast.makeText(activity, resources.getText(R.string.Error_pujar_foto), Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                activity,
+                resources.getText(R.string.Error_pujar_foto),
+                Toast.LENGTH_LONG
+            ).show()
 
 
         }.addOnSuccessListener {
-            Toast.makeText(activity, resources.getText(R.string.Exit_pujar_foto), Toast.LENGTH_LONG).show()
+            Toast.makeText(activity, resources.getText(R.string.Exit_pujar_foto), Toast.LENGTH_LONG)
+                .show()
 
         }
     }
@@ -197,7 +238,8 @@ class RegistreUsuari : Fragment() {
     override fun onResume() {
         super.onResume()
         (activity as AppCompatActivity?)!!.supportActionBar!!.hide()
-        val navBar: BottomNavigationView = activity!!.findViewById(cat.copernic.meetdis.R.id.bottomMenu)
+        val navBar: BottomNavigationView =
+            activity!!.findViewById(cat.copernic.meetdis.R.id.bottomMenu)
         navBar.setVisibility(visible = false)
 
     }
@@ -205,7 +247,8 @@ class RegistreUsuari : Fragment() {
     override fun onStop() {
         super.onStop()
         (activity as AppCompatActivity?)!!.supportActionBar!!.show()
-        val navBar: BottomNavigationView = activity!!.findViewById(cat.copernic.meetdis.R.id.bottomMenu)
+        val navBar: BottomNavigationView =
+            activity!!.findViewById(cat.copernic.meetdis.R.id.bottomMenu)
         navBar.setVisibility(visible = true)
 
     }
