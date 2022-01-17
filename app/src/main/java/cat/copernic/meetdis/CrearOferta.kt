@@ -42,6 +42,7 @@ import kotlinx.android.synthetic.main.fragment_registre_usuari.*
 import kotlinx.coroutines.*
 import java.io.ByteArrayOutputStream
 import java.io.File
+import java.lang.Thread.sleep
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.properties.Delegates
@@ -164,12 +165,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
                 pujarImatge(view)
 
-                tasca1 = crearCorrutina(
-                    5, //Temps de durada de la corrutina 1
-                    binding.bCrear, //Botó per activar la corrutina 1
-                    binding.progressBarUn, //Progrés de la corrutina 1
 
-                )
 
 
                 generateNotification()
@@ -191,9 +187,14 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
                 users!!.add(args.dni)
 
+                tasca1 = crearCorrutina(
+                    5, //Temps de durada de la corrutina 1
+                    binding.bCrear, //Botó per activar la corrutina 1
+                    binding.progressBarUn, //Progrés de la corrutina 1
 
+                )
 
-
+                sleep(3*1000)
 
 
                 view.findNavController()
@@ -433,10 +434,12 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
     }
 
     fun onDateSelected(day: Int, month: Int, year: Int) {
-        textData.setText("$day/$month/$year")
+
         this.day = day
         this.month = month
         this.year = year
+
+        textData.setText("$day/$month/$year")
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -450,30 +453,32 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
 
     @DelicateCoroutinesApi
-    private fun crearCorrutina(durada: Int, inici: Button, progres: ProgressBar) =
-        GlobalScope.launch(
+    private fun crearCorrutina(durada: Int, inici: Button, progres: ProgressBar) = GlobalScope.launch(
 
-            Dispatchers.Main
-        ) {
+        Dispatchers.Main) {
 
-            progres.setVisibility(true)
-            progres.progress = 0 //Situem el ProgressBar a l'inici del procés
-            delay(5000)
-            withContext(Dispatchers.IO) {
-                var comptador = 0
-                //Inciem el progrés de la barra de progrés
-                while (comptador < durada) {
-                    //Retardem el progrés de la barra
-                    if (suspensio((durada * 50).toLong())) {
-                        comptador++
-                        progres.progress = (comptador * 50) / durada
-                    }
+        progres.setVisibility(true)
+        progres.progress = 0 //Situem el ProgressBar a l'inici del procés
+
+        /* Tasca principal:
+         * Trasalladem l'execucció de la corrutina a un procés diferent mitjançant el mètode withContext. En aquest cas a un procés d'entrada i sortida que bloquejarà
+         * el procés principla fins que rebi una resposta, fent que la nostra funció sigui segura i habiliti l'IU segons sigui necessari.
+         * En el nostre cas activarem el progressBar fins arribar al final.
+         */
+        withContext(Dispatchers.IO) {
+            var comptador = 0
+            //Inciem el progrés de la barra de progrés
+            while (comptador < durada) {
+                //Retardem el progrés de la barra
+                if(suspensio((durada * 50).toLong())) {
+                    comptador++
+                    progres.progress = (comptador * 50) / durada
                 }
             }
-
-            progres.progress = 0 //Situem el ProgressBar a l'inici del procés
-            progres.setVisibility(false)
         }
+        progres.progress = 0 //Situem el ProgressBar a l'inici del procés
+        progres.setVisibility(false)
+    }
 
     suspend fun suspensio(duracio: Long): Boolean {
         delay(duracio)
