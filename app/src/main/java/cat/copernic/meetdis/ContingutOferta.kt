@@ -95,10 +95,12 @@ Log.i("ContingutOferta1", "$ofertaTitol")
             //mostrar error
         }
 
-        binding.icMembres.setOnClickListener { view: View ->
+//sdsdsd
 
+        binding.icMembres.setOnClickListener { view: View ->
+            Log.i("MembresF", ofertaImg!!)
             view.findNavController()
-                .navigate(ContingutOfertaDirections.actionOfertaFragmentFragmentToMembresFragment())
+                .navigate(ContingutOfertaDirections.actionOfertaFragmentFragmentToMembresFragment(ofertaImg!!))
         }
 
         binding.mapView.setOnClickListener{ view: View ->

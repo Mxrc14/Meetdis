@@ -94,8 +94,7 @@ class RegistreMonitor : Fragment() {
                 if (textCorreu.text.isNotEmpty() && textNom.text.isNotEmpty() && textCognom.text.isNotEmpty()) {
                     var dni: String = args.dni;
                     dni = dni.lowercase()
-                    view.findNavController()
-                        .navigate(RegistreMonitorDirections.actionLogInFragmentToIniciFragment())
+
 
                     FirebaseAuth.getInstance().createUserWithEmailAndPassword(
                         dni + "@prodis.cat",
@@ -115,12 +114,29 @@ class RegistreMonitor : Fragment() {
                         )
                     )
 
+
+
+                    FirebaseAuth.getInstance()
+                        .signInWithEmailAndPassword(
+                            dni + "@prodis.cat", //correu electronic
+                            args.contrasenya
+
+                        ).addOnCompleteListener() {
+
+
+
+                            if (it.isSuccessful) {
+                                pujarImatge(view)
+                                view.findNavController()
+                                    .navigate(RegistreMonitorDirections.actionRegistreMonitorFragmentToIniciFragment())
+                            }
+                        }
+
                 } else {
                     val toast =
                         Toast.makeText(requireContext(), "Algun camp esta buit", Toast.LENGTH_LONG)
                     toast.show()
                 }
-                pujarImatge(view)
             }
 
         return binding.root

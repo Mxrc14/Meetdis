@@ -24,10 +24,10 @@
             android:id="@+id/textTitol"
             android:layout_width="294dp"
             android:layout_height="60dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/custom_input"
-            android:drawablePadding="5dp"
 
+            android:drawablePadding="5dp"
             android:ems="10"
             android:hint="@string/titol"
             android:inputType="textPersonName"
@@ -35,9 +35,9 @@
             android:paddingEnd="5dp"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageCamara" />
+            app:layout_constraintTop_toBottomOf="@+id/mapView" />
 
         <EditText
             android:id="@+id/descripcio"
@@ -74,59 +74,60 @@
             app:layout_constraintTop_toBottomOf="@+id/descripcio"
             tools:ignore="SpeakableTextPresentCheck" />
 
+
         <EditText
             android:id="@+id/textData"
-            android:layout_width="161dp"
-            android:layout_height="51dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="184dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
             android:clickable="false"
             android:ems="10"
             android:focusable="false"
             android:hint="@string/data"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.136"
+            app:layout_constraintHorizontal_bias="0.076"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/descripcio" />
-
 
         <ImageButton
             android:id="@+id/mapView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="4dp"
             android:minHeight="48dp"
             android:src="@drawable/ic_location"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textData"
+            app:layout_constraintTop_toBottomOf="@+id/imageCamara"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/bCrear"
+            style="@style/colorMeetdis"
             android:layout_width="132dp"
             android:layout_height="59dp"
-            android:layout_marginTop="8dp"
-            style="@style/colorMeetdis"
+            android:layout_marginTop="44dp"
             android:fontFamily="@font/pt_sans_caption"
             android:text="@string/crear"
             android:textColor="#ffffff"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/progressBarUn" />
+            app:layout_constraintTop_toBottomOf="@+id/spinnerEvents" />
 
         <ProgressBar
             android:id="@+id/progressBarUn"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:visibility="invisible"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mapView"
+            app:layout_constraintTop_toBottomOf="@+id/textData"
             tools:ignore="MissingConstraints" />
 
 

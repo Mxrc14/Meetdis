@@ -33,18 +33,20 @@ class Inici : Fragment() {
 
     val uid = user?.email
 
+    var dni: String = uid.toString().substring(0, uid.toString().length - 11).uppercase()
+
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-
+Log.i("Inici", "$dni")
         binding = DataBindingUtil.inflate<FragmentIniciBinding>(
                 inflater,
                 R.layout.fragment_inici, container, false
         )
 
-        var dni: String = uid.toString().substring(0, uid.toString().length - 11).uppercase()
+
 
         //val args = IniciArgs.fromBundle(requireArguments())
 

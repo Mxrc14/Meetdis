@@ -23,11 +23,19 @@ class Membres : Fragment() {
 
     private var membres: ArrayList<Membre> = arrayListOf();
 
+    private  lateinit var idOferta: String
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        val args = MembresArgs.fromBundle(requireArguments())
+
+        idOferta = args.idOferta
+
+        Log.i("MembresF", idOferta)
 
         val binding = DataBindingUtil.inflate<FragmentMembresBinding>(
             inflater,
@@ -39,6 +47,8 @@ class Membres : Fragment() {
         binding.rvMembres.layoutManager = LinearLayoutManager(requireContext())
 
 
+
+//db.collection("inscrit").get(oferta)
 
 
         db.collection("users")

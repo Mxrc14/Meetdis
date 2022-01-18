@@ -35,12 +35,16 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_crear_oferta.*
+import kotlinx.android.synthetic.main.fragment_registre_usuari.*
 import kotlinx.coroutines.*
 import java.io.ByteArrayOutputStream
 import java.io.File
+import java.lang.Thread.sleep
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.properties.Delegates
 
 
@@ -56,6 +60,9 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
     var month by Delegates.notNull<Int>()
     var year by Delegates.notNull<Int>()
 
+    private var spinner: Spinner? = null
+    private var opcion: String? = null
+    private var identificadorOferta: String? = null
 
     private var latestTmpUri: Uri? = null
 
@@ -80,9 +87,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
         }
 
 
-    private var spinner: Spinner? = null
-    private var opcion: String? = null
-    private var identificadorOferta: String? = null
+
 
 
     override fun onCreateView(
@@ -141,6 +146,8 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
                 var collUsersRef: CollectionReference = db.collection("ofertes")
                 val doc = collUsersRef.document()
+
+
                 var data: HashMap<String, Any> = hashMapOf(
                     "dni" to args.dni.uppercase(),
                     "titol" to textTitol.text.toString(),
@@ -158,6 +165,28 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
                 pujarImatge(view)
 
+
+
+
+                generateNotification()
+
+
+
+                //crearEvento()
+
+                val userdetail = HashMap<String, Any>()
+                var users = arrayListOf<String>()
+
+                users.add(args.dni)
+                userdetail["users"] = users
+
+
+              db.collection("inscrit").document(identificadorOferta!!).set(userdetail)
+
+
+
+                users!!.add(args.dni)
+
                 tasca1 = crearCorrutina(
                     5, //Temps de durada de la corrutina 1
                     binding.bCrear, //Botó per activar la corrutina 1
@@ -165,13 +194,8 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
                 )
 
+                sleep(3*1000)
 
-                generateNotification()
-
-
-
-
-                //crearEvento()
 
                 view.findNavController()
                     .navigate(CrearOfertaDirections.actionCrearOfertaFragmentToIniciFragment())
@@ -263,8 +287,8 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
         val channelId = getString(R.string.basic_channel_id) // (1)
 
-        var titol = "Event Creat"
-        var descripcio = "L'event ha siguit creat correctament"
+        var titol = getString(R.string.notificacio_titol)
+        var descripcio = getString(R.string.notificacio_descripcio)
 
         val notification = NotificationCompat.Builder(requireContext(), channelId)
             .setSmallIcon(R.drawable.meetdis) // (5)
@@ -410,10 +434,12 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
     }
 
     fun onDateSelected(day: Int, month: Int, year: Int) {
-        textData.setText("$day/$month/$year")
+
         this.day = day
         this.month = month
         this.year = year
+
+        textData.setText("$day/$month/$year")
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
@@ -427,30 +453,32 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
 
     @DelicateCoroutinesApi
-    private fun crearCorrutina(durada: Int, inici: Button, progres: ProgressBar) =
-        GlobalScope.launch(
+    private fun crearCorrutina(durada: Int, inici: Button, progres: ProgressBar) = GlobalScope.launch(
 
-            Dispatchers.Main
-        ) {
+        Dispatchers.Main) {
 
-            progres.setVisibility(true)
-            progres.progress = 0 //Situem el ProgressBar a l'inici del procés
-            delay(5000)
-            withContext(Dispatchers.IO) {
-                var comptador = 0
-                //Inciem el progrés de la barra de progrés
-                while (comptador < durada) {
-                    //Retardem el progrés de la barra
-                    if (suspensio((durada * 50).toLong())) {
-                        comptador++
-                        progres.progress = (comptador * 50) / durada
-                    }
+        progres.setVisibility(true)
+        progres.progress = 0 //Situem el ProgressBar a l'inici del procés
+
+        /* Tasca principal:
+         * Trasalladem l'execucció de la corrutina a un procés diferent mitjançant el mètode withContext. En aquest cas a un procés d'entrada i sortida que bloquejarà
+         * el procés principla fins que rebi una resposta, fent que la nostra funció sigui segura i habiliti l'IU segons sigui necessari.
+         * En el nostre cas activarem el progressBar fins arribar al final.
+         */
+        withContext(Dispatchers.IO) {
+            var comptador = 0
+            //Inciem el progrés de la barra de progrés
+            while (comptador < durada) {
+                //Retardem el progrés de la barra
+                if(suspensio((durada * 50).toLong())) {
+                    comptador++
+                    progres.progress = (comptador * 50) / durada
                 }
             }
-
-            progres.progress = 0 //Situem el ProgressBar a l'inici del procés
-            progres.setVisibility(false)
         }
+        progres.progress = 0 //Situem el ProgressBar a l'inici del procés
+        progres.setVisibility(false)
+    }
 
     suspend fun suspensio(duracio: Long): Boolean {
         delay(duracio)

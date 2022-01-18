@@ -173,7 +173,7 @@ class LogInFragment : Fragment() {
 
     }
 
-    private fun crearCorrutina(durada: Int, inici: Button,progres: ProgressBar) = GlobalScope.launch(
+    private fun crearCorrutina(durada: Int, inici: Button, progres: ProgressBar) = GlobalScope.launch(
 
         Dispatchers.Main) {
 
