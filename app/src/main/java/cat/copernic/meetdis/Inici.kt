@@ -80,6 +80,7 @@ Log.i("Inici", "$dni")
                                 )
                         )
                     }
+
                     context?.let { myAdapter.OfertaRecyclerAdapter(ofertes, it) }
                     binding.rvOfertes.adapter = myAdapter
 
