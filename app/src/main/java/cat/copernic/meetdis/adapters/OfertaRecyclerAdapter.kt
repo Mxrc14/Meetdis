@@ -1,37 +1,17 @@
 package cat.copernic.meetdis.adapters
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.content.ContextCompat
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import cat.copernic.meetdis.CrearOfertaDirections
-import cat.copernic.meetdis.IniciDirections
 import cat.copernic.meetdis.R
-import cat.copernic.meetdis.models.Oferta
 import cat.copernic.meetdis.databinding.ItemOfertaListBinding
+import cat.copernic.meetdis.models.Oferta
 import coil.api.load
-import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import kotlin.collections.ArrayList
-import androidx.core.content.ContextCompat.startActivity
-
-
-
-
-
-
-
 
 
 class OfertaRecyclerAdapter : RecyclerView.Adapter<OfertaRecyclerAdapter.ViewHolder>() {
@@ -121,6 +101,7 @@ holder.bind(
         fun bind(item: Oferta) {
 
         }
+
     }
 }
 

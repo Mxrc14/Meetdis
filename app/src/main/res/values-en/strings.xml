@@ -87,7 +87,7 @@
     <string name="versio">Version:</string>
     <string name="membres">Members</string>
 
-    <string name="inscriu_me">"SIGN UP "</string>
+    <string name="inscriu_me">SUBSCRIBE</string>
     <string name="localitzacio">Localization</string>
 
     <string name="Error_pujar_foto">Error uploading photo</string>
@@ -95,7 +95,7 @@
     <string name="ok">OK</string>
     <string name="telematic">TELEMATIC</string>
     <string name="modificar">MODIFY</string>
-    <string name="eliminar">ELIMINATE</string>
+    <string name="eliminar">DELETE</string>
     <string name="actualitza">UPDATE</string>
     <string name="dni_usuari_prodis">DNI Prodis User</string>
     <string name="propietaris">"This App is developed by Marc Hernández and Adrià Tomás. "</string>
@@ -132,6 +132,11 @@
     <string name="constar_4_numeros">The password must consist of 4 numbers.</string>
     <string name="contrasenyas_diferents">You have entered different passwords</string>
     <string name="pr_ximament">"Coming soon... "</string>
+    <string name="error_correu">"Mail Error "</string>
+    <string name="error_eliminar">"Error Deleting "</string>
+    <string name="oferta_eliminada">Offer Removed</string>
+    <string name="eliminar_oferta_pregunta">"Are you sure you want to delete the offer? "</string>
+    <string name="desapuntar_me">UNSUBSCRIBE</string>
 
 
 </resources>

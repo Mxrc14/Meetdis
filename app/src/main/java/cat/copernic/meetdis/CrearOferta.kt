@@ -194,7 +194,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
                 )
 
-                sleep(3*1000)
+
 
 
                 view.findNavController()

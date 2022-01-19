@@ -11,7 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import cat.copernic.meetdis.adapters.MembreRecyclerAdapter
 import cat.copernic.meetdis.databinding.FragmentMembresBinding
 import cat.copernic.meetdis.models.Membre
+import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.model.Document
+import java.util.HashMap
 
 
 class Membres : Fragment() {
@@ -42,13 +46,47 @@ class Membres : Fragment() {
             R.layout.fragment_membres, container, false
         )
 
+
+
+
+
         binding.rvMembres.setHasFixedSize(true)
 
         binding.rvMembres.layoutManager = LinearLayoutManager(requireContext())
 
 
 
-//db.collection("inscrit").get(oferta)
+
+        var lista = arrayListOf<String>()
+
+        db.collection("inscrit").document(idOferta).get().addOnSuccessListener {
+
+            lista = it.get("users") as ArrayList<String>
+
+            for (posicion in lista.indices){
+                Log.i("VALORA", lista[posicion])
+
+                val userdetail = HashMap<String, Any>()
+                if (posicion == lista.size - 1){
+                    var valor = lista[posicion]
+
+                    valor = valor + "x"
+
+                    lista.add(valor)
+
+                    userdetail["users"] = lista
+                }
+
+
+                db.collection("inscrit").document(idOferta).delete()
+                db.collection("inscrit").document(idOferta).set(userdetail)
+
+
+            }
+
+
+        }
+
 
 
         db.collection("users")
@@ -74,6 +112,7 @@ class Membres : Fragment() {
                 binding.rvMembres.adapter = myAdapter
 
             }
+
 
         return binding.root
     }

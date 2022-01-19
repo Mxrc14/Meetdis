@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     var visibleOptions: Boolean = false
 
     private lateinit var navController: NavController
+
     private lateinit var appBarConfiguration: AppBarConfiguration
 
 

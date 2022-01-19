@@ -131,6 +131,11 @@
     <string name="constar_4_numeros">La contraseña tiene que constar de 4 números.</string>
     <string name="contrasenyas_diferents">Has introducido contraseñas diferentes</string>
     <string name="pr_ximament">Próximamente...</string>
+    <string name="error_correu">Error en el Correo</string>
+    <string name="error_eliminar">Error en Eliminar</string>
+    <string name="oferta_eliminada">Oferta Eliminada</string>
+    <string name="eliminar_oferta_pregunta">¿Seguro que quieres eliminar la oferta?</string>
+    <string name="desapuntar_me">DESAPUNTARME</string>
 
 
 </resources>

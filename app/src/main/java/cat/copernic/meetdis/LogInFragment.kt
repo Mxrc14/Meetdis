@@ -39,7 +39,6 @@ class LogInFragment : Fragment() {
 
     private val db = FirebaseFirestore.getInstance()
 
-    var singOut: Int = 0
 
 
 
