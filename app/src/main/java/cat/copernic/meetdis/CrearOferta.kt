@@ -1,10 +1,7 @@
 package cat.copernic.meetdis
 
 
-import android.app.Activity
-import android.app.AlertDialog
-import android.app.NotificationChannel
-import android.app.NotificationManager
+import android.app.*
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
@@ -90,6 +87,8 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
 
 
+
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -185,7 +184,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
 
 
-                users!!.add(args.dni)
+                users.add(args.dni)
 
                 tasca1 = crearCorrutina(
                     5, //Temps de durada de la corrutina 1
@@ -194,8 +193,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
                 )
 
-
-
+                sleep(2000); // 2 Seconds
 
                 view.findNavController()
                     .navigate(CrearOfertaDirections.actionCrearOfertaFragmentToIniciFragment())
