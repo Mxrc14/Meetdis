@@ -20,7 +20,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import kotlinx.android.synthetic.main.item_oferta_list.*
 import java.util.*
 
 
@@ -60,17 +59,13 @@ class ContingutOferta : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-         binding = DataBindingUtil.inflate<FragmentContingutOfertaBinding>(
+        binding = DataBindingUtil.inflate<FragmentContingutOfertaBinding>(
             inflater,
             R.layout.fragment_contingut_oferta, container, false
         )
 
 
-
         val i: Intent = activity!!.intent
-
-
-
 
 
 //        val bundle = Bundle()
@@ -99,11 +94,6 @@ class ContingutOferta : Fragment() {
         usuariInscrit()
 
 
-
-
-
-
-
         val imageRef = storageRef.child("ofertes/$ofertaImg")
         imageRef.downloadUrl.addOnSuccessListener { url ->
             binding.imageCamara.load(url)
@@ -115,106 +105,99 @@ class ContingutOferta : Fragment() {
 
 
 
-    binding.icMembres.setOnClickListener{
-        view: View ->
+        binding.icMembres.setOnClickListener { view: View ->
 
-        view.findNavController()
-            .navigate(
-                ContingutOfertaDirections.actionOfertaFragmentFragmentToMembresFragment(
-                    ofertaImg!!
+            view.findNavController()
+                .navigate(
+                    ContingutOfertaDirections.actionOfertaFragmentFragmentToMembresFragment(
+                        ofertaImg!!
+                    )
                 )
+        }
+
+        binding.mapView.setOnClickListener { view: View ->
+
+            var intent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("geo:<$ofertaLat>,<$ofertaLon>?q=<$ofertaLat>,<$ofertaLon>")
             )
-    }
 
-    binding.mapView.setOnClickListener{
-        view: View ->
+            startActivity(intent)
 
-        var intent = Intent(
-            Intent.ACTION_VIEW,
-            Uri.parse("geo:<$ofertaLat>,<$ofertaLon>?q=<$ofertaLat>,<$ofertaLon>")
-        )
-
-        startActivity(intent)
-
-    }
+        }
 
 
 
 
-    if (ofertaLat == 0.0 && ofertaLon == 0.0)
-    {
-        binding.telematicText.setVisibility(true)
-    } else
-    {
-        binding.mapView.setVisibility(true)
-    }
+        if (ofertaLat == 0.0 && ofertaLon == 0.0) {
+            binding.telematicText.setVisibility(true)
+        } else {
+            binding.mapView.setVisibility(true)
+        }
 
 
-    if (dniS.uppercase() == ofertaDNI.toString().uppercase())
-    {
-        binding.bEliminar.setVisibility(true)
-        binding.bModificar.setVisibility(true)
-        binding.bInscriuMe.setVisibility(false)
+        if (dniS.uppercase() == ofertaDNI.toString().uppercase()) {
+            binding.bEliminar.setVisibility(true)
+            binding.bModificar.setVisibility(true)
+            binding.bInscriuMe.setVisibility(false)
 
-    } else
-    {
-        binding.bEliminar.setVisibility(false)
-        binding.bModificar.setVisibility(false)
-        binding.bInscriuMe.setVisibility(true)
-    }
+        } else {
+            binding.bEliminar.setVisibility(false)
+            binding.bModificar.setVisibility(false)
+            binding.bInscriuMe.setVisibility(true)
+        }
 
 
-    binding.bEliminar.setOnClickListener{
-        view: View ->
+        binding.bEliminar.setOnClickListener { view: View ->
 
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle(getString(R.string.eliminar_oferta_pregunta))
-        builder.setPositiveButton(R.string.eliminar) { dialog, id ->
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle(getString(R.string.eliminar_oferta_pregunta))
+            builder.setPositiveButton(R.string.eliminar) { dialog, id ->
 
-            db.collection("ofertes").document(ofertaImg.toString())
-                .delete()
-                .addOnSuccessListener {
+                db.collection("ofertes").document(ofertaImg.toString())
+                    .delete()
+                    .addOnSuccessListener {
 
-                    db.collection("ofertes").document(ofertaImg.toString()).delete()
-                    db.collection("inscrit").document(ofertaImg.toString()).delete()
-                    storageRef.child("ofertes/$ofertaImg").delete()
-                    val toast =
-                        Toast.makeText(
-                            requireContext(),
-                            getString(R.string.oferta_eliminada),
-                            Toast.LENGTH_LONG
-                        )
-                    toast.show()
+                        db.collection("ofertes").document(ofertaImg.toString()).delete()
+                        db.collection("inscrit").document(ofertaImg.toString()).delete()
+                        storageRef.child("ofertes/$ofertaImg").delete()
+                        val toast =
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.oferta_eliminada),
+                                Toast.LENGTH_LONG
+                            )
+                        toast.show()
 
-                    view.findNavController()
-                        .navigate(ContingutOfertaDirections.actionOfertaFragmentFragmentToIniciFragment())
-                }
-                .addOnFailureListener {
-                    val toast =
-                        Toast.makeText(
-                            requireContext(),
-                            getString(R.string.error_eliminar),
-                            Toast.LENGTH_LONG
-                        )
-                    toast.show()
-                }
+                        view.findNavController()
+                            .navigate(ContingutOfertaDirections.actionOfertaFragmentFragmentToIniciFragment())
+                    }
+                    .addOnFailureListener {
+                        val toast =
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.error_eliminar),
+                                Toast.LENGTH_LONG
+                            )
+                        toast.show()
+                    }
+
+
+            }
+            builder.show()
+
+        }
+
+
+
+        binding.bDesapuntarMe.setOnClickListener { view: View ->
+
+
+            binding.bDesapuntarMe.setVisibility(false)
+            binding.bInscriuMe.setVisibility(true)
 
 
         }
-        builder.show()
-
-    }
-
-
-
-binding.bDesapuntarMe.setOnClickListener{ view: View ->
-
-
-    binding.bDesapuntarMe.setVisibility(false)
-    binding.bInscriuMe.setVisibility(true)
-
-
-}
 
 
         binding.bInscriuMe.setOnClickListener { view: View ->
@@ -229,12 +212,12 @@ binding.bDesapuntarMe.setOnClickListener{ view: View ->
                     val userdetail = HashMap<String, Any>()
 
 
-                    for (posicion in lista.indices){
+                    for (posicion in lista.indices) {
 
                         Log.i("VALORA", lista[posicion])
 
 
-                        if (posicion == lista.size - 1){
+                        if (posicion == lista.size - 1) {
 
                             lista.add(dniS)
 
@@ -248,11 +231,8 @@ binding.bDesapuntarMe.setOnClickListener{ view: View ->
                 binding.bDesapuntarMe.setVisibility(true)
             }
         }
-    return binding.root
-}
-
-
-
+        return binding.root
+    }
 
 
     private fun usuariInscrit() {
@@ -266,14 +246,26 @@ binding.bDesapuntarMe.setOnClickListener{ view: View ->
                     if (lista[posicion] == dniS) {
                         usuariJaInscrit = true
                     }
+                    var dniCreador: String = ""
+                    db.collection("ofertes").document(ofertaImg.toString()).get()
+                        .addOnSuccessListener {
 
-                    if (usuariJaInscrit) {
-                        binding.bInscriuMe.setVisibility(false)
-                        binding.bDesapuntarMe.setVisibility(true)
-                    } else {
-                        binding.bInscriuMe.setVisibility(true)
-                        binding.bDesapuntarMe.setVisibility(false)
-                    }
+                            dniCreador = it.get("dni").toString()
+                            if (dniCreador != dniS) {
+                                if (usuariJaInscrit) {
+                                    binding.bInscriuMe.setVisibility(false)
+                                    binding.bDesapuntarMe.setVisibility(true)
+                                } else {
+                                    binding.bInscriuMe.setVisibility(true)
+                                    binding.bDesapuntarMe.setVisibility(false)
+                                }
+                            } else {
+                                binding.bInscriuMe.setVisibility(false)
+                                binding.bDesapuntarMe.setVisibility(false)
+                            }
+                        }
+
+
                 }
 
             }
