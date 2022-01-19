@@ -12,11 +12,10 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView5"
             android:layout_width="332dp"
             android:layout_height="60dp"
             android:layout_marginTop="444dp"
-            android:text="@string/versio"
             android:textAlignment="viewStart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.468"
@@ -27,15 +26,20 @@
             android:id="@+id/meetdis2"
             android:layout_width="169dp"
             android:layout_height="90dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.152"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.537"
             app:srcCompat="@drawable/meetdis"
-            tools:layout_editor_absoluteX="37dp"
-            tools:layout_editor_absoluteY="344dp" />
+            tools:ignore="MissingConstraints" />
 
         <TextView
+            android:id="@+id/textView4"
             android:layout_width="332dp"
             android:layout_height="60dp"
             android:layout_marginTop="264dp"
-            android:text="@string/propietaris"
             android:textAlignment="viewStart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.468"
@@ -47,7 +51,6 @@
             android:layout_width="327dp"
             android:layout_height="106dp"
             android:layout_marginTop="144dp"
-            android:text="@string/aboutApp"
             android:textAlignment="viewStart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.44"

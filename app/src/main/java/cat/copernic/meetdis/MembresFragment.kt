@@ -56,6 +56,8 @@ class Membres : Fragment() {
 
 
 
+//db.collection("inscrit").get(oferta)
+
 
         var lista = arrayListOf<String>()
 
