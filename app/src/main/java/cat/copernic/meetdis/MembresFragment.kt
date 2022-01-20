@@ -80,19 +80,17 @@ class Membres : Fragment() {
                             Membre(
                                 usuari.get("cognoms").toString(),
                                 usuari.get("contrasenya").toString(),
-
                                 usuari.get("correu").toString(),
                                 usuari.get("nom").toString(),
                                 usuari.get("tipus d´usuari").toString(),
                                 usuari.id
-
                             )
                         )
                     }
 
 
             }
-
+Log.i("VALOR", membres.toString())
             context?.let { myAdapter.MembreRecyclerAdapter(membres, it) }
             binding.rvMembres.adapter = myAdapter
 

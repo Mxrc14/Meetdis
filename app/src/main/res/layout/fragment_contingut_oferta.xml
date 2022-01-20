@@ -166,30 +166,16 @@
             app:layout_constraintTop_toBottomOf="@+id/mapView" />
 
         <Button
-            android:id="@+id/bModificar"
-            android:layout_width="132dp"
-            android:layout_height="59dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/bordes"
-            android:fontFamily="@font/pt_sans_caption"
-            android:text="@string/modificar"
-            android:textColor="#ffffff"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.122"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mapView" />
-
-        <Button
             android:id="@+id/bEliminar"
             android:layout_width="132dp"
             android:layout_height="59dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/bordes_eliminar"
             android:fontFamily="@font/pt_sans_caption"
             android:text="@string/eliminar"
             android:textColor="@color/red_500"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.888"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/icMembres" />
 
