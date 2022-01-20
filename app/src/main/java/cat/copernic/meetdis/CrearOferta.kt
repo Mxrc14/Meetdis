@@ -1,7 +1,10 @@
 package cat.copernic.meetdis
 
 
-import android.app.*
+import android.app.Activity
+import android.app.AlertDialog
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
@@ -32,16 +35,13 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.fragment_crear_oferta.*
-import kotlinx.android.synthetic.main.fragment_registre_usuari.*
 import kotlinx.coroutines.*
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.lang.Thread.sleep
 import java.util.*
-import kotlin.collections.ArrayList
 import kotlin.properties.Delegates
 
 
@@ -67,6 +67,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
     var lon: Double? = 0.0
 
+    private var  lista = arrayListOf<String>()
 
     lateinit var localitzacio: LatLng
 
@@ -82,10 +83,6 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
                 }
             }
         }
-
-
-
-
 
 
     @OptIn(DelicateCoroutinesApi::class)
@@ -139,8 +136,7 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
 
 
-            if (textTitol.text.isNotEmpty() && descripcio.text.isNotEmpty()) {
-
+            if (textTitol.text.isNotEmpty() && descripcio.text.isNotEmpty() && textData.text.isNotEmpty()) {
 
 
                 var collUsersRef: CollectionReference = db.collection("ofertes")
@@ -170,21 +166,51 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
                 generateNotification()
 
 
-
                 //crearEvento()
 
                 val userdetail = HashMap<String, Any>()
+
+                lista.clear()
+                db.collection("userinscrit").document(args.dni.uppercase()).get()
+                    .addOnSuccessListener { inscripcio ->
+
+                        val userdetailoferta = HashMap<String, Any>()
+
+                        if (inscripcio.get("ofertes") != null) {
+
+                            Log.i("lul", "Esta dentro")
+
+                            lista = inscripcio.get("ofertes") as ArrayList<String>
+
+
+                                    lista.add(identificadorOferta.toString())
+
+                                    userdetailoferta["ofertes"] = lista
+
+                                db.collection("userinscrit").document(args.dni.uppercase()).delete()
+                                db.collection("userinscrit").document(args.dni.uppercase()).set(userdetailoferta)
+
+
+                        }else{
+                            Log.i("lul", "Esta fueara")
+                            lista.add(identificadorOferta.toString())
+                            userdetailoferta["ofertes"] = lista
+                            db.collection("userinscrit").document(args.dni.uppercase()).set(userdetailoferta)
+
+                        }
+                    }
+
                 var users = arrayListOf<String>()
 
                 users.add(args.dni)
+
+
                 userdetail["users"] = users
 
-
-              db.collection("inscrit").document(identificadorOferta!!).set(userdetail)
-
+                db.collection("inscrit").document(identificadorOferta!!).set(userdetail)
 
 
-                users.add(args.dni)
+
 
                 tasca1 = crearCorrutina(
                     5, //Temps de durada de la corrutina 1
@@ -451,32 +477,34 @@ class CrearOferta : Fragment(), AdapterView.OnItemSelectedListener {
 
 
     @DelicateCoroutinesApi
-    private fun crearCorrutina(durada: Int, inici: Button, progres: ProgressBar) = GlobalScope.launch(
+    private fun crearCorrutina(durada: Int, inici: Button, progres: ProgressBar) =
+        GlobalScope.launch(
 
-        Dispatchers.Main) {
+            Dispatchers.Main
+        ) {
 
-        progres.setVisibility(true)
-        progres.progress = 0 //Situem el ProgressBar a l'inici del procés
+            progres.setVisibility(true)
+            progres.progress = 0 //Situem el ProgressBar a l'inici del procés
 
-        /* Tasca principal:
-         * Trasalladem l'execucció de la corrutina a un procés diferent mitjançant el mètode withContext. En aquest cas a un procés d'entrada i sortida que bloquejarà
-         * el procés principla fins que rebi una resposta, fent que la nostra funció sigui segura i habiliti l'IU segons sigui necessari.
-         * En el nostre cas activarem el progressBar fins arribar al final.
-         */
-        withContext(Dispatchers.IO) {
-            var comptador = 0
-            //Inciem el progrés de la barra de progrés
-            while (comptador < durada) {
-                //Retardem el progrés de la barra
-                if(suspensio((durada * 50).toLong())) {
-                    comptador++
-                    progres.progress = (comptador * 50) / durada
+            /* Tasca principal:
+             * Trasalladem l'execucció de la corrutina a un procés diferent mitjançant el mètode withContext. En aquest cas a un procés d'entrada i sortida que bloquejarà
+             * el procés principla fins que rebi una resposta, fent que la nostra funció sigui segura i habiliti l'IU segons sigui necessari.
+             * En el nostre cas activarem el progressBar fins arribar al final.
+             */
+            withContext(Dispatchers.IO) {
+                var comptador = 0
+                //Inciem el progrés de la barra de progrés
+                while (comptador < durada) {
+                    //Retardem el progrés de la barra
+                    if (suspensio((durada * 50).toLong())) {
+                        comptador++
+                        progres.progress = (comptador * 50) / durada
+                    }
                 }
             }
+            progres.progress = 0 //Situem el ProgressBar a l'inici del procés
+            progres.setVisibility(false)
         }
-        progres.progress = 0 //Situem el ProgressBar a l'inici del procés
-        progres.setVisibility(false)
-    }
 
     suspend fun suspensio(duracio: Long): Boolean {
         delay(duracio)

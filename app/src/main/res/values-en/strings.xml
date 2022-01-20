@@ -137,6 +137,7 @@
     <string name="oferta_eliminada">Offer Removed</string>
     <string name="eliminar_oferta_pregunta">"Are you sure you want to delete the offer? "</string>
     <string name="desapuntar_me">UNSUBSCRIBE</string>
+    <string name="opcional">(Optional)</string>
 
 
 </resources>

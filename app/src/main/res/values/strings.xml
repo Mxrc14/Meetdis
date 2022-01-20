@@ -131,6 +131,7 @@
     <string name="oferta_eliminada">Oferta Eliminada</string>
     <string name="eliminar_oferta_pregunta">¿ Segur que vols eliminar l\'oferta ?</string>
     <string name="desapuntar_me">DESAPUNTAR-ME</string>
+    <string name="opcional">(Opcional)</string>
 
 
 </resources>

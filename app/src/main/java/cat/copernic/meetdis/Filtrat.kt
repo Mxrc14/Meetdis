@@ -61,11 +61,6 @@ Log.i("Filtratxd", "$buscarTipus")
                 ofertes.clear()
                 for (document in documents) {
 
-
-
-
-
-
                     if (document.get("tipus").toString() == buscarTipus) {
                         ofertes.add(
                             Oferta(

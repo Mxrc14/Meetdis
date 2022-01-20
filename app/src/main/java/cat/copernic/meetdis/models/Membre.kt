@@ -29,8 +29,7 @@ data class Membre(
         this.tipusMembre = tipus
         this.imageMembre = img
 
-        Log.i("proba_id", "$img")
-        Log.i("proba_id", "$imageMembre")
+
 
 
     }
