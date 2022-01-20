@@ -162,32 +162,59 @@ class ContingutOferta : Fragment() {
 
 
                         lista.clear()
-                        db.collection("userinscrit").get().addOnSuccessListener { userActu ->
+                        db.collection("userinscrit").document(dniS).get()
+                            .addOnSuccessListener { inscripcio ->
 
-                            if (userActu != null) {
+                                val userdetailoferta = HashMap<String, Any>()
 
-                                for (user in userActu) {
-                                    if (user.get("ofertes") != null) {
+                                if (inscripcio.get("ofertes") != null) {
 
-                                        lista = user.get("ofertes") as ArrayList<String>
-                                        val userdetail = HashMap<String, Any>()
+                                    Log.i("lul", "Esta dentro")
 
-                                        for (posicion in lista.indices) {
-                                            Log.i("ContingutO", lista[posicion])
-                                            if (lista[posicion] == ofertaImg.toString()) {
+                                    lista = inscripcio.get("ofertes") as ArrayList<String>
 
-                                                lista.removeAt(posicion)
 
-                                                userdetail["ofertes"] = lista
+                                    lista.add(ofertaImg.toString())
 
-                                                db.collection("userinscrit").document(dniS).delete()
-                                                db.collection("userinscrit").document(dniS)
-                                                    .set(userdetail)
-                                            }
-                                        }
-                                    }
+                                    userdetailoferta["ofertes"] = lista
+
+                                    db.collection("userinscrit").document(dniS).delete()
+                                    db.collection("userinscrit").document(dniS).set(userdetailoferta)
+
+
+                                }else{
+                                    Log.i("lul", "Esta fueara")
+                                    lista.add(ofertaImg.toString())
+                                    userdetailoferta["ofertes"] = lista
+                                    db.collection("userinscrit").document(dniS).set(userdetailoferta)
+
                                 }
                             }
+
+                        lista.clear()
+                        db.collection("userinscrit").document(dniS).get().addOnSuccessListener {
+
+                            if (it.get("ofertes") != null) {
+
+                                lista = it.get("ofertes") as ArrayList<String>
+                                val userdetail = HashMap<String, Any>()
+
+                                for (posicion in lista.indices) {
+                                    Log.i("ContingutO", lista[posicion])
+                                    if (lista[posicion] == ofertaImg.toString()) {
+
+                                        lista.removeAt(posicion)
+
+                                        userdetail["ofertes"] = lista
+
+                                        db.collection("userinscrit").document(dniS).delete()
+                                        db.collection("userinscrit").document(dniS).set(userdetail)
+                                    }
+
+                                }
+
+                            }
+
                         }
 
 
@@ -319,36 +346,32 @@ class ContingutOferta : Fragment() {
 
 
 
-
-            Log.i("ContingutOferta", "$ofertaImg")
             lista.clear()
-            db.collection("userinscrit").document(dniS).get().addOnSuccessListener {
+            db.collection("userinscrit").get().addOnSuccessListener { userActu ->
 
-                if (it.get("ofertes") != null) {
+                if (userActu != null) {
 
-                    lista = it.get("ofertes") as ArrayList<String>
-                    val userdetail = HashMap<String, Any>()
+                    for (user in userActu) {
+                        if (user.get("ofertes") != null) {
 
+                            lista = user.get("ofertes") as ArrayList<String>
+                            val userdetail = HashMap<String, Any>()
 
-                    for (posicion in lista.indices) {
-                        if (posicion == lista.size - 1) {
-                            lista.add(ofertaImg.toString())
+                            for (posicion in lista.indices) {
+                                Log.i("ContingutO", lista[posicion])
+                                if (lista[posicion] == ofertaImg.toString()) {
 
-                            userdetail["ofertes"] = lista
+                                    userdetail["ofertes"] = lista
 
-                            db.collection("userinscrit").document(dniS).delete()
-                            db.collection("userinscrit").document(dniS).set(userdetail)
+                                    db.collection("userinscrit").document(dniS).delete()
+                                    db.collection("userinscrit").document(dniS)
+                                        .set(userdetail)
+                                }
+                            }
                         }
                     }
-
                 }
-
             }
-
-
-
-
-
 
             binding.bInscriuMe.setVisibility(false)
             binding.bDesapuntarMe.setVisibility(true)

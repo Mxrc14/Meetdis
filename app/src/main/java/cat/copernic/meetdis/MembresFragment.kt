@@ -12,6 +12,7 @@ import cat.copernic.meetdis.adapters.MembreRecyclerAdapter
 import cat.copernic.meetdis.databinding.FragmentMembresBinding
 import cat.copernic.meetdis.models.Membre
 import com.google.firebase.firestore.FirebaseFirestore
+import java.lang.Thread.sleep
 
 
 class Membres : Fragment() {
@@ -57,8 +58,6 @@ class Membres : Fragment() {
 //db.collection("inscrit").get(oferta)
 
 
-
-
         db.collection("inscrit").document(idOferta).get().addOnSuccessListener { inscripcio ->
 
             lista = inscripcio.get("users") as ArrayList<String>
@@ -70,12 +69,12 @@ class Membres : Fragment() {
 
                 db.collection("users").document(dniUserActual).get()
                     .addOnSuccessListener { usuari ->
-                        Log.i("membreOferta","${usuari.id}")
-                        Log.i("membreOferta",usuari.get("cognoms").toString())
-                        Log.i("membreOferta",usuari.get("contrasenya").toString())
-                        Log.i("membreOferta",usuari.get("correu").toString())
-                        Log.i("membreOferta",usuari.get("nom").toString())
-                        Log.i("membreOferta",usuari.get("tipus d´usuari").toString())
+                        Log.i("membreOferta", "${usuari.id}")
+                        Log.i("membreOferta", usuari.get("cognoms").toString())
+                        Log.i("membreOferta", usuari.get("contrasenya").toString())
+                        Log.i("membreOferta", usuari.get("correu").toString())
+                        Log.i("membreOferta", usuari.get("nom").toString())
+                        Log.i("membreOferta", usuari.get("tipus d´usuari").toString())
                         membres.add(
                             Membre(
                                 usuari.get("cognoms").toString(),
@@ -86,15 +85,15 @@ class Membres : Fragment() {
                                 usuari.id
                             )
                         )
+                        sleep(300)
+                        for (x in membres.indices) {
+
+                            Log.i("luuuuul", membres[x].dniMembre.toString())
+                        }
                     }
-
-
             }
-Log.i("VALOR", membres.toString())
             context?.let { myAdapter.MembreRecyclerAdapter(membres, it) }
             binding.rvMembres.adapter = myAdapter
-
-
         }
 
 
