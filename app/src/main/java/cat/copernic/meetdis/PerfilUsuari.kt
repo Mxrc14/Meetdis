@@ -48,14 +48,11 @@ class PerfilUsuari : Fragment() {
     private val db = FirebaseFirestore.getInstance()
 
     lateinit var binding: FragmentPerfilUsuariBinding
+
     var tipo: String = "No Funciona"
+
     var nom: String? = null
 
-    //    var cognom: String? = null
-//    var descrip: String? = null
-//    var img: String? = null
-//    var dniF: String? = null
-//    var monitorC: String? = null
     val user = FirebaseAuth.getInstance().currentUser
 
     val uid = user?.email
@@ -74,21 +71,13 @@ class PerfilUsuari : Fragment() {
         )
 
 
-
-        Log.i("PerfilUsuariDNI", dniUser)
-
         val userdni = db.collection("users").document(dniUser.uppercase())
-
-
-
 
 
         userdni.get().addOnSuccessListener { document ->
             if (document.exists()) {
 
                 tipo = document.data?.get("tipus d´usuari").toString()
-                Log.i("PerfilUsuariTIPOD", "$tipo")
-
 
                 when (tipo) {
                     "Monitor" -> {
@@ -164,21 +153,14 @@ class PerfilUsuari : Fragment() {
 
         }
 
-        Log.i("PerfilUsuariTIPOF", "$tipo")
-
-
         val storageRef1 = FirebaseStorage.getInstance().reference
 
         val imageRef = storageRef1.child("users/$dniUser")
         imageRef.downloadUrl.addOnSuccessListener { url ->
             binding.imageCamara.load(url)
-            // Log.i("proba_id", "$imageMembre")
         }.addOnFailureListener {
             //mostrar error
         }
-
-
-
 
 
         binding.imageCamara.setOnClickListener { view: View ->
@@ -195,12 +177,9 @@ class PerfilUsuari : Fragment() {
                 if (document.exists()) {
 
                     tipo = document.data?.get("tipus d´usuari").toString()
-                    Log.i("PerfilUsuariTIPOD", "$tipo")
-
 
                     when (tipo) {
                         "Monitor" -> {
-
 
                             if (binding.textCorreu.text.toString()
                                     .isNotEmpty() && binding.textCorreu.text.toString()
@@ -223,7 +202,10 @@ class PerfilUsuari : Fragment() {
                             if (binding.dniUsuariProdis.text.toString().isNotEmpty()) {
 
                                 var letra: Char = binding.dniUsuariProdis.text.toString()
-                                    .substring(binding.dniUsuariProdis.length() - 1, binding.dniUsuariProdis.length())[0]
+                                    .substring(
+                                        binding.dniUsuariProdis.length() - 1,
+                                        binding.dniUsuariProdis.length()
+                                    )[0]
 
                                 var numeros: String =
                                     binding.dniUsuariProdis.text.toString()
@@ -250,8 +232,7 @@ class PerfilUsuari : Fragment() {
 
                     }
                     if (binding.textNom.text.toString()
-                            .isNotEmpty() && binding.textCognom.text.toString()
-                            .isNotEmpty() && binding.descripcio.text.toString().isNotEmpty()
+                            .isNotEmpty() && binding.textCognom.text.toString().isNotEmpty()
                     ) {
 
                         userdni.update("nom", binding.textNom.text.toString())

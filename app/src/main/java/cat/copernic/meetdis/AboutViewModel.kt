@@ -30,9 +30,9 @@ class AboutViewModel(application: Application) : AndroidViewModel(application) {
     init{
 
 
-        _text3.value = application.applicationContext.getString(R.string.aboutApp)//R.string.aboutApp.toString()
-        _text4.value = getApplication<Application>().resources.getString(R.string.propietaris)
-        _text5.value = application.applicationContext.getString(R.string.versio)//R.string.aboutApp.toString()
+        _text3.value = application.applicationContext.getString(R.string.aboutApp)
+        _text4.value = application.applicationContext.getString(R.string.propietaris)
+        _text5.value = application.applicationContext.getString(R.string.versio)
 
     }
 
