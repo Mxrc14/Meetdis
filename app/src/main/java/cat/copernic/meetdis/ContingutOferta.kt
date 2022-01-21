@@ -86,7 +86,7 @@ class ContingutOferta : Fragment() {
         binding.textData.text = ofertaData
         binding.textTipus.text = ofertaTipus
 
-
+        lista.clear()
 
         usuariInscrit()
 
@@ -219,6 +219,10 @@ class ContingutOferta : Fragment() {
 
         binding.bDesapuntarMe.setOnClickListener { view: View ->
 
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle(getString(R.string.pregunta_desapuntar_te))
+            builder.setPositiveButton(R.string.desapuntar_me) { dialog, id ->
+
             lista.clear()
             db.collection("inscrit").document(ofertaImg.toString()).get().addOnSuccessListener {
 
@@ -270,15 +274,23 @@ class ContingutOferta : Fragment() {
 
                 }
 
+
+
+            }.addOnFailureListener {
+                    val toast =
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.error),
+                            Toast.LENGTH_LONG
+                        )
+                    toast.show()
+                }
+
+                view.findNavController()
+                    .navigate(ContingutOfertaDirections.actionOfertaFragmentFragmentToIniciFragment())
             }
+            builder.show()
 
-
-
-
-
-
-            binding.bDesapuntarMe.setVisibility(false)
-            binding.bInscriuMe.setVisibility(true)
         }
 
 
@@ -351,6 +363,9 @@ class ContingutOferta : Fragment() {
 
 
     private fun usuariInscrit() {
+
+        lista = arrayListOf<String>()
+
         db.collection("inscrit").document(ofertaImg.toString()).get().addOnSuccessListener {
 
             if (it.get("users") != null) {

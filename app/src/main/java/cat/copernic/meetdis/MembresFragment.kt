@@ -11,22 +11,22 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import cat.copernic.meetdis.adapters.MembreRecyclerAdapter
 import cat.copernic.meetdis.databinding.FragmentMembresBinding
 import cat.copernic.meetdis.models.Membre
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import java.lang.Thread.sleep
 
 
 class Membres : Fragment() {
+
 
 
     private var myAdapter: MembreRecyclerAdapter = MembreRecyclerAdapter()
 
     private val db = FirebaseFirestore.getInstance()
 
+
     private var membres: ArrayList<Membre> = arrayListOf();
 
     private lateinit var idOferta: String
-
-    var dniUserActual: String = ""
 
     var lista = arrayListOf<String>()
 
@@ -54,75 +54,58 @@ class Membres : Fragment() {
 
         binding.rvMembres.layoutManager = LinearLayoutManager(requireContext())
 
-
-//db.collection("inscrit").get(oferta)
-
-membres.clear()
         lista.clear()
-
+        membres.clear()
         db.collection("inscrit").document(idOferta).get().addOnSuccessListener { inscripcio ->
 
             lista = inscripcio.get("users") as ArrayList<String>
-            membres.clear()
+
+
             for (posicion in lista.indices) {
 
-                Log.i("VALORA", lista[posicion])
+                var dniUserActual = lista[posicion]
 
-                dniUserActual = lista[posicion]
 
-                db.collection("users").document(dniUserActual).get()
-                    .addOnSuccessListener { usuari ->
-                        Log.i("membreOferta", "${usuari.id}")
-                        Log.i("membreOferta", usuari.get("cognoms").toString())
-                        Log.i("membreOferta", usuari.get("contrasenya").toString())
-                        Log.i("membreOferta", usuari.get("correu").toString())
-                        Log.i("membreOferta", usuari.get("nom").toString())
-                        Log.i("membreOferta", usuari.get("tipus d´usuari").toString())
-                        membres.add(
-                           Membre(
-                               usuari.get("cognoms").toString(),
-                               usuari.get("contrasenya").toString(),
-                               usuari.get("correu").toString(),
-                               usuari.get("nom").toString(),
-                               usuari.get("tipus d´usuari").toString(),
-                               usuari.id
-                           )
-                        )
+                db.collection("users").get()
+                    .addOnSuccessListener { usuario ->
+                        for (usuari in usuario) {
+                            Log.i("membreOferta", usuari.id)
+                            Log.i("membreOferta", usuari.get("cognoms").toString())
+                            Log.i("membreOferta", usuari.get("contrasenya").toString())
+                            Log.i("membreOferta", usuari.get("correu").toString())
+                            Log.i("membreOferta", usuari.get("nom").toString())
+                            Log.i("membreOferta", usuari.get("tipus d´usuari").toString())
 
+                            if (usuari.id == dniUserActual) {
+
+                                membres.add(
+                                    Membre(
+                                        usuari.get("cognoms").toString(),
+                                        usuari.get("contrasenya").toString(),
+                                        usuari.get("correu").toString(),
+                                        usuari.get("nom").toString(),
+                                        usuari.get("tipus d´usuari").toString(),
+                                        usuari.id
+                                    )
+                                )
+
+                            }
+
+                        }
+                        context?.let { myAdapter.MembreRecyclerAdapter(membres, it) }
+                        binding.rvMembres.adapter = myAdapter
 
                     }
+
+
             }
-            sleep(1000)
-            context?.let { myAdapter.MembreRecyclerAdapter(membres, it) }
-            binding.rvMembres.adapter = myAdapter
+
+
         }
-
-
-//        db.collection("users")
-//            .get()
-//            .addOnSuccessListener { documents ->
-//                membres.clear()
-//                for (document in documents) {
-//                    Log.i("proba_id", document.id)
-//                    membres.add(
-//                        Membre(
-//                            document.get("cognoms").toString(),
-//                            document.get("contrasenya").toString(),
-//                            document.get("correu").toString(),
-//                            document.get("nom").toString(),
-//                            document.get("tipus d'usuari").toString(),
-//                            document.id
-//
-//                        )
-//                    )
-//                }
-//
-//                context?.let { myAdapter.MembreRecyclerAdapter(membres, it) }
-//                binding.rvMembres.adapter = myAdapter
-//
-//            }
 
 
         return binding.root
     }
 }
+
+
