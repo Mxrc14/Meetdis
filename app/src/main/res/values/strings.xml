@@ -132,6 +132,7 @@
     <string name="eliminar_oferta_pregunta">¿ Segur que vols eliminar l\'oferta ?</string>
     <string name="desapuntar_me">DESAPUNTAR-ME</string>
     <string name="opcional">(Opcional)</string>
+    <string name="pregunta_desapuntar_te">Segur que vols desapuntar-te de l\'oferta ?</string>
 
 
 </resources>

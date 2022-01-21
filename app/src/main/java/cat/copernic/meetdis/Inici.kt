@@ -91,10 +91,8 @@ Log.i("Inici", "$dni")
             view.findNavController()
                     .navigate(IniciDirections.actionIniciFragmentToCrearOfertaFragment(dni))
         }
-
         return binding.root
     }
-
 
 }
 

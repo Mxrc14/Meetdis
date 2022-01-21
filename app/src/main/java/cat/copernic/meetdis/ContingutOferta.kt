@@ -86,7 +86,7 @@ class ContingutOferta : Fragment() {
         binding.textData.text = ofertaData
         binding.textTipus.text = ofertaTipus
 
-
+        lista.clear()
 
         usuariInscrit()
 
@@ -155,35 +155,7 @@ class ContingutOferta : Fragment() {
                         storageRef.child("ofertes/$ofertaImg").delete()
 
 
-//                        lista.clear()
-//                        db.collection("userinscrit").document(dniS).get()
-//                            .addOnSuccessListener { inscripcio ->
-//
-//                                val userdetailoferta = HashMap<String, Any>()
-//
-//                                if (inscripcio.get("ofertes") != null) {
-//
-//                                    Log.i("lul", "Esta dentro")
-//
-//                                    lista = inscripcio.get("ofertes") as ArrayList<String>
-//
-//
-//                                    lista.add(ofertaImg.toString())
-//
-//                                    userdetailoferta["ofertes"] = lista
-//
-//                                    db.collection("userinscrit").document(dniS).delete()
-//                                    db.collection("userinscrit").document(dniS).set(userdetailoferta)
-//
-//
-//                                }else{
-//                                    Log.i("lul", "Esta fueara")
-//                                    lista.add(ofertaImg.toString())
-//                                    userdetailoferta["ofertes"] = lista
-//                                    db.collection("userinscrit").document(dniS).set(userdetailoferta)
-//
-//                                }
-//                            }
+
 
 
                         lista.clear()
@@ -216,61 +188,6 @@ class ContingutOferta : Fragment() {
                             }
                         }
 
-
-//                        lista.clear()
-//                        db.collection("userinscrit").document(dniS).get().addOnSuccessListener {
-//
-//                            if (it.get("ofertes") != null) {
-//
-//                                lista = it.get("ofertes") as ArrayList<String>
-//                                val userdetail = HashMap<String, Any>()
-//
-//                                for (posicion in lista.indices) {
-//                                    Log.i("ContingutO", lista[posicion])
-//                                    if (lista[posicion] == ofertaImg.toString()) {
-//
-//                                        lista.removeAt(posicion)
-//
-//                                        userdetail["ofertes"] = lista
-//
-//                                        db.collection("userinscrit").document(dniS).delete()
-//                                        db.collection("userinscrit").document(dniS).set(userdetail)
-//                                    }
-//
-//                                }
-//
-//                            }
-//
-//                        }
-
-
-//                        lista.clear()
-//                        db.collection("userinscrit").document(dniS).get().addOnSuccessListener {
-//
-//                            if (it.get("ofertes") != null) {
-//
-//                                lista = it.get("ofertes") as ArrayList<String>
-//                                val userdetail = HashMap<String, Any>()
-//
-//                                for (posicion in lista.indices) {
-//                                    Log.i("ContingutO", lista[posicion])
-//                                    if (lista[posicion] == ofertaImg.toString()) {
-//
-//                                        lista.removeAt(posicion)
-//
-//                                        userdetail["ofertes"] = lista
-//
-//                                        db.collection("userinscrit").document(dniS).delete()
-//                                        db.collection("userinscrit").document(dniS).set(userdetail)
-//                                    }
-//
-//                                }
-//
-//                            }
-//
-//                        }
-
-
                         val toast =
                             Toast.makeText(
                                 requireContext(),
@@ -301,6 +218,10 @@ class ContingutOferta : Fragment() {
 
 
         binding.bDesapuntarMe.setOnClickListener { view: View ->
+
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle(getString(R.string.pregunta_desapuntar_te))
+            builder.setPositiveButton(R.string.desapuntar_me) { dialog, id ->
 
             lista.clear()
             db.collection("inscrit").document(ofertaImg.toString()).get().addOnSuccessListener {
@@ -353,15 +274,23 @@ class ContingutOferta : Fragment() {
 
                 }
 
+
+
+            }.addOnFailureListener {
+                    val toast =
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.error),
+                            Toast.LENGTH_LONG
+                        )
+                    toast.show()
+                }
+
+                view.findNavController()
+                    .navigate(ContingutOfertaDirections.actionOfertaFragmentFragmentToIniciFragment())
             }
+            builder.show()
 
-
-
-
-
-
-            binding.bDesapuntarMe.setVisibility(false)
-            binding.bInscriuMe.setVisibility(true)
         }
 
 
@@ -434,6 +363,9 @@ class ContingutOferta : Fragment() {
 
 
     private fun usuariInscrit() {
+
+        lista = arrayListOf<String>()
+
         db.collection("inscrit").document(ofertaImg.toString()).get().addOnSuccessListener {
 
             if (it.get("users") != null) {

@@ -1,4 +1,5 @@
 package cat.copernic.meetdis
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,17 +10,26 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import cat.copernic.meetdis.adapters.NotificacioRecyclerAdapter
 import cat.copernic.meetdis.databinding.FragmentNotificacioBinding
 import cat.copernic.meetdis.models.Oferta
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 
-class Notificacio: Fragment() {
+class Notificacio : Fragment() {
 
     private val myAdapter: NotificacioRecyclerAdapter = NotificacioRecyclerAdapter()
 
     private val db = FirebaseFirestore.getInstance()
 
-    private var notifica: ArrayList<Oferta> = arrayListOf()
 
+
+
+
+
+    private val user = FirebaseAuth.getInstance().currentUser
+
+    private val uid = user?.email
+
+    private var dniS: String = uid.toString().substring(0, uid.toString().length - 11).uppercase()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,30 +45,55 @@ class Notificacio: Fragment() {
 
         binding.rvNotificacio.layoutManager = LinearLayoutManager(requireContext())
 
+        var ofertas: ArrayList<Oferta> = arrayListOf();
+
+        var lista = arrayListOf<String>()
+
+        lista.clear()
+        ofertas.clear()
+        db.collection("userinscrit").document(dniS).get().addOnSuccessListener { inscripcio ->
+
+            lista = inscripcio.get("ofertes") as ArrayList<String>
 
 
-        db.collection("ofertes")
-            .get()
-            .addOnSuccessListener { documents ->
-                notifica.clear()
-                for (document in documents) {
-                    notifica.add(
-                        Oferta(
-                            document.get("titol").toString(),
-                            document.get("descripcio").toString(),
-                            document.get("dni").toString(),
-                            document.get("data").toString(),
-                            document.get("tipus").toString(),
-                            document . id,
-                            document.get("latitut") as Double,
-                            document.get("longitud") as Double
-                        )
-                    )
-                }
-                context?.let { myAdapter.NotificacioRecyclerAdapter(notifica, it) }
-                binding.rvNotificacio.adapter = myAdapter
+            for (posicion in lista.indices) {
+
+                var ofertaActual = lista[posicion]
+
+
+                db.collection("ofertes").get()
+                    .addOnSuccessListener { ofertes ->
+
+                        for (oferta in ofertes) {
+                            if (oferta.id == ofertaActual) {
+
+                                ofertas.add(
+                                    Oferta(
+                                        oferta.get("titol").toString(),
+                                        oferta.get("descripcio").toString(),
+                                        oferta.get("dni").toString(),
+                                        oferta.get("data").toString(),
+                                        oferta.get("tipus").toString(),
+                                        oferta.id,
+                                        oferta.get("latitut") as Double,
+                                        oferta.get("longitud") as Double
+                                    )
+                                )
+
+                            }
+
+                        }
+                        context?.let { myAdapter.NotificacioRecyclerAdapter(ofertas, it) }
+                        binding.rvNotificacio.adapter = myAdapter
+
+                    }
+
 
             }
+
+
+        }
+
         return binding.root
 
     }
