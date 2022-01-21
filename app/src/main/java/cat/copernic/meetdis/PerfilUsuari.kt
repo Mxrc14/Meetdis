@@ -222,14 +222,7 @@ class PerfilUsuari : Fragment() {
 
                             if (binding.dniUsuariProdis.text.toString().isNotEmpty()) {
 
-                                var letra: Char = binding.dniUsuariProdis.text.toString()
-                                    .substring(binding.dniUsuariProdis.length() - 1, binding.dniUsuariProdis.length())[0]
-
-                                var numeros: String =
-                                    binding.dniUsuariProdis.text.toString()
-                                        .substring(0, binding.dniUsuariProdis.length() - 1)
-
-                                if (letra.isLetter() && numeros.isDigitsOnly() && letra.isUpperCase() && binding.dniUsuariProdis.text.length == 9) {
+                                if (ComprobarDNI()) {
 
                                     userdni.update(
                                         "dniUsuariProdis",
@@ -249,17 +242,14 @@ class PerfilUsuari : Fragment() {
                         }
 
                     }
-                    if (binding.textNom.text.toString()
-                            .isNotEmpty() && binding.textCognom.text.toString()
-                            .isNotEmpty() && binding.descripcio.text.toString().isNotEmpty()
-                    ) {
 
+
+                    if (comprobarCamps()) {
                         userdni.update("nom", binding.textNom.text.toString())
 
                         userdni.update("cognoms", binding.textCognom.text.toString())
 
                         userdni.update("descripcio", binding.descripcio.text.toString())
-
 
                     } else {
                         val toast =
@@ -280,6 +270,34 @@ class PerfilUsuari : Fragment() {
 
         return binding.root
 
+    }
+
+    private fun ComprobarDNI(): Boolean {
+    var   Correcte: Boolean = false
+        var letra: Char = binding.dniUsuariProdis.text.toString()
+            .substring(binding.dniUsuariProdis.length() - 1, binding.dniUsuariProdis.length())[0]
+
+        var numeros: String =
+            binding.dniUsuariProdis.text.toString()
+                .substring(0, binding.dniUsuariProdis.length() - 1)
+
+        if (letra.isLetter() && numeros.isDigitsOnly() && letra.isUpperCase() && binding.dniUsuariProdis.text.length == 9) {
+           Correcte = true
+        }
+        return Correcte
+    }
+
+    private fun comprobarCamps(): Boolean {
+        var Correcte: Boolean = false
+        if (binding.textNom.text.toString()
+                .isNotEmpty() && binding.textCognom.text.toString()
+                .isNotEmpty()
+        ) {
+            Correcte = true
+
+        }
+
+        return Correcte
     }
 
 
