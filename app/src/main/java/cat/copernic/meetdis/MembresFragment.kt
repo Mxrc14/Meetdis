@@ -57,12 +57,15 @@ class Membres : Fragment() {
 
 //db.collection("inscrit").get(oferta)
 
+membres.clear()
+        lista.clear()
 
         db.collection("inscrit").document(idOferta).get().addOnSuccessListener { inscripcio ->
 
             lista = inscripcio.get("users") as ArrayList<String>
             membres.clear()
             for (posicion in lista.indices) {
+
                 Log.i("VALORA", lista[posicion])
 
                 dniUserActual = lista[posicion]
@@ -76,22 +79,20 @@ class Membres : Fragment() {
                         Log.i("membreOferta", usuari.get("nom").toString())
                         Log.i("membreOferta", usuari.get("tipus d´usuari").toString())
                         membres.add(
-                            Membre(
-                                usuari.get("cognoms").toString(),
-                                usuari.get("contrasenya").toString(),
-                                usuari.get("correu").toString(),
-                                usuari.get("nom").toString(),
-                                usuari.get("tipus d´usuari").toString(),
-                                usuari.id
-                            )
+                           Membre(
+                               usuari.get("cognoms").toString(),
+                               usuari.get("contrasenya").toString(),
+                               usuari.get("correu").toString(),
+                               usuari.get("nom").toString(),
+                               usuari.get("tipus d´usuari").toString(),
+                               usuari.id
+                           )
                         )
-                        sleep(300)
-                        for (x in membres.indices) {
 
-                            Log.i("luuuuul", membres[x].dniMembre.toString())
-                        }
+
                     }
             }
+            sleep(1000)
             context?.let { myAdapter.MembreRecyclerAdapter(membres, it) }
             binding.rvMembres.adapter = myAdapter
         }

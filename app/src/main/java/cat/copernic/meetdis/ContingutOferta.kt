@@ -155,35 +155,7 @@ class ContingutOferta : Fragment() {
                         storageRef.child("ofertes/$ofertaImg").delete()
 
 
-//                        lista.clear()
-//                        db.collection("userinscrit").document(dniS).get()
-//                            .addOnSuccessListener { inscripcio ->
-//
-//                                val userdetailoferta = HashMap<String, Any>()
-//
-//                                if (inscripcio.get("ofertes") != null) {
-//
-//                                    Log.i("lul", "Esta dentro")
-//
-//                                    lista = inscripcio.get("ofertes") as ArrayList<String>
-//
-//
-//                                    lista.add(ofertaImg.toString())
-//
-//                                    userdetailoferta["ofertes"] = lista
-//
-//                                    db.collection("userinscrit").document(dniS).delete()
-//                                    db.collection("userinscrit").document(dniS).set(userdetailoferta)
-//
-//
-//                                }else{
-//                                    Log.i("lul", "Esta fueara")
-//                                    lista.add(ofertaImg.toString())
-//                                    userdetailoferta["ofertes"] = lista
-//                                    db.collection("userinscrit").document(dniS).set(userdetailoferta)
-//
-//                                }
-//                            }
+
 
 
                         lista.clear()
@@ -215,61 +187,6 @@ class ContingutOferta : Fragment() {
                                 }
                             }
                         }
-
-
-//                        lista.clear()
-//                        db.collection("userinscrit").document(dniS).get().addOnSuccessListener {
-//
-//                            if (it.get("ofertes") != null) {
-//
-//                                lista = it.get("ofertes") as ArrayList<String>
-//                                val userdetail = HashMap<String, Any>()
-//
-//                                for (posicion in lista.indices) {
-//                                    Log.i("ContingutO", lista[posicion])
-//                                    if (lista[posicion] == ofertaImg.toString()) {
-//
-//                                        lista.removeAt(posicion)
-//
-//                                        userdetail["ofertes"] = lista
-//
-//                                        db.collection("userinscrit").document(dniS).delete()
-//                                        db.collection("userinscrit").document(dniS).set(userdetail)
-//                                    }
-//
-//                                }
-//
-//                            }
-//
-//                        }
-
-
-//                        lista.clear()
-//                        db.collection("userinscrit").document(dniS).get().addOnSuccessListener {
-//
-//                            if (it.get("ofertes") != null) {
-//
-//                                lista = it.get("ofertes") as ArrayList<String>
-//                                val userdetail = HashMap<String, Any>()
-//
-//                                for (posicion in lista.indices) {
-//                                    Log.i("ContingutO", lista[posicion])
-//                                    if (lista[posicion] == ofertaImg.toString()) {
-//
-//                                        lista.removeAt(posicion)
-//
-//                                        userdetail["ofertes"] = lista
-//
-//                                        db.collection("userinscrit").document(dniS).delete()
-//                                        db.collection("userinscrit").document(dniS).set(userdetail)
-//                                    }
-//
-//                                }
-//
-//                            }
-//
-//                        }
-
 
                         val toast =
                             Toast.makeText(
