@@ -259,7 +259,6 @@ class ContingutOferta : Fragment() {
                     val userdetail = HashMap<String, Any>()
 
                     for (posicion in lista.indices) {
-                        Log.i("ContingutO", lista[posicion])
                         if (lista[posicion] == ofertaImg.toString()) {
 
                             lista.removeAt(posicion)
@@ -305,54 +304,36 @@ class ContingutOferta : Fragment() {
                     lista = it.get("users") as ArrayList<String>
                     val userdetail = HashMap<String, Any>()
 
-
-                    for (posicion in lista.indices) {
-
-                        Log.i("VALORA", lista[posicion])
-
-
-                        if (posicion == lista.size - 1) {
-
                             lista.add(dniS)
 
                             userdetail["users"] = lista
-                        }
+
                         db.collection("inscrit").document(ofertaImg.toString()).delete()
                         db.collection("inscrit").document(ofertaImg.toString()).set(userdetail)
-                    }
+
                 }
 
             }
 
 
-
-
-
+            Log.i("ContingutOferta", "$ofertaImg")
             lista.clear()
-            db.collection("userinscrit").get().addOnSuccessListener { userActu ->
+            db.collection("userinscrit").document(dniS).get().addOnSuccessListener {
 
-                if (userActu != null) {
+                if (it.get("ofertes") != null) {
 
-                    for (user in userActu) {
-                        if (user.get("ofertes") != null) {
+                    lista = it.get("ofertes") as ArrayList<String>
+                    val userdetail = HashMap<String, Any>()
 
-                            lista = user.get("ofertes") as ArrayList<String>
-                            val userdetail = HashMap<String, Any>()
+                    lista.add(ofertaImg.toString())
 
-                            for (posicion in lista.indices) {
-                                Log.i("ContingutO", lista[posicion])
-                                if (lista[posicion] == ofertaImg.toString()) {
+                    userdetail["ofertes"] = lista
 
-                                    userdetail["ofertes"] = lista
+                    db.collection("userinscrit").document(dniS).delete()
+                    db.collection("userinscrit").document(dniS).set(userdetail)
 
-                                    db.collection("userinscrit").document(dniS).delete()
-                                    db.collection("userinscrit").document(dniS)
-                                        .set(userdetail)
-                                }
-                            }
-                        }
-                    }
                 }
+
             }
 
             binding.bInscriuMe.setVisibility(false)
