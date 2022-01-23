@@ -250,24 +250,29 @@ class ContingutOferta : Fragment() {
 
             }
 
-            lista.clear()
-            db.collection("userinscrit").document(dniS).get().addOnSuccessListener {
+                lista.clear()
+                db.collection("userinscrit").document(dniS).get().addOnSuccessListener {
 
-                if (it.get("ofertes") != null) {
+                    if (it.get("ofertes") != null) {
 
-                    lista = it.get("ofertes") as ArrayList<String>
-                    val userdetail = HashMap<String, Any>()
+                        lista = it.get("ofertes") as ArrayList<String>
+                        val userdetail = HashMap<String, Any>()
 
-                    for (posicion in lista.indices) {
-                        if (lista[posicion] == ofertaImg.toString()) {
+                        for (posicion in lista.indices) {
 
-                            lista.removeAt(posicion)
+                            if (lista[posicion] == ofertaImg.toString()) {
 
-                            userdetail["ofertes"] = lista
+                                //lista.drop(posicion)
+                                lista.removeAt(posicion)
 
-                            db.collection("userinscrit").document(dniS).delete()
-                            db.collection("userinscrit").document(dniS).set(userdetail)
-                        }
+                                userdetail["ofertes"] = lista
+
+                                db.collection("userinscrit").document(dniS).delete()
+                                db.collection("userinscrit").document(dniS).set(userdetail)
+                            }
+
+
+
 
                     }
 
