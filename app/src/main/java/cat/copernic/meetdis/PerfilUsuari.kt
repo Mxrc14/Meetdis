@@ -19,6 +19,7 @@ import androidx.core.text.isDigitsOnly
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import cat.copernic.meetdis.databinding.FragmentPerfilUsuariBinding
 import coil.api.load
 import com.github.dhaval2404.colorpicker.util.setVisibility
@@ -93,6 +94,7 @@ class PerfilUsuari : Fragment() {
                 when (tipo) {
                     "Monitor" -> {
                         binding.dniUsuariProdis.setVisibility(false)
+                        binding.bValidacio.setVisibility(true)
                         userdni.get().addOnSuccessListener { document ->
                             if (document.exists()) {
 
@@ -178,7 +180,12 @@ class PerfilUsuari : Fragment() {
         }
 
 
+        binding.bValidacio.setOnClickListener { view: View ->
 
+            view.findNavController()
+                .navigate(PerfilUsuariDirections.actionPerfilUsuariFragmentToValidacioUsuarisFragment())
+
+        }
 
 
         binding.imageCamara.setOnClickListener { view: View ->

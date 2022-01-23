@@ -141,7 +141,11 @@
         android:id="@+id/perfilUsuariFragment"
         android:name="cat.copernic.meetdis.PerfilUsuari"
         android:label="activity_main"
-        tools:layout="@layout/fragment_perfil_usuari" />
+        tools:layout="@layout/fragment_perfil_usuari" >
+        <action
+            android:id="@+id/action_perfilUsuariFragment_to_validacioUsuarisFragment"
+            app:destination="@id/validacioUsuarisFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/registreFragment"

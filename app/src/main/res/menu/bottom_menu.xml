@@ -13,18 +13,18 @@
         android:icon="@drawable/ic_buscar"
         android:title="@string/buscar"
         />
-    <item
+   <item
         android:id="@+id/notificacioFragment"
         android:icon="@drawable/ic_notificacio"
         android:title="@string/notificacio"
         />
-
+ <!--
     <item
         android:id="@+id/xatsFragment"
         android:icon="@drawable/ic_xat"
         android:title="@string/xat"
         />
-
+-->
     <item
         android:id="@+id/perfilUsuariFragment"
         android:icon="@drawable/ic_perfil"

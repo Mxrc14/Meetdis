@@ -9,6 +9,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+        <Button
+            android:id="@+id/b_validacio"
+            style="@style/colorMeetdis"
+            android:layout_width="61dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="52dp"
+            android:drawableTop="@drawable/ic_members"
+            android:fontFamily="@font/pt_sans_caption"
+            android:paddingTop="10dp"
+            android:textColor="#ffffff"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@+id/imageCamara"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <Button
             android:id="@+id/b_actualitza"
             style="@style/colorMeetdis"
