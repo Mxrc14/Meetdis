@@ -12,6 +12,7 @@ import cat.copernic.meetdis.databinding.FragmentNotificacioBinding
 import cat.copernic.meetdis.models.Oferta
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.HashMap
 
 
 class Notificacio : Fragment() {
@@ -53,6 +54,11 @@ class Notificacio : Fragment() {
         ofertas.clear()
         db.collection("userinscrit").document(dniS).get().addOnSuccessListener { inscripcio ->
 
+            val userdetailoferta = HashMap<String, Any>()
+
+            if (inscripcio.get("ofertes") != null) {
+
+
             lista = inscripcio.get("ofertes") as ArrayList<String>
 
 
@@ -92,8 +98,13 @@ class Notificacio : Fragment() {
             }
 
 
-        }
+        }else{
 
+                userdetailoferta["ofertes"] = lista
+                db.collection("userinscrit").document(dniS).set(userdetailoferta)
+            }
+
+        }
         return binding.root
 
     }

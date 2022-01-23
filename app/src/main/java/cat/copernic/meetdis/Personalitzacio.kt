@@ -100,29 +100,29 @@ class Personalitzacio : Fragment(), AdapterView.OnItemSelectedListener {
             when (opcion) {
 
                 "Català", "Catalan", "Catalán"-> {
-
-                    locale = Locale("ca");
-                    config.locale = locale;
+                    idioma("ca", "ES")
+                    val intent = Intent(this.activity, MainActivity::class.java).apply {  }
+                    startActivity(intent)
 
                 }
                 "Castellà", "Castellano", "Spanish" -> {
 
-                    locale = Locale("es");
-                    config.locale = locale;
+                    idioma("es", "ES")
+                    val intent = Intent(this.activity, MainActivity::class.java).apply {  }
+                    startActivity(intent)
 
                 }
 
                 else -> {
 
-                    locale = Locale("en");
-                    config.locale = locale;
+                    idioma("en", "")
+                    val intent = Intent(this.activity, MainActivity::class.java).apply {  }
+                    startActivity(intent)
 
                 }
             }
 
-            resources.updateConfiguration(config, null)
-            val refresh = Intent(this.activity, MainActivity::class.java)
-            startActivity(refresh)
+           // resources.updateConfiguration(config, null)
 
 
             view.findNavController()
@@ -135,6 +135,19 @@ class Personalitzacio : Fragment(), AdapterView.OnItemSelectedListener {
         binding.spinnerIdioma.onItemSelectedListener = this
 
         return binding.root
+    }
+    private fun idioma(lenguage: String, country: String){
+        val localitzacio = Locale(lenguage, country)
+
+        Locale.setDefault(localitzacio)
+
+        val config = Configuration()
+
+        config.locale = localitzacio
+
+        var baseContext = requireContext()
+        baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
+
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
