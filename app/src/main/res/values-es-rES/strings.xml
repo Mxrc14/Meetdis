@@ -138,6 +138,7 @@
     <string name="desapuntar_me">DESAPUNTARME</string>
     <string name="opcional">(Opcional)</string>
     <string name="pregunta_desapuntar_te">¿ Seguro que quieres desapuntarte de la oferta ?</string>
+    <string name="validacio">Validación de Usuarios</string>
 
 
 </resources>

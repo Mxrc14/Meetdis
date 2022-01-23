@@ -85,6 +85,7 @@
     <string name="versio">Versió:</string>
     <string name="membres">Membres</string>
 
+
     <string name="inscriu_me">INSCRIURE\'M</string>
     <string name="localitzacio">Localització</string>
 
@@ -133,6 +134,7 @@
     <string name="desapuntar_me">DESAPUNTAR-ME</string>
     <string name="opcional">(Opcional)</string>
     <string name="pregunta_desapuntar_te">Segur que vols desapuntar-te de l\'oferta ?</string>
+    <string name="validacio">Validació d\' Usuaris</string>
 
 
 </resources>
