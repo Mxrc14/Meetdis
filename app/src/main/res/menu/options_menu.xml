@@ -6,24 +6,24 @@
     <item
         android:id="@+id/personalitzacioFragment"
         android:title="@string/personalitzacio" />
+        <!--
+            <item
+                android:id="@+id/validacioUsuarisFragment"
+                android:title="@string/validacioUsuari" />
+-->
 
-    <item
-        android:id="@+id/validacioUsuarisFragment"
-        android:title="@string/validacioUsuari" />
+            <item
+                android:id="@+id/contacteFragment"
+                android:title="@string/contacte" />
 
+            <item
+                android:id="@+id/aboutFragment"
+                android:title="@string/about" />
 
-    <item
-        android:id="@+id/contacteFragment"
-        android:title="@string/contacte" />
+            <item
+                android:id="@+id/logInFragment"
+                android:title="@string/tancarSessio" />
 
-    <item
-        android:id="@+id/aboutFragment"
-        android:title="@string/about" />
+            </group>
 
-    <item
-        android:id="@+id/logInFragment"
-        android:title="@string/tancarSessio" />
-
-    </group>
-
-</menu>
+        </menu>
