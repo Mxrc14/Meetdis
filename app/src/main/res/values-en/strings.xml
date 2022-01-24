@@ -140,6 +140,8 @@
     <string name="opcional">(Optional)</string>
     <string name="pregunta_desapuntar_te">Are you sure you want to opt out of the offer?</string>
     <string name="validacio">User Validation</string>
+    <string name="eliminar_usuario">Are you sure you want to remove the user?</string>
+    <string name="conservar">KEEP</string>
 
 
 </resources>

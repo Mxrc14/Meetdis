@@ -135,6 +135,8 @@
     <string name="opcional">(Opcional)</string>
     <string name="pregunta_desapuntar_te">Segur que vols desapuntar-te de l\'oferta ?</string>
     <string name="validacio">Validació d\' Usuaris</string>
+    <string name="eliminar_usuario">Segur que vols eliminar l\'usuari?</string>
+    <string name="conservar">CONSERVAR</string>
 
 
 </resources>
