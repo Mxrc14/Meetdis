@@ -137,6 +137,7 @@
     <string name="validacio">Validació d\' Usuaris</string>
     <string name="eliminar_usuario">Segur que vols eliminar l\'usuari?</string>
     <string name="conservar">CONSERVAR</string>
+    <string name="dni_noExistent_o_invalid">DNI no vàlid o no existent</string>
 
 
 </resources>
