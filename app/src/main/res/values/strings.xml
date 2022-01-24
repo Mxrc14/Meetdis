@@ -129,10 +129,11 @@
     <string name="error_correu">Error al Correu</string>
     <string name="error_eliminar">Error en Eliminar</string>
     <string name="oferta_eliminada">Oferta Eliminada</string>
-    <string name="eliminar_oferta_pregunta">¿ Segur que vols eliminar l\'oferta ?</string>
+    <string name="eliminar_oferta_pregunta">Segur que vols eliminar l\'oferta ?</string>
     <string name="desapuntar_me">DESAPUNTAR-ME</string>
     <string name="opcional">(Opcional)</string>
     <string name="pregunta_desapuntar_te">Segur que vols desapuntar-te de l\'oferta ?</string>
+    <string name="dni_noExistent_o_invalid">DNI no vàlid o no existent</string>
 
 
 </resources>

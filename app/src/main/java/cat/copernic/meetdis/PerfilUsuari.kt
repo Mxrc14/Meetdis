@@ -26,7 +26,6 @@ import com.github.dhaval2404.colorpicker.util.setVisibility
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import kotlinx.android.synthetic.main.fragment_registre.*
 import java.io.ByteArrayOutputStream
 import java.io.File
 
@@ -46,12 +45,15 @@ class PerfilUsuari : Fragment() {
 
     private val storageRef = FirebaseStorage.getInstance().getReference()
 
+    private var exists: Boolean = false
+
     private val db = FirebaseFirestore.getInstance()
 
     lateinit var binding: FragmentPerfilUsuariBinding
-    var tipo: String = "No Funciona"
-    var nom: String? = null
 
+    var tipo: String = "No Funciona"
+
+    var nom: String? = null
     //    var cognom: String? = null
 //    var descrip: String? = null
 //    var img: String? = null
@@ -79,9 +81,6 @@ class PerfilUsuari : Fragment() {
         Log.i("PerfilUsuariDNI", dniUser)
 
         val userdni = db.collection("users").document(dniUser.uppercase())
-
-
-
 
 
         userdni.get().addOnSuccessListener { document ->
@@ -166,9 +165,6 @@ class PerfilUsuari : Fragment() {
 
         }
 
-        Log.i("PerfilUsuariTIPOF", "$tipo")
-
-
         val storageRef1 = FirebaseStorage.getInstance().reference
 
         val imageRef = storageRef1.child("users/$dniUser")
@@ -178,7 +174,6 @@ class PerfilUsuari : Fragment() {
         }.addOnFailureListener {
             //mostrar error
         }
-
 
         binding.bValidacio.setOnClickListener { view: View ->
 
@@ -229,8 +224,10 @@ class PerfilUsuari : Fragment() {
 
                             if (binding.dniUsuariProdis.text.toString().isNotEmpty()) {
 
-                                if (ComprobarDNI()) {
 
+
+
+                                if (ComprobarDNI()) {
                                     userdni.update(
                                         "dniUsuariProdis",
                                         binding.dniUsuariProdis.text.toString()
@@ -240,7 +237,7 @@ class PerfilUsuari : Fragment() {
                                     val toast =
                                         Toast.makeText(
                                             requireContext(),
-                                            R.string.dni_invalid,
+                                            getString(R.string.dni_noExistent_o_invalid),
                                             Toast.LENGTH_LONG
                                         )
                                     toast.show()
@@ -278,9 +275,8 @@ class PerfilUsuari : Fragment() {
         return binding.root
 
     }
-
     private fun ComprobarDNI(): Boolean {
-    var   Correcte: Boolean = false
+        var Correcte: Boolean = false
         var letra: Char = binding.dniUsuariProdis.text.toString()
             .substring(binding.dniUsuariProdis.length() - 1, binding.dniUsuariProdis.length())[0]
 
@@ -289,8 +285,9 @@ class PerfilUsuari : Fragment() {
                 .substring(0, binding.dniUsuariProdis.length() - 1)
 
         if (letra.isLetter() && numeros.isDigitsOnly() && letra.isUpperCase() && binding.dniUsuariProdis.text.length == 9) {
-           Correcte = true
+            Correcte = true
         }
+
         return Correcte
     }
 

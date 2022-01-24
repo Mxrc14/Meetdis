@@ -17,6 +17,7 @@ import cat.copernic.meetdis.databinding.FragmentContingutOfertaBinding
 import coil.api.load
 import com.github.dhaval2404.colorpicker.util.setVisibility
 import com.google.android.gms.maps.GoogleMap
+import com.google.common.util.concurrent.Monitor
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -43,6 +44,8 @@ class ContingutOferta : Fragment() {
     private val user = FirebaseAuth.getInstance().currentUser
 
     private val uid = user?.email
+
+    var tipo: String = "No Funciona"
 
     private var dniS: String = uid.toString().substring(0, uid.toString().length - 11).uppercase()
 
@@ -139,6 +142,19 @@ class ContingutOferta : Fragment() {
             binding.bInscriuMe.setVisibility(true)
         }
 
+        val userdni = db.collection("users").document(dniS.uppercase())
+
+        userdni.get().addOnSuccessListener { document ->
+            if (document.exists()) {
+
+                tipo = document.data?.get("tipus d´usuari").toString()
+
+                if (tipo == "Monitor"){
+                    binding.bEliminarM.setVisibility(true)
+                }
+
+            }
+        }
 
         binding.bEliminar.setOnClickListener { view: View ->
 
@@ -215,6 +231,81 @@ class ContingutOferta : Fragment() {
 
         }
 
+
+        binding.bEliminarM.setOnClickListener { view: View ->
+
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle(getString(R.string.eliminar_oferta_pregunta))
+            builder.setPositiveButton(R.string.eliminar) { dialog, id ->
+
+                db.collection("ofertes").document(ofertaImg.toString())
+                    .delete()
+                    .addOnSuccessListener {
+
+                        db.collection("ofertes").document(ofertaImg.toString()).delete()
+                        db.collection("inscrit").document(ofertaImg.toString()).delete()
+                        storageRef.child("ofertes/$ofertaImg").delete()
+
+
+
+
+
+                        lista.clear()
+                        db.collection("userinscrit").get().addOnSuccessListener { userActu ->
+
+                            if (userActu != null) {
+
+                                for (user in userActu) {
+                                    Log.i("ContingutOfertaUser", user.id)
+                                    if (user.get("ofertes") != null) {
+
+                                        lista = user.get("ofertes") as ArrayList<String>
+                                        val userdetail = HashMap<String, Any>()
+                                        for (posicion in lista.indices) {
+                                            Log.i("ContingutO", lista[posicion])
+                                            if (lista[posicion] == ofertaImg.toString()) {
+
+                                                lista.removeAt(posicion)
+
+                                                userdetail["ofertes"] = lista
+
+                                                db.collection("userinscrit").document(user.id).delete()
+                                                db.collection("userinscrit").document(user.id)
+                                                    .set(userdetail)
+                                            }
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        val toast =
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.oferta_eliminada),
+                                Toast.LENGTH_LONG
+                            )
+                        toast.show()
+
+                        view.findNavController()
+                            .navigate(ContingutOfertaDirections.actionOfertaFragmentFragmentToIniciFragment())
+                    }
+                    .addOnFailureListener {
+                        val toast =
+                            Toast.makeText(
+                                requireContext(),
+                                getString(R.string.error_eliminar),
+                                Toast.LENGTH_LONG
+                            )
+                        toast.show()
+                    }
+
+
+            }
+            builder.show()
+
+        }
 
 
         binding.bDesapuntarMe.setOnClickListener { view: View ->
@@ -297,7 +388,6 @@ class ContingutOferta : Fragment() {
 
         }
 
-
         binding.bInscriuMe.setOnClickListener { view: View ->
 
             Log.i("ContingutOferta", "$ofertaImg")
@@ -319,8 +409,6 @@ class ContingutOferta : Fragment() {
                 }
 
             }
-
-
             Log.i("ContingutOferta", "$ofertaImg")
             lista.clear()
             db.collection("userinscrit").document(dniS).get().addOnSuccessListener {

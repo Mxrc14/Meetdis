@@ -47,9 +47,6 @@
             android:layout_height="60dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/bordes_meetdis"
-
-
-
             android:hint="@string/titol"
             android:inputType="textPersonName"
 
@@ -136,6 +133,21 @@
             app:layout_constraintTop_toBottomOf="@+id/textData" />
 
         <Button
+            android:id="@+id/b_eliminarM"
+            style="@style/colorMeetdis"
+            android:layout_width="78dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="112dp"
+            android:background="@drawable/bordes_eliminar"
+            android:fontFamily="@font/pt_sans_caption"
+            android:text="@string/eliminar"
+            android:textColor="@color/red_500"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@+id/imageCamara"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
             android:id="@+id/bInscriu_me"
             android:layout_width="132dp"
             android:layout_height="59dp"
@@ -148,7 +160,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mapView" />
+            app:layout_constraintTop_toBottomOf="@+id/mapView"
+            />
 
         <Button
             android:id="@+id/bDesapuntar_me"
@@ -159,11 +172,12 @@
             android:background="@drawable/bordes_eliminar"
             android:fontFamily="@font/pt_sans_caption"
             android:text="@string/desapuntar_me"
-            android:textColor="#ffffff"
+            android:textColor="@color/red_500"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mapView" />
+            app:layout_constraintTop_toBottomOf="@+id/mapView"
+            />
 
         <Button
             android:id="@+id/bEliminar"

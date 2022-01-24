@@ -21,6 +21,7 @@ import cat.copernic.meetdis.databinding.ActivityMainBinding
 import cat.copernic.meetdis.databinding.FragmentRegistreBinding
 import com.github.dhaval2404.colorpicker.util.setVisibility
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.fragment_registre.*
@@ -41,6 +42,7 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
 
     private var spinner: Spinner? = null
     private var opcion: String? = null
+    private val db = FirebaseFirestore.getInstance()
 
      override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,8 +60,6 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
              //TODO documentar-lo en la memoria
 
          }
-
-
 
 
         binding.bContinuar.setOnClickListener { view: View ->
@@ -83,37 +83,51 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
                             val dni: String = textDNI.text.toString()
                             val contrasenya: String = textContrasenya.text.toString() + "prodis"
                             val tipus: String = opcion.toString();
+                            val exists: Boolean = db.collection("users").document(dni).get().isSuccessful
 
+                            //db.collection("users").document(dni).get().addOnSuccessListener { exists = true }.addOnFailureListener { exists = false }
 
-                            when (opcion) {
+                            if (!exists) {
 
-                                "Usuari","Usuario","User" -> view.findNavController()
-                                    .navigate(
-                                        RegistreDirections.actionRegistreFragmentToRegistreUsuariFragment(
-                                            dni,
-                                            tipus,
-                                            contrasenya
+                                when (opcion) {
+
+                                    "Usuari", "Usuario", "User" -> view.findNavController()
+                                        .navigate(
+                                            RegistreDirections.actionRegistreFragmentToRegistreUsuariFragment(
+                                                dni,
+                                                tipus,
+                                                contrasenya
+                                            )
                                         )
-                                    )
 
-                                "Monitor" -> view.findNavController()
-                                    .navigate(
-                                        RegistreDirections.actionRegistreFragmentToRegistreMonitorFragment(
-                                            dni,
-                                            tipus,
-                                            contrasenya
+                                    "Monitor" -> view.findNavController()
+                                        .navigate(
+                                            RegistreDirections.actionRegistreFragmentToRegistreMonitorFragment(
+                                                dni,
+                                                tipus,
+                                                contrasenya
+                                            )
                                         )
-                                    )
 
-                                else -> view.findNavController()
-                                    .navigate(
-                                        RegistreDirections.actionRegistreFragmentToRegistreFamiliarFragment(
-                                            dni,
-                                            tipus,
-                                            contrasenya
+                                    else -> view.findNavController()
+                                        .navigate(
+                                            RegistreDirections.actionRegistreFragmentToRegistreFamiliarFragment(
+                                                dni,
+                                                tipus,
+                                                contrasenya
+                                            )
                                         )
-                                    )
+                                }
+                            } else {
+                                val toast = Toast.makeText(
+                                    requireContext(),
+                                    "DNI ja existent",
+                                    Toast.LENGTH_LONG
+                                )
+                                toast.show()
                             }
+
+
 
                         } else {
                             val toast = Toast.makeText(
