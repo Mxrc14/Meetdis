@@ -114,7 +114,16 @@ class RegistreMonitor : Fragment() {
                         )
                     )
 
-
+                    db.collection("userspendents").document(args.dni).set(
+                        hashMapOf(
+                            "correu" to dni + "@prodis.cat",
+                            "contrasenya" to args.contrasenya,
+                            "tipus d´usuari" to args.tipus,
+                            "nom" to textNom.text.toString(),
+                            "cognoms" to textCognom.text.toString(),
+                            "descripcio" to ""
+                        )
+                    )
 
                     FirebaseAuth.getInstance()
                         .signInWithEmailAndPassword(

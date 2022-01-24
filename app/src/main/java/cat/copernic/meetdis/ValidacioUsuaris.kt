@@ -43,7 +43,7 @@ class ValidacioUsuaris : Fragment() {
 
 
 
-        db.collection("users")
+        db.collection("userspendents")
             .get()
             .addOnSuccessListener { documents ->
                 membres.clear()

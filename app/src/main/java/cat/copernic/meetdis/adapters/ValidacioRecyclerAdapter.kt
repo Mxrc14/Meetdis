@@ -88,7 +88,7 @@ class ValidacioRecyclerAdapter: RecyclerView.Adapter<ValidacioRecyclerAdapter.Vi
             builder.setMessage(R.string.selecciona)
             builder.setPositiveButton(R.string.eliminar) { dialog, id ->
 
-
+                db.collection("userspendents").document(dnifinal).delete()
                 db.collection("users").document(dnifinal).delete()
                 db.collection("userinscrit").document(dnifinal).delete()
                 db.collection("ofertes").get().addOnSuccessListener { documents ->
@@ -165,8 +165,14 @@ class ValidacioRecyclerAdapter: RecyclerView.Adapter<ValidacioRecyclerAdapter.Vi
                 )
 
             }
+            builder.setNegativeButton(R.string.conservar) { dialog, which ->
 
-            builder.setNegativeButton(R.string.conservar, { dialog, which ->  })
+                db.collection("userspendents").document(dnifinal).delete()
+
+                holder.itemView.findNavController().navigate(
+                    R.id.action_validacioUsuarisFragment_self
+                )
+            }
             builder.show()
 
         }
