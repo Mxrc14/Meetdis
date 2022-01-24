@@ -246,7 +246,11 @@
         android:id="@+id/validacioUsuarisFragment"
         android:name="cat.copernic.meetdis.ValidacioUsuaris"
         android:label="activity_main"
-        tools:layout="@layout/fragment_validacio_usuaris" />
+        tools:layout="@layout/fragment_validacio_usuaris" >
+        <action
+            android:id="@+id/action_validacioUsuarisFragment_self"
+            app:destination="@id/validacioUsuarisFragment" />
+    </fragment>
     <fragment
         android:id="@+id/mapsFragment"
         android:name="cat.copernic.meetdis.MapsFragment"

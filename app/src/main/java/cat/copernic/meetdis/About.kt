@@ -26,10 +26,7 @@ class About : Fragment() {
 
        binding = FragmentAboutBinding.inflate(layoutInflater)
 
-
         viewModel = ViewModelProvider(this).get(AboutViewModel::class.java)
-
-
 
         viewModel.text3.observe(viewLifecycleOwner, {
             binding.textView3.text = it.toString()
