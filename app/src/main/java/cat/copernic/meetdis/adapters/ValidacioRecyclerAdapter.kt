@@ -29,6 +29,7 @@ class ValidacioRecyclerAdapter: RecyclerView.Adapter<ValidacioRecyclerAdapter.Vi
     var membres: ArrayList<Membre> = ArrayList()
     lateinit var context: Context
     lateinit var id: String
+    private var lista = arrayListOf<String>()
 
     private val db = FirebaseFirestore.getInstance()
 
@@ -87,32 +88,89 @@ class ValidacioRecyclerAdapter: RecyclerView.Adapter<ValidacioRecyclerAdapter.Vi
             builder.setMessage(R.string.selecciona)
             builder.setPositiveButton(R.string.eliminar) { dialog, id ->
 
-                Log.i("cash2", "${item.dniMembre}")
 
                 db.collection("users").document(dnifinal).delete()
                 db.collection("userinscrit").document(dnifinal).delete()
                 db.collection("ofertes").get().addOnSuccessListener { documents ->
                     for (document in documents) {
-                        if (document.get("dni") == dnifinal) {
-                            db.collection("ofertes").document().delete()
+                        if (document.get("dni").toString() == dnifinal) {
+                            db.collection("ofertes").document(document.id).delete()
+                            db.collection("inscrit").document(document.id).delete()
+
+                            lista.clear()
+                            db.collection("userinscrit").get().addOnSuccessListener { userActu ->
+
+                                if (userActu != null) {
+
+                                    for (user in userActu) {
+                                        Log.i("ContingutOfertaUser", user.id)
+                                        if (user.get("ofertes") != null) {
+
+                                            lista = user.get("ofertes") as java.util.ArrayList<String>
+                                            val userdetail = HashMap<String, Any>()
+                                            for (posicion in lista.indices) {
+                                                Log.i("ContingutO", lista[posicion])
+                                                if (lista[posicion] == document.id) {
+
+                                                    lista.removeAt(posicion)
+
+                                                    userdetail["ofertes"] = lista
+
+                                                    db.collection("userinscrit").document(user.id).delete()
+                                                    db.collection("userinscrit").document(user.id)
+                                                        .set(userdetail)
+                                                }
+
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            lista.clear()
+                            db.collection("inscrit").get().addOnSuccessListener { ofertaActu ->
+
+                                if (ofertaActu != null) {
+
+                                    for (user in ofertaActu) {
+                                        Log.i("ContingutOfertaUser", user.id)
+                                        if (user.get("users") != null) {
+
+                                            lista = user.get("users") as java.util.ArrayList<String>
+                                            val userdetail = HashMap<String, Any>()
+                                            for (posicion in lista.indices) {
+                                                Log.i("ContingutO", lista[posicion])
+                                                if (lista[posicion] == dnifinal) {
+
+                                                    lista.removeAt(posicion)
+
+                                                    userdetail["users"] = lista
+
+                                                    db.collection("inscrit").document(user.id).delete()
+                                                    db.collection("inscrit").document(user.id)
+                                                        .set(userdetail)
+                                                }
+
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
 
                 }
-                db.collection("inscrit").get().addOnSuccessListener { documents ->
-                    for (document in documents) {
-                        if (document.get("users") == dnifinal) {
-                            db.collection("ofertes").document().delete()
-                        }
-                    }
 
-                }
+                holder.itemView.findNavController().navigate(
+                    R.id.action_validacioUsuarisFragment_self
+                )
+
             }
 
             builder.setNegativeButton(R.string.conservar, { dialog, which ->  })
             builder.show()
 
         }
+
 
 
 
