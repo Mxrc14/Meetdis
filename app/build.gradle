@@ -19,8 +19,8 @@ android {
         applicationId "cat.copernic.meetdis"
         minSdk 21
         targetSdk 31
-        versionCode 9
-        versionName "b0.9"
+        versionCode 10
+        versionName "b0.10"
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
