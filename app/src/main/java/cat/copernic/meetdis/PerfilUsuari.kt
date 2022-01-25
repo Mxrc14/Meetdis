@@ -47,6 +47,8 @@ class PerfilUsuari : Fragment() {
 
     private var exists: Boolean = false
 
+    private var existsM: Boolean = false
+
     private var tipoC: Boolean = false
 
     private val db = FirebaseFirestore.getInstance()
@@ -96,26 +98,44 @@ class PerfilUsuari : Fragment() {
                 when (tipo) {
                     "Monitor" -> {
                         binding.dniUsuariProdis.setVisibility(false)
-                        binding.bValidacio.setVisibility(true)
-                        userdni.get().addOnSuccessListener { document ->
-                            if (document.exists()) {
 
-                                binding.textNom.text =
-                                    SpannableStringBuilder(document.data?.get("nom").toString())
-                                binding.textCognom.text =
-                                    SpannableStringBuilder(document.data?.get("cognoms").toString())
-                                binding.descripcio.text = SpannableStringBuilder(
-                                    document.data?.get("descripcio").toString()
-                                )
-                                binding.textCorreu.text = SpannableStringBuilder(
-                                    document.data?.get("correuMonitor").toString()
-                                )
+                        db.collection("userspendents")
+                            .document(dniUser).get()
+                            .addOnSuccessListener {
 
+
+                                existsM = it.exists()
+                                if (!existsM) {
+
+                                    binding.bValidacio.setVisibility(true)
+
+                                }
 
                             }
+                                userdni.get().addOnSuccessListener { document ->
+                                    if (document.exists()) {
+
+                                        binding.textNom.text =
+                                            SpannableStringBuilder(
+                                                document.data?.get("nom").toString()
+                                            )
+                                        binding.textCognom.text =
+                                            SpannableStringBuilder(
+                                                document.data?.get("cognoms").toString()
+                                            )
+                                        binding.descripcio.text = SpannableStringBuilder(
+                                            document.data?.get("descripcio").toString()
+                                        )
+                                        binding.textCorreu.text = SpannableStringBuilder(
+                                            document.data?.get("correuMonitor").toString()
+                                        )
 
 
-                        }
+                                    }
+                                }
+
+
+
                     }
                     "Familiar" -> {
                         binding.textCorreu.setVisibility(false)
@@ -232,8 +252,6 @@ class PerfilUsuari : Fragment() {
                                     .addOnSuccessListener {
 
 
-
-
                                         exists = it.exists()
                                         if (exists) {
                                             var tipoF = it.data?.get("tipus d´usuari").toString()
@@ -241,13 +259,15 @@ class PerfilUsuari : Fragment() {
 
                                             when (tipoF) {
 
-                                                "Usuari", "Usuario", "User" ->{
+                                                "Usuari", "Usuario", "User" -> {
                                                     tipoC = true
 
-                                                }   else -> {
+                                                }
+                                                else -> {
 
                                                     tipoC = false
-                                                }                                             }
+                                                }
+                                            }
                                         }
 
                                         if (ComprobarDNI() && exists && tipoC) {

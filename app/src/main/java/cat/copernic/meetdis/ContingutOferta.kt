@@ -39,6 +39,8 @@ class ContingutOferta : Fragment() {
 
     private val db = FirebaseFirestore.getInstance()
 
+    private var existsM: Boolean = false
+
     val storageRef = FirebaseStorage.getInstance().reference
 
     private val user = FirebaseAuth.getInstance().currentUser
@@ -150,7 +152,23 @@ class ContingutOferta : Fragment() {
                 tipo = document.data?.get("tipus d´usuari").toString()
 
                 if (tipo == "Monitor"){
-                    binding.bEliminarM.setVisibility(true)
+
+
+                    db.collection("userspendents")
+                        .document(dniS).get()
+                        .addOnSuccessListener {
+
+
+                            existsM = it.exists()
+                            if (!existsM) {
+                                binding.bEliminarM.setVisibility(true)
+
+
+                            }
+
+                        }
+
+
                 }
 
             }
