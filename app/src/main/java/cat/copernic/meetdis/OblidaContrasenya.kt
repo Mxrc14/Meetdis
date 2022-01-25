@@ -1,5 +1,7 @@
 package cat.copernic.meetdis
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,33 +10,18 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import cat.copernic.meetdis.databinding.FragmentContacteBinding
 import cat.copernic.meetdis.databinding.FragmentLogInBinding
 import cat.copernic.meetdis.databinding.FragmentOblidaContrasenyaBinding
 import com.github.dhaval2404.colorpicker.util.setVisibility
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [OblidaContrasenya.newInstance] factory method to
- * create an instance of this fragment.
- */
 class OblidaContrasenya : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    lateinit var binding: FragmentOblidaContrasenyaBinding
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,17 +29,32 @@ class OblidaContrasenya : Fragment() {
     ): View? {
 
 
-        val binding = DataBindingUtil.inflate<FragmentOblidaContrasenyaBinding>(inflater,
+         binding = DataBindingUtil.inflate<FragmentOblidaContrasenyaBinding>(inflater,
             R.layout.fragment_oblida_contrasenya,container,false)
 
 
         binding.bEnviar.setOnClickListener { view: View ->
+
+            enviarmail()
             view.findNavController()
                 .navigate(OblidaContrasenyaDirections.actionOblidatContrasenyaFragmentToLogInFragment())
 
 
         }
         return binding.root
+    }
+
+    fun enviarmail(){
+        var mail = arrayOf("meetdisProdis@gmail.com")
+        val email = Intent(Intent.ACTION_SEND)
+        email.setData(Uri.parse("mail to:"))
+        email.setType("text/plain")
+        email.putExtra(android.content.Intent.EXTRA_EMAIL, mail)
+        email.putExtra(Intent.EXTRA_SUBJECT, binding.textTitol.text.toString())
+        email.putExtra(Intent.EXTRA_TEXT, getString(R.string.nomICognoms)+ ": " + binding.textDNI.text.toString() + "\n\n" + getString(R.string.descripcio) + ": "+ "\n"   + binding.descripcio.text.toString() );
+
+        startActivity(Intent.createChooser(email, "Enviar email."))
+
     }
 
 

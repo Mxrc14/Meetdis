@@ -241,7 +241,11 @@
         android:id="@+id/contacteFragment"
         android:name="cat.copernic.meetdis.Contacte"
         android:label="activity_main"
-        tools:layout="@layout/fragment_contacte" />
+        tools:layout="@layout/fragment_contacte" >
+        <action
+            android:id="@+id/action_contacteFragment_to_iniciFragment"
+            app:destination="@id/iniciFragment" />
+    </fragment>
     <fragment
         android:id="@+id/validacioUsuarisFragment"
         android:name="cat.copernic.meetdis.ValidacioUsuaris"
