@@ -1,25 +1,26 @@
 package cat.copernic.meetdis
 
 import android.os.Bundle
+import android.support.v4.media.session.MediaSessionCompat.Token.fromBundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import cat.copernic.meetdis.adapters.NotificacioRecyclerAdapter
-import cat.copernic.meetdis.databinding.FragmentNotificacioBinding
+import cat.copernic.meetdis.adapters.NotificacioUsuariRecyclerAdapter
+import cat.copernic.meetdis.databinding.FragmentNotificacioUsuariBinding
 import cat.copernic.meetdis.models.Oferta
-import com.github.dhaval2404.colorpicker.util.setVisibility
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.*
+import java.util.ArrayList
+import java.util.HashMap
 
 
-class Notificacio : Fragment() {
+class NotificacioUsuari : Fragment() {
 
-    private val myAdapter: NotificacioRecyclerAdapter = NotificacioRecyclerAdapter()
+    private val myAdapter: NotificacioUsuariRecyclerAdapter = NotificacioUsuariRecyclerAdapter()
 
     private val db = FirebaseFirestore.getInstance()
 
@@ -34,51 +35,27 @@ class Notificacio : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding = DataBindingUtil.inflate<FragmentNotificacioBinding>(
+        val binding = DataBindingUtil.inflate<FragmentNotificacioUsuariBinding>(
             inflater,
-            R.layout.fragment_notificacio, container, false
+            R.layout.fragment_notificacio_usuari, container, false
         )
 
         binding.rvNotificacio.setHasFixedSize(true)
 
         binding.rvNotificacio.layoutManager = LinearLayoutManager(requireContext())
 
+
         var ofertas: ArrayList<Oferta> = arrayListOf();
 
         var lista = arrayListOf<String>()
 
+        val args = NotificacioUsuariArgs.fromBundle(requireArguments())
 
-        db.collection("users").document(dniS).get().addOnSuccessListener { document ->
-            if (document.exists()) {
-
-                var tipo = document.data?.get("tipus d´usuari").toString()
-
-                if (tipo == "Familiar") {
-                    binding.bUsuari.setVisibility(true)
-
-
-                    var dniUsuari = document.data?.get("dniUsuariProdis").toString()
-
-                    binding.bUsuari.setOnClickListener { view: View ->
-
-                        view.findNavController()
-                            .navigate(NotificacioDirections.actionNotificacioFragmentToNotificacioUsuari(dniUsuari))
-                    }
-
-
-                }
-            }
-        }
-
-
-
-
-
-
+        val dniUsuari: String = args.dniUsuari
 
         lista.clear()
         ofertas.clear()
-        db.collection("userinscrit").document(dniS).get().addOnSuccessListener { inscripcio ->
+        db.collection("userinscrit").document(dniUsuari).get().addOnSuccessListener { inscripcio ->
 
             val userdetailoferta = HashMap<String, Any>()
 
@@ -115,7 +92,7 @@ class Notificacio : Fragment() {
                                 }
 
                             }
-                            context?.let { myAdapter.NotificacioRecyclerAdapter(ofertas, it) }
+                            context?.let { myAdapter.NotificacioUsuariRecyclerAdapter(ofertas, it) }
                             binding.rvNotificacio.adapter = myAdapter
 
                         }
@@ -123,24 +100,13 @@ class Notificacio : Fragment() {
 
                 }
 
-
-            } else {
+            }else{
 
                 userdetailoferta["ofertes"] = lista
-                db.collection("userinscrit").document(dniS).set(userdetailoferta)
+                db.collection("userinscrit").document(dniUsuari).set(userdetailoferta)
             }
 
         }
-
-
-
-
-
-
-
-
-
-
         return binding.root
 
     }
