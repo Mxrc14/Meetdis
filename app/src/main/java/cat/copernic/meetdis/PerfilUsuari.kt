@@ -47,6 +47,8 @@ class PerfilUsuari : Fragment() {
 
     private var exists: Boolean = false
 
+    private var tipoC: Boolean = false
+
     private val db = FirebaseFirestore.getInstance()
 
     lateinit var binding: FragmentPerfilUsuariBinding
@@ -54,6 +56,7 @@ class PerfilUsuari : Fragment() {
     var tipo: String = "No Funciona"
 
     var nom: String? = null
+
     //    var cognom: String? = null
 //    var descrip: String? = null
 //    var img: String? = null
@@ -224,24 +227,45 @@ class PerfilUsuari : Fragment() {
 
                             if (binding.dniUsuariProdis.text.toString().isNotEmpty()) {
 
+                                db.collection("users")
+                                    .document(binding.dniUsuariProdis.text.toString()).get()
+                                    .addOnSuccessListener {
 
 
 
-                                if (ComprobarDNI()) {
-                                    userdni.update(
-                                        "dniUsuariProdis",
-                                        binding.dniUsuariProdis.text.toString()
-                                    )
 
-                                } else {
-                                    val toast =
-                                        Toast.makeText(
-                                            requireContext(),
-                                            getString(R.string.dni_noExistent_o_invalid),
-                                            Toast.LENGTH_LONG
-                                        )
-                                    toast.show()
-                                }
+                                        exists = it.exists()
+                                        if (exists) {
+                                            var tipoF = it.data?.get("tipus d´usuari").toString()
+
+
+                                            when (tipoF) {
+
+                                                "Usuari", "Usuario", "User" ->{
+                                                    tipoC = true
+
+                                                }   else -> {
+
+                                                    tipoC = false
+                                                }                                             }
+                                        }
+
+                                        if (ComprobarDNI() && exists && tipoC) {
+                                            userdni.update(
+                                                "dniUsuariProdis",
+                                                binding.dniUsuariProdis.text.toString()
+                                            )
+
+                                        } else {
+                                            val toast =
+                                                Toast.makeText(
+                                                    requireContext(),
+                                                    getString(R.string.dni_noExistent_o_invalid),
+                                                    Toast.LENGTH_LONG
+                                                )
+                                            toast.show()
+                                        }
+                                    }
                             }
                         }
 
@@ -275,6 +299,7 @@ class PerfilUsuari : Fragment() {
         return binding.root
 
     }
+
     private fun ComprobarDNI(): Boolean {
         var Correcte: Boolean = false
         var letra: Char = binding.dniUsuariProdis.text.toString()
