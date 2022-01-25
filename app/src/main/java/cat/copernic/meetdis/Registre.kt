@@ -44,6 +44,8 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
     private var opcion: String? = null
     private val db = FirebaseFirestore.getInstance()
 
+    var exists: Boolean? =  null
+
      override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -83,50 +85,58 @@ class Registre : Fragment(), AdapterView.OnItemSelectedListener{
                             val dni: String = textDNI.text.toString()
                             val contrasenya: String = textContrasenya.text.toString() + "prodis"
                             val tipus: String = opcion.toString();
-                            val exists: Boolean = db.collection("users").document(dni).get().isSuccessful
 
-                            //db.collection("users").document(dni).get().addOnSuccessListener { exists = true }.addOnFailureListener { exists = false }
 
-                            if (!exists) {
 
-                                when (opcion) {
 
-                                    "Usuari", "Usuario", "User" -> view.findNavController()
-                                        .navigate(
-                                            RegistreDirections.actionRegistreFragmentToRegistreUsuariFragment(
-                                                dni,
-                                                tipus,
-                                                contrasenya
-                                            )
+                                db.collection("users").document(dni).get().addOnSuccessListener {
+
+                                    exists = it.exists()
+
+                                    //db.collection("users").document(dni).get().addOnSuccessListener { exists = true }.addOnFailureListener { exists = false }
+
+                                    if (exists == false) {
+                                        Log.i("Registre1", exists.toString())
+                                        when (opcion) {
+
+                                            "Usuari", "Usuario", "User" -> view.findNavController()
+                                                .navigate(
+                                                    RegistreDirections.actionRegistreFragmentToRegistreUsuariFragment(
+                                                        dni,
+                                                        tipus,
+                                                        contrasenya
+                                                    )
+                                                )
+
+                                            "Monitor" -> view.findNavController()
+                                                .navigate(
+                                                    RegistreDirections.actionRegistreFragmentToRegistreMonitorFragment(
+                                                        dni,
+                                                        tipus,
+                                                        contrasenya
+                                                    )
+                                                )
+
+                                            else -> view.findNavController()
+                                                .navigate(
+                                                    RegistreDirections.actionRegistreFragmentToRegistreFamiliarFragment(
+                                                        dni,
+                                                        tipus,
+                                                        contrasenya
+                                                    )
+                                                )
+                                        }
+                                    } else {
+
+                                        Log.i("Registre1", exists.toString())
+                                        val toast = Toast.makeText(
+                                            requireContext(),
+                                            "DNI ja existent",
+                                            Toast.LENGTH_LONG
                                         )
-
-                                    "Monitor" -> view.findNavController()
-                                        .navigate(
-                                            RegistreDirections.actionRegistreFragmentToRegistreMonitorFragment(
-                                                dni,
-                                                tipus,
-                                                contrasenya
-                                            )
-                                        )
-
-                                    else -> view.findNavController()
-                                        .navigate(
-                                            RegistreDirections.actionRegistreFragmentToRegistreFamiliarFragment(
-                                                dni,
-                                                tipus,
-                                                contrasenya
-                                            )
-                                        )
+                                        toast.show()
+                                    }
                                 }
-                            } else {
-                                val toast = Toast.makeText(
-                                    requireContext(),
-                                    "DNI ja existent",
-                                    Toast.LENGTH_LONG
-                                )
-                                toast.show()
-                            }
-
 
 
                         } else {
