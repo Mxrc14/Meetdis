@@ -17,17 +17,20 @@ import com.github.dhaval2404.colorpicker.MaterialColorPickerDialog
 import java.util.*
 import android.content.Intent
 import android.content.res.Configuration
+import android.os.Build
+import androidx.annotation.RequiresApi
 
 
 class Personalitzacio : Fragment(), AdapterView.OnItemSelectedListener {
 
     private var opcion: String? = null
     lateinit var dni: String
-
+    private var colorF: Int? = null
     private var locale: Locale? = null
     private val config: Configuration = Configuration()
 
 
+    @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -66,10 +69,12 @@ class Personalitzacio : Fragment(), AdapterView.OnItemSelectedListener {
                     )
                 )
                 .setColorListener { color, colorHex ->
-                    binding.bColor1.setBackgroundColor(color)
+                    view.setBackgroundColor(color)
+                    colorF = color
                 }
                 .show()
         }
+
 
 
         binding.bColor2.setOnClickListener { view: View ->
@@ -118,12 +123,11 @@ class Personalitzacio : Fragment(), AdapterView.OnItemSelectedListener {
                     idioma("en", "")
                     val intent = Intent(this.activity, MainActivity::class.java).apply {  }
                     startActivity(intent)
-
                 }
             }
 
            // resources.updateConfiguration(config, null)
-
+//            colorF?.let { (activity as MainActivity?)?.cambiarColor(it) }
 
             view.findNavController()
                 .navigate(
@@ -147,7 +151,6 @@ class Personalitzacio : Fragment(), AdapterView.OnItemSelectedListener {
 
         var baseContext = requireContext()
         baseContext.resources.updateConfiguration(config, baseContext.resources.displayMetrics)
-
     }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {

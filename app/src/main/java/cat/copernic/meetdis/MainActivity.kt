@@ -1,15 +1,18 @@
 package cat.copernic.meetdis
 
 
+import android.graphics.Color
+import android.graphics.drawable.Drawable
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -86,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         /*return NavigationUI.onNavDestinationSelected(item, navController)
                 || super.onOptionsItemSelected(item)*/
 
-        return when(item.itemId){
+        return when (item.itemId) {
             R.id.logInFragment -> {
                 FirebaseAuth.getInstance().signOut()
                 NavigationUI.onNavDestinationSelected(item, navController)
@@ -107,6 +110,21 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration)
     }
+
+//    @RequiresApi(Build.VERSION_CODES.P)
+//    fun cambiarColor(color: Int) {
+//
+//        var colorD: String = Color.parseColor(color.toString())
+//
+//        window.navigationBarDividerColor = color
+//
+//        window.navigationBarColor = color
+//        supportActionBar?.setBackgroundDrawable(Color.parseColor(colorD))
+//
+//        this.window
+//
+//
+//    }
 
 
 }
