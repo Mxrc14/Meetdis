@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_iniciFragment_to_fragment_contingut_oferta"
             app:destination="@id/ofertaFragment" />
+        <action
+            android:id="@+id/action_iniciFragment_self"
+            app:destination="@id/iniciFragment" />
     </fragment>
 
     <fragment
@@ -94,6 +97,9 @@
         <action
             android:id="@+id/action_buscarFragment_to_filtratFragment"
             app:destination="@id/filtratFragment" />
+        <action
+            android:id="@+id/action_buscarFragment_to_iniciFragment"
+            app:destination="@id/iniciFragment" />
     </fragment>
 
     <fragment
@@ -107,6 +113,9 @@
         <action
             android:id="@+id/action_notificacioFragment_to_notificacioUsuari"
             app:destination="@id/notificacioUsuari" />
+        <action
+            android:id="@+id/action_notificacioFragment_to_iniciFragment"
+            app:destination="@id/iniciFragment" />
     </fragment>
 
     <fragment
@@ -148,6 +157,9 @@
         <action
             android:id="@+id/action_perfilUsuariFragment_to_validacioUsuarisFragment"
             app:destination="@id/validacioUsuarisFragment" />
+        <action
+            android:id="@+id/action_perfilUsuariFragment_to_iniciFragment"
+            app:destination="@id/iniciFragment" />
     </fragment>
 
     <fragment
@@ -238,7 +250,14 @@
         android:id="@+id/aboutFragment"
         android:name="cat.copernic.meetdis.About"
         android:label="activity_main"
-        tools:layout="@layout/fragment_about" />
+        tools:layout="@layout/fragment_about" >
+        <action
+            android:id="@+id/action_aboutFragment_to_iniciFragment"
+            app:destination="@id/iniciFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/iniciFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
 
     <fragment
         android:id="@+id/contacteFragment"
@@ -270,7 +289,8 @@
     <fragment
         android:id="@+id/filtratFragment"
         android:name="cat.copernic.meetdis.Filtrat"
-        android:label="Filtrat" >
+        android:label="Filtrat"
+        tools:layout="@layout/fragment_filtrat">
         <action
             android:id="@+id/action_filtratFragment_to_ofertaFragment"
             app:destination="@id/ofertaFragment" />
@@ -278,7 +298,8 @@
     <fragment
         android:id="@+id/notificacioUsuari"
         android:name="cat.copernic.meetdis.NotificacioUsuari"
-        android:label="NotificacioUsuari" >
+        android:label="NotificacioUsuari"
+        tools:layout="@layout/fragment_notificacio_usuari">
         <action
             android:id="@+id/action_notificacioUsuari_to_ofertaFragment"
             app:destination="@id/ofertaFragment" />

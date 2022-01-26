@@ -139,6 +139,9 @@
     <string name="conservar">CONSERVAR</string>
     <string name="dni_noExistent_o_invalid">DNI no vàlid o no existent</string>
     <string name="idiomas">Idiomes</string>
+    <string name="pregunta_sortir">Vols sortir de l\'App?</string>
+    <string name="SORTIR">SORTIR</string>
+    <string name="CANCELA">"CANCEL·LA "</string>
 
 
 </resources>

@@ -1,5 +1,6 @@
 package cat.copernic.meetdis
 
+import android.content.ContentValues
 import android.os.Bundle
 import android.util.DisplayMetrics
 import android.util.Log
@@ -18,6 +19,7 @@ import java.util.*
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Build
+import androidx.activity.OnBackPressedCallback
 import androidx.annotation.RequiresApi
 
 
@@ -137,6 +139,24 @@ class Personalitzacio : Fragment(), AdapterView.OnItemSelectedListener {
         }
 
         binding.spinnerIdioma.onItemSelectedListener = this
+
+
+        requireActivity()
+            .onBackPressedDispatcher
+            .addCallback(this, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    Log.d(ContentValues.TAG, "Fragment back pressed invoked")
+                    // Do custom work here
+
+                    // if you want onBackPressed() to be called as normal afterwards
+                    if (isEnabled) {
+                        view?.findNavController()
+                            ?.navigate(PersonalitzacioDirections.actionPersonalitzacioFragmentToIniciFragment())
+                    }
+                }
+            }
+            )
+
 
         return binding.root
     }

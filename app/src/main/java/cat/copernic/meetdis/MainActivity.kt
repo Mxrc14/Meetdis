@@ -13,6 +13,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -20,6 +21,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import cat.copernic.meetdis.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -108,8 +110,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
+
+        val navController = Navigation.findNavController(this, R.id.myNavHostFragment)
+        NavigationUI.setupWithNavController(bottomMenu, navController)
         return navController.navigateUp(appBarConfiguration)
+
     }
+
+
+
 
 //    @RequiresApi(Build.VERSION_CODES.P)
 //    fun cambiarColor(color: Int) {

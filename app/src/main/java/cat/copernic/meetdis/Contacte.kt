@@ -2,6 +2,7 @@ package cat.copernic.meetdis
 
 import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
+import android.content.ContentValues
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -14,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import cat.copernic.meetdis.databinding.FragmentAboutBinding
 import cat.copernic.meetdis.databinding.FragmentContacteBinding
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.findNavController
 
 
@@ -54,6 +56,23 @@ class Contacte : Fragment() {
             view?.findNavController()
                 ?.navigate(ContacteDirections.actionContacteFragmentToIniciFragment())
         }
+
+
+        requireActivity()
+            .onBackPressedDispatcher
+            .addCallback(this, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    Log.d(ContentValues.TAG, "Fragment back pressed invoked")
+                    // Do custom work here
+
+                    // if you want onBackPressed() to be called as normal afterwards
+                    if (isEnabled) {
+                        view?.findNavController()
+                            ?.navigate(ContacteDirections.actionContacteFragmentToIniciFragment())
+                    }
+                }
+            }
+            )
 
 
         return binding.root

@@ -144,6 +144,9 @@
     <string name="conservar">KEEP</string>
     <string name="dni_noExistent_o_invalid">"Invalid or non-existent DNI "</string>
     <string name="idiomas">Languages</string>
+    <string name="CANCELA">CANCEL</string>
+    <string name="SORTIR">EXIT</string>
+    <string name="pregunta_sortir">"Do you want to exit the App? "</string>
 
 
 </resources>

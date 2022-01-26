@@ -1,9 +1,12 @@
 package cat.copernic.meetdis
 
+import android.content.ContentValues
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -72,7 +75,21 @@ class Notificacio : Fragment() {
 
 
 
+        requireActivity()
+            .onBackPressedDispatcher
+            .addCallback(this, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    Log.d(ContentValues.TAG, "Fragment back pressed invoked")
+                    // Do custom work here
 
+                    // if you want onBackPressed() to be called as normal afterwards
+                    if (isEnabled) {
+                        view?.findNavController()
+                            ?.navigate(NotificacioDirections.actionNotificacioFragmentToIniciFragment())
+                    }
+                }
+            }
+            )
 
 
 

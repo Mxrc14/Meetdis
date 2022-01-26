@@ -143,6 +143,9 @@
     <string name="conservar">CONSERVAR</string>
     <string name="dni_noExistent_o_invalid">DNI no válido o no existente</string>
     <string name="idiomas">Idiomas</string>
+    <string name="CANCELA">"CANCELA "</string>
+    <string name="SORTIR">SALIR</string>
+    <string name="pregunta_sortir">"¿Quieres salir de la App? "</string>
 
 
 </resources>

@@ -2,6 +2,7 @@ package cat.copernic.meetdis
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.ContentValues
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
@@ -13,6 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.core.text.isDigitsOnly
@@ -84,6 +86,24 @@ class PerfilUsuari : Fragment() {
 
 
         Log.i("PerfilUsuariDNI", dniUser)
+
+
+
+        requireActivity()
+            .onBackPressedDispatcher
+            .addCallback(this, object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    Log.d(ContentValues.TAG, "Fragment back pressed invoked")
+                    // Do custom work here
+
+                    // if you want onBackPressed() to be called as normal afterwards
+                    if (isEnabled) {
+                        view?.findNavController()
+                            ?.navigate(PerfilUsuariDirections.actionPerfilUsuariFragmentToIniciFragment())
+                    }
+                }
+            }
+            )
 
         val userdni = db.collection("users").document(dniUser.uppercase())
 
