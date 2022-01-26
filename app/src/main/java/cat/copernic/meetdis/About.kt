@@ -13,6 +13,7 @@ import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import cat.copernic.meetdis.databinding.FragmentAboutBinding
+import cat.copernic.meetdis.viewmodels.AboutViewModel
 
 
 class About : Fragment() {

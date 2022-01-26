@@ -1,15 +1,10 @@
-package cat.copernic.meetdis
+package cat.copernic.meetdis.viewmodels
 
 import android.app.Application
-import android.content.Context
-import android.content.res.Resources
-import android.provider.Settings
-import androidx.databinding.ObservableInt
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import io.grpc.Contexts
+import cat.copernic.meetdis.R
 
 
 class AboutViewModel(application: Application) : AndroidViewModel(application) {

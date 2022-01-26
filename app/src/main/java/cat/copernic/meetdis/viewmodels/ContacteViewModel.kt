@@ -1,9 +1,10 @@
-package cat.copernic.meetdis
+package cat.copernic.meetdis.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import cat.copernic.meetdis.R
 
 class ContacteViewModel (application: Application) : AndroidViewModel(application) {
 

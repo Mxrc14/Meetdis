@@ -1,7 +1,5 @@
 package cat.copernic.meetdis
 
-import android.annotation.SuppressLint
-import android.content.ActivityNotFoundException
 import android.content.ContentValues
 import android.content.Intent
 import android.net.Uri
@@ -12,11 +10,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import cat.copernic.meetdis.databinding.FragmentAboutBinding
 import cat.copernic.meetdis.databinding.FragmentContacteBinding
-import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.navigation.findNavController
+import cat.copernic.meetdis.viewmodels.ContacteViewModel
 
 
 class Contacte : Fragment() {
