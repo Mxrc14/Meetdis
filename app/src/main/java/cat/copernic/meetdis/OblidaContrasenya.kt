@@ -21,25 +21,19 @@ class OblidaContrasenya : Fragment() {
 
     lateinit var binding: FragmentOblidaContrasenyaBinding
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-
          binding = DataBindingUtil.inflate<FragmentOblidaContrasenyaBinding>(inflater,
             R.layout.fragment_oblida_contrasenya,container,false)
-
 
         binding.bEnviar.setOnClickListener { view: View ->
 
             enviarmail()
             view.findNavController()
                 .navigate(OblidaContrasenyaDirections.actionOblidatContrasenyaFragmentToLogInFragment())
-
-
         }
         return binding.root
     }

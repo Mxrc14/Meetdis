@@ -25,7 +25,6 @@ import java.util.HashMap
 
 class ValidacioRecyclerAdapter: RecyclerView.Adapter<ValidacioRecyclerAdapter.ViewHolder>(){
 
-
     var membres: ArrayList<Membre> = ArrayList()
     lateinit var context: Context
     lateinit var id: String
@@ -72,8 +71,6 @@ class ValidacioRecyclerAdapter: RecyclerView.Adapter<ValidacioRecyclerAdapter.Vi
 
         val item = membres[position]
 
-        Log.i("cash1", "${item.dni}")
-
         holder.bind(item)
 
         var dnifinal = item.dniMembre
@@ -81,7 +78,6 @@ class ValidacioRecyclerAdapter: RecyclerView.Adapter<ValidacioRecyclerAdapter.Vi
         dnifinal = dnifinal.toString().substring(0, dnifinal.toString().length - 11).uppercase()
 
         holder.itemView.setOnClickListener {
-
 
             val builder = AlertDialog.Builder(context)
             builder.setTitle(R.string.eliminar_usuario)

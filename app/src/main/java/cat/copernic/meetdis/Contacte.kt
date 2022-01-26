@@ -29,15 +29,11 @@ class Contacte : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = FragmentContacteBinding.inflate(layoutInflater)
-
 
         viewModel = ViewModelProvider(this).get(ContacteViewModel::class.java)
 
-
-
-       viewModel.nomICognom.observe(viewLifecycleOwner, {
+        viewModel.nomICognom.observe(viewLifecycleOwner, {
             binding.textDNI.hint = it.toString()
         })
        viewModel.titol.observe(viewLifecycleOwner, {

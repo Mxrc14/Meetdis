@@ -26,15 +26,11 @@ class ContacteViewModel (application: Application) : AndroidViewModel(applicatio
 
     init{
 
-
         _nomICognom.value = application.applicationContext.getString(R.string.nomICognoms)
         _titol.value = application.applicationContext.getString(R.string.titol)
         _descripcio.value = application.applicationContext.getString(R.string.descripcio)
         _enviar.value = application.applicationContext.getString(R.string.enviar)
 
     }
-
-
-
 
 }
