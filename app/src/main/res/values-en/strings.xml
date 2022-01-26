@@ -143,6 +143,7 @@
     <string name="eliminar_usuario">Are you sure you want to remove the user?</string>
     <string name="conservar">KEEP</string>
     <string name="dni_noExistent_o_invalid">"Invalid or non-existent DNI "</string>
+    <string name="idiomas">Languages</string>
 
 
 </resources>

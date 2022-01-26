@@ -58,46 +58,46 @@ class Personalitzacio : Fragment(), AdapterView.OnItemSelectedListener {
             dni = bundle.getString("DNIKey").toString()
         }
 
-        binding.bColor1.setOnClickListener { view: View ->
-
-            MaterialColorPickerDialog
-                .Builder(requireContext())            // Pass Activity Instance
-                .setColors(                            // Pass Predefined Hex Color
-                    arrayListOf(
-                        "#f6e58d", "#ffbe76", "#ff7979", "#badc58", "#dff9fb",
-                        "#7ed6df", "#e056fd", "#686de0", "#30336b", "#95afc0"
-                    )
-                )
-                .setColorListener { color, colorHex ->
-                    view.setBackgroundColor(color)
-                    colorF = color
-                }
-                .show()
-        }
-
-
-
-        binding.bColor2.setOnClickListener { view: View ->
-
-            MaterialColorPickerDialog
-                .Builder(requireContext())            // Pass Activity Instance
-                .setColors(                            // Pass Predefined Hex Color
-                    arrayListOf(
-                        "#f6e58d", "#ffbe76", "#ff7979", "#badc58", "#dff9fb",
-                        "#7ed6df", "#e056fd", "#686de0", "#30336b", "#95afc0"
-                    )
-                )
-                .setColorListener { color, colorHex ->
-                    binding.bColor2.setBackgroundColor(color)
-                }
-                .show()
-
-        }
-
-        binding.btnColorSorpresa.setOnClickListener { view: View ->
+//        binding.bColor1.setOnClickListener { view: View ->
+//
+//            MaterialColorPickerDialog
+//                .Builder(requireContext())            // Pass Activity Instance
+//                .setColors(                            // Pass Predefined Hex Color
+//                    arrayListOf(
+//                        "#f6e58d", "#ffbe76", "#ff7979", "#badc58", "#dff9fb",
+//                        "#7ed6df", "#e056fd", "#686de0", "#30336b", "#95afc0"
+//                    )
+//                )
+//                .setColorListener { color, colorHex ->
+//                    view.setBackgroundColor(color)
+//                    colorF = color
+//                }
+//                .show()
+//        }
 
 
-        }
+
+//        binding.bColor2.setOnClickListener { view: View ->
+//
+//            MaterialColorPickerDialog
+//                .Builder(requireContext())            // Pass Activity Instance
+//                .setColors(                            // Pass Predefined Hex Color
+//                    arrayListOf(
+//                        "#f6e58d", "#ffbe76", "#ff7979", "#badc58", "#dff9fb",
+//                        "#7ed6df", "#e056fd", "#686de0", "#30336b", "#95afc0"
+//                    )
+//                )
+//                .setColorListener { color, colorHex ->
+//                    binding.bColor2.setBackgroundColor(color)
+//                }
+//                .show()
+//
+//        }
+//
+//        binding.btnColorSorpresa.setOnClickListener { view: View ->
+//
+//
+//        }
 
         binding.btnConfirmarPersonalitzacio.setOnClickListener { view: View ->
 

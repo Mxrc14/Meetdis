@@ -49,8 +49,6 @@
             android:background="@drawable/bordes_meetdis"
             android:hint="@string/titol"
             android:inputType="textPersonName"
-
-
             android:textSize="12sp"
             android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +63,6 @@
             android:background="@drawable/bordes_meetdis"
             android:gravity="center"
             android:hint="@string/descripcio"
-
             android:textAlignment="center"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"

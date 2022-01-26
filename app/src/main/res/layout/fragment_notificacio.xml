@@ -3,18 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-
-
-
-
-
-
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:visibility="visible"
     app:menu="@menu/bottom_menu">
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvNotificacio"
@@ -40,14 +33,11 @@
         android:fontFamily="@font/pt_sans_caption"
         android:paddingTop="10dp"
         android:textColor="#ffffff"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/rvNotificacio"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 
 </layout>
