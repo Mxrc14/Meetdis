@@ -21,27 +21,21 @@ class ValidacioUsuaris : Fragment() {
 
     private val db = FirebaseFirestore.getInstance()
 
-
     private var membres: ArrayList<Membre> = arrayListOf();
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-
         val binding = DataBindingUtil.inflate<FragmentValidacioUsuarisBinding>(
             inflater,
             R.layout.fragment_validacio_usuaris, container, false
         )
 
-
         binding.rvValidacion.setHasFixedSize(true)
 
         binding.rvValidacion.layoutManager = LinearLayoutManager(requireContext())
-
-
 
         db.collection("userspendents")
             .get()

@@ -45,7 +45,6 @@
             android:ems="10"
             android:hint="@string/titol"
             android:inputType="textPersonName"
-
             android:paddingStart="30dp"
             android:paddingEnd="5dp"
             android:textSize="12sp"
@@ -58,11 +57,8 @@
             android:layout_width="293dp"
             android:layout_height="251dp"
             android:layout_marginTop="16dp"
-
             android:background="@drawable/custom_input"
             android:hint="@string/descripcio"
-
-
             android:paddingTop="10dp"
             android:textAlignment="center"
             android:textSize="12sp"
