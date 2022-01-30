@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="cat.copernic.meetdis.LogInFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/Opcional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/opcional"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@+id/mapView"
+            app:layout_constraintTop_toBottomOf="@+id/imageCamara"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/imageCamara"
+            android:layout_width="166dp"
+            android:layout_height="156dp"
+            android:src="@android:drawable/ic_menu_camera"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/textTitol"
+            android:layout_width="294dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/custom_input"
+
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="@string/titol"
+
+            android:inputType="textPersonName"
+            android:paddingStart="30dp"
+            android:paddingEnd="5dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mapView" />
+
+        <EditText
+            android:id="@+id/descripcio"
+            android:layout_width="297dp"
+            android:layout_height="108dp"
+
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custom_input"
+
+
+            android:hint="@string/descripcio"
+            android:paddingTop="10dp"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textTitol" />
+
+        <Spinner
+            android:id="@+id/spinnerEvents"
+            style="@style/spinner"
+            android:layout_width="148dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/pt_sans_caption"
+            android:gravity="center"
+            android:spinnerMode="dropdown"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:theme="@style/ThemeOverlay.AppCompat.Light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.878"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descripcio"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+
+        <EditText
+            android:id="@+id/textData"
+            android:layout_width="184dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:clickable="false"
+            android:ems="10"
+            android:focusable="false"
+            android:hint="@string/data"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.076"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descripcio" />
+
+        <ImageButton
+            android:id="@+id/mapView"
+            android:layout_width="56dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="4dp"
+            android:minHeight="48dp"
+            android:src="@drawable/ic_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageCamara"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/bCrear"
+            style="@style/colorMeetdis"
+            android:layout_width="132dp"
+            android:layout_height="59dp"
+            android:layout_marginTop="44dp"
+            android:fontFamily="@font/pt_sans_caption"
+            android:text="@string/crear"
+            android:textColor="#ffffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerEvents" />
+
+        <ProgressBar
+            android:id="@+id/progressBarUn"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:visibility="invisible"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textData"
+            tools:ignore="MissingConstraints" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

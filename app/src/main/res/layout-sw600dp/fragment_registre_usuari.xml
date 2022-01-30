@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="cat.copernic.meetdis.LogInFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/textNom"
+            android:layout_width="500dp"
+            android:layout_height="142dp"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/custom_email"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="@string/nom"
+            android:inputType="textPersonName"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageCamara" />
+
+        <EditText
+            android:id="@+id/textCognom"
+            android:layout_width="500dp"
+            android:layout_height="142dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/custom_email"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="@string/cognom"
+            android:inputType="textPersonName"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.524"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textNom" />
+
+        <ImageView
+            android:id="@+id/meetdis"
+            android:layout_width="360dp"
+            android:layout_height="260dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/meetdis" />
+
+        <ImageView
+            android:id="@+id/imageCamara"
+            android:layout_width="285dp"
+            android:layout_height="324dp"
+            android:src="@android:drawable/ic_menu_camera"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/meetdis"
+            tools:ignore="MissingConstraints" />
+
+        <CheckBox
+            android:id="@+id/checkBoxTerminis"
+            android:layout_width="661dp"
+            android:layout_height="167dp"
+            android:layout_marginTop="52dp"
+            android:checked="false"
+            android:minHeight="48dp"
+            android:text="@string/acceptarCondicions"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.571"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textCognom"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="480dp"
+            android:layout_height="137dp"
+            android:layout_marginTop="96dp"
+            android:text="@string/termes_i_condicions"
+            android:textColor="@color/teal_700"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.616"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBoxTerminis"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/b_finalitzar"
+            style="@style/colorMeetdis"
+            android:layout_width="283dp"
+            android:layout_height="114dp"
+            android:layout_marginTop="72dp"
+            android:enabled="false"
+            android:fontFamily="@font/pt_sans_caption"
+            android:text="@string/finalitzar"
+            android:textColor="#ffffff"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.474"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

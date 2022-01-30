@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/b_validacio"
+            style="@style/colorMeetdis"
+            android:layout_width="61dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="52dp"
+            android:drawableTop="@drawable/ic_members"
+            android:fontFamily="@font/pt_sans_caption"
+            android:paddingTop="10dp"
+            android:textColor="#ffffff"
+            android:visibility="invisible"
+            app:layout_constraintStart_toEndOf="@+id/imageCamara"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b_actualitza"
+            style="@style/colorMeetdis"
+            android:layout_width="132dp"
+            android:layout_height="59dp"
+            android:layout_marginTop="88dp"
+            android:enabled="true"
+            android:fontFamily="@font/pt_sans_caption"
+            android:text="@string/actualitza"
+            android:textColor="#ffffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descripcio" />
+
+        <EditText
+            android:id="@+id/textNom"
+            android:layout_width="209dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/custom_email"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="@string/nom"
+            android:inputType="textPersonName"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageCamara" />
+
+        <EditText
+            android:id="@+id/dniUsuariProdis"
+            android:layout_width="209dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/custom_email"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="@string/dni_usuari_prodis"
+            android:inputType="textPersonName"
+            android:maxLength="9"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descripcio"
+            tools:ignore="DuplicateClickableBoundsCheck" />
+
+        <EditText
+            android:id="@+id/textCorreu"
+            android:layout_width="209dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@android:drawable/sym_action_email"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="@string/correu"
+            android:inputType="textEmailAddress"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/descripcio" />
+
+        <EditText
+            android:id="@+id/textCognom"
+            android:layout_width="209dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/custom_email"
+            android:drawablePadding="5dp"
+            android:ems="10"
+            android:hint="@string/cognom"
+            android:inputType="textPersonName"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textNom" />
+
+
+        <ImageView
+            android:id="@+id/imageCamara"
+            android:layout_width="166dp"
+            android:layout_height="156dp"
+            android:src="@android:drawable/ic_menu_camera"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/descripcio"
+            android:layout_width="297dp"
+            android:layout_height="108dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/custom_input"
+            android:hint="@string/descripcio"
+            android:paddingTop="10dp"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textCognom" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
